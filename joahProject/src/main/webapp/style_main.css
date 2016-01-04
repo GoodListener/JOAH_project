@@ -1,0 +1,349 @@
+body{
+font-family:Arial, Helvetica, sans-serif;
+padding:0;
+font-size:12px;
+margin:0 auto;
+color:#545554;
+background:url(images/bg.gif) repeat top left #FFFFFF;
+}
+.clear{clear:both;}
+p{
+padding:5px 0 5px 0;
+margin:0px;
+line-height:18px;
+text-align:left;
+}
+a{
+color:#de462a;
+text-decoration:underline;
+}
+h1{font-size:36px;font-weight:bold;margin:0px;padding:10px 0 10px 0px;color:#343434;}
+h2{font-size:22px;color:#343434;padding:10px 0 10px 0;margin:0px 0 20px 0;font-weight:normal;
+font-family: Jeju Gothic;}
+h3{font-size:20px; color:#343434; padding:0; margin:0px; font-weight:normal;}
+
+#main_container{
+width:960px;
+height:auto;
+padding:0px 0 0px 0; margin:auto;
+}
+.header{ width: 1050px; height:120px; 
+}
+.logo{
+float:left;
+padding:0px 0 0 35px;
+font-size:50px;
+margin:20px 0 0 0;
+background:url(images/logo2.png) no-repeat left;
+background-position:0px 22px;
+}
+.logo a{ color:#454546; text-decoration:none; letter-spacing:-3px;}
+.slogan{ float:left; margin:57px 0 0 8px;}
+.header_socials{
+padding:50px 0 0 0;
+float:right;
+margin:0;
+}
+.header_socials a{
+float:left; margin:0 3px 0 3px;
+}
+
+/*----------------menu tab----------------------*/
+.menu {font-size:14px;padding:0px; float:left; width:890px;}
+/* remove all the bullets, borders and padding from the default list styling */
+.menu ul {padding:0;margin:0;list-style-type:none; height:35px;}
+/* style the sub-level lists */
+.menu ul ul {width: auto;}
+/* float the top list items to make it horizontal and a relative positon so that you can control the dropdown menu positon */
+.menu ul li {float:left;height:35px;line-height:35px;}
+/* style the sub level list items */
+.menu ul ul li {display:block;width: auto;height:auto;position:relative;line-height:1em;}
+/* style the links for the top level */
+.menu a, .menu a:visited {display:block;float:left;height:100%;font-size:14px;text-decoration:none;color:#5a5a5a;padding:0 3px 0 3px; margin:0 30px 0 0;}
+.menu a.current{ background-color:#FFFFFF;}
+/* style the sub level links */
+.menu ul ul a, .menu ul ul a:visited {display:block;font-size:13px; text-align:left; color:#545554;width:200px;height:100%;line-height:1em; padding:15px 0 15px 15px;
+border-bottom:1px #ebebeb solid;background-color:#fff;}
+.menu ul table ul a, .menu ul table ul a:visited  {width:14em; w\idth:12em;}
+/* style the table so that it takes no part in the layout - required for IE to work */
+.menu table {position:absolute; left:0; top:0; font-size:1em; z-index:-1;}
+.menu ul ul table {lef\t:-1px;}
+.menu ul ul table ul.left {margin-lef\t:2px;}
+.menu li:hover {position:relative;}
+* html .menu a:hover {position:relative;}
+/* style the sub level 1 background */
+.menu ul :hover a.sub1 {background:#fff;}
+/* style the sub level 2 background */
+.menu ul ul :hover a.sub2 {background:#fff;}
+/* style the level hovers */
+/* first */
+.menu a:hover {color:#de462a;}
+.menu :hover > a {color:#de462a;}
+/* second */
+.menu ul ul a:hover{background-color:#de462a; color:#FFFFFF;}
+.menu ul ul :hover > a {background-color:#de462a;}
+/* hide the sub levels and give them a positon absolute so that they take up no room */
+.menu ul ul {visibility:hidden;position:absolute;height:0;top:35px;left:0;width:14em; border:none; z-index:9999; background-color:#FFFFFF;}
+/* position the third level flyout menu */
+.menu ul ul ul{left:14em;top:0;width:14em;}
+/* position the third level flyout menu for a left flyout */
+.menu ul ul ul.left {left:-14em;}
+/* make the second level visible when hover on first level list OR link */
+.menu ul li:hover ul, .menu ul a:hover ul {visibility:visible; height:auto; padding-bottom:3em; background:transparent url(images/trans.gif);}
+
+/*-------------------------*/
+/*       메인 이미지        */
+/*-------------------------*/
+div.main_pic img {
+    padding-top: 20px;
+    width: 1050px;
+    height: 300px;
+}
+
+
+/*-----------------------------------------*/
+/*             hot place START             */
+/*         featured slider content         */
+/*-----------------------------------------*/
+
+.sliderwrapper{
+width:985px; /*width of featured content slider*/
+height:relative;
+position: relative; /*leave as is*/
+overflow: hidden; /*leave as is*/
+clear:both;
+padding:0;
+margin-top: -35px;
+}
+.slider_content{
+margin:0;
+align-content: center;
+position: center;
+float: left;
+width: 960px;
+height: relative;
+}
+
+/* hot place 왼쪽 이미지(2장) + 오른쪽 메뉴바 */
+#featured{ 
+border: 15px solid #e6e3dc;
+width: 100%;    /* 960px */
+height: 300px;
+padding: 0; 
+position: relative;
+}
+
+/* hot place 사진 왼쪽 오른쪽 한묶음 정렬 calss */
+#featured div.img_align {
+    display: inline;
+}
+#featured div.img_align img{
+    width: 66%;
+    height: 300px;
+    /*border: blue solid 1px;*/
+}
+
+/* hot place 사진 왼쪽 */
+#featured div.img_align #img1 {
+    float: left;
+    position: relative;
+    width: 50%;
+}
+
+/* hot place 사진 오른쪽 */
+#featured div.img_align #img2 {
+    float: left;
+    position: relative;
+    margin-top: -14px;
+    width: 50%;
+}
+
+/* hot place 오른쪽 메뉴바 사이즈 및 배경사진 */
+#featured ul.ui-tabs-nav{
+float:left;
+list-style: none; 
+padding:0 0 0 0; margin: -10px 0 0 0; 
+width: 34%;
+background:url(images/slider_details_bg.jpg);
+background-size: 100% 100%;
+content:"";
+margin-top: -14px;
+height:305px; 
+}
+
+/* hot place 오른쪽 메뉴바 메뉴 각각 하나 속성 */
+#featured ul.ui-tabs-nav li{ 
+padding:0px;   
+margin: 15px 0 0 4px;
+font-size:12px; 
+color:#fff; 
+}
+
+/* hot place 오른쪽 메뉴바 선택 안됐을때 */
+#featured li.ui-tabs-nav-item a{ 
+display:block;
+width:296px;
+height:45px;
+color:#fff;
+background:url(images/slider_tab.png) no-repeat center;
+line-height:45px; text-decoration:none; font-weight:bold; padding:0 0 0 21px; margin:0 0 13px 0;
+float:left;
+position:relative; left:-10px; z-index:999; outline:none;
+}
+
+/* hot place 오른쪽 메뉴바 선택 됐을때 */
+#featured li.ui-tabs-nav-item a:hover{ 
+background:url(images/slider_tab_hover.png) no-repeat center; color:#fff; 
+}
+
+#featured li.ui-tabs-selected{ 
+}
+#featured ul.ui-tabs-nav li.ui-tabs-selected a{ 
+background:url(images/slider_tab_hover.png) no-repeat center; color:#fff;
+}
+
+/* hot place 사진 왼쪽 오른쪽 한묶음 div */
+#featured .ui-tabs-panel{ 
+width: 66%; height:310px; 
+position: relative;
+float:left;
+}
+
+/* hot place 이미지 선택 안된 친구들 안보이게 해주는 아이 */
+#featured .ui-tabs-hide{ 
+display:none; 
+}
+/*-----------------------------------------*/
+/*             hot place END               */
+/*-----------------------------------------*/
+
+/*-------------------------------------------------------*/
+/*      recommend Course | Other's Date course START     */
+/*-------------------------------------------------------*/
+
+/* recommend course 이미지 간격 맞춰주는 class */
+.leftbox{
+width:290px;
+float:left;
+margin:-20px 45px 0 0;
+}
+.leftbox_right{
+width:290px;
+float:right;
+margin:-20px 0 0 0;
+}
+
+/* Other's Date course 이미지 간격 맞춰주는 class */
+.leftbox2{
+width:217px;
+float:left;
+margin:-20px 30px 0 7px;
+}
+.leftbox2 img{
+width:217px;
+height: 100px;
+float:left;
+margin:-20px 0 5px 0;
+}
+.leftbox_right2{
+width:217px;
+float:right;
+margin:-20px 0 0 -20px;
+}
+.leftbox_right2 img{
+width:217px;
+height: 100px;
+float:right;
+margin:-20px 0 5px 0;
+}
+
+/* recommend course와 Other's Date course의  각각 사진의 더보기 a 태그 */
+a.more{
+background:url(images/more_bullet.gif) no-repeat right; padding:0 25px 0 0; line-height:30px; text-decoration:none; float:right; margin:10px 0 0 0;
+}
+
+/*-------------------------------------------------------*/
+/*      recommend Course | Other's Date course END       */
+/*-------------------------------------------------------*/
+
+
+/*-------------------------*/
+/*      footer START       */
+/*-------------------------*/
+.footer{
+width:950px;
+clear:both;
+text-align:left;
+padding:12px 0 12px 10px;
+border-top:1px #d5d5d5 solid;
+margin:50px 0 0 0;
+}
+.copyrights{
+float:left;
+}
+.footer_right{
+float:right;
+}
+.footer_right a{
+text-decoration:none; padding:0 10px 0 10px; color:#545554;
+}
+.footer_right a:hover{
+color:#de462a;
+}
+
+/*-------------------------*/
+/*       footer END        */
+/*-------------------------*/
+
+/* hot place | recommend course | Other's Date course의 틀 */
+fieldset {
+    border-radius: 13px;
+  padding: 30px;
+  margin: 30px 0 0 0 ;
+  font:80%/1 ;
+  width: 960px;
+  }
+  
+/* fieldset의 더보기 */
+.see_more {
+    text-align: right;
+    width: 960px;
+background:url(images/more_bullet.gif) no-repeat right; padding:0 25px 0 0; line-height:30px; text-decoration:none; float:right; margin:-60px 0 0 0;
+/*border: 1px black solid;*/
+}
+
+/* fieldset 안의 제목 글자 */
+legend {
+    /*border: darkblue 2px solid;*/
+ font-size:36px;font-weight:bold;margin:0px;padding:10px 20px 10px 20px;color:#343434;
+}
+
+/*.news_box{
+width:290px;
+padding:0 0 20px 0;
+float:left; clear:both;
+}
+.date{
+width:90px; height:30px; background:url(images/date.gif) no-repeat center;float:left; text-align:center; color:#fff; font-size:11px; line-height:27px;
+}
+.news_box h3{font-size:14px; padding:0 0 0px 15px; margin:0px; float:left;}
+.news_box h3 a{ text-decoration:none;}
+.news_box p{width:205px; float:right;}
+.testimonial{
+background:url(images/quotes_top.jpg) no-repeat top left;
+padding:0 0 0 20px;
+margin:0 0 30px 0;
+}
+.testimonial_quotes{
+background:url(images/quotes_bottom.jpg) no-repeat bottom right;
+padding:0 20px 0 0;
+font-style:italic;
+}*/
+
+
+/*.center_content{
+width:960px; clear:both; padding:35px 0 0 0;
+}
+.center_content_pages{
+width:960px; clear:both; padding:15px 0 0 0;
+}*/
