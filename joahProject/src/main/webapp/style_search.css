@@ -196,7 +196,7 @@ input.form_mapSear{clear:both; height:24px; text-align:center; color:#fff; font-
     -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9e9e9e', endColorstr='#454545');  
 }
 /*-----center image-----*/
-img.pages_pic{ border:4px #fff solid; margin:0px 0 10px 9px;}
+#testMap{ border:4px #fff solid; margin:0px 0 10px 9px;}
 
 /*-----save 버튼 -----*/
 input.form_submit{float:right; clear:both; margin:7px 14px 0 0px; width:149px; height:34px; text-align:center; color:#fff; font-size:16px; background: #666666; border:none; font-weight:bold; padding:0 0 0 0px; cursor:pointer;}

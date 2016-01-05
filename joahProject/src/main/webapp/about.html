@@ -30,7 +30,7 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 
 
 <!-- 맵 인포 윈도우 시작. -->
-<style>    
+<style>
 .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
     .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
@@ -51,8 +51,8 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 
        <!--//////////////////////////////////////////////////////////////////////////////////// -->
        <!--                                     Header                                          -->
-       <!--//////////////////////////////////////////////////////////////////////////////////// -->  
-       
+       <!--//////////////////////////////////////////////////////////////////////////////////// -->
+
       <div class="header">
 
          <div class="logo">
@@ -62,56 +62,56 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 
          <div class="header_socials">
             <a href="#"><img src="images/rss.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="images/facebook.png" alt="" title=""border="0" /></a> 
-            <a href="#"><img src="images/linkedin.png" alt="" title="" border="0" /></a> 
-            <a href="#"><img src="images/twitter.png" alt="" title="" border="0" /></a> 
+            <a href="#"><img src="images/facebook.png" alt="" title=""border="0" /></a>
+            <a href="#"><img src="images/linkedin.png" alt="" title="" border="0" /></a>
+            <a href="#"><img src="images/twitter.png" alt="" title="" border="0" /></a>
             <a href="#"><img src="images/flickr.png" alt="" title="" border="0" /></a>
          </div>
 
       </div>
        <!--//////////////////////////////////////////////////////////////////////////////////// -->
        <!--                                    end Header                                       -->
-       <!--//////////////////////////////////////////////////////////////////////////////////// -->  
+       <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
 
         <!--//////////////////////////////////////////////////////////////////////////////////// -->
        <!--                                    menu                                             -->
-       <!--//////////////////////////////////////////////////////////////////////////////////// -->  
-      
+       <!--//////////////////////////////////////////////////////////////////////////////////// -->
+
         <div class="menu">
          <ul>
             <li><a href="about.html">Map Search</a></li>
             <li><a href="index.html">My List</a>
             </li>
             <li><a href="">Board</a></li>
-            <li><a href="#">Admin Menu</a>            
+            <li><a href="#">Admin Menu</a>
                <ul>
                   <li><a href="" title="">회원관리 </a></li>
                   <li><a href="" title="">1:1 문의 </a></li>
-                  <li><a href="" title="">관리자 추천 게시판 </a></li>                  
+                  <li><a href="" title="">관리자 추천 게시판 </a></li>
                </ul>
             </li>
             <li><a href="">Login</a></li>
             <li><a href="contact.html">Sign in</a></li>
-            
+
          </ul>
       </div>
         <!--//////////////////////////////////////////////////////////////////////////////////// -->
        <!--                                    end Menu                                       -->
-       <!--//////////////////////////////////////////////////////////////////////////////////// -->  
+       <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
         <!--//////////////////////////////////////////////////////////////////////////////////// -->
       <!--         center_content_pages = pages_banner + left_content + right_content          -->
       <!--//////////////////////////////////////////////////////////////////////////////////// -->
-        
+
       <div class="center_content_pages">
          <div class="pages_banner">Contact Date Course. delecious food,
             watching, health, etc...</div>
-                
+
             <!--//////////////////////////////////////////////////////////////////////////////////// -->
          <!--                           left contnt = Search Option                               -->
-         <!--//////////////////////////////////////////////////////////////////////////////////// -->  
-             
+         <!--//////////////////////////////////////////////////////////////////////////////////// -->
+
          <div class="left_content">
             <div>
                <fieldset>
@@ -141,11 +141,11 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
                </fieldset>
             </div>
            </div>
-              
+
             <!--//////////////////////////////////////////////////////////////////////////////////// -->
          <!--                       end left contnt = Search Optopn                               -->
-         <!--//////////////////////////////////////////////////////////////////////////////////// -->  
-            
+         <!--//////////////////////////////////////////////////////////////////////////////////// -->
+
          <!--//////////////////////////////////////////////////////////////////////////////////// -->
          <!-- right contnt = menubar(img, food, watching button + search bar) + img + save button -->
          <!--//////////////////////////////////////////////////////////////////////////////////// -->
@@ -165,18 +165,18 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
             </div>
             <div id="testMap" style="width: 680px; height: 400px; margin: 0;"></div>
          </div>
-            
+
             <!--//////////////////////////////////////////////////////////////////////////////////// -->
          <!--                          end right content                                          -->
          <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
          <div class="clear"></div>
       </div>
-                
+
         <!--//////////////////////////////////////////////////////////////////////////////////// -->
       <!--                            end center_content_pages =                               -->
       <!--//////////////////////////////////////////////////////////////////////////////////// -->
-        
+
         <!-- 테스트용 데이터 -->
         <p id="mapLatLng"></p>
         <p id="distance"></p>
@@ -201,7 +201,7 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 
 
 <script type="text/javascript">
-  var oPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037); // 내 위치 설정
+  var oPoint = new nhn.api.map.LatLng(33.450701, 126.570667); // 내 위치 설정
   nhn.api.map.setDefaultPoint('LatLng');
 
   oMap = new nhn.api.map.Map('testMap', {
@@ -232,7 +232,7 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 
   var mapInfoTestWindow = new nhn.api.map.InfoWindow(); // - info window 생성
   mapInfoTestWindow.setVisible(false); // - infowindow 표시 여부 지정.
-  oMap.addOverlay(mapInfoTestWindow); // - 지도에 추가.     
+  oMap.addOverlay(mapInfoTestWindow); // - 지도에 추가.
 
   var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언.
   oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨.
@@ -242,34 +242,34 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
       oLabel.setVisible(false);
     }
   });
-  
+
   function closeOverlay() {
 	  mapInfoTestWindow.setVisible(false);
   }
-  
+
   oMap.attach('click', function(oCustomEvent) {
 	  var oPoint = 	oCustomEvent.point;
 	  var oTarget = oCustomEvent.target;
 	  if (oCustomEvent.clickCoveredMarker) {
 		  return;
 	  }
-	  mapInfoTestWindow.setContent('<div class="wrap">' + 
-              '    <div class="info">' + 
-              '        <div class="title">' + 
-              '            민수네 맛집' + 
-              '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-              '        </div>' + 
-              '        <div class="body">' + 
+	  mapInfoTestWindow.setContent('<div class="wrap">' +
+              '    <div class="info">' +
+              '        <div class="title">' +
+              '            민수네 맛집' +
+              '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+              '        </div>' +
+              '        <div class="body">' +
               '            <div class="img">' +
               '                <img src="1.png" width="73" height="70">' +
-              '           </div>' + 
-              '            <div class="desc">' + 
-              '                <div class="ellipsis">서울시 강남구 383-23</div>' + 
-              '                <div class="jibun ellipsis">(우) 63309 (지번) ?? 2181</div>' + 
-              '                <div><a href="#" target="_blank" class="link">홈페이지</a></div>' + 
-              '            </div>' + 
-              '        </div>' + 
-              '    </div>' +    
+              '           </div>' +
+              '            <div class="desc">' +
+              '                <div class="ellipsis">서울시 강남구 383-23</div>' +
+              '                <div class="jibun ellipsis">(우) 63309 (지번) ?? 2181</div>' +
+              '                <div><a href="#" target="_blank" class="link">홈페이지</a></div>' +
+              '            </div>' +
+              '        </div>' +
+              '    </div>' +
               '</div>');
      mapInfoTestWindow.setPoint(oTarget.getPoint());
      mapInfoTestWindow.setVisible(true);
@@ -298,14 +298,14 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
   // 지도에 마커 선택 표시
 
   //if ()
-  // 마커 직접추가    
+  // 마커 직접추가
   var oMarker = new nhn.api.map.Marker(oIcon, {
     title : '블로그 추천1'
-  }); //여기다가 우리가 원하는 ㅂ정보를 받을 수 있음                       
-  oMarker.setPoint(new nhn.api.map.LatLng(37.5003323, 127.0379323)) // 마커 위치.
+  }); //여기다가 우리가 원하는 ㅂ정보를 받을 수 있음
+  oMarker.setPoint(new nhn.api.map.LatLng(33.450701, 126.570667)) // 마커 위치.
   // 마커 직접 추가할 때 모든 지도에 다 보이게 하는것....
   //
-	//마커 추가하는 것, 
+	//마커 추가하는 것,
 	oMap.addOverlay(oMarker);
 
 	var oMarker2 = new nhn.api.map.Marker(oIcon, {
@@ -327,6 +327,10 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 	oMarker4.setPoint(new nhn.api.map.LatLng(37.5001223, 127.0344323)) // 마커 위치.
 	oMap.addOverlay(oMarker4);
 
+
+
+
+  
 	var circle = new nhn.api.map.Circle({
 		strokeColor : "red",
 		strokeOpacity : 1,
@@ -339,7 +343,7 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 
 	var mapxy = document.getElementById('mapLatLng');
 	var dist = document.getElementById('distance');
-	(oMap.getCenter()); //TODO          
+	(oMap.getCenter()); //TODO
 	circle.setRadius(radius); // - circle 의 반지름을 지정하며 단위는 meter이다.
 	circle.setStyle("strokeColor", "black"); // - 선의 색깔을 지정함.
 	circle.setStyle("strokeWidth", 3); // - 선의 두께를 지정함.
@@ -355,8 +359,8 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 						if (oMap.getCenter()
 								.getDistanceFrom(oMarker.getPoint()) < 200) {
 							oMarker.setVisible(true);
-						} else 
-							oMarker.setVisible(false);	
+						} else
+							oMarker.setVisible(false);
 					  if (oMap.getCenter().getDistanceFrom(oMarker2.getPoint()) < 200) {
 							oMarker2.setVisible(true);
 						} else
@@ -366,7 +370,7 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 						} else  oMarker3.setVisible(false);
 						if (oMap.getCenter().getDistanceFrom(oMarker4.getPoint()) < 200) {
 							oMarker4.setVisible(true);
-						} else 
+						} else
 						oMarker4.setVisible(false);
 						circle.setCenterPoint(oMap.getCenter());
 					});
