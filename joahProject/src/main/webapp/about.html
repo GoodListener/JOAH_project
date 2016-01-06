@@ -201,7 +201,9 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 
 
 <script type="text/javascript">
-  var oPoint = new nhn.api.map.LatLng(33.450701, 126.570667); // 내 위치 설정
+  
+  var oPoint = new nhn.api.map.TM128(311541, 555036).toLatLng();
+  //var oPoint = new nhn.api.map.LatLng(33.450701, 126.570667); // 내 위치 설정
   nhn.api.map.setDefaultPoint('LatLng');
 
   oMap = new nhn.api.map.Map('testMap', {
@@ -302,7 +304,7 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
   var oMarker = new nhn.api.map.Marker(oIcon, {
     title : '블로그 추천1'
   }); //여기다가 우리가 원하는 ㅂ정보를 받을 수 있음
-  oMarker.setPoint(new nhn.api.map.LatLng(33.450701, 126.570667)) // 마커 위치.
+  oMarker.setPoint(new nhn.api.map.TM128(310365, 551470)) // 마커 위치.
   // 마커 직접 추가할 때 모든 지도에 다 보이게 하는것....
   //
 	//마커 추가하는 것,
@@ -327,35 +329,38 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 	oMarker4.setPoint(new nhn.api.map.LatLng(37.5001223, 127.0344323)) // 마커 위치.
 	oMap.addOverlay(oMarker4);
 
-
+	
+	/* var oMarkerArray = {
+			oMarker5 = new nhn.api.map.Marker(oIcon, {title: '대표'});
+			o
+	} TODO*/
 
 
   
 	var circle = new nhn.api.map.Circle({
-		strokeColor : "red",
-		strokeOpacity : 1,
-		strokeWidth : 1,
+		strokeColor : "blue",
+		strokeOpacity : 0.5,
+		strokeWidth : 2,
 		fillColor : "blue",
-		fillOpacity : 0.5
+		fillOpacity : 0.1
 	});
 
 	var radius = 200; // - radius의 단위는 meter
 
-	var mapxy = document.getElementById('mapLatLng');
-	var dist = document.getElementById('distance');
-	(oMap.getCenter()); //TODO
+	/* var mapxy = document.getElementById('mapLatLng');
+	var dist = document.getElementById('distance'); */
+	oMap.getCenter(); //TODO
 	circle.setRadius(radius); // - circle 의 반지름을 지정하며 단위는 meter이다.
-	circle.setStyle("strokeColor", "black"); // - 선의 색깔을 지정함.
-	circle.setStyle("strokeWidth", 3); // - 선의 두께를 지정함.
-	circle.setStyle("strokeOpacity", 1); // - 선의 투명도를 지정함.
-	circle.setStyle("fillColor", "none"); // - 채우기 색상. none 이면 투명하게 된다.
+	//circle.setStyle("strokeColor", "black"); // - 선의 색깔을 지정함.
+	//circle.setStyle("strokeWidth", 3); // - 선의 두께를 지정함.
+	//circle.setStyle("strokeOpacity", 1); // - 선의 투명도를 지정함.
+	//circle.setStyle("fillColor", "none"); // - 채우기 색상. none 이면 투명하게 된다.
 	circle.setCenterPoint(oMap.getCenter()); // - circle 의 중심점을 지정한다.
 	oMap.addOverlay(circle);
-
 	oMap.attach('mousemove',function(oCustomEvent) { //마우스 움직일때마다 이벤트 발생.
-						mapxy.innerHTML = oMap.getCenter(); //중심점 HTML에 추가 mapxy에다가
+						/* mapxy.innerHTML = oMap.getCenter(); //중심점 HTML에 추가 mapxy에다가
 						dist.innerHTML = oMap.getCenter().getDistanceFrom(
-								oMarker.getPoint());
+								oMarker.getPoint()); */
 						if (oMap.getCenter()
 								.getDistanceFrom(oMarker.getPoint()) < 200) {
 							oMarker.setVisible(true);
