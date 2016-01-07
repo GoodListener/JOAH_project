@@ -996,11 +996,18 @@ ul.elements li > i{
 }
 
 .portfolio-thumb {
+  border-top: solid 1px black;
+  border-left: solid 1px black;
+  border-right: solid 1px black;
   position: relative;
 }
+.img-responsive2 {
+	
+} 
 
 .portfolio-thumb img {
-  width: 100%;
+  width: 550px;
+  height: 455px;
 }
 
 .portfolio-single:hover .portfolio-view{
@@ -1060,8 +1067,12 @@ ul.elements li > i{
 }
 
 .portfolio-info {
+  border-right:solid 1px black;
+  border-left: solid 1px black;
+  border-bottom: solid 1px black;
+  background-color: white;
   overflow: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .portfolio-info h2 {
@@ -1350,17 +1361,17 @@ Portfolio with right sidebar
 /* Start: Recommended Isotope styles */
 
 /**** Isotope Filtering ****/
-.isotope-item {
+/* .isotope-item {
   z-index: 2;
 }
 
 .isotope-hidden.isotope-item {
   pointer-events: none;
   z-index: 1;
-}
+} */
 
 /**** Isotope CSS3 transitions ****/
-
+/* 
 .isotope,
 .isotope .isotope-item {
   -webkit-transition-duration: 0.8s;
@@ -1384,10 +1395,10 @@ Portfolio with right sidebar
   -ms-transition-property: -ms-transform, opacity;
   -o-transition-property: -o-transform, opacity;
   transition-property: transform, opacity;
-}
+} */
 
 /**** disabling Isotope CSS3 transitions ****/
-.isotope.no-transition,
+/* .isotope.no-transition,
 .isotope.no-transition .isotope-item,
 .isotope .isotope-item.no-transition {
   -webkit-transition-duration: 0s;
@@ -1396,7 +1407,7 @@ Portfolio with right sidebar
   -o-transition-duration: 0s;
   transition-duration: 0s;
 }
-
+ */
 
 
 
