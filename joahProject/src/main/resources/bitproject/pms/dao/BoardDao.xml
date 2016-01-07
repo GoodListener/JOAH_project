@@ -16,13 +16,14 @@
 
   <select id="selectList" resultMap="boardMap" parameterType="map">
     select 
-      bno,
-      photo,
-      title,
-      views,
-      id,
-      cre_dt 
-    from board
+      t1.bno,
+      t1.photo,
+      t1.title,
+      t1.views,
+      t1.id,
+     <!--  t2.name, -->
+      t1.cre_dt 
+    from board t1 <!-- join member t2 on t1.id = t2.id -->
     <!--  
     order by 
     <choose>
