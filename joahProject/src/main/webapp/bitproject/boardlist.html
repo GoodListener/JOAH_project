@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset='UTF-8'>
-  <title>Hot place</title>
-  <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" type="text/css" href="../lib/mycss/style_main.css" />
-<script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js" ></script>
-<script type="text/javascript" src="../lib/myjs/jquery-ui.min.js" ></script>
+<meta charset='UTF-8'>
+<title>Hot place</title>
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" type="text/css"
+	href="../lib/mycss/style_board.css" />
+<link rel="stylesheet" type="text/css"
+	href="../lib/mycss/style_main.css" />
+<script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="../lib/myjs/jquery-ui.min.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
 	$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
 });
@@ -17,93 +21,93 @@ $(document).ready(function(){
 </script>
 <!-- Cufon START  -->
 <script type="text/javascript" src="../lib/myjs/cufon-yui.js"></script>
-<script type="text/javascript" src="../lib/myjs/GeosansLight_500.font.js" ></script>
+<script type="text/javascript"
+	src="../lib/myjs/GeosansLight_500.font.js"></script>
 <script type="text/javascript">
 Cufon.replace('.logo', { fontFamily: 'GeosansLight' });
 Cufon.replace('h1', { fontFamily: 'GeosansLight' });
 Cufon.replace('h2', { fontFamily: 'GeosansLight' });
+Cufon.replace('.pages_banner', { fontFamily: 'GeosansLight' });
 Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
-</script>    
+</script>
 <!-- Cufon END  -->
 </head>
 <body>
+	<div id="main_container">
 
-<div class="container">        
-<header>
-<!-- 프로젝트 관리 시스템 - 
-   <a href="/project03t/auth/login.do">로그인</a> -->
-</header>
+		<!-- header -->
+		<header>
+			<div class="logo">
+				<a href="index.html">JOAH</a>
+			</div>
+			<div class="slogan">| Couple Date Course Website</div>
 
-<section>
-<div id="main_container">
+			<div class="header_socials">
+				<a href="#"> <img src="../images/rss.png" alt="" title=""
+					border="0" /></a> <a href="#"><img src="../images/facebook.png"
+					alt="" title="" border="0" /></a> <a href="#"><img
+					src="../images/linkedin.png" alt="" title="" border="0" /></a> <a
+					href="#"><img src="../images/twitter.png" alt="" title=""
+					border="0" /></a> <a href="#"><img src="../images/flickr.png"
+					alt="" title="" border="0" /></a>
+			</div>
+			<div class="menu">
+				<ul>
+					<li><a href="about.html">Map Search</a></li>
+					<li><a href="index.html">My List</a></li>
+					<li><a href="boardlist.html">Board</a></li>
+					<li><a href="#">Admin Menu</a>
+						<ul>
+							<li><a href="" title="">회원관리 </a></li>
+							<li><a href="" title="">1:1 문의 </a></li>
+							<li><a href="" title="">관리자 추천 게시판 </a></li>
+						</ul></li>
+					<li><a href="">Login</a></li>
+					<li><a href="contact.html">Sign in</a></li>
+				</ul>
+			</div>
+		</header>
 
-    <!------------------------------------------>
-    <!--             header  시작             -->
-    <!------------------------------------------>
-    <div class="header">
+		<section>
+			<div class="center_content_pages">
+				<div class="pages_banner">HOT PLACE</div>
 
-            <div class="logo"><a href="index.html">JOAH</a></div>
-            <div class="slogan">| Couple Date Course Website</div> 
-        
-            <div class="header_socials">
-            <a href="#"><img src="../images/rss.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/facebook.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/linkedin.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/twitter.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/flickr.png" alt="" title="" border="0" /></a>
-            </div>
 
-    </div>
-       <!------------------------------------------>
-    <!--              menu  시작              -->
-    <!------------------------------------------>
-     <div class="menu">
-        <ul>
-            <li><a href="about.html">Map Search</a></li>
-            <li><a href="index.html">My List</a></li>
-            <li><a href="boardlist.html">Board</a></li>
-            <li><a href="#">Admin Menu</a>
-        <ul>
-            <li><a href="" title="">회원관리 </a></li>
-            <li><a href="" title="">1:1 문의 </a></li>
-            <li><a href="" title="">관리자 추천 게시판 </a></li>
-        </ul>
-        </li>
-        <li><a href="">Login</a></li>
-        <li><a href="contact.html">Sign in</a></li>
-        </ul>
-    </div>
-    <!------------------------------------------>
-    <!--              menu  끝                -->
-    <!------------------------------------------>
-    
-<h1><br>Hot place</h1>
+				<button id="newBtn" type="button" class="btn btn-primary btn-xs">새
+					글</button>
+				<br>
 
-<button id="newBtn" type="button" class="btn btn-primary btn-xs">새 글</button><br>
+				<table id="listTable" class="table table-hover">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>지도사진</th>
+							<th>제목</th>
+							<th>조회수</th>
+							<th>작성자</th>
+							<th>등록일</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</section>
 
-<table id="listTable" class="table table-hover">
-  <thead>
-	  <tr>
-	    <th>번호</th>
-	  	<th>지도사진</th>
-	    <th>제목</th>
-	    <th>조회수</th>
-	    <th>작성자</th>
-	    <th>등록일</th>
-	  </tr>
-  </thead>
-</table>
-</section>
+		<footer>
+			<div class="copyrights">
+				Free CSS Template by <a href="http://csstemplatesmarket.com"
+					target="_blank">Css templates market</a>
+			</div>
+			<div class="footer_right">
+				<a href="#">Home</a> <a href="#">About Us</a> <a href="#">Privacy
+					Policy</a> <a href="#">Contact Us</a>
+			</div>
+			<div class="clear"></div>
+		</footer>
+	</div>
+	<!-- main_container div -->
 
-<footer>
-<p><address>
-** 이 웹 애플리케이션의 모든 권리는 Java76기에 있습니다. &copy; Java76. **
-</address></p>
-</footer>
-</div><!-- container div -->
-
-<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
-<script>
+	<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+	<script>
 
 //$.getJSON(contextRoot + '/board/ajax/list.do', function(resultObj) {
 $.getJSON('ajax/list.do', function(resultObj) {
@@ -136,11 +140,10 @@ function clickDetailLnk(event) {
 
 </script>
 
-    </body>
+</body>
 </html>
 
 
 
 
 
-    

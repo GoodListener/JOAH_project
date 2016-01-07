@@ -105,7 +105,17 @@ values(3, 'default2.png');
 insert into PHOTO (BNO, PHOTO)
 values(3, 'default3.png');
 
-alter table board add column PHOTO varchar(100);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
