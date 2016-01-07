@@ -14,7 +14,7 @@ import bitproject.pms.dao.BoardDao;
 import bitproject.pms.domain.Board;
 
 @Controller("ajax.BoardController")
-@RequestMapping("/board/ajax/*")
+@RequestMapping("/bitproject/ajax/*")
 public class BoardController { 
   
   public static final String SAVED_DIR = "/attachfile";
