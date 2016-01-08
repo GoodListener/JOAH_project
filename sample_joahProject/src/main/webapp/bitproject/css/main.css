@@ -1000,7 +1000,9 @@ ul.elements li > i{
 }
 
 .portfolio-thumb img {
+  border:2px solid lightgray;
   width: 100%;
+  height: 340px;
 }
 
 .portfolio-single:hover .portfolio-view{
