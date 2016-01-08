@@ -34,48 +34,24 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 <body>
 
 		<div id="main_container">
+			
+			
 				<!-- header -->
-				<header>
-					<div class="logo">
-						<a href="index.html">JOAH</a>
-					</div>
-					<div class="slogan">| Couple Date Course Website</div>
+<header id="h_title"></header>
 
-					<div class="header_socials">
-						<a href="#"> <img src="../images/rss.png" alt="" title=""
-							border="0" /></a> <a href="#"><img src="../images/facebook.png"
-							alt="" title="" border="0" /></a> <a href="#"><img
-							src="../images/linkedin.png" alt="" title="" border="0" /></a> <a
-							href="#"><img src="../images/twitter.png" alt="" title=""
-							border="0" /></a> <a href="#"><img src="../images/flickr.png"
-							alt="" title="" border="0" /></a>
-					</div>
-					<div class="menu">
-    <div class="menu_bar">
-        <ul>
-            <li><a href="about.html">Map Search</a></li>
-            <li><a href="index.html">My List</a></li>
-            <li><a href="">Board</a></li>
-            <!-- <li><a href="#">Admin Menu</a>
-        <ul>
-            <li><a href="" title="">회원관리 </a></li>
-            <li><a href="" title="">1:1 문의 </a></li>
-            <li><a href="" title="">관리자 추천 게시판 </a></li>
-        </ul>
-        </li> -->
-        </ul>
-    </div>
-    <div class="menu_login">
-        <nav class="main-nav">
-         <ul>
-            <!-- inser more links here -->
-            <li><a class="cd-signin" href="#0">Sign in</a></li>
-            <li><a class="cd-signup" href="#0">Sign up</a></li>
-         </ul>
-      </nav>
-    </div>    
-    </div>
-				</header>
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+<script>
+$.ajax({
+    url : "header.html",
+    dataType : "html",
+    type : "get",  // post 또는 get
+    success : function(result){
+        $("#h_title").html(result);
+    }
+});
+</script>
+				
+				
 
 				<div class="center_content_pages">
 					<div class="pages_banner">HOT PLACE</div>
@@ -275,7 +251,6 @@ function clickDetailLnk(event) {
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
 <script src="../lib/myjs/jquery.min.js"></script> 
 <script src="../lib/myjs/main.js"></script> 
-</div> <!--end of main container-->
 
 <!------------------------------------------>
 <!--            Modal 끝                  -->

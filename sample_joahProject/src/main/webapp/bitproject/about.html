@@ -1,19 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset='UTF-8'>
 <title>Free CSS Templates | by CssTemplatesMarket.com</title>
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+<!-- <link rel="stylesheet" href="../css/common.css"> -->
 <link rel="stylesheet" type="text/css" href="../lib/mycss/style_search.css" />
-<script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="../lib/myjs/jquery-ui.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-   $("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
-});
-</script>
+<script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js"></script>
 <!-- Cufon START  -->
 <script type="text/javascript" src="../lib/myjs/cufon-yui.js"></script>
-<script type="text/javascript" src="../lib/myjs/GeosansLight_500.font.js" ></script>
+<script type="text/javascript" src="../lib/myjs/GeosansLight_500.font.js"></script>
 <script type="text/javascript">
 Cufon.replace('.logo', { fontFamily: 'GeosansLight' });
 Cufon.replace('h1', { fontFamily: 'GeosansLight' });
@@ -21,11 +18,19 @@ Cufon.replace('h2', { fontFamily: 'GeosansLight' });
 Cufon.replace('.pages_banner', { fontFamily: 'GeosansLight' });
 Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 </script>
+<script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
 <!-- Cufon END  -->
 
 <link rel="stylesheet" type="text/css" href="../lib/mycss/styles.css"></link>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/lightbox.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
     <script type="text/javascript"
-      src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=02d9bf3b79fa38576e85696538bbd70e"></script>
+      src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=553205575474122b3423699dc799445d"></script>
 </head>
 
 
@@ -53,22 +58,20 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
        <!--                                     Header                                          -->
        <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
-      <div class="header">
+              <!-- header -->
+<header id="h_title"></header>
 
-         <div class="logo">
-            <a href="index.html">JOAH</a>
-         </div>
-         <div class="slogan">| Couple Date Course Website</div>
-
-         <div class="header_socials">
-            <a href="#"><img src="../images/rss.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/facebook.png" alt="" title=""border="0" /></a>
-            <a href="#"><img src="../images/linkedin.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/twitter.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/flickr.png" alt="" title="" border="0" /></a>
-         </div>
-
-      </div>
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+<script>
+$.ajax({
+    url : "header.html",
+    dataType : "html",
+    type : "get",  // post 또는 get
+    success : function(result){
+        $("#h_title").html(result);
+    }
+});
+</script>
        <!--//////////////////////////////////////////////////////////////////////////////////// -->
        <!--                                    end Header                                       -->
        <!--//////////////////////////////////////////////////////////////////////////////////// -->
@@ -76,28 +79,6 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 
         <!--//////////////////////////////////////////////////////////////////////////////////// -->
        <!--                                    menu                                             -->
-       <!--//////////////////////////////////////////////////////////////////////////////////// -->
-
-        <div class="menu">
-         <ul>
-            <li><a href="about.html">Map Search</a></li>
-            <li><a href="index.html">My List</a>
-            </li>
-            <li><a href="">Board</a></li>
-            <li><a href="#">Admin Menu</a>
-               <ul>
-                  <li><a href="" title="">회원관리 </a></li>
-                  <li><a href="" title="">1:1 문의 </a></li>
-                  <li><a href="" title="">관리자 추천 게시판 </a></li>
-               </ul>
-            </li>
-            <li><a href="">Login</a></li>
-            <li><a href="contact.html">Sign in</a></li>
-
-         </ul>
-      </div>
-        <!--//////////////////////////////////////////////////////////////////////////////////// -->
-       <!--                                    end Menu                                       -->
        <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
         <!--//////////////////////////////////////////////////////////////////////////////////// -->
@@ -117,7 +98,7 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
                <fieldset>
                   <legend>Search Option</legend>
 
-                  <ul class="left_menu">
+                  <div class="left_menu">
                      <div class="form_row">
                         <label style="font-size: 20px; margin-top: -5px;">start:</label>
                         <input type="text" class="form_input" name="" />
@@ -137,7 +118,7 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
                      <div class="form_row">
                         <input type="button" class="form_search" value="Search" />
                      </div>
-                  </ul>
+                  </div>
                </fieldset>
             </div>
            </div>
@@ -152,8 +133,8 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 
          <div class="right_content">
              <div class="menu_bar">
-               <img src="http://www.midwestretina.com/dist/img/18415.png"
-                  class="map_pic" heignt="30" width="30" /> <input type="button"
+               <img src="18415.png"
+                  class="map_pic" height="30" width="30" /> <input type="button"
                   class="form_mapSearch" value=" food " /> <input type="button"
                   class="form_mapSear" value=" watching " /> <input type="button"
                   class="form_mapSear" value=" exercize " /> <input type="button"

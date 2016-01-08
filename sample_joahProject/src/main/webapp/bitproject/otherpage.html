@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="ddiev">
+
+</div>
+
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+<script>
+$.ajax({
+    url : "header.html",
+    dataType : "html",
+    type : "get",  // post 또는 get
+    success : function(result){
+        $("#ddiev").html(result);
+    }
+});
+</script>
+</body>
+</html>
