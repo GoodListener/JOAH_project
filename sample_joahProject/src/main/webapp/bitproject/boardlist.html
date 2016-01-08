@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>Hot place</title>
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+<!-- <link rel="stylesheet" href="../css/common.css"> -->
+<link rel="stylesheet" type="text/css"
+	href="../lib/mycss/style_board.css" />
+<script type="text/javascript" src="../lib/myjs/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js"></script>
+<!-- Cufon START  -->
+<script type="text/javascript" src="../lib/myjs/cufon-yui.js"></script>
+<script type="text/javascript"
+	src="../lib/myjs/GeosansLight_500.font.js"></script>
+<script type="text/javascript">
+Cufon.replace('.logo', { fontFamily: 'GeosansLight' });
+Cufon.replace('h1', { fontFamily: 'GeosansLight' });
+Cufon.replace('h2', { fontFamily: 'GeosansLight' });
+Cufon.replace('.pages_banner', { fontFamily: 'GeosansLight' });
+Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
+</script>
+<script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
+<!-- Cufon END  -->
+
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/lightbox.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+</head>
+<body>
+
+		<div id="main_container">
+				<!-- header -->
+				<header>
+					<div class="logo">
+						<a href="index.html">JOAH</a>
+					</div>
+					<div class="slogan">| Couple Date Course Website</div>
+
+					<div class="header_socials">
+						<a href="#"> <img src="../images/rss.png" alt="" title=""
+							border="0" /></a> <a href="#"><img src="../images/facebook.png"
+							alt="" title="" border="0" /></a> <a href="#"><img
+							src="../images/linkedin.png" alt="" title="" border="0" /></a> <a
+							href="#"><img src="../images/twitter.png" alt="" title=""
+							border="0" /></a> <a href="#"><img src="../images/flickr.png"
+							alt="" title="" border="0" /></a>
+					</div>
+					<div class="menu">
+    <div class="menu_bar">
+        <ul>
+            <li><a href="about.html">Map Search</a></li>
+            <li><a href="index.html">My List</a></li>
+            <li><a href="">Board</a></li>
+            <!-- <li><a href="#">Admin Menu</a>
+        <ul>
+            <li><a href="" title="">회원관리 </a></li>
+            <li><a href="" title="">1:1 문의 </a></li>
+            <li><a href="" title="">관리자 추천 게시판 </a></li>
+        </ul>
+        </li> -->
+        </ul>
+    </div>
+    <div class="menu_login">
+        <nav class="main-nav">
+         <ul>
+            <!-- inser more links here -->
+            <li><a class="cd-signin" href="#0">Sign in</a></li>
+            <li><a class="cd-signup" href="#0">Sign up</a></li>
+         </ul>
+      </nav>
+    </div>    
+    </div>
+				</header>
+
+				<div class="center_content_pages">
+					<div class="pages_banner">HOT PLACE</div>
+				</div>
+
+	<section id="portfolio">
+			<div class="container">
+				<div class="row">
+					<ul class="portfolio-filter text-center">
+						<li><a class="btn btn-default active" href="#"
+							data-filter="*">All</a></li>
+						<!-- <li><a class="btn btn-default" href="#"
+							data-filter=".branded">Branded</a></li> -->
+						<li><a class="btn btn-default" href="#" data-filter=".design">Food</a></li>
+						<li><a class="btn btn-default" href="#" data-filter=".folio">Entertain</a></li>
+						<li><a class="btn btn-default" href="#" data-filter=".logos">Experience</a></li>
+						<li><a class="btn btn-default" href="#" data-filter=".mobile">Excercise</a></li>
+						<li><a class="btn btn-default" href="#" data-filter=".mockup">Show</a></li>
+					</ul>
+					<!--/#portfolio-filter-->
+
+					<div class="portfolio-items" id="boardList"></div>
+					<div class="portfolio-pagination">
+						<ul class="pagination">
+							<li><a href="#">left</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">6</a></li>
+							<li><a href="#">7</a></li>
+							<li><a href="#">8</a></li>
+							<li><a href="#">9</a></li>
+							<li><a href="#">right</a></li>
+						</ul>						
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				<div class="copyrights">
+					Free CSS Template by <a href="http://csstemplatesmarket.com"
+						target="_blank">Css templates market</a>
+				</div>
+				<div class="footer_right">
+					<a href="#">Home</a> <a href="#">About Us</a> <a href="#">Privacy
+						Policy</a> <a href="#">Contact Us</a>
+				</div>
+				<div class="clear"></div>
+			</footer>
+	</section>
+		</div>
+		<!-- main_container div -->
+	<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+	<script>
+
+//$.getJSON(contextRoot + '/board/ajax/list.do', function(resultObj) {
+$.getJSON('ajax/list.do', function(resultObj) {
+   var table = $("#boardList");
+  for (var board of resultObj.data) {
+    $("<div class='col-sm-6 portfolio-item branded mockup mobile isotope-item'" +
+            "style='position: absolute; left: 0px; top: 0px; transform: translate3d(370px, 200px, 0px);'>")
+      .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
+      "<div class='portfolio-thumb'> " +
+          "<a href='#' class='detailLnk'><img src='images/portfolio/" + board.photo + "' class='img-responsive' alt=''></a>" +
+      "</div>" +
+      "<div class='portfolio-view'>" +
+          "<ul class='nav nav-pills'>" +
+              "<li><a href='portfolio-details.html'><i class='fa fa-link'></i></a></li>" +
+              "<li><a href='images/portfolio/" + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
+          "</ul>" +
+      "</div>" +
+  "</div>" +
+  "<div class='portfolio-info'>" +
+  "<h2>" + "No." + board.no + "<br><br>" +"Title : "+board.title+"<br>" + "Date : "+ board.createdDate +"     Id : "+ board.id +"</h2>" +
+  "</div>" +
+"</div>" +
+"</div>")
+         .appendTo(table);
+  }
+  // 제목 링크에 클릭 이벤트 리스너를 등록한다.
+  $("a.detailLnk").click(clickDetailLnk);
+});
+
+$('#newBtn').click(function(event){
+	location.href = "form.html?no=-1";
+});
+
+// 게시물 제목을 클릭했을 때 호출될 함수
+function clickDetailLnk(event) {
+	event.preventDefault(); 
+	location.href = "form.html?no=" + $(event.target).attr("boardNo");
+}
+
+</script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="js/lightbox.min.js"></script>
+	<script type="text/javascript" src="js/wow.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	
+	<!------------------------------------------>
+<!--            Modal 시작                -->
+<!------------------------------------------>
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+      <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+         <ul class="cd-switcher">
+            <li><a href="#0">Sign in</a></li>
+            <li><a href="#0">New account</a></li>
+         </ul>
+
+         <div id="cd-login"> <!-- log in form -->
+            <form class="cd-form">
+               <p class="fieldset">
+                  <label class="image-replace cd-email" for="signin-email">E-mail</label>
+                  <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+                  <span class="cd-error-message">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <label class="image-replace cd-password" for="signin-password">Password</label>
+                  <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
+                  <a href="#0" class="hide-password">Hide</a>
+                  <span class="cd-error-message">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <input type="checkbox" id="remember-me" checked>
+                  <label for="remember-me">Remember me</label>
+               </p>
+
+               <p class="fieldset">
+                  <input class="full-width" type="submit" value="Login">
+               </p>
+            </form>
+            
+            <p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
+             <a href="#0" class="cd-close-form">Close</a> 
+         </div> <!-- cd-login -->
+
+         <div id="cd-signup"> <!-- sign up form -->
+            <form class="cd-form">
+               <p class="fieldset">
+                  <label class="image-replace cd-username" for="signup-username">Username</label>
+                  <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+                  <span class="cd-error-message">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <label class="image-replace cd-email" for="signup-email">E-mail</label>
+                  <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+                  <span class="cd-error-message">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <label class="image-replace cd-password" for="signup-password">Password</label>
+                  <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+                  <a href="#0" class="hide-password">Hide</a>
+                  <span class="cd-error-message">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <input type="checkbox" id="accept-terms">
+                  <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+               </p>
+
+               <p class="fieldset">
+                  <input class="full-width has-padding" type="submit" value="Create account">
+               </p>
+            </form>
+
+             <a href="#0" class="cd-close-form">Close</a> 
+         </div> <!-- cd-signup -->
+
+         <div id="cd-reset-password"> <!-- reset password form -->
+            <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+            <form class="cd-form">
+               <p class="fieldset">
+                  <label class="image-replace cd-email" for="reset-email">E-mail</label>
+                  <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+                  <span class="cd-error-message">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <input class="full-width has-padding" type="submit" value="Reset password">
+               </p>
+            </form>
+
+            <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+         </div> <!-- cd-reset-password -->
+         <a href="#0" class="cd-close-form">Close</a>
+      </div> <!-- cd-user-modal-container -->
+   </div> <!-- cd-user-modal -->
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+<script src="../lib/myjs/jquery.min.js"></script> 
+<script src="../lib/myjs/main.js"></script> 
+</div> <!--end of main container-->
+
+<!------------------------------------------>
+<!--            Modal 끝                  -->
+<!------------------------------------------>
+</body>
+</html>
+
+
+
+
+
