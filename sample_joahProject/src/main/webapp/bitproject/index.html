@@ -2,73 +2,63 @@
 <html>
 <head>
 <meta charset='UTF-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 <title>JOAH | by One Point</title>
-<link rel="stylesheet" type="text/css" href="../lib/mycss/style_main.css" />
-<script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js" ></script>
+<link rel="stylesheet" type="text/css"
+		 href="../lib/mycss/style_main.css" />
+
 <script type="text/javascript" src="../lib/myjs/jquery-ui.min.js" ></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#featured > ul").tabs({fx:{opacity: "toggle"}}).tabs("rotate", 5000, true);
-});
+<script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js" ></script>
 
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+  <script type="text/javascript" src="js/lightbox.min.js"></script>
+  <script type="text/javascript" src="js/wow.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
 
-</script>
 <!-- Cufon START  -->
 <script type="text/javascript" src="../lib/myjs/cufon-yui.js"></script>
-<script type="text/javascript" src="../lib/myjs/GeosansLight_500.font.js" ></script>
+<script type="text/javascript"
+	 src="../lib/myjs/GeosansLight_500.font.js" ></script>
 <script type="text/javascript">
 Cufon.replace('.logo', { fontFamily: 'GeosansLight' });
 Cufon.replace('h1', { fontFamily: 'GeosansLight' });
 Cufon.replace('h2', { fontFamily: 'GeosansLight' });
 Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 </script>    
+<script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
 <!-- Cufon END  -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/lightbox.css" rel="stylesheet"> 
+<link href="css/animate.min.css" rel="stylesheet"> 
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
 </head>
 <body>
 <div id="main_container">
+			
+			
+				<!-- header -->
+<header id="h_title"></header>
 
-    <!------------------------------------------>
-    <!--             header  시작             -->
-    <!------------------------------------------>
-    <div class="header">
-
-            <div class="logo"><a href="index.html">JOAH</a></div>
-            <div class="slogan">| Couple Date Course Website</div> 
-        
-            <div class="header_socials">
-            <a href="#"><img src="../images/rss.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/facebook.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/linkedin.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/twitter.png" alt="" title="" border="0" /></a>
-            <a href="#"><img src="../images/flickr.png" alt="" title="" border="0" /></a>
-            </div>
-
-    </div>
-    <!------------------------------------------>
-    <!--             header  끝               -->
-    <!------------------------------------------>
+<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+<script>
+$.ajax({
+    url : "header.html",
+    dataType : "html",
+    type : "get",  // post 또는 get
+    success : function(result){
+        $("#h_title").html(result);
+    }
+});
+</script>
     
     <!------------------------------------------>
-    <!--              menu  시작              -->
-    <!------------------------------------------>
-     <div class="menu">
-        <ul>
-            <li><a href="about.html">Map Search</a></li>
-            <li><a href="index.html">My List</a></li>
-            <li><a href="boardlist.html">Board</a></li>
-            <li><a href="#">Admin Menu</a>
-        <ul>
-            <li><a href="" title="">회원관리 </a></li>
-            <li><a href="" title="">1:1 문의 </a></li>
-            <li><a href="" title="">관리자 추천 게시판 </a></li>
-        </ul>
-        </li>
-        <li><a href="">Login</a></li>
-        <li><a href="contact.html">Sign in</a></li>
-        </ul>
-    </div>
-    <!------------------------------------------>
-    <!--              menu  끝                -->
+    <!--              header  끝                -->
     <!------------------------------------------>
     
     
@@ -82,61 +72,194 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 <!------------------------------------------------------->
 <!--                  Hot Place 시작                   -->
 <!------------------------------------------------------->
-<form>
-    <fieldset class="main">
-        <legend>HOT PLACE</legend>
-    <div id="slider1" class="sliderwrapper">
-	<div class="slider_content">
-		<div id="featured">
-        <div id="fragment-1" class="ui-tabs-panel" style="">
-            <div class="img_align">
-            <img id="img1" src="../images/slider_pic1.jpg" alt="" title="" border="0" />
-            <img id="img2" src="../images/slider_pic1.jpg" alt="" title="" border="0" />
-            </div>
-        </div>
-        
-        <div id="fragment-2" class="ui-tabs-panel" style="">
-            <div class="img_align">
-            <img id="img1" src="../images/slider_pic2.jpg" alt="" title="" border="0" />
-            <img id="img2" src="../images/slider_pic2.jpg" alt="" title="" border="0" />
-            </div>
-        </div>
-        
-        <div id="fragment-3" class="ui-tabs-panel" style="">
-            <div class="img_align">
-            <img id="img1" src="../images/slider_pic3.jpg" alt="" title="" border="0" />
-            <img id="img2" src="../images/slider_pic2.jpg" alt="" title="" border="0" />
-            </div>
-        </div>
-        
-        <div id="fragment-4" class="ui-tabs-panel" style="">
-            <div class="img_align">
-            <img id="img1" src="../images/slider_pic1.jpg" alt="" title="" border="0" />
-            <img id="img2" src="../images/slider_pic2.jpg" alt="" title="" border="0" />
-            </div>
-        </div>
-        
-        <div id="fragment-5" class="ui-tabs-panel" style="">
-            <div class="img_align">
-            <img id="img1" src="../images/slider_pic3.jpg" alt="" title="" border="0" />
-            <img id="img2" src="../images/slider_pic2.jpg" alt="" title="" border="0" />
-            </div>
-        </div>
-        
-        
-		  <ul class="ui-tabs-nav">                    
-	        <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-1"><a href="#fragment-1">Web Design and  Web Development</a></li>
-            <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-2"><a href="#fragment-2">Keep development time and costs to a minimum</a></li>
-            <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-3"><a href="#fragment-3">Identity for online and print publishing</a></li>
-            <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-4"><a href="#fragment-4">Internet marketing and promotion</a></li>
-            <li class="ui-tabs-nav-item ui-tabs-selected" id="nav-fragment-5"><a href="#fragment-5">Complete corporate identity packages</a></li>
-	      </ul>
-        </div>
+<div id="team">
+        <div class="container">
+            <div class="row">
+                <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">H O T P L A C E</h1>
+                <p class="text-center wow fadeInDown" data-wow-duration="400ms" data-wow-delay="400ms">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br>
+                Ut enim ad minim veniam, quis nostrud </p>
+                <div id="team-carousel" class="carousel slide wow fadeIn" data-ride="carousel" data-wow-duration="400ms" data-wow-delay="400ms">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators visible-xs">
+                        <li data-target="#team-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#team-carousel" data-slide-to="1"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-single-wrapper">
+                                    <div class="team-single">
+                                        <div class="person-thumb">
+                                            <img src="images/aboutus/1.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul class="nav nav-pills">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="person-info">
+                                        <h2>John Doe</h2>
+                                        <p>CEO &amp; Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-single-wrapper">
+                                    <div class="team-single">
+                                        <div class="person-thumb">
+                                            <img src="images/aboutus/2.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul class="nav nav-pills">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="person-info">
+                                        <h2>John Doe</h2>
+                                        <p>CEO &amp; Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-single-wrapper">
+                                    <div class="team-single">
+                                        <div class="person-thumb">
+                                            <img src="images/aboutus/3.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul class="nav nav-pills">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="person-info">
+                                        <h2>John Doe</h2>
+                                        <p>CEO &amp; Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-single-wrapper">
+                                    <div class="team-single">
+                                        <div class="person-thumb">
+                                            <img src="images/aboutus/1.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul class="nav nav-pills">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="person-info">
+                                        <h2>John Doe</h2>
+                                        <p>CEO &amp; Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-single-wrapper">
+                                    <div class="team-single">
+                                        <div class="person-thumb">
+                                            <img src="images/aboutus/4.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul class="nav nav-pills">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="person-info">
+                                        <h2>John Doe</h2>
+                                        <p>CEO &amp; Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-single-wrapper">
+                                    <div class="team-single">
+                                        <div class="person-thumb">
+                                            <img src="images/aboutus/3.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul class="nav nav-pills">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="person-info">
+                                        <h2>John Doe</h2>
+                                        <p>CEO &amp; Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-single-wrapper">
+                                    <div class="team-single">
+                                        <div class="person-thumb">
+                                            <img src="images/aboutus/2.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul class="nav nav-pills">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="person-info">
+                                        <h2>John Doe</h2>
+                                        <p>CEO &amp; Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-single-wrapper">
+                                    <div class="team-single">
+                                        <div class="person-thumb">
+                                            <img src="images/aboutus/1.jpg" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="social-profile">
+                                            <ul class="nav nav-pills">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="person-info">
+                                        <h2>John Doe</h2>
+                                        <p>CEO &amp; Developer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-	</div>
-</div>
-  </fieldset>
-</form>
+                    <!-- Controls -->
+                    <a class="left team-carousel-control hidden-xs" href="#team-carousel" data-slide="prev">left</a>
+                    <a class="right team-carousel-control hidden-xs" href="#team-carousel" data-slide="next">right</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/#team-->
 <!------------------------------------------------------>
 <!--                   Hot Place  끝                  -->
 <!------------------------------------------------------>
@@ -321,10 +444,134 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <!------------------------------------------>
 <!--            footer  끝                -->
 <!------------------------------------------>
-
 </div> <!--end of main container-->
-    
-    
+
+<!------------------------------------------>
+<!--            Modal 시작                -->
+<!------------------------------------------>
+    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+			<ul class="cd-switcher">
+				<li><a href="#0">Sign in</a></li>
+				<li><a href="#0">New account</a></li>
+			</ul>
+
+			<div id="cd-login"> <!-- log in form -->
+				<form class="cd-form">
+<!-- 					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p> -->
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signin-email">ID</label>
+						<input class="full-width has-padding has-border" id="signin-email" type="text" placeholder="ID">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signin-password">Password</label>
+						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
+						<a href="#0" class="hide-password">Hide</a>
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input type="checkbox" id="remember-me" checked>
+						<label for="remember-me">Remember me</label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width" type="submit" value="Login">
+					</p>
+				</form>
+				
+				<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
+				 <a href="#0" class="cd-close-form">Close</a> 
+			</div> <!-- cd-login -->
+
+			<div id="cd-signup"> <!-- sign up form -->
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signup-username">ID</label>
+						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="ID">
+						<a href="#0" class="hide-password">Check</a>
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+					
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">Password</label>
+						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+						<a href="#0" class="hide-password">Hide</a>
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+					
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="signup-password">Password Check</label>
+						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password Check">
+						<a href="#0" class="hide-password">Hide</a>
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+					
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="signup-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+					
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signup-username">Username</label>
+						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+					
+					<p class="fieldset">
+						<label class="image-replace cd-username" for="signup-username">Username</label>
+						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+
+					<p class="fieldset">
+						<input type="checkbox" id="accept-terms">
+						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" value="Create account">
+					</p>
+				</form>
+
+				 <a href="#0" class="cd-close-form">Close</a> 
+			</div> <!-- cd-signup -->
+
+			<div id="cd-reset-password"> <!-- reset password form -->
+				<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+				<form class="cd-form">
+					<p class="fieldset">
+						<label class="image-replace cd-email" for="reset-email">E-mail</label>
+						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+
+					<p class="fieldset">
+						<input class="full-width has-padding" type="submit" value="Reset password">
+					</p>
+				</form>
+
+				<p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+			</div> <!-- cd-reset-password -->
+			<a href="#0" class="cd-close-form">Close</a>
+		</div> <!-- cd-user-modal-container -->
+	</div> <!-- cd-user-modal -->
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+<script src="../lib/myjs/main.js"></script> 
+
+
+<!------------------------------------------>
+<!--            Modal 끝                  -->
+<!------------------------------------------>
 
 </body>
 </html>
