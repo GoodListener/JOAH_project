@@ -59,20 +59,26 @@
   	  afile=#{attachFile}
     where bno=#{no} and (pwd is null or pwd=#{password})
   </update>
-  
+    -->
   <select id="selectOne" resultMap="boardMap" parameterType="int">
-    select 
+    select
       bno,
+      id,
       title,
   	  content,
       views,
       cre_dt,
-  	  afile 
+  	  likes,
+  	  dislikes,
+  	  heart,
+      age_gr,
+      cost_all,
+      photo
     from board
     where bno=#{no}
   </select>
   
-  -->
+
   
 </mapper>
 
