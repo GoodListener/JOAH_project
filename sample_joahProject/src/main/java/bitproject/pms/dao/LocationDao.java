@@ -11,9 +11,9 @@ public interface LocationDao {
 
   int delete(Map<String,Object> paramMap);
   
-  int update(Location location);
+  int update(Location location);*/
 
-  Location selectOne(int no);*/
+  Location selectOne(int no);
 }
 
 

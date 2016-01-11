@@ -236,7 +236,7 @@ $.ajax({
                             if (oCustomEvent.clickCoveredMarker) {
                               return;
                             }
-                            $.getJSON('ajax/location.do', function(resultObj) {
+                            $.getJSON('ajax/locationDetail.do', function(resultObj) {
                               for(var location of resultObj.data) {
                             mapInfoTestWindow.setContent('<div class="wrap">' +
                                       '    <div class="info">' +
@@ -318,13 +318,13 @@ $.ajax({
                                       for(var location of resultObj.data) {
                                       if (oMap.getCenter().getDistanceFrom(oMarkers[location.no].getPoint()) < 200) {
                                             oMarkers[location.no].setVisible(true);
-                              } else
-                     oMarkers[location.no].setVisible(false);
-                                }
-                         circle.setCenterPoint(oMap.getCenter());
-                      })
-           });
-        </script>      
+                                          } else
+                                          oMarkers[location.no].setVisible(false);
+                                        }
+                                    circle.setCenterPoint(oMap.getCenter());
+                                  })
+                          });
+                        </script>
    <script type="text/javascript">
                         try {document.execCommand('BackgroundImageCache', false, true);} catch(e) {}
    </script>

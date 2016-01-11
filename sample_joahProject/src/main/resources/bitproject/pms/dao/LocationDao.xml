@@ -43,26 +43,17 @@
     where bno=#{no} and (pwd is null or pwd=#{password})
   </update>
     -->
-  <!--   
+    
   <select id="selectOne" resultMap="locationMap" parameterType="int">
     select
-      bno,
-      id,
-      title,
-  	  content,
-      views,
-      cre_dt,
-  	  likes,
-  	  dislikes,
-  	  heart,
-      age_gr,
-      cost_all,
+      lno,
+      name,
+      content,
+      cost,
       photo
     from location
-    where bno=#{no}
+    where lno=#{no}
   </select>
-  
-   -->
   
 </mapper>
 

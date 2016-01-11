@@ -54,11 +54,11 @@ public class LocationController {
     
     return new AjaxResult("success", null);
   }
-  
-  @RequestMapping("detail")
+  */
+  @RequestMapping("locationDetail")
   public Object detail(int no) throws Exception {
-    Board board = boardDao.selectOne(no);
-    return new AjaxResult("success", board);
+    Location location = locationDao.selectOne(no);
+    return new AjaxResult("success", location);
   }
 /*
   @RequestMapping(value="update", method=RequestMethod.POST)
