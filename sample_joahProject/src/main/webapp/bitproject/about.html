@@ -229,41 +229,42 @@ $.ajax({
                           function closeOverlay() {
                             mapInfoTestWindow.setVisible(false);
                           }
-
-                          oMap.attach('click', function(oCustomEvent) {
-                            var oPoint =  oCustomEvent.point;
-                            var oTarget = oCustomEvent.target;
-                            if (oCustomEvent.clickCoveredMarker) {
-                              return;
-                            }
-                            $.getJSON('ajax/locationDetail.do', function(resultObj) {
+                          
+                          $.getJSON('ajax/location.do', function(resultObj) {
                               for(var location of resultObj.data) {
-                            mapInfoTestWindow.setContent('<div class="wrap">' +
-                                      '    <div class="info">' +
-                                      '        <div class="title">'+ location.name  +
-                                      '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-                                      '        </div>' +
-                                      '        <div class="body">' +
-                                      '            <div class="img">' +
-                                      '                <img src="'+ location.photo +'" width="73" height="70">' +
-                                      '           </div>' +
-                                      '            <div class="desc">' +
-                                      '                <div class="ellipsis">'+ location.content  + '여기다가 상세정보' +
-                                      '                <div class="jibun ellipsis">(우) 63309 (지번) ?? 2181</div>' +
-                                      '                <div><a href="#" target="_blank" class="link">홈페이지</a></div>' +
-                                      '            </div>' +
-                                      '        </div>' +
-                                      '    </div>' +
-                                      '</div>');
-                             mapInfoTestWindow.setPoint(oTarget.getPoint());
-                             mapInfoTestWindow.setVisible(true);
-                             mapInfoTestWindow.setPosition({right : 15, top : 30});
-                             mapInfoTestWindow.autoPosition();
-                             return;
+                          oMap.attach('click', function(oCustomEvent) {
+                              var oPoint =  oCustomEvent.point;
+                              var oTarget = oCustomEvent.target;
+                              if (oCustomEvent.clickCoveredMarker) {
+                                return;
                               }
-                            });
+                              mapInfoTestWindow.setContent('<div class="wrap">' +
+                                        '    <div class="info">' +
+                                        '        <div class="title">'+ location.name  +
+                                        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+                                        '        </div>' +
+                                        '        <div class="body">' +
+                                        '            <div class="img">' +
+                                        '                <img src="'+ location.photo +'" width="73" height="70">' +
+                                        '           </div>' +
+                                        '            <div class="desc">' +
+                                        '                <div class="ellipsis">'+ location.content  + '여기다가 상세정보' +
+                                        '                <div class="jibun ellipsis">(우) 63309 (지번) ?? 2181</div>' +
+                                        '                <div><a href="#" target="_blank" class="link">홈페이지</a></div>' +
+                                        '            </div>' +
+                                        '        </div>' +
+                                        '    </div>' +
+                                        '</div>');
+                               mapInfoTestWindow.setPoint(oTarget.getPoint());
+                               mapInfoTestWindow.setVisible(true);
+                               mapInfoTestWindow.setPosition({right : 15, top : 30});
+                               mapInfoTestWindow.autoPosition();
+                               return;
+                                
+                              });
+                            }
                           });
-
+                          
                           oMap.attach('mouseenter', function(oCustomEvent) {
                             var oTarget = oCustomEvent.target;
                             // 마커위에 마우스 올라간거면
