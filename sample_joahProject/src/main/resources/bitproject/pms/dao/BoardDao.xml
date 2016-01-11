@@ -40,12 +40,14 @@
     
   </select>
   
-  <!--  
+    
   <insert id="insert" parameterType="board">
-    insert into board(title,content,pwd,cre_dt,afile) 
-    values(#{title},#{content},#{password},now(),#{attachFile})
+    insert into board(title,content,views,cre_dt,likes,dislikes,st_loc,ed_loc,icon,age_gr,cost_all) 
+    values(#{title},#{content},#{views},now(),#{likes},#{dislikes},#{startLocation},
+           #{endLocation},#{icon},#{ageGroup},#{costAll})
   </insert>
   
+  <!--
   <delete id="delete" parameterType="map">
     delete from board 
   	where bno=#{no} and (pwd is null or pwd=#{password})
@@ -60,6 +62,7 @@
     where bno=#{no} and (pwd is null or pwd=#{password})
   </update>
     -->
+    
   <select id="selectOne" resultMap="boardMap" parameterType="int">
     select
       bno,
@@ -78,7 +81,7 @@
     where bno=#{no}
   </select>
   
-
+  
   
 </mapper>
 

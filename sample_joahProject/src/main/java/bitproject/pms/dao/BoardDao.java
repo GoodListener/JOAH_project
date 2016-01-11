@@ -8,8 +8,8 @@ import bitproject.pms.domain.Board;
 public interface BoardDao {
   List<Board> selectList(Map<String,Object> paramMap);
   Board selectOne(int no);
-  /*int insert(Board board);
-  
+  int insert(Board board);
+  /*
   int delete(Map<String,Object> paramMap);
   
   int update(Board board);

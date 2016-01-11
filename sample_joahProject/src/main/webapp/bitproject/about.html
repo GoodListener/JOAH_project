@@ -182,186 +182,149 @@ $.ajax({
          <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
 
-<script type="text/javascript">
-  
-  var oPoint = new nhn.api.map.TM128(311541, 555036).toLatLng();
-  //var oPoint = new nhn.api.map.LatLng(33.450701, 126.570667); // 내 위치 설정
-  nhn.api.map.setDefaultPoint('LatLng');
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+ <script type="text/javascript">
+ var oPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);                       
+ var oCenterPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);
+                        nhn.api.map.setDefaultPoint('LatLng');
+                        oMap = new nhn.api.map.Map('testMap', {
+                            point : oPoint, // 여기에다 현재 위치를 추가하면 됨.
+                            zoom : 10,
+                            enableWheelZoom : true,
+                            enableDragPan : true,
+                            enableDblClickZoom : true,
+                            mapMode : 0, // 맵 모드 0:기본 1:위성 2:기본+위성
+                            activateTrafficMap : false,
+                            activateBicycleMap : false,
+                            minMaxLevel : [ 1, 14 ],
+                            size : new nhn.api.map.Size(680, 400)
+                          // 지도 크기.
+                          });
 
-  oMap = new nhn.api.map.Map('testMap', {
-    point : oPoint, // 여기에다 현재 위치를 추가하면 됨.
-    zoom : 10,
-    enableWheelZoom : true,
-    enableDragPan : true,
-    enableDblClickZoom : true,
-    mapMode : 0, // 맵 모드 0:기본 1:위성 2:기본+위성
-    activateTrafficMap : false,
-    activateBicycleMap : false,
-    minMaxLevel : [ 1, 14 ],
-    size : new nhn.api.map.Size(680, 400)
-  // 지도 크기.
-  });
+                          var mapZoom = new nhn.api.map.ZoomControl(); // - 줌 컨트롤 선언
+                          oMap.addControl(mapZoom); // - 줌 컨트롤 추가.
+                          mapZoom.setPosition({
+                            left : 623,
+                            bottom : 20
+                          }); // - 줌 컨트롤 위치 지정.
 
-  var mapZoom = new nhn.api.map.ZoomControl(); // - 줌 컨트롤 선언
-  oMap.addControl(mapZoom); // - 줌 컨트롤 추가.
-  mapZoom.setPosition({
-    left : 623,
-    bottom : 20
-  }); // - 줌 컨트롤 위치 지정.
+                          // 아이콘설정
+                          var oSize = new nhn.api.map.Size(20, 21);
+                          var oOffset = new nhn.api.map.Size(14, 37);
+                          var oIcon = new nhn.api.map.Icon('1.png', oSize, oOffset); // 지도에 표시될 아이콘
 
-  // 아이콘설정
-  var oSize = new nhn.api.map.Size(20, 21);
-  var oOffset = new nhn.api.map.Size(14, 37);
-  var oIcon = new nhn.api.map.Icon('1.png', oSize, oOffset); // 지도에 표시될 아이콘
+                          var mapInfoTestWindow = new nhn.api.map.InfoWindow(); // - info window 생성
+                          mapInfoTestWindow.setVisible(false); // - infowindow 표시 여부 지정.
+                          oMap.addOverlay(mapInfoTestWindow); // - 지도에 추가.
 
-  var mapInfoTestWindow = new nhn.api.map.InfoWindow(); // - info window 생성
-  mapInfoTestWindow.setVisible(false); // - infowindow 표시 여부 지정.
-  oMap.addOverlay(mapInfoTestWindow); // - 지도에 추가.
+                          var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언.
+                          oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨.
 
-  var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언.
-  oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨.
+                          mapInfoTestWindow.attach('changeVisible', function(oCustomEvent) {
+                            if (oCustomEvent.visible) {
+                              oLabel.setVisible(false);
+                            }
+                          });
 
-  mapInfoTestWindow.attach('changeVisible', function(oCustomEvent) {
-    if (oCustomEvent.visible) {
-      oLabel.setVisible(false);
-    }
-  });
+                          function closeOverlay() {
+                            mapInfoTestWindow.setVisible(false);
+                          }
 
-  function closeOverlay() {
-	  mapInfoTestWindow.setVisible(false);
-  }
+                          oMap.attach('click', function(oCustomEvent) {
+                            var oPoint =  oCustomEvent.point;
+                            var oTarget = oCustomEvent.target;
+                            if (oCustomEvent.clickCoveredMarker) {
+                              return;
+                            }
+                            $.getJSON('ajax/location.do', function(resultObj) {
+                              for(var location of resultObj.data) {
+                            mapInfoTestWindow.setContent('<div class="wrap">' +
+                                      '    <div class="info">' +
+                                      '        <div class="title">'+ location.name  +
+                                      '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+                                      '        </div>' +
+                                      '        <div class="body">' +
+                                      '            <div class="img">' +
+                                      '                <img src="'+ location.photo +'" width="73" height="70">' +
+                                      '           </div>' +
+                                      '            <div class="desc">' +
+                                      '                <div class="ellipsis">'+ location.content  + '여기다가 상세정보' +
+                                      '                <div class="jibun ellipsis">(우) 63309 (지번) ?? 2181</div>' +
+                                      '                <div><a href="#" target="_blank" class="link">홈페이지</a></div>' +
+                                      '            </div>' +
+                                      '        </div>' +
+                                      '    </div>' +
+                                      '</div>');
+                             mapInfoTestWindow.setPoint(oTarget.getPoint());
+                             mapInfoTestWindow.setVisible(true);
+                             mapInfoTestWindow.setPosition({right : 15, top : 30});
+                             mapInfoTestWindow.autoPosition();
+                             return;
+                              }
+                            });
+                          });
 
-  oMap.attach('click', function(oCustomEvent) {
-	  var oPoint = 	oCustomEvent.point;
-	  var oTarget = oCustomEvent.target;
-	  if (oCustomEvent.clickCoveredMarker) {
-		  return;
-	  }
-	  mapInfoTestWindow.setContent('<div class="wrap">' +
-              '    <div class="info">' +
-              '        <div class="title">' +
-              '            민수네 맛집' +
-              '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-              '        </div>' +
-              '        <div class="body">' +
-              '            <div class="img">' +
-              '                <img src="1.png" width="73" height="70">' +
-              '           </div>' +
-              '            <div class="desc">' +
-              '                <div class="ellipsis">서울시 강남구 383-23</div>' +
-              '                <div class="jibun ellipsis">(우) 63309 (지번) ?? 2181</div>' +
-              '                <div><a href="#" target="_blank" class="link">홈페이지</a></div>' +
-              '            </div>' +
-              '        </div>' +
-              '    </div>' +
-              '</div>');
-     mapInfoTestWindow.setPoint(oTarget.getPoint());
-     mapInfoTestWindow.setVisible(true);
-     mapInfoTestWindow.setPosition({right : 15, top : 30});
-     mapInfoTestWindow.autoPosition();
-     return;
-  });
+                          oMap.attach('mouseenter', function(oCustomEvent) {
+                            var oTarget = oCustomEvent.target;
+                            // 마커위에 마우스 올라간거면
+                            if (oTarget instanceof nhn.api.map.Marker) {
+                              var oMarker = oTarget;
+                              oLabel.setVisible(true, oMarker); // - 특정 마커를 지정하여 해당 마커의 title을 보여준다.
+                            }
+                          });
 
-  oMap.attach('mouseenter', function(oCustomEvent) {
-    var oTarget = oCustomEvent.target;
-    // 마커위에 마우스 올라간거면
-    if (oTarget instanceof nhn.api.map.Marker) {
-      var oMarker = oTarget;
-      oLabel.setVisible(true, oMarker); // - 특정 마커를 지정하여 해당 마커의 title을 보여준다.
-    }
-  });
+                          oMap.attach('mouseleave', function(oCustomEvent) {
+                            var oTarget = oCustomEvent.target;
+                            // 마커위에서 마우스 나간거면
+                            if (oTarget instanceof nhn.api.map.Marker) {
+                              oLabel.setVisible(false);
+                            }
+                          }); 
+                          
+                          var oMarkers = [];
+                          $.getJSON('ajax/location.do', function(resultObj) {
+                            for (var location of resultObj.data) {
+                              oMarkers[location.no] = new nhn.api.map.Marker(oIcon, {
+                              title : location.name
+                            });
+                          oMarkers[location.no].setPoint(new nhn.api.map.LatLng(location.lng, location.lat))
+                          oMap.addOverlay(oMarkers[location.no]);
+                            } 
+                          });
+                          
+                          
+                          var circle = new nhn.api.map.Circle({
+                            strokeColor : "blue",
+                            strokeOpacity : 0.5,
+                            strokeWidth : 2,
+                            fillColor : "blue",
+                            fillOpacity : 0.1
+                          });
 
-  oMap.attach('mouseleave', function(oCustomEvent) {
-    var oTarget = oCustomEvent.target;
-    // 마커위에서 마우스 나간거면
-    if (oTarget instanceof nhn.api.map.Marker) {
-      oLabel.setVisible(false);
-    }
-  }); // 잘모르겠다 이게 뭔지.
+                          var radius = 200; // - radius의 단위는 meter
 
-  // 지도에 마커 선택 표시
-
-  //if ()
-  // 마커 직접추가
-  var oMarker = new nhn.api.map.Marker(oIcon, {
-    title : '블로그 추천1'
-  }); //여기다가 우리가 원하는 ㅂ정보를 받을 수 있음
-  oMarker.setPoint(new nhn.api.map.TM128(310365, 551470)) // 마커 위치.
-  // 마커 직접 추가할 때 모든 지도에 다 보이게 하는것....
-  //
-	//마커 추가하는 것,
-	oMap.addOverlay(oMarker);
-
-	var oMarker2 = new nhn.api.map.Marker(oIcon, {
-		title : '블로그 추천2'
-	});
-	oMarker2.setPoint(new nhn.api.map.LatLng(37.5007323, 127.0373323)) // 마커 위치.
-
-	oMap.addOverlay(oMarker2);
-
-	var oMarker3 = new nhn.api.map.Marker(oIcon, {
-		title : '블로그 추천3'
-	});
-	oMarker3.setPoint(new nhn.api.map.LatLng(37.5000323, 127.0376323)) // 마커 위치.
-	oMap.addOverlay(oMarker3);
-
-	var oMarker4 = new nhn.api.map.Marker(oIcon, {
-		title : '블로그 추천4'
-	});
-	oMarker4.setPoint(new nhn.api.map.LatLng(37.5001223, 127.0344323)) // 마커 위치.
-	oMap.addOverlay(oMarker4);
-
-	
-	/* var oMarkerArray = {
-			oMarker5 = new nhn.api.map.Marker(oIcon, {title: '대표'});
-			o
-	} TODO*/
-
-
-  
-	var circle = new nhn.api.map.Circle({
-		strokeColor : "blue",
-		strokeOpacity : 0.5,
-		strokeWidth : 2,
-		fillColor : "blue",
-		fillOpacity : 0.1
-	});
-
-	var radius = 200; // - radius의 단위는 meter
-
-	/* var mapxy = document.getElementById('mapLatLng');
-	var dist = document.getElementById('distance'); */
-	oMap.getCenter(); //TODO
-	circle.setRadius(radius); // - circle 의 반지름을 지정하며 단위는 meter이다.
-	//circle.setStyle("strokeColor", "black"); // - 선의 색깔을 지정함.
-	//circle.setStyle("strokeWidth", 3); // - 선의 두께를 지정함.
-	//circle.setStyle("strokeOpacity", 1); // - 선의 투명도를 지정함.
-	//circle.setStyle("fillColor", "none"); // - 채우기 색상. none 이면 투명하게 된다.
-	circle.setCenterPoint(oMap.getCenter()); // - circle 의 중심점을 지정한다.
-	oMap.addOverlay(circle);
-	oMap.attach('mousemove',function(oCustomEvent) { //마우스 움직일때마다 이벤트 발생.
-						/* mapxy.innerHTML = oMap.getCenter(); //중심점 HTML에 추가 mapxy에다가
-						dist.innerHTML = oMap.getCenter().getDistanceFrom(
-								oMarker.getPoint()); */
-						if (oMap.getCenter()
-								.getDistanceFrom(oMarker.getPoint()) < 200) {
-							oMarker.setVisible(true);
-						} else
-							oMarker.setVisible(false);
-					  if (oMap.getCenter().getDistanceFrom(oMarker2.getPoint()) < 200) {
-							oMarker2.setVisible(true);
-						} else
-						oMarker2.setVisible(false);
-						if (oMap.getCenter().getDistanceFrom(oMarker3.getPoint()) < 200) {
-							oMarker3.setVisible(true);
-						} else  oMarker3.setVisible(false);
-						if (oMap.getCenter().getDistanceFrom(oMarker4.getPoint()) < 200) {
-							oMarker4.setVisible(true);
-						} else
-						oMarker4.setVisible(false);
-						circle.setCenterPoint(oMap.getCenter());
-					});
-</script>
+                          /* var mapxy = document.getElementById('mapLatLng');
+                          var dist = document.getElementById('distance'); */
+                          oMap.getCenter(); //TODO
+                          circle.setRadius(radius); // - circle 의 반지름을 지정하며 단위는 meter이다.
+                          //circle.setStyle("strokeColor", "black"); // - 선의 색깔을 지정함.
+                          //circle.setStyle("strokeWidth", 3); // - 선의 두께를 지정함.
+                          //circle.setStyle("strokeOpacity", 1); // - 선의 투명도를 지정함.
+                          //circle.setStyle("fillColor", "none"); // - 채우기 색상. none 이면 투명하게 된다.
+                          circle.setCenterPoint(oMap.getCenter()); // - circle 의 중심점을 지정한다.
+                          oMap.addOverlay(circle);
+                          oMap.attach('mousemove',function(oCustomEvent) { //마우스 움직일때마다 이벤트 발생.
+                                    $.getJSON('ajax/location.do', function(resultObj) {
+                                      for(var location of resultObj.data) {
+                                      if (oMap.getCenter().getDistanceFrom(oMarkers[location.no].getPoint()) < 200) {
+                                            oMarkers[location.no].setVisible(true);
+                              } else
+                     oMarkers[location.no].setVisible(false);
+                                }
+                         circle.setCenterPoint(oMap.getCenter());
+                      })
+           });
+        </script>      
    <script type="text/javascript">
                         try {document.execCommand('BackgroundImageCache', false, true);} catch(e) {}
    </script>

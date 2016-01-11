@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bitproject.pms.dao.LocationDao">
+
+  <resultMap type="location" id="locationMap">
+    <id 		column="lno" 		property="no"/>
+  </resultMap>
+
+  <select id="selectList" resultMap="locationMap">
+    select 
+      lno,
+      name,
+      content,
+      cost,
+      photo,
+      lat,
+      lng
+    from location
+  </select>
+  
+<!--     
+  <insert id="insert" parameterType="location">
+    insert into location(title,content,views,cre_dt,likes,dislikes,st_loc,ed_loc,icon,age_gr,cost_all) 
+    values(#{title},#{content},#{views},now(),#{likes},#{dislikes},#{startLocation},
+           #{endLocation},#{icon},#{ageGroup},#{costAll})
+  </insert>
+   -->
+  <!--
+  <delete id="delete" parameterType="map">
+    delete from location 
+  	where bno=#{no} and (pwd is null or pwd=#{password})
+  </delete>
+  
+  <update id="update" parameterType="location">
+    update location set 
+      title=#{title},
+      content=#{content},
+      cre_dt=now(),
+  	  afile=#{attachFile}
+    where bno=#{no} and (pwd is null or pwd=#{password})
+  </update>
+    -->
+  <!--   
+  <select id="selectOne" resultMap="locationMap" parameterType="int">
+    select
+      bno,
+      id,
+      title,
+  	  content,
+      views,
+      cre_dt,
+  	  likes,
+  	  dislikes,
+  	  heart,
+      age_gr,
+      cost_all,
+      photo
+    from location
+    where bno=#{no}
+  </select>
+  
+   -->
+  
+</mapper>
+
+
+
+
+
+

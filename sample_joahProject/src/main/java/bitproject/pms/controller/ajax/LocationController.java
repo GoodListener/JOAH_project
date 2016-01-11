@@ -8,38 +8,26 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import bitproject.pms.dao.BoardDao;
-import bitproject.pms.domain.Board;
+import bitproject.pms.dao.LocationDao;
+import bitproject.pms.domain.AjaxResult;
+import bitproject.pms.domain.Location;
 
-@Controller("ajax.BoardController")
+@Controller("ajax.LocationController")
 @RequestMapping("/bitproject/ajax/*")
-public class BoardController { 
+public class LocationController { 
   
   public static final String SAVED_DIR = "/attachfile";
   
-  @Autowired BoardDao boardDao;
+  @Autowired LocationDao locationDao;
   @Autowired ServletContext servletContext;
   
-  @RequestMapping("list")
-  public Object list(
-      @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="10") int pageSize,
-      @RequestParam(defaultValue="no") String keyword,
-      @RequestParam(defaultValue="desc") String align) throws Exception {
-    
-    HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("startIndex", (pageNo - 1) * pageSize);
-    paramMap.put("length", pageSize);
-    paramMap.put("keyword", keyword);
-    paramMap.put("align", align);
-    
-    List<Board> boards = boardDao.selectList(paramMap);
-    
+  @RequestMapping("location")
+  public Object loc(){
+    List<Location> locations = locationDao.selectList();
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
-    resultMap.put("data", boards);
+    resultMap.put("data", locations);
     
     return resultMap;
   }
@@ -49,7 +37,7 @@ public class BoardController {
   public String form() {
     return "board/BoardForm";
   }
-
+  
   
   @RequestMapping(value="add", method=RequestMethod.POST)
   public AjaxResult add(Board board, MultipartFile file) throws Exception {
@@ -72,7 +60,7 @@ public class BoardController {
     Board board = boardDao.selectOne(no);
     return new AjaxResult("success", board);
   }
-
+/*
   @RequestMapping(value="update", method=RequestMethod.POST)
   public AjaxResult update(Board board, MultipartFile file) throws Exception {
     
