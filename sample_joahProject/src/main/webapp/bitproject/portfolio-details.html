@@ -237,11 +237,11 @@ $.ajax({
  });
  
  $.getJSON('ajax/comment.do?no=' + no, function(resultObj) {
-		   var com = $("#commentList");
-		   var count = 100;
-		  for (var comment of resultObj.data) {
-			  $('<li class="media">')
-				.html('<div class="post-comment wow fadeInDown" data-wow-duration="'+count+'ms" data-wow-delay="800ms">' +
+       var com = $("#commentList");
+       var count = 100;
+      for (var comment of resultObj.data) {
+        $('<li class="media">')
+        .html('<div class="post-comment wow fadeInDown" data-wow-duration="'+count+'ms" data-wow-delay="800ms">' +
         '<a class="pull-left" href="#"> <img class="media-object"' +
         'src="'+ comment.photo +'" alt="">' +
         '</a>' +
@@ -254,40 +254,49 @@ $.ajax({
       '            </ul>' +
        '         </div>' +
        '       </div></li>').appendTo(com);
-			  count += 100;
-			  $("#comment" + comment.cno).click(function(event) {
-			     
-			  });
-		  }
-	 });
+        count += 100;
+        $("#comment" + comment.cno).click(function(event) {
+               console.log($(this).attr("id").split('comment')[1]);
+               $.postJSON('ajax/deletecomment.do?no='+ $(this).attr("id").split('comment')[1], function(resultObj) {
+                   console.log($('#comment-no').val('value'));
+                        var ajaxResult = resultObj.ajaxResult;
+                       if (ajaxResult.status == "success") {
+                          alert("삭제 성공")
+                       } else {
+                       alert("게시물 삭제에 실패했습니다.");
+                      }
+               });
+            });
+      }
+   });
 
  $("#comment-add-btn").click(function(event) {
-	 $.post('ajax/addcomment.do', {
-		    id: 'a001',
-		    bno: no,
-		    content: $('#com-content').val(),
-		    success:function(data) {
-		    	
-		    }
-		  }, function(resultObj) {
-		    var ajaxResult = resultObj.ajaxResult;
-		    if (ajaxResult.status == "success") {
-		    	/* 여기서 바로 페이지 리프레쉬 해서 다시 나오게 하기 */
-		    } 
-		  }, 'json');
-		});
+   $.post('ajax/addcomment.do', {
+        id: 'a001',
+        bno: no,
+        content: $('#com-content').val(),
+        success:function(data) {
+          
+        }
+      }, function(resultObj) {
+        var ajaxResult = resultObj.ajaxResult;
+        if (ajaxResult.status == "success") {
+          /* 여기서 바로 페이지 리프레쉬 해서 다시 나오게 하기 */
+        } 
+      }, 'json');
+    });
  
  $(".deletecomment").click(function(event) {
-	 console.log("버튼 눌렀을 때 반응");
-	 /* $.postJSON('ajax/deletecomment.do?no=', function(resultObj) {
-		 console.log($('#comment-no').val('value'));
-		      var ajaxResult = resultObj.ajaxResult;
-	        if (ajaxResult.status == "success") {
-	            alert("삭제 성공")
-	          } else {
-	          alert("게시물 삭제에 실패했습니다.");
-	        }
-	  }); */
+   console.log("버튼 눌렀을 때 반응");
+   /* $.postJSON('ajax/deletecomment.do?no=', function(resultObj) {
+     console.log($('#comment-no').val('value'));
+          var ajaxResult = resultObj.ajaxResult;
+          if (ajaxResult.status == "success") {
+              alert("삭제 성공")
+            } else {
+            alert("게시물 삭제에 실패했습니다.");
+          }
+    }); */
  });
  
   </script>
