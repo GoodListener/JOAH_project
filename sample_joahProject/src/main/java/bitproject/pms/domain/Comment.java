@@ -1,13 +1,11 @@
 package bitproject.pms.domain;
 
-import java.util.Date;
-
 public class Comment {
   protected int cno;
   protected int bno;
   protected String id;  
   protected String content;
-  protected Date createdTime;
+  protected String createdTime;
   
   @Override
   public String toString() {
@@ -38,10 +36,10 @@ public class Comment {
   public void setContent(String content) {
     this.content = content;
   }
-  public Date getCreatedTime() {
+  public String getCreatedTime() {
     return createdTime;
   }
-  public void setCreatedTime(Date createdTime) {
+  public void setCreatedTime(String createdTime) {
     this.createdTime = createdTime;
   }
   

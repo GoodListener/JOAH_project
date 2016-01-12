@@ -187,7 +187,7 @@ $.ajax({
                 <img class="img-circle" src="1.png" width="127" height="137"
                   alt="">
               </div>
-              <div class="col-sm-1"> <p>ID를 넣는 부분</p> </div>
+              <div class="col-sm-1"> <p>일단 무조건 a001이 댓글다는 걸로 했음.</p> </div>
 
               <div class="col-sm-9">
                 <dl class="comment_form_content">
@@ -196,7 +196,7 @@ $.ajax({
                     <div id="reply_indicator">
                       <input type="hidden" name="parent" value="">
                     </div>
-                    <textarea class="form-control" rows="3" name="cmt_content"></textarea>
+                    <textarea id="com-content" class="form-control" rows="3" name="cmt_content" placeholder="댓글 달리는 영역"></textarea>
                   </dd>
                 </dl>
                 <div class="buttons" style="float:right;">
@@ -204,7 +204,7 @@ $.ajax({
                     type="hidden" name="module_id" value="0"> <input
                     type="hidden" name="topic_id" value="0">
 
-                  <button type="button" class="btn btn-success">
+                  <button type="button" id="comment-add-btn" class="btn btn-success">
                     <span>댓글 올리기</span>
                   </button>
                 </div>
@@ -212,7 +212,7 @@ $.ajax({
             </div>
           </form>
           <!-- 댓글 DB 연동  -->
-          <ul id="commentList" class="media-list" >
+          <ul id="commentList" class="media-list wow fadeInDown" >
           
           </ul>
       </div>
@@ -236,11 +236,9 @@ $.ajax({
  
  $.getJSON('ajax/comment.do?no=' + no, function(resultObj) {
 		   var com = $("#commentList");
+		   var count = 1;
 		  for (var comment of resultObj.data) {
-			  
-			  console.log(comment.createdTime); 
-			  
-			  $('<li class="media">')
+			  $('<li class="media wow fadeInUp" data-wow-duration="'+ count +'00ms" data-wow-delay="300ms">')
 				.html('<div class="post-comment">' +
         '<a class="pull-left" href="#"> <img class="media-object"' +
         'src="'+ comment.photo +'" alt="">' +
@@ -250,12 +248,30 @@ $.ajax({
         '          <p>'+ comment.content +'</p>' +
         '          <ul class="nav navbar-nav post-nav">' +
          '           <li><a href="#"><i class="fa fa-clock-o"></i>'+ comment.createdTime +'</a></li>' +
-        '            <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>' +
+        '            <li><a href="#" id="delete-comment"><i class="fa fa-reply"></i>삭제</a></li>' +
       '            </ul>' +
        '         </div>' +
        '       </div></li>').appendTo(com);
+			  count++;
 		  }
 	 });
+ 
+ $("#comment-add-btn").click(function(event) {
+	 $.post('ajax/addcomment.do', {
+		    id: 'a001',
+		    bno: no,
+		    content: $('#com-content').val(),
+		    success:function(data) {
+		    	
+		    }
+		  }, function(resultObj) {
+		    var ajaxResult = resultObj.ajaxResult;
+		    if (ajaxResult.status == "success") {
+		    	alert('댓글을 보려면 아직 F5 해야함');
+		    } 
+		  }, 'json');
+		});
+ 
   </script>
 
 

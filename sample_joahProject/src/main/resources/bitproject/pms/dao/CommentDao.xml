@@ -6,7 +6,7 @@
 <mapper namespace="bitproject.pms.dao.CommentDao">
 
   <resultMap type="comment" id="commentMap">
-    <id 		column="cno" 		property="no"/>
+    <id 		column="cno" 		property="cno"/>
     <result column="cre_dt" property="createdTime"/>
   </resultMap>
 
@@ -17,15 +17,15 @@
       cre_dt
     from comment
     where bno=#{no}
+    order by cre_dt desc
   </select>
   
-<!--     
+  
   <insert id="insert" parameterType="comment">
-    insert into comment(title,content,views,cre_dt,likes,dislikes,st_loc,ed_loc,icon,age_gr,cost_all) 
-    values(#{title},#{content},#{views},now(),#{likes},#{dislikes},#{startComment},
-           #{endComment},#{icon},#{ageGroup},#{costAll})
+    insert into comment(id,bno,content, cre_dt) 
+    values(#{id},#{bno},#{content},now())
   </insert>
-   -->
+
   <!--
   <delete id="delete" parameterType="map">
     delete from comment 

@@ -1,8 +1,5 @@
 package bitproject.pms.controller.ajax;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,8 +8,10 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import bitproject.pms.dao.CommentDao;
+import bitproject.pms.domain.AjaxResult;
 import bitproject.pms.domain.Comment;
 
 @Controller("ajax.CommentController")
@@ -27,18 +26,7 @@ public class CommentController {
   @RequestMapping("comment")
   public Object comment(int no) throws Exception{
     List<Comment> comments = commentDao.selectList(no);
-    
-    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    Date date = null; 
-    new Date();
-    dateFormat.format(date)
-    for(Comment comment : comments) {
-      
-      System.out.println(comment.getCreatedTime());
-      System.out.println(comment.getContent());
-    }
-    
-    
+
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
@@ -51,25 +39,17 @@ public class CommentController {
  /* @RequestMapping(value="add", method=RequestMethod.GET)
   public String form() {
     return "board/BoardForm";
-  }
+  }*/
   
   
-  @RequestMapping(value="add", method=RequestMethod.POST)
-  public AjaxResult add(Board board, MultipartFile file) throws Exception {
+  @RequestMapping(value="addcomment", method=RequestMethod.POST)
+  public AjaxResult add(Comment comment) throws Exception {
     
-    if (file.getSize() > 0) {
-      String newFileName = MultipartHelper.generateFilename(file.getOriginalFilename());  
-      File attachfile = new File(servletContext.getRealPath(SAVED_DIR) 
-                                  + "/" + newFileName);
-      file.transferTo(attachfile);
-      board.setAttachFile(newFileName);
-    }
-    
-    boardDao.insert(board);
+    commentDao.insert(comment);
     
     return new AjaxResult("success", null);
   }
-  */
+
 /*  @RequestMapping("locationDetail")
   public Object detail(int no) throws Exception {
     Location location = locationDao.selectOne(no);

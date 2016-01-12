@@ -5,13 +5,14 @@ import java.util.List;
 import bitproject.pms.domain.Comment;
 
 public interface CommentDao {
-  List<Comment> selectList(int no);
+  public List<Comment> selectList(int no);
   /*Location selectOne(int no);*/
-  /*int insert(Location location);
-
+  public int insert(Comment comment);
+/*
   int delete(Map<String,Object> paramMap);
   
   int update(Location location);*/
+
 
   /*Comment selectOne(int no);*/
 }
