@@ -1,6 +1,7 @@
 package bitproject.pms.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import bitproject.pms.domain.Comment;
 
@@ -9,9 +10,10 @@ public interface CommentDao {
   /*Location selectOne(int no);*/
   public int insert(Comment comment);
 /*
-  int delete(Map<String,Object> paramMap);
   
   int update(Location location);*/
+  
+  public int delete(Map<String, Object> paramMap);
 
 
   /*Comment selectOne(int no);*/

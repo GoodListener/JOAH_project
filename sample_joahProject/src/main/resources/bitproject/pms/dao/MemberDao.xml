@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bitproject.pms.dao.MemberDao">
+	<sql id="select_inc">
+		select name, email, tel, cid, photo
+	</sql>
+	
+<!-- 	<select id="selectList" resultType="student" parameterType="map">
+		<include refid="select_inc"/> 
+		from student
+		order by
+		<choose>
+      <when test="keyword == 'email'"> email </when>
+      <when test="keyword == 'tel'"> tel </when>
+      <otherwise> name </otherwise>
+    </choose>
+    <choose>
+      <when test="align == 'desc'">desc</when>
+      <otherwise>asc</otherwise>
+    </choose>
+		limit #{startIndex}, #{length}
+	</select> -->
+<!-- 바보 바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보-->
+<!-- photo 빠짐 -->
+	<insert id="insert" parameterType="member">
+		insert into member(id,pwd,name,email,gender,age,cid)
+		values(#{id},sha1(#{password}),#{name},#{email},#{gender},#{age},#{cid})
+	</insert>
+
+	<!-- <delete id="delete" parameterType="string">
+		delete from student where email=#{value}
+	</delete>
+
+	<update id="update" parameterType="student">
+		update student set
+		name=#{name},
+		tel=#{tel},
+		cid=#{cid},
+		photo=#{photo}
+		where email=#{email}
+	</update>
+	
+	<select id="selectOne" resultType="student" parameterType="string">
+		<include refid="select_inc"/>
+		from student
+		where email=#{email}
+	</select>
+	
+	<select id="selectOneByEmailPassword" resultType="student" parameterType="map">
+		<include refid="select_inc"/>
+		from student
+		where email=#{email} and pwd=sha1(#{password})
+	</select> -->
+</mapper>
+
+
+
+
+

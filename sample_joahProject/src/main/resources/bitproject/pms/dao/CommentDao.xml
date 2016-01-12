@@ -13,6 +13,7 @@
   <select id="selectList" resultMap="commentMap" parameterType="int">
     select 
       id,
+      cno,
       content,
       cre_dt
     from comment
@@ -26,12 +27,12 @@
     values(#{id},#{bno},#{content},now())
   </insert>
 
-  <!--
+  
   <delete id="delete" parameterType="map">
     delete from comment 
-  	where bno=#{no} and (pwd is null or pwd=#{password})
+  	where cno=#{no} and id=#{id}
   </delete>
-  
+  <!--
   <update id="update" parameterType="comment">
     update comment set 
       title=#{title},

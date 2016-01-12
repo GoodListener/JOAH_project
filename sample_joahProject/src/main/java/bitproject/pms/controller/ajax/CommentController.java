@@ -76,18 +76,18 @@ public class CommentController {
     
     return new AjaxResult("success", null);
   }
-  
-  @RequestMapping("delete.do")
-  public AjaxResult delete(int no, String password) throws Exception {
+  */
+  @RequestMapping("deletecomment")
+  public AjaxResult delete(int no, String id) throws Exception {
 
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("no", no);
-    paramMap.put("password", password);
+    paramMap.put("id", id);
     
-    if (boardDao.delete(paramMap) <= 0) {
+    if (commentDao.delete(paramMap) <= 0) {
       return new AjaxResult("failure", null);
     } 
 
     return new AjaxResult("success", null);
-  }*/
+  }
 }

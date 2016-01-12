@@ -445,133 +445,250 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <!--            footer  끝                -->
 <!------------------------------------------>
 </div> <!--end of main container-->
-
 <!------------------------------------------>
-<!--            Modal 시작                -->
-<!------------------------------------------>
-    <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-		<div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-			<ul class="cd-switcher">
-				<li><a href="#0">Sign in</a></li>
-				<li><a href="#0">New account</a></li>
-			</ul>
+   <!--            Modal 시작                -->
+   <!------------------------------------------>
+   <div class="cd-user-modal">
+      <!-- this is the entire modal form, including the background -->
+      <div class="cd-user-modal-container">
+         <!-- this is the container wrapper -->
+         <ul class="cd-switcher">
+            <li><a href="#0">Sign in</a></li>
+            <li><a href="#0">New account</a></li>
+         </ul>
 
-			<div id="cd-login"> <!-- log in form -->
-				<form class="cd-form">
-<!-- 					<p class="fieldset">
-						<label class="image-replace cd-email" for="signin-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
-						<span class="cd-error-message">Error message here!</span>
-					</p> -->
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="signin-email">ID</label>
-						<input class="full-width has-padding has-border" id="signin-email" type="text" placeholder="ID">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
+         <div id="cd-login">
+            <!-- log in form -->
+            <form class="cd-form">
+               <!--                <p class="fieldset">
+                  <label class="image-replace cd-email" for="signin-email">E-mail</label>
+                  <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+                  <span class="cd-error-message">Error message here!</span>
+               </p> -->
+               <p class="fieldset">
+                  <label class="image-replace cd-email" for="signin-email">ID</label>
+                  <input class="full-width has-padding has-border" id="signin-email"
+                     type="text" placeholder="ID"> <span
+                     class="cd-error-message">Error message here!</span>
+               </p>
 
-					<p class="fieldset">
-						<label class="image-replace cd-password" for="signin-password">Password</label>
-						<input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
-						<a href="#0" class="hide-password">Hide</a>
-						<span class="cd-error-message">Error message here!</span>
-					</p>
+               <p class="fieldset">
+                  <label class="image-replace cd-password" for="signin-password">Password</label>
+                  <input class="full-width has-padding has-border"
+                     id="signin-password" type="text" placeholder="Password">
+                  <a href="#0" class="hide-password">Hide</a> <span
+                     class="cd-error-message">Error message here!</span>
+               </p>
 
-					<p class="fieldset">
-						<input type="checkbox" id="remember-me" checked>
-						<label for="remember-me">Remember me</label>
-					</p>
+               <p class="fieldset">
+                  <input type="checkbox" id="remember-me" checked> <label
+                     for="remember-me">Remember me</label>
+               </p>
 
-					<p class="fieldset">
-						<input class="full-width" type="submit" value="Login">
-					</p>
-				</form>
-				
-				<p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
-				 <a href="#0" class="cd-close-form">Close</a> 
-			</div> <!-- cd-login -->
+               <p class="fieldset">
+                  <input class="full-width" type="submit" value="Login">
+               </p>
+            </form>
 
-			<div id="cd-signup"> <!-- sign up form -->
-				<form class="cd-form">
-					<p class="fieldset">
-						<label class="image-replace cd-username" for="signup-username">ID</label>
-						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="ID">
-						<a href="#0" class="hide-password">Check</a>
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-					
-					<p class="fieldset">
-						<label class="image-replace cd-password" for="signup-password">Password</label>
-						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
-						<a href="#0" class="hide-password">Hide</a>
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-					
-					<p class="fieldset">
-						<label class="image-replace cd-password" for="signup-password">Password Check</label>
-						<input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password Check">
-						<a href="#0" class="hide-password">Hide</a>
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-					
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="signup-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-					
-					<p class="fieldset">
-						<label class="image-replace cd-username" for="signup-username">Username</label>
-						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
-					
-					<p class="fieldset">
-						<label class="image-replace cd-username" for="signup-username">Username</label>
-						<input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
+            <p class="cd-form-bottom-message">
+               <a href="#0">Forgot your password?</a>
+            </p>
+            <a href="#0" class="cd-close-form">Close</a>
+         </div>
+         <!-- cd-login -->
+<!-- ---------------------------------------------------------------------------------------------- -->
+         <div id="cd-signup">
+            <!-- sign up form -->
+            <form class="cd-form">
+               <p class="fieldset" oncancel="">
+                  <label class="image-replace cd-userID" for="signup-userID">ID</label>
+                  <input class="full-width has-padding has-border"
+                     id="signup-userID" type="text" placeholder="ID" oncancel="">
+                  <a href="#0" class="hide-password" oncancel="">Check</a> <span
+                     class="cd-error-message">Error message here!</span>
+               </p>
 
+               <p class="fieldset">
+                  <label class="image-replace cd-password" for="signup-password">Password</label>
+                  <input class="full-width has-padding has-border"
+                     id="signup-password" type="text" placeholder="Password">
+                  <a href="#0" class="hide-password">Hide</a> <span
+                     class="cd-error-message">Error message here!</span>
+               </p>
 
-					<p class="fieldset">
-						<input type="checkbox" id="accept-terms">
-						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-					</p>
+<!--                <p class="fieldset">
+                  <label class="image-replace cd-password" for="signup-password">Password
+                     Check</label> <input class="full-width has-padding has-border"
+                     id="signup-password" type="text" placeholder="Password Check">
+                  <a href="#0" class="hide-password">Hide</a> <span
+                     class="cd-error-message">Error message here!</span>
+               </p> -->
 
-					<p class="fieldset">
-						<input class="full-width has-padding" type="submit" value="Create account">
-					</p>
-				</form>
+               <p class="fieldset">
+                  <label class="image-replace cd-email" for="signup-email">E-mail</label>
+                  <input class="full-width has-padding has-border" id="signup-email"
+                     type="text" placeholder="E-mail"> <span
+                     class="cd-error-message">Error message here!</span>
+               </p>
 
-				 <a href="#0" class="cd-close-form">Close</a> 
-			</div> <!-- cd-signup -->
+               <p class="fieldset">
+                  <label class="image-replace cd-username" for="signup-username">Username</label>
+                  <input class="full-width has-padding has-border"
+                     id="signup-username" type="text" placeholder="Username">
+                  <span class="cd-error-message">Error message here!</span>
+               </p>
 
-			<div id="cd-reset-password"> <!-- reset password form -->
-				<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+              
+                 <table>
+                 <tr>
+                    <td>
+                  <p class="fieldset">
+                     <label class="image-replace cd-username" for="signup-username">Age</label>
+                      <input  style="width:170px" class="has-padding has-border" type="number" id="signup-age"placeholder="Age" min="0">
+                  </p>
+               </td>
+               <td>
+                  <p style="border-radius: 0.25em; padding: 11px 20px; width:230px; margin-top:-2px" 
+                     class="has-border">
+               <span style="color: #bcbcbc; font-size: 15px;">Gender</sapn>
+                  <input id="signup-gender" style="margin-left:25px"type="radio" id="radio1" name="radios" value="all" checked>
+                  <label style="margin-right: 10px; color:black;" for="radio1">Male</label>
+                     
+                  <input type="radio" id="radio2" name="radios" value="false">
+                  <label  style="color:black;"for="radio2">Female</label>
+                  </p>
+               </td>
+               </tr>
+               </table>
+               <table style="border: 1px solid #d2d8d8; border-radius: 0.25em; padding: 12px 20px 12px 50px;
+                       margin: 22px 20px 16px 22px">
+              <tr>
+                <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;">
+                   <img src="images/star1.svg" alt="" title="" border="0" /></td>
+                <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;font-size:15px;">Interest</td>
+                <td>
+                 <input onclick="CountChecked(this)"  style="margin:15px 0 0 15px;" type="checkbox" value="walking" name="interest" id="walking">
+                 <label for="walking">산책</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="food" name="interest" id="food">
+                 <label for="food">맛집</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="culture" name="interest" id="culture">
+                 <label style="padding-right:18px;" for="culture">문화/공연</label>
+            
+            <br>
+            
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="exercise" name="interest" id="exercise">
+                 <label for="exercise">운동</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="play" name="interest" id="play">
+                 <label for="play">유흥</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="experience" name="interest" id="experience">
+                 <label style="padding-right:18px;" for="experience">체험</label>
+            
+            <br>
+            
+            
+                 <input onclick="CountChecked(this)" style="margin:15px 0 13px 15px;" type="checkbox" value="leisure" name="interest" id="leisure">
+                 <label for="leisure">여가</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 15px 15px;" type="checkbox" value="etc" name="interest" id="etc">
+                 <label for="etc">기타</label>
+                 </td>
+              </tr>
+            </table>
 
-				<form class="cd-form">
-					<p class="fieldset">
-						<label class="image-replace cd-email" for="reset-email">E-mail</label>
-						<input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-						<span class="cd-error-message">Error message here!</span>
-					</p>
+               <p class="fieldset">
+                  <input type="checkbox" id="accept-terms"> <label
+                     for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+               </p>
 
-					<p class="fieldset">
-						<input class="full-width has-padding" type="submit" value="Reset password">
-					</p>
-				</form>
+               <p class="fieldset">
+                  <input class="full-width has-padding" type="submit" id="addBtn"
+                     value="Create account">
+               </p>
+            </form>
 
-				<p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
-			</div> <!-- cd-reset-password -->
-			<a href="#0" class="cd-close-form">Close</a>
-		</div> <!-- cd-user-modal-container -->
-	</div> <!-- cd-user-modal -->
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-<script src="../lib/myjs/main.js"></script> 
+            <a href="#0" class="cd-close-form">Close</a>
+         </div>
+         <!-- cd-signup -->
 
+         <div id="cd-reset-password">
+            <!-- reset password form -->
+            <p class="cd-form-message">Lost your password? Please enter your
+               email address. You will receive a link to create a new password.</p>
 
-<!------------------------------------------>
-<!--            Modal 끝                  -->
-<!------------------------------------------>
+            <form class="cd-form">
+               <p class="fieldset">
+                  <label class="image-replace cd-email" for="reset-email">E-mail</label>
+                  <input class="full-width has-padding has-border" id="reset-email"
+                     type="email" placeholder="E-mail"> <span
+                     class="cd-error-message">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <input class="full-width has-padding" type="submit"
+                     value="Reset password">
+               </p>
+            </form>
+
+            <p class="cd-form-bottom-message">
+               <a href="#0">Back to log-in</a>
+            </p>
+         </div>
+         <!-- cd-reset-password -->
+         <a href="#0" class="cd-close-form">Close</a>
+      </div>
+      <!-- cd-user-modal-container -->
+   </div>
+   <!-- cd-user-modal -->
+   <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+   <script src="../lib/myjs/main.js"></script>
+   
+   
+   <!-- start 민수 회원가입 -->
+   <script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+   
+   <script>
+   $("#addBtn").click(function(event) {
+    $.post('ajax/add.do', {
+      id: $('#signup-userID').val(),
+      password: $('#signup-password').val(),
+      email: $('#signup-email').val() ,
+      name: $('#signup-username').val() ,
+      age: $('#signup-age').val() ,
+      gender: $('#signup-gender').val() 
+    }, function(resultObj) {
+      var ajaxResult = resultObj.ajaxResult;
+      if (ajaxResult.status == "success") {
+               location.href = "index.html";
+             } else {
+             alert("게시물 등록에 실패했습니다.");
+           } 
+    }, 'json');
+   });
+   
+   </script>
+   <script> 
+  var maxChecked = 3;   //선택가능한 체크박스 갯수
+  var totalChecked = 0; // 설정 끝
+  function CountChecked(field) {
+      if (field.checked)
+          totalChecked += 1;
+      else
+          totalChecked -= 1;
+      if (totalChecked > maxChecked) {
+          alert ("최대 3개 까지만 가능합니다.");
+      field.checked = false;
+      totalChecked -= 1;
+      }
+      
+  }
+  function ResetCount(){
+      totalChecked = 0;
+  }
+
+</script>
+   <!-- end 민수 회원가입  -->
+   <!------------------------------------------>
+   <!--            Modal 끝                  -->
+   <!------------------------------------------>
 
 </body>
 </html>
