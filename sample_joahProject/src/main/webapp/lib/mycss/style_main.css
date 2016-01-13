@@ -262,14 +262,14 @@ header[role=banner]::after {
     line-height: normal;
     background: transparent;
   }
-  .main-nav a.cd-signin, .main-nav a.cd-signup {
+  .main-nav a.cd-signin, .main-nav a.cd-signup,.main-nav a.cd-signout {
     padding: .6em 1em;
     border: 1px solid #de462a;
     color: #de462a;
     border-radius: 50em;
     margin: -2px;
   }
-  .main-nav a.cd-signup {
+  .main-nav a.cd-signup,.main-nav a.cd-signout {
     background: #de462a;
     color: #fff;
     border: none;

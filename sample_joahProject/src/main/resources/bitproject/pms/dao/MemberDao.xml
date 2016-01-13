@@ -4,9 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="bitproject.pms.dao.MemberDao">
-	<sql id="select_inc">
-		select name, email, tel, cid, photo
-	</sql>
+	
+	 <resultMap type="member" id="memberMap">
+    <id 		column="id" 		property="id"/>
+    <result 	column="pwd" 		property="password"/>
+  	</resultMap>
+<!--	<sql id="select_inc">-->
+<!--		select name, email, tel, cid, photo-->
+<!--	</sql>-->
 	
 <!-- 	<select id="selectList" resultType="student" parameterType="map">
 		<include refid="select_inc"/> 
@@ -23,7 +28,7 @@
     </choose>
 		limit #{startIndex}, #{length}
 	</select> -->
-<!-- 바보 바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보바보-->
+<!-- 권미수 바보-->
 <!-- photo 빠짐 -->
 	<insert id="insert" parameterType="member">
 		insert into member(id,pwd,name,email,gender,age,cid)
@@ -48,12 +53,12 @@
 		from student
 		where email=#{email}
 	</select>
-	
-	<select id="selectOneByEmailPassword" resultType="student" parameterType="map">
-		<include refid="select_inc"/>
-		from student
-		where email=#{email} and pwd=sha1(#{password})
-	</select> -->
+	-->
+	<select id="login" resultType="member" parameterType="map">
+		select id,name,email,gender,age,cid
+		from member
+		where id=#{id} and pwd=sha1(#{password})
+	</select> 
 </mapper>
 
 

@@ -121,7 +121,7 @@ $.getJSON('ajax/list.do', function(resultObj) {
   for (var board of resultObj.data) {
     $("<div class='col-sm-6 portfolio-item branded mockup mobile isotope-item'" +
             "style='position: absolute; left: 15px; top: 0px; transform: translate3d(370px, 200px, 0px);'>")
-      .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
+        .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
       "<div class='portfolio-thumb'> " +
           "<a href='#' class='detailLnk'><img src='images/portfolio/" + board.photo + "' class='img-responsive' alt=''></a>" +
       "</div>" +

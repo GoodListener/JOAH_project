@@ -41,9 +41,13 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 		<nav class="main-nav">
 			<ul>
 				<!-- inser more links here -->
-				<li><a class="cd-signin" href="#0">Sign in</a></li>
-				<li><a class="cd-signup" href="#0">Sign up</a></li>
+				<li><a style="display:none" class="cd-signin"  href="#0" id="before_login1">Sign in</a></li>
+				<li><a style="display:none" class="cd-signup"  href="#0" id="before_login2">Sign up</a></li>
+				<li><input style="display:none" id="after_login2" value='' style="width:5px;" type="text" placeholder=""><span>
+				<button style="display:none" class="cd-signout" id="after_login1" type="button">Sign out</button></span></li>
 			</ul>
 		</nav>
 	</div>
 </div>
+
+
