@@ -24,6 +24,7 @@ Cufon.replace('h1', { fontFamily: 'GeosansLight' });
 Cufon.replace('h2', { fontFamily: 'GeosansLight' });
 Cufon.replace('.pages_banner', { fontFamily: 'GeosansLight' });
 Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
+Cufon.replace('label', { fontFamily: 'GeosansLight' });
 </script>
 <script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
 
@@ -65,40 +66,34 @@ $.ajax({
   <section id="portfolio">
 
       <div class="right_content">
-            <!--  <div class="menu_bar">
-               <img src="18415.png"
-                  class="map_pic" height="30" width="30" /> <input type="button"
-                  class="form_mapSearch" value=" food " /> <input type="button"
-                  class="form_mapSear" value=" watching " /> <input type="button"
-                  class="form_mapSear" value=" exercize " /> <input type="button"
-                  class="form_mapSear" value=" etc " />
-               <nav class="search_border"> <input type="text"
-                  class="search_text" placeholder="search" />
-               <button type="submit" class="search_but">Go</button>
-               </nav>
-            </div> -->
-            <div id="testMap" style="width: 800px; height: 400px; margin: 0;"></div>
+        <h1>
+          <label>No</label>
+          <label id ="data_no"></label>
+          <label>&#41;&#09;&#09;</label>
+          <label id ="data_title"></label>
+        </h1>
+            <div id="testMap" style="width: 800px; height: 400px; margin: 10px 0 0 0;"></div>
          </div>
 
-      <div class="col-md-3 col-sm-5 left_content">
-         <h1>Category</h1>
+             <div class="left_content">
+         <label style="margin: 15px 0 15px 15px; font-size: 30px; ">Category</label>
         <div class="sidebar blog-sidebar">
           <div class="sidebar-item categories">
             <ul class="nav navbar-stacked">
-              <li><a href="#" id="atag_style">Lorem ipsum<span class="pull-right"></span></a></li>
+              <li><a href="#">1 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">Dolor sit amet<span class="pull-right"></span></a></li>
+              <li><a href="#">2 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">Adipisicing elit<span class="pull-right"></span></a></li>
+              <li><a href="#">3 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">Sed do<span class="pull-right"></span></a></li>
+              <li><a href="#">4 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">Eiusmod<span class="pull-right"></span></a></li>
+              <li><a href="#">5 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">Mockup<span class="pull-right"></span></a></li>
+              <li><a href="#">6 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
             </ul>
-          </div>
+           </div>
         </div>
       </div>
 
@@ -107,7 +102,7 @@ $.ajax({
     
     <!-- 밑줄 한줄 -->
     <div>
-      <hr style="position:relative; width:90%; border-top: 2px solid lightgray;">
+      <hr style="position:relative; width:90%; border-top: 2px solid lightgray; ">
     </div>
     <!-- 밑줄 한줄 끝 -->
     
@@ -141,7 +136,7 @@ $.ajax({
     <section>
       <div class="post-content overflow">
         <h2 class="post-title bold">
-          <a href="#" id ="data_title"></a>
+          <a href="#" id ="data_title2"></a>
         </h2>
         <h3 class="post-author">
           <a href="#">Posted by micron News</a>
@@ -223,15 +218,15 @@ $.ajax({
 <script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
   <script>
  var no = location.href.split('?')[1].split('=')[1];
- 
- 
- 
+
  $.getJSON('ajax/detail.do?no=' + no, function(resultObj) {
     var ajaxResult = resultObj.ajaxResult;
     if (ajaxResult.status == "success") {
       var board = ajaxResult.data;
       $("#photo_div").html("<img src='images/portfolio/"+ board.photo +"' class='img-responsive' alt=''>")
       $("#data_title").text(board.title);
+      $("#data_title2").text(board.title);
+      $("#data_no").text(board.no);
       $("#content").text(board.content);
     }
  });
