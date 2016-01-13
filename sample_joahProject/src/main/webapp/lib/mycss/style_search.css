@@ -20,7 +20,8 @@ a{
 color:#de462a;
 text-decoration:underline;
 }
-h1{font-size:36px;font-weight:bold;margin:0px;padding:10px 0 10px 0px;color:#343434;}
+h1{font-size:50px;font-weight:bold;margin:0px;padding:0px 0 0px 10px;color:#343434;}
+h1_sear{font-size:50px;font-weight:bold;margin-left:-10px;padding:0px 0 0px 10px;color:#343434;}
 h2{font-size:22px;color:#343434;padding:10px 0 10px 0;margin:0px 0 20px 0;font-weight:normal;}
 h3{font-size:20px; color:#343434; padding:0; margin:0px; font-weight:normal;}
 #main_container{
@@ -131,7 +132,7 @@ color:#de462a;
 /*     right content 留뚮뱾湲�         */
 /*---------------------------------*/
 .right_content{
-width:710px;
+width:810px;
 height:550px;
 float:right;
 }
@@ -140,10 +141,8 @@ float:right;
 .menu_bar{
 height: 70px;
 }
-img.map_pic{position: absolute; top:286px; margin:3px 0 0px 0;}
+img.map_pic{position: relative; margin:0px 0 0px 0;}
 /*-----吏��룄 �븘�씠肄� �븣臾몄뿉 first button-----*/
-input.form_mapSearch{clear:both; height:24px; text-align:center; color:#fff; font-size:14px; background: #666666; border:none; margin:22px 0px 0px 28px; cursor:pointer;}
-/*-----�굹癒몄� button-----*/
 input.form_mapSear{clear:both; height:24px; text-align:center; color:#fff; font-size:14px; background: #666666; border:none; margin:22px 0px 0px 0px; cursor:pointer;}
 
 /*-----search button-----*/   
@@ -196,10 +195,10 @@ input.form_mapSear{clear:both; height:24px; text-align:center; color:#fff; font-
     -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9e9e9e', endColorstr='#454545');  
 }
 /*-----center image-----*/
-#testMap{ border:4px #fff solid; margin:0px 0 10px 9px;}
+#testMap{ margin:0px 0 10px 9px; weight:800px;}
 
 /*-----save 踰꾪듉 -----*/
-input.form_submit{float:right; clear:both; margin:7px 14px 0 0px; width:149px; height:34px; text-align:center; color:#fff; font-size:16px; background: #666666; border:none; font-weight:bold; padding:0 0 0 0px; cursor:pointer;}
+input.form_submit{float:right; clear:both; margin:40px 10px 0 0px; width:149px; height:34px; text-align:center; color:#fff; font-size:16px; background: #666666; border:none; font-weight:bold; padding:0 0 0 0px; cursor:pointer;}
 
 /*-------------------------------------*/
 /*     end right content 留뚮뱾湲�         */
@@ -209,23 +208,22 @@ input.form_submit{float:right; clear:both; margin:7px 14px 0 0px; width:149px; h
 /*     left content <search option> 留뚮뱾湲�         */
 /*-------------------------------------------------*/
 .left_content{
-width:280px;
+border-right:2px solid black;
+width:250px;
 float:left;
+margin-left:50px;
+margin-top:20px;
 }
-
 /*�븳 以�*/
 .form_row{width:250px;float:left;clear:both;padding:0px 0px 30px 0px;} 
-.form_input{width:170px;height:35px;float:left;padding:0px 0px 0 10px; background-color:#E7E5DE; border:none; color:#000; border-radius: 13px;}
+.form_input{width:170px;height:30px;float:left;padding:0px 0px 0 10px; border:black; color:#000; border-radius: 13px;}
 .form_row label{width:50px;float:left;padding:5px 5px 0px ;font-size:14px; color:#de462a; text-align:left; text-transform:lowercase;}
 /*.form_textarea{width:200px;height:70px;float:left;padding:10px 0px 30px 10px; background-color:#E7E5DE; border:none; color:#000; font-family:Arial, Helvetica, sans-serif; font-size:12px;}*/
-input.form_search{clear:both; margin:20px 0px 0px 80px; width:149px; height:34px; text-align:center; color:#fff; font-size:16px; background: #666666; border:none; font-weight:bold; padding:0 0 0 0px; cursor:pointer;}
+input.form_search{clear:both; margin:20px 0px 0px 11px; width:149px; height:34px; text-align:center; color:#fff; font-size:16px; background: #666666; border:none; font-weight:bold; padding:0 0 0 0px; cursor:pointer;}
 
 fieldset { /*search option �� */
 border-radius: 13px;
-  padding: 30px;
-  margin: 10px 0 0 0 ;
   font:80%/1 ;
-  width: 260px;
   height:450px;
   }  
 legend { /*Search option 湲� �궎�슦湲�*/

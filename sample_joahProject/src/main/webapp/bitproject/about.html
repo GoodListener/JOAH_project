@@ -94,35 +94,24 @@ $.ajax({
          <!--                           left contnt = Search Option                               -->
          <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
-         <div class="left_content">
-            <div>
-               <fieldset>
-                  <legend>Search Option</legend>
-
-                  <div class="left_menu">
-                     <div class="form_row">
-                        <label style="font-size: 20px; margin-top: -5px;">start:</label>
-                        <input type="text" class="form_input" name="" />
-                     </div>
-                     <div class="form_row">
-                        <label style="font-size: 20px; margin-top: -5px;">end:</label> <input
-                           type="text" class="form_input" name="" />
-                     </div>
-                     <div class="form_row">
-                        <label style="font-size: 20px; margin-top: -5px;">cost:</label>
-                        <input type="text" class="form_input" name="" />
-                     </div>
-                     <div class="form_row">
-                        <label style="font-size: 20px; margin-top: -15px;">age
-                           group:</label> <input type="text" class="form_input" name="" />
-                     </div>
-                     <div class="form_row">
-                        <input type="button" class="form_search" value="Search" />
-                     </div>
-                  </div>
-               </fieldset>
-            </div>
+       <div class="left_content">
+         <label style="margin: 15px 0 15px -15px; font-size: 30px; ">Search Option</label>
+        <div class="sidebar blog-sidebar">
+          <div class="sidebar-item categories">
+            <ul class="nav navbar-stacked">
+              <li><a href="#">Start Station<span class="pull-right"></span></a></li>
+              <li><input style="border-radius:13px;"type="text"></li>
+              <li><a href="#">End Station<span class="pull-right"></span></a></li>
+              <li><input style="border-radius:13px;"type="text"></li>
+              <li><a href="#">Cost<span class="pull-right"></span></a></li>
+              <li><input style="border-radius:13px;"type="text"></li>
+              <li><a href="#">Age Group<span class="pull-right"></span></a></li>
+              <li><input style="border-radius:13px;"type="text"></li>
+            </ul>
+            <input type="button" class="form_search" value="Search" />
            </div>
+        </div>
+      </div>
 
             <!--//////////////////////////////////////////////////////////////////////////////////// -->
          <!--                       end left contnt = Search Optopn                               -->
@@ -136,16 +125,19 @@ $.ajax({
              <div class="menu_bar">
                <img src="18415.png"
                   class="map_pic" height="30" width="30" /> <input type="button"
-                  class="form_mapSearch" value=" food " /> <input type="button"
+                  class="form_mapSear" value=" food " /> <input type="button"
                   class="form_mapSear" value=" watching " /> <input type="button"
                   class="form_mapSear" value=" exercize " /> <input type="button"
                   class="form_mapSear" value=" etc " />
-               <nav class="search_border"> <input type="text"
-                  class="search_text" placeholder="search" />
-               <button type="submit" class="search_but">Go</button>
+               <nav class="search_border"> 
+                 <input type="text" class="search_text" placeholder="search" />
+                 <button type="submit" class="search_but">Go</button>
                </nav>
             </div>
-            <div id="testMap" style="width: 680px; height: 400px; margin: 0;"></div>
+            <div id="testMap" style="width: 800px; height: 400px; margin: 0;"></div>
+            <div>
+              <input type="button" class="form_submit" value="save" />
+            </div>
          </div>
 
             <!--//////////////////////////////////////////////////////////////////////////////////// -->
@@ -197,15 +189,15 @@ $.ajax({
                             activateTrafficMap : false,
                             activateBicycleMap : false,
                             minMaxLevel : [ 1, 14 ],
-                            size : new nhn.api.map.Size(680, 400)
+                            size : new nhn.api.map.Size(800, 400)
                           // 지도 크기.
                           });
 
                           var mapZoom = new nhn.api.map.ZoomControl(); // - 줌 컨트롤 선언
                           oMap.addControl(mapZoom); // - 줌 컨트롤 추가.
                           mapZoom.setPosition({
-                            left : 623,
-                            bottom : 20
+                            left : 760,
+                            bottom : 25
                           }); // - 줌 컨트롤 위치 지정.
 
                           // 아이콘설정
