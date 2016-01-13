@@ -9,26 +9,12 @@
     <id 		column="id" 		property="id"/>
     <result 	column="pwd" 		property="password"/>
   	</resultMap>
-<!--	<sql id="select_inc">-->
-<!--		select name, email, tel, cid, photo-->
-<!--	</sql>-->
 	
-<!-- 	<select id="selectList" resultType="student" parameterType="map">
-		<include refid="select_inc"/> 
-		from student
-		order by
-		<choose>
-      <when test="keyword == 'email'"> email </when>
-      <when test="keyword == 'tel'"> tel </when>
-      <otherwise> name </otherwise>
-    </choose>
-    <choose>
-      <when test="align == 'desc'">desc</when>
-      <otherwise>asc</otherwise>
-    </choose>
-		limit #{startIndex}, #{length}
-	</select> -->
-<!-- 권미수 바보-->
+	<select id="idList" resultType="member">
+    select id
+    from member
+  </select>
+	
 <!-- photo 빠짐 -->
 	<insert id="insert" parameterType="member">
 		insert into member(id,pwd,name,email,gender,age,cid)

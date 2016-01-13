@@ -1,5 +1,6 @@
 package bitproject.pms.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import bitproject.pms.domain.Member;
@@ -10,6 +11,8 @@ public interface MemberDao {
   int insert(Member member);
   
   Member login(Map<String,Object> paramMap);
+  
+  List<Member> idList();
 /*
   int delete(String email);
   
