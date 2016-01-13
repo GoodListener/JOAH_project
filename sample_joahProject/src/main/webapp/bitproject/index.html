@@ -501,30 +501,26 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <!-- ---------------------------------------------------------------------------------------------- -->
          <div id="cd-signup">
             <!-- sign up form -->
-            <form class="cd-form">
+            <form name='frm' class="cd-form">
+               
                <p class="fieldset" oncancel="">
                   <label class="image-replace cd-userID" for="signup-userID">ID</label>
                   <input class="full-width has-padding has-border"
-                     id="signup-userID" type="text" placeholder="ID" oncancel="" required> 
-                  <a href="#0" class="hide-password" oncancel="">Check</a> <span
-                     class="cd-error-message">Error message here!</span>
+                      type="text" placeholder="ID" id="signup-userID">
+                  <a href="#0" id="userID-Check">Check</a> 
+                  <span class="cd-error-message">Error message here!</span>
                </p>
 
                <p class="fieldset">
                   <label class="image-replace cd-password" for="signup-password">Password</label>
                   <input class="full-width has-padding has-border"
-                     id="signup-password" type="text" placeholder="Password">
-                  <a href="#0" class="hide-password">Hide</a> <span
-                     class="cd-error-message">Error message here!</span>
+                     id="signup-password" type="password" placeholder="Password">
                </p>
 
-<!--                <p class="fieldset">
-                  <label class="image-replace cd-password" for="signup-password">Password
-                     Check</label> <input class="full-width has-padding has-border"
-                     id="signup-password" type="text" placeholder="Password Check">
-                  <a href="#0" class="hide-password">Hide</a> <span
-                     class="cd-error-message">Error message here!</span>
-               </p> -->
+             <p class="fieldset">
+                  <label class="image-replace cd-password" for="signup-check-password">Password Check</label> 
+                  <input class="full-width has-padding has-border" id="signup-check-password" type="password" placeholder="Password Check">
+               </p>
 
                <p class="fieldset">
                   <label class="image-replace cd-email" for="signup-email">E-mail</label>
@@ -552,12 +548,11 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
                <td>
                   <p style="border-radius: 0.25em; padding: 11px 20px; width:230px; margin-top:-2px" 
                      class="has-border">
-               <span style="color: #bcbcbc; font-size: 15px;">Gender</sapn>
-                  <input id="signup-gender" style="margin-left:25px"type="radio" id="radio1" name="radios" value="all" checked>
+               <span style="color: #bcbcbc; font-size: 15px;">Gender</span>
+                  <input id="signup-gender-male" style="margin-left:25px" type="radio" name="radios" value="male">
                   <label style="margin-right: 10px; color:black;" for="radio1">Male</label>
-                     
-                  <input type="radio" id="radio2" name="radios" value="false">
-                  <label  style="color:black;"for="radio2">Female</label>
+                  <input type="radio" id="signup-gender-female" name="radios" value="female">
+                  <label style="color:black;"for="radio2">Female</label>
                   </p>
                </td>
                </tr>
@@ -566,7 +561,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
                        margin: 22px 20px 16px 22px">
               <tr>
                 <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;">
-                   <!-- <img src="images/star1.svg" alt="" title="" border="0" /> --></td>
+                   <img src="images/star1.svg" alt="" title="" border="0" /></td>
                 <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;font-size:15px;">Interest</td>
                 <td>
                  <input onclick="CountChecked(this)"  style="margin:15px 0 0 15px;" type="checkbox" value="walking" name="interest" id="walking">
@@ -646,69 +641,147 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
       <!-- cd-user-modal-container -->
    </div>
    <!-- cd-user-modal -->
+   <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+   
+   
+   <!-- start 민수 회원가입 -->
+   <!-- <script type="text/javascript" src="../lib/jquery/jquery.js"></script> -->
+   <!-- cd-user-modal -->
    <script type="text/javascript" src="js/jquery.cookie.js"></script>
    <script type="text/javascript" src="js/jquery.session.js"></script>
    <script type="text/javascript" src="../lib/myjs/main.js"></script>
    <script>
     $(document).ready( function() {
-		var id = $.cookie("id");
-		if (id != null && id != "") {
-			$("#signin-userID").val(id); // id textbox에 쿠키값 출력
-			$("#saveId").attr("checked", "checked"); // 체크박스에 체크
-		}
-	});  
-	
-		$('#loginBtn').click( function(event) {
-				 	var checkStatus = $("#saveId").is(":checked");
-					if (checkStatus) {
-						$.cookie("id", $("#signin-userID").val());
-					} else {
-						$.cookie("id", "");
-					}   
-					 
-					$.post('ajax/login.do', {
-						id : $('#signin-userID').val(),
-						password : $('#signin-password').val(),
-					}, function(resultObj) {
-						var ajaxResult = resultObj.ajaxResult;
-						if (ajaxResult.status == "success") {
-							idSession = ajaxResult.data.id;
-							sessionStorage.setItem('loginSession',idSession);
-							location.href = "index.html";
-						} else {
-							alert("없는 아이디 이거나 패스워드가 일치하지 않습니다.");
-						}
-					}, 'json');
-				});
-	
-		$('#after_login1').click( function(event) {
-		  	 $.post('ajax/logout.do',
-		     function(resultObj) {
-		      var ajaxResult = resultObj.ajaxResult;
-		      if (ajaxResult.status == "success") {
-		      	sessionStorage.removeItem('loginSession');
-		        location.href = "index.html";
-		      }
-		    },'json');
-		  });
-	
-	 if(sessionStorage.getItem('loginSession') != undefined) {
-		 $("#after_login1").show();
-		 $("#after_login2").show();
-		 $('#after_login2').val(sessionStorage.getItem('loginSession'));
-	} else {
-		$("#before_login1").show();
-		$("#before_login2").show();
-	}
-		
+    var id = $.cookie("id");
+    if (id != null && id != "") {
+      $("#signin-userID").val(id); // id textbox에 쿠키값 출력
+      $("#saveId").attr("checked", "checked"); // 체크박스에 체크
+    }
+  });  
+  
+    $('#loginBtn').click( function(event) {
+          var checkStatus = $("#saveId").is(":checked");
+          if (checkStatus) {
+            $.cookie("id", $("#signin-userID").val());
+          } else {
+            $.cookie("id", "");
+          }   
+           
+          $.post('ajax/login.do', {
+            id : $('#signin-userID').val(),
+            password : $('#signin-password').val(),
+          }, function(resultObj) {
+            var ajaxResult = resultObj.ajaxResult;
+            if (ajaxResult.status == "success") {
+              idSession = ajaxResult.data.id;
+              sessionStorage.setItem('loginSession',idSession);
+              location.href = "index.html";
+            } else {
+              alert("없는 아이디 이거나 패스워드가 일치하지 않습니다.");
+            }
+          }, 'json');
+        });
+  
+    $('#after_login1').click( function(event) {
+         $.post('ajax/logout.do',
+         function(resultObj) {
+          var ajaxResult = resultObj.ajaxResult;
+          if (ajaxResult.status == "success") {
+            sessionStorage.removeItem('loginSession');
+            location.href = "index.html";
+          }
+        },'json');
+      });
+  
+   if(sessionStorage.getItem('loginSession') != undefined) {
+     $("#after_login1").show();
+     $("#after_login2").show();
+     $('#after_login2').val(sessionStorage.getItem('loginSession'));
+  } else {
+    $("#before_login1").show();
+    $("#before_login2").show();
+  }
+    
+   /* 회원가입 필수 조건 체크 */
+   var uID = $("#signup-userID");
+   var uPWD = $("#signup-password");
+   var uPWDcheck = $("#signup-check-password");
+   var uEmail = $("#signup-email");
+   var uName = $("#signup-username");
+   var uAge = $("#signup-age");
+   var uGender = $("input[name='radios']:checked");
+   var isExistID = false;
+   /* 아이디 중복 체크 */
+   $("#userID-Check").click(function(event) {
+     event.preventDefault();
+     $.getJSON('ajax/idcheck.do', function(resultObj){
+         for (var member of resultObj.data) {
+           if(uID.val() == member.id){
+             isExistID = true;
+           }
+         }
+     
+     if( uID.val() == "" ){
+            alert('ID를 입력해주세요.');
+            return false;
+     } else if (isExistID) {
+       alert(uID.val() + "는 이미 존재하는 아이디 입니다.")
+       isExistID = false;
+       return false;
+     } else {
+            alert(uID.val() + "는 사용할 수 있는 아이디 입니다.");
+     }
+     });
+   });
+   
+   
+   
+   $("input[name='radios']").click(function(event) {
+     uGender = $("input[name='radios']:checked");
+   }); /* 성별을 체크했을 때에 uGender 값 바꾸기. */
+   
+   
    $("#addBtn").click(function(event) {
-    $.post('ajax/add.do', {
+     event.preventDefault();
+     if (uPWD.val() == "" || uPWD.val() != uPWDcheck.val()) {
+       alert('비밀번호를 확인해주세요.');
+       return false;
+     }
+     
+     var isEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+       if(uEmail.val() == "") {
+         alert('이메일을 입력해주세요.');
+         return false;
+       } else if (!isEmail.test(uEmail.val())) {
+           alert('이메일 형식에 맞지 않습니다.');
+           return false;
+       }
+     
+     var isName = /^[가-힝]{2,}$/;
+     if(uName.val() == "") {
+       alert('이름을 입력해 주세요.');
+       return false;
+     } else if (!isName.test(uName.val())) {
+         alert('이름은 한글로 입력해 주세요.');
+         return false;
+     }
+     
+     if (uAge.val() == "") {
+       alert('나이를 입력해주세요.');
+       return false;
+     }
+     if (uGender.is(":checked") == false) {
+       alert('성별을 정해주세요')
+       return false;
+     }
+     
+   $.post('ajax/addmember.do', {
       id: $('#signup-userID').val(),
       password: $('#signup-password').val(),
       email: $('#signup-email').val() ,
       name: $('#signup-username').val() ,
       age: $('#signup-age').val() ,
-      gender: $('#signup-gender').val() 
+      gender: uGender.val()
     }, function(resultObj) {
       var ajaxResult = resultObj.ajaxResult;
       if (ajaxResult.status == "success") {
@@ -716,8 +789,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
              } else {
              alert("게시물 등록에 실패했습니다.");
            } 
-    }, 'json');
+    }, 'json'); 
    });
+   
    </script>
    <script> 
   var maxChecked = 3;   //선택가능한 체크박스 갯수
@@ -739,7 +813,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
   }
 
 </script>
-   <!-- end 종원 회원가입  -->
+   <!-- end 응철 회원가입 -->
    <!------------------------------------------>
    <!--            Modal 끝                  -->
    <!------------------------------------------>

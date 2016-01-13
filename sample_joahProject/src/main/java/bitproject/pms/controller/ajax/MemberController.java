@@ -1,5 +1,8 @@
 package bitproject.pms.controller.ajax;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,36 +23,25 @@ public class MemberController {
   @Autowired MemberDao memberDao;
   @Autowired ServletContext servletContext;
 
-  /*@RequestMapping("list")
-  public Object list(
-      @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="10") int pageSize,
-      @RequestParam(defaultValue="no") String keyword,
-      @RequestParam(defaultValue="desc") String align) 
-          throws Exception {
+  @RequestMapping("idcheck")
+  public Object idcheck() throws Exception {
     
-    HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("startIndex", (pageNo - 1) * pageSize);
-    paramMap.put("length", pageSize);
-    paramMap.put("keyword", keyword);
-    paramMap.put("align", align);
-    
-    List<Student> students = memberDao.selectList(paramMap);
+    List<Member> members = memberDao.idList();
 
     HashMap<String, Object> resultMap = new HashMap<>();
 
     resultMap.put("status", "success");
-    resultMap.put("data", students);
+    resultMap.put("data", members);
     
     return resultMap;
-  }*/
-  
+  }
+  /*
   @RequestMapping(value="add", method=RequestMethod.GET)
   public String add() {
     return "member/MemberForm";
   }
-  
-  @RequestMapping(value="add", method=RequestMethod.POST)
+  */
+  @RequestMapping(value="addmember", method=RequestMethod.POST)
   public AjaxResult add( Member member/*,
       MultipartFile photofile*/) throws Exception {
 
