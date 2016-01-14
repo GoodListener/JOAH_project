@@ -218,6 +218,10 @@ display:none;
 /*      recommend Course | Other's Date course START     */
 /*-------------------------------------------------------*/
 
+.row h1 {
+  font-size: 60px;
+}
+
 /* recommend course �씠誘몄� 媛꾧꺽 留욎떠二쇰뒗 class */
 .leftbox{
 width:290px;
