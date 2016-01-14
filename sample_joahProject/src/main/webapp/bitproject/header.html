@@ -6,6 +6,7 @@ Cufon.replace('.logo', { fontFamily: 'GeosansLight' });
 Cufon.replace('h1', { fontFamily: 'GeosansLight' });
 Cufon.replace('h2', { fontFamily: 'GeosansLight' });
 Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
+Cufon.replace('label', { fontFamily: 'GeosansLight' });
 </script> 
 </head>
 
@@ -27,7 +28,8 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 		<ul>
 			<li><a href="about.html">Map Search</a></li>
 			<li><a href="index.html">My List</a></li>
-			<li><a href="boardlist.html">Board</a></li>
+			<li><a href="boardlist.html">Admin Board</a></li>
+			<li><a href="boardlist.html">User Board</a></li>
 			<!-- <li><a href="#">Admin Menu</a>
         <ul>
             <li><a href="" title="">회원관리 </a></li>
@@ -40,15 +42,15 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 	<div class="menu_login">
 		<nav class="main-nav">
 			<ul>
-				<li><a style="display:none" class="cd-signin"  href="#" id="before_login1">Sign in</a></li>
-				<li><a style="display:none" class="cd-signup"  href="#" id="before_login2">Sign up</a></li>
+				<li><a style="display:none" class="cd-signin" id="before_login1">Sign in</a></li>
+				<li><a style="display:none" class="cd-signup" id="before_login2">Sign up</a></li>
 			</ul>
 		</nav>
 		<nav class="main-nav2">
 			<ul>
-			  	<li><input style="display:none" id="after_login2" readonly><label style="display:none" id="after_login4">님</label></li>
-				<li><a style="display:none"  href="#0" class="cd-signin" type="button" id="after_login3">My Page</a></li>
-				<li><a style="display:none"  href="#0" class="cd-signout" type="button" id="after_login1" >Log out</a></li>
+			  	<li><input style="display:none" id="after_login2" readonly><span style="display:none" id="after_login4">님</span></li>
+				<li><a style="display:none" class="cd-signin" type="button" id="after_login3">My Page</a></li>
+				<li><a style="display:none" class="cd-signout" type="button" id="after_login1" >Log out</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -216,7 +218,7 @@ Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
                </p>
             </form>
 
-            <a href="#0" class="cd-close-form">Close</a>
+            <a href="" class="cd-close-form">Close</a>
          </div>
          <!-- cd-signup -->
 
