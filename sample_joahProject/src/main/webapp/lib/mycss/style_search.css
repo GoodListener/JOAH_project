@@ -208,7 +208,7 @@ input.form_submit{float:right; clear:both; margin:40px 10px 0 0px; width:149px; 
 /*     left content <search option> 留뚮뱾湲�         */
 /*-------------------------------------------------*/
 .left_content{
-border-right:2px solid black;
+border-right:2px solid lightgray;
 width:250px;
 float:left;
 margin-left:50px;
@@ -369,7 +369,6 @@ header[role=banner]::after {
 
 .main-nav {
   float: right;
-  margin-right: 5%;
   width: 44px;
   height: 100%;
   background: url("../../images/cd-icon-menu.svg") no-repeat center center;
