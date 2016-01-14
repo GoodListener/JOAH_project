@@ -58,13 +58,11 @@ $.ajax({
 });
 </script>
 
-        <div class="center_content_pages">
-          <div class="pages_banner">DETAIL</div>
-        </div>
-
+  <div class="center_content_pages">
+    <div class="pages_banner">DETAIL</div>
+  </div>
 
   <section id="portfolio">
-
       <div class="right_content">
         <h1>
           <label>No</label>
@@ -96,8 +94,6 @@ $.ajax({
            </div>
         </div>
       </div>
-
-
     </section>
     
     <!-- 밑줄 한줄 -->
@@ -182,7 +178,6 @@ $.ajax({
                 <img class="img-circle" src="1.png" width="127" height="137"
                   alt="">
               </div>
-              <div class="col-sm-1"> <p>일단 무조건 a001이 댓글다는 걸로 했음.</p> </div>
 
               <div class="col-sm-9">
                 <dl class="comment_form_content">
@@ -191,7 +186,8 @@ $.ajax({
                     <div id="reply_indicator">
                       <input type="hidden" name="parent" value="">
                     </div>
-                    <textarea id="com-content" class="form-control" rows="3" name="cmt_content" placeholder="댓글 달리는 영역"></textarea>
+                    <textarea style="display:none" id="com-content" class="form-control" rows="3" name="cmt_content" placeholder="댓글 달리는 영역"></textarea>
+                    <textarea style="display:none" id="com-content2" class="form-control" rows="3" name="cmt_content" placeholder="로그인 한 후 이용 가능" readonly></textarea>
                   </dd>
                 </dl>
                 <div class="buttons" style="float:right;">
@@ -253,12 +249,13 @@ $.ajax({
         $("#comment" + comment.cno).click(function(event) {
                var commentNo = $(this).attr("id").split('comment')[1];
         	     console.log(commentNo);
-               $.getJSON('ajax/deletecomment.do?no='+ commentNo + '&id=a001', function(resultObj) {
+               $.getJSON('ajax/deletecomment.do?no='+ commentNo + '&id='+ $('#after_login2').val() , function(resultObj) {
                        var ajaxResult = resultObj.ajaxResult;
                        if (ajaxResult.status == "success") {
                     	   $("#comment_li"+commentNo).remove();
+                    	   alert("게시물 삭제하였습니다.");
                        } else {
-                          alert("게시물 삭제에 실패했습니다.");
+                          alert("게시 삭제에 실패했습니다.");
                       }
                });
             });
@@ -267,7 +264,7 @@ $.ajax({
 
  $("#comment-add-btn").click(function(event) {
    $.post('ajax/addcomment.do', {
-        id: 'a001',
+        id: $("#after_login2").val(),
         bno: no,
         content: $('#com-content').val(),
         success:function(data) {
@@ -284,7 +281,7 @@ $.ajax({
             'src="default.jpg" alt="">' +
             '</a>' +
             '<div class="media-body">' +
-            '<span><i class="fa fa-user"></i>Posted by <a href="#">a001</a></span>' +
+            '<span><i class="fa fa-user"></i>Posted by <a href="#">'+comment.id+'</a></span>' +
             '          <p>'+ $('#com-content').val() +'</p>' +
             '          <ul class="nav navbar-nav post-nav">' +
              '           <li><a href="#"><i class="fa fa-clock-o"></i>방금'+time+'</a></li>' +
@@ -311,50 +308,13 @@ $.ajax({
  
  /* 로그인 안한 사람 댓글 달 수 없어요.
     로그인 한 사람은 댓글에 아이디 뜨게 하기*/
- if(sessionStorage.getItem('loginSession') != undefined) {
+   if(sessionStorage.getItem('loginSession') != undefined) {
      $('#before_login').val(sessionStorage.getItem('loginSession'));
   } else {
 	  $('#after_login')
-  }
- 
+  } 
+  
   </script>
 
-
-<script type="text/javascript">
-            
-            function pstCLog(link, title, thumbnail, summary, writer){
-                var href = "http://csp.cyworld.com/bi/bi_recommend_pop.php?url=" + encodeURIComponent(link) + "&thumbnail=" + encodeURIComponent(thumbnail) + "&summary=" + encodeURIComponent(summary) + "&writer=" + encodeURIComponent(writer);
-                var a = window.open(href, 'clog', 'width=400, height=364, scrollbars=no, resizable=no');
-                if (a) {
-                    a.focus();
-                }
-            }
-            
-            function pstTwitter(msg, url){
-                var href = "http://twitter.com/home?status=" + encodeURIComponent(msg) + " " + encodeURIComponent(url);
-                var a = window.open(href, 'twitter', '');
-                if (a) {
-                    a.focus();
-                }
-            }
-            
-            function pstFaceBook(msg, url){
-                var href = "http://www.facebook.com/sharer.php?u=" + window.location.href //+ "&t=" + encodeURIComponent(msg);
-                var a = window.open(href, 'facebook', '');
-                if (a) {
-                    a.focus();
-                }
-            }
-            
-            function pstYozmDaum(link, prefix, parameter){
-                var href = "http://yozm.daum.net/api/popup/prePost?link=" + encodeURIComponent(link) + "&prefix=" + encodeURIComponent(prefix);
-                var a = window.open(href, 'yozm', 'width=466, height=356');
-                if (a) {
-                    a.focus();
-                }
-            }
-            
-            
-        </script>
 </body>
 </html>

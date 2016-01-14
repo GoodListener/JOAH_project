@@ -88,6 +88,8 @@ border-bottom:1px #ebebeb solid;background-color:#fff;}
 /* make the second level visible when hover on first level list OR link */
 .menu ul li:hover ul, .menu ul a:hover ul {visibility:visible; height:auto; padding-bottom:3em; background:transparent url(../../images/trans.gif);}
 
+
+
 /*-------------------------*/
 /*       硫붿씤 �씠誘몄�        */
 /*-------------------------*/
@@ -219,7 +221,7 @@ display:none;
 /*-------------------------------------------------------*/
 
 .row h1 {
-  font-size: 60px;
+	font-size: 60px;
 }
 
 /* recommend course �씠誘몄� 媛꾧꺽 留욎떠二쇰뒗 class */

@@ -1013,6 +1013,18 @@ ul.elements li > i{
   height: 200px;
 }
 
+.portfolio-thumb img#hot {
+  border:2px solid lightgray;
+  width: 100%;
+  height: 350px;
+}
+
+.portfolio-thumb img#rec {
+  border:2px solid lightgray;
+  width: 100%;
+  height: 200px;
+}
+
 .portfolio-single:hover .portfolio-view{
   display: block;
   -webkit-animation: fadeInUp 400ms;
