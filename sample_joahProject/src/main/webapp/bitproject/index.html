@@ -249,8 +249,10 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 <script>
 $.getJSON('ajax/list.do', function(resultObj) {
     var table = $("#hotPlace1");
+    var count = 0;
    for (var board of resultObj.data) {
-     $("<div class='col-sm-3 col-xs-6'>")
+     if (count >= 0 && count <= 3) {
+	   $("<div class='col-sm-3 col-xs-6'>")
      .html("<div class='team-single-wrapper'>" +
            "<div class='team-single'>" + 
        "<div class='person-thumb'>" +
@@ -268,10 +270,32 @@ $.getJSON('ajax/list.do', function(resultObj) {
    "<h2>" + board.title + "</h2>" +
    "<h3>" + board.id + "</h3>" +
   "</div>").appendTo(table);
+     }
+     else if (count > 3 && count <= 7) {
+    	 table = $("#hotPlace2");
+    	     $('<div class="col-sm-3 col-xs-6">')
+    	     .html("<div class='team-single-wrapper'>" +
+    	           "<div class='team-single'>" + 
+    	       "<div class='person-thumb'>" +
+    	           "<img src='images/aboutus/" + board.photo + "' class='img-responsive' alt=''>" +
+    	       "</div>" +
+    	       "<div class='social-profile'>" +
+    	           "<ul class='nav nav-pills'>" +
+    	           "<li><a href='#'><i class='fa fa-facebook'></i></a></li>" +
+    	               "<li><a href='#'><i class='fa fa-twitter'></i></a></li>" +
+    	               "<li><a href='#'><i class='fa fa-google-plus'></i></a></li>" +
+    	           "</ul>" +
+    	       "</div>" +
+    	   "</div>" +
+    	   "<div class='person-info'>" +
+    	   "<h2>" + board.title + "</h2>" +
+    	   "<p>" + board.id + "</p>" +
+    	  "</div>").appendTo(table);
+     } else break;
+     count++;
    }
   });
-  
-  $.getJSON('ajax/list.do', function(resultObj) {
+  /* $.getJSON('ajax/list.do', function(resultObj) {
     var table = $("#hotPlace2");
    for (var board of resultObj.data) {
      $('<div class="col-sm-3 col-xs-6">')
@@ -293,7 +317,7 @@ $.getJSON('ajax/list.do', function(resultObj) {
    "<p>" + board.id + "</p>" +
   "</div>").appendTo(table);
    }
-  });
+  }); */
   
   $.getJSON('ajax/list.do', function(resultObj) {
     var table = $("#recommend1");
