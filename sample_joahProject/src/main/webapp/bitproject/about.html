@@ -145,7 +145,10 @@ $.ajax({
          <!--                          end right content                                          -->
          <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
-         <div class="clear"></div>
+         <div class="clear" >맛집 번호 : <a id="choice_div1"></a>
+         볼거리 번호 : <a id="choice_div2"></a>
+         운동 번호 : <a id="choice_div3"></a>
+         기타 번호 : <a id="choice_div4"></a></div>
       </div>
 
         <!--//////////////////////////////////////////////////////////////////////////////////// -->
@@ -206,57 +209,108 @@ $.ajax({
                           var oOffset = new nhn.api.map.Size(14, 37);
                           var oIcon = new nhn.api.map.Icon('1.png', oSize, oOffset); // 지도에 표시될 아이콘
 
-                          var mapInfoTestWindow = new nhn.api.map.InfoWindow(); // - info window 생성
-                          mapInfoTestWindow.setVisible(false); // - infowindow 표시 여부 지정.
-                          oMap.addOverlay(mapInfoTestWindow); // - 지도에 추가.
 
                           var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언.
                           oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨.
 
-                          mapInfoTestWindow.attach('changeVisible', function(oCustomEvent) {
-                            if (oCustomEvent.visible) {
-                              oLabel.setVisible(false);
-                            }
-                          });
-
-                          function closeOverlay() {
-                            mapInfoTestWindow.setVisible(false);
-                          }
+                          var oMarkers = [];
+                          var mapInfoTestWindow = [];
+                          
+                          var objNo;
                           
                           $.getJSON('ajax/location.do', function(resultObj) {
-                              for(var location of resultObj.data) {
-                          oMap.attach('click', function(oCustomEvent) {
-                              var oPoint =  oCustomEvent.point;
-                              var oTarget = oCustomEvent.target;
-                              if (oCustomEvent.clickCoveredMarker) {
-                                return;
-                              }
-                              mapInfoTestWindow.setContent('<div class="wrap">' +
-                                        '    <div class="info">' +
-                                        '        <div class="title">'+ location.name  +
-                                        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-                                        '        </div>' +
-                                        '        <div class="body">' +
-                                        '            <div class="img">' +
-                                        '                <img src="'+ location.photo +'" width="73" height="70">' +
-                                        '           </div>' +
-                                        '            <div class="desc">' +
-                                        '                <div class="ellipsis">'+ location.content  + '여기다가 상세정보' +
-                                        '                <div class="jibun ellipsis">(우) 63309 (지번) ?? 2181</div>' +
-                                        '                <div><a href="#" target="_blank" class="link">홈페이지</a></div>' +
-                                        '            </div>' +
-                                        '        </div>' +
-                                        '    </div>' +
-                                        '</div>');
-                               mapInfoTestWindow.setPoint(oTarget.getPoint());
-                               mapInfoTestWindow.setVisible(true);
-                               mapInfoTestWindow.setPosition({right : 15, top : 30});
-                               mapInfoTestWindow.autoPosition();
-                               return;
-                                
+                            for(var location of resultObj.data) {
+                              oMarkers[location.no] = new nhn.api.map.Marker(oIcon, {
+                                      title : location.name,
+                                      smallSrc: location.no
+                                    });
+                              oMarkers[location.no].setPoint(new nhn.api.map.LatLng(location.lng, location.lat))
+                              oMap.addOverlay(oMarkers[location.no]);
+                              
+                              mapInfoTestWindow[location.no] = new nhn.api.map.InfoWindow({
+                                point: oMarkers[location.no].getPoint(),
+                                content: '<div class="wrap">' +
+                                  '    <div class="info">' +
+                                  '        <div class="title">'+ location.name  +
+                                  '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+                                  '        </div>' +
+                                  '        <div class="body">' +
+                                  '            <div class="img">' +
+                                  '                <img src="'+ location.photo +'" width="73" height="70">' +
+                                  '           </div>' +
+                                  '            <div class="desc">' +
+                                  '                <div class="ellipsis">'+ location.content  + '여기다가 상세정보' +
+                                  '                <div class="jibun ellipsis">(우) 63309 (지번) ?? 2181</div>' +
+                                  '                <div class="choice_1"><a href="#">선택</a></div>' + // 선택 분류할 때 div를 다르게 하기.
+                                  '            </div>' +
+                                  '        </div>' +
+                                  '    </div>' +
+                                  '</div>'
                               });
+                              mapInfoTestWindow[location.no].setVisible(false);
+                              oMap.addOverlay(mapInfoTestWindow[location.no]);
+                              
+                             mapInfoTestWindow[location.no].attach('changeVisible', function(oCustomEvent) {
+                                 if (oCustomEvent.visible) {
+                                   oLabel.setVisible(false);
+                                 }
+                               });
                             }
                           });
+                          
+                          var targetNo;  // 열고싶은 창 번호.
+                          var targetWindow = 0; // 열었던 창 번호.
+                          oMap.attach('click', function(oCustomEvent) {
+                            var oTarget = oCustomEvent.target;
+                            if (oTarget instanceof nhn.api.map.Marker) {
+                                if (oCustomEvent.clickCoveredMarker) {
+                                    return; //중복마커일때 처리하는 부분
+                                }  
+                              targetNo = oTarget._smallSrc;
+                              
+                              if (targetWindow == 0) {
+                                mapInfoTestWindow[targetNo].setVisible(true);
+                                mapInfoTestWindow[targetNo].setPosition({right : 15, top : 30});
+                                mapInfoTestWindow[targetNo].autoPosition();
+                                
+                                targetWindow = targetNo;
+                                
+                              } else if (targetWindow != 0) {
+                                mapInfoTestWindow[targetWindow].setVisible(false);
+                                
+                                mapInfoTestWindow[targetNo].setVisible(true);
+                                mapInfoTestWindow[targetNo].setPosition({right : 15, top : 30});
+                                mapInfoTestWindow[targetNo].autoPosition();
+                                targetWindow = targetNo;
+                              }
+                              $(".choice_1").click(function(event) {
+                                  event.preventDefault();
+                                  $("#choice_div1").text(targetNo);
+                                });
+                              $(".choice_2").click(function(event) {
+                                  event.preventDefault();
+                                  $("#choice_div2").text(targetNo); // 볼거리라면.
+                                });
+                              $(".choice_3").click(function(event) {
+                                  event.preventDefault();
+                                  $("#choice_div3").text(targetNo); // 운동이라면
+                                });
+                              $(".choice_4").click(function(event) {
+                                  event.preventDefault();
+                                  $("#choice_div4").text(targetNo); // 기타등등일때
+                                });
+
+                              
+                           } 
+                               if (!(oTarget instanceof nhn.api.map.Marker)) {
+                                mapInfoTestWindow[targetWindow].setVisible(false);
+                              } // 마커가 아니면 클릭시 닫힌다. 
+                          });
+                          
+                          function closeOverlay() {
+                            mapInfoTestWindow[targetWindow].setVisible(false);
+                          }
+                          
                           
                           oMap.attach('mouseenter', function(oCustomEvent) {
                             var oTarget = oCustomEvent.target;
@@ -267,6 +321,7 @@ $.ajax({
                             }
                           });
 
+                          
                           oMap.attach('mouseleave', function(oCustomEvent) {
                             var oTarget = oCustomEvent.target;
                             // 마커위에서 마우스 나간거면
@@ -275,8 +330,9 @@ $.ajax({
                             }
                           }); 
                           
-                          var oMarkers = [];
-                          $.getJSON('ajax/location.do', function(resultObj) {
+                          
+                          
+                          /* $.getJSON('ajax/location.do', function(resultObj) {
                             for (var location of resultObj.data) {
                               oMarkers[location.no] = new nhn.api.map.Marker(oIcon, {
                               title : location.name
@@ -284,7 +340,7 @@ $.ajax({
                           oMarkers[location.no].setPoint(new nhn.api.map.LatLng(location.lng, location.lat))
                           oMap.addOverlay(oMarkers[location.no]);
                             } 
-                          });
+                          }); */
                           
                           
                           var circle = new nhn.api.map.Circle({
