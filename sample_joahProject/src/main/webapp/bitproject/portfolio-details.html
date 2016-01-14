@@ -78,17 +78,17 @@ $.ajax({
         <div class="sidebar blog-sidebar">
           <div class="sidebar-item categories">
             <ul class="nav navbar-stacked">
-              <li><a href="#">1 location<span class="pull-right"></span></a></li>
+              <li><a>1 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">2 location<span class="pull-right"></span></a></li>
+              <li><a>2 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">3 location<span class="pull-right"></span></a></li>
+              <li><a>3 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">4 location<span class="pull-right"></span></a></li>
+              <li><a>4 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">5 location<span class="pull-right"></span></a></li>
+              <li><a>5 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">6 location<span class="pull-right"></span></a></li>
+              <li><a>6 location<span class="pull-right"></span></a></li>
               <li><input style="border-radius:13px;"type="text"></li>
             </ul>
            </div>
@@ -132,18 +132,18 @@ $.ajax({
     <section>
       <div class="post-content overflow">
         <h2 class="post-title bold">
-          <a href="#" id ="data_title2"></a>
+          <a id ="data_title2"></a>
         </h2>
         <h3 class="post-author">
-          <a href="#">Posted by micron News</a>
+          <a>Posted by micron News</a>
         </h3>
         <p id="content">
         </p>
         <div class="post-bottom overflow">
           <ul class="nav navbar-nav post-nav">
-            <li><a href="#"><i class="fa fa-tag"></i>Creative</a></li>
-            <li><a href="#"><i class="fa fa-heart"></i>32 Love</a></li>
-            <li><a href="#"><i class="fa fa-comments"></i>3 Comments</a></li>
+            <li><a><i class="fa fa-tag"></i>Creative</a></li>
+            <li><a><i class="fa fa-heart"></i>32 Love</a></li>
+            <li><a><i class="fa fa-comments"></i>3 Comments</a></li>
           </ul>
         </div>
         <div class="blog-share">
@@ -230,17 +230,26 @@ $.ajax({
  $.getJSON('ajax/comment.do?no=' + no, function(resultObj) {
        var com = $("#commentList");
        var count = 100;
+       var dt, year, month, day, hour, minute, second, time;
       for (var comment of resultObj.data) {
+    	  dt = new Date(comment.createdTime);
+        year = dt.getYear();
+        month = dt.getMonth() + 1;
+        day = dt.getDate();
+        hour = dt.getHours();
+        minute = dt.getMinutes();
+        second = dt.getSeconds();
+        time = month + "월 " + day + "일 " + hour + "시" + minute + "분";
         $('<li id="comment_li'+comment.cno+'" class="media">')
         .html('<div class="post-comment wow fadeInDown" data-wow-duration="'+count+'ms" data-wow-delay="800ms">' +
-        '<a class="pull-left" href="#"> <img class="media-object"' +
+        '<a class="pull-left"> <img class="media-object"' +
         'src="'+ comment.photo +'" alt="">' +
         '</a>' +
         '<div class="media-body">' +
-        '<span><i class="fa fa-user"></i>Posted by <a href="#">'+ comment.id +'</a></span>' +
+        '<span><i class="fa fa-user"></i>Posted by <a>'+ comment.id +'</a></span>' +
         '          <p>'+ comment.content +'</p>' +
         '          <ul class="nav navbar-nav post-nav">' +
-         '           <li><a href="#"><i class="fa fa-clock-o"></i>'+ comment.createdTime +'</a></li>' +
+         '           <li><a><i class="fa fa-clock-o"></i>'+ time +'</a></li>' +
         '            <li><div class="deletecomment" id="comment' + comment.cno + '"><i class="fa fa-reply"></i>삭제</div></li>' +
       '            </ul>' +
        '         </div>' +
@@ -249,7 +258,7 @@ $.ajax({
         $("#comment" + comment.cno).click(function(event) {
                var commentNo = $(this).attr("id").split('comment')[1];
         	     console.log(commentNo);
-               $.getJSON('ajax/deletecomment.do?no='+ commentNo + '&id='+ $('#after_login2').val() , function(resultObj) {
+               $.getJSON('ajax/deletecomment.do?no='+ commentNo + '&id='+ sessionStorage.getItem('loginSession'), function(resultObj) {
                        var ajaxResult = resultObj.ajaxResult;
                        if (ajaxResult.status == "success") {
                     	   $("#comment_li"+commentNo).remove();
@@ -264,7 +273,7 @@ $.ajax({
 
  $("#comment-add-btn").click(function(event) {
    $.post('ajax/addcomment.do', {
-        id: $("#after_login2").val(),
+        id: sessionStorage.getItem('loginSession'),
         bno: no,
         content: $('#com-content').val(),
         success:function(data) {
@@ -273,22 +282,20 @@ $.ajax({
         var ajaxResult = resultObj.ajaxResult;
         if (ajaxResult.status == "success") {
         	var com = $("#commentList");
-        	var dt = new Date($.now());
-        	var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
         	$('<li id="comment_li_new" class="media">')
         	.html('<div class="post-comment wow fadeInDown" data-wow-duration="100ms" data-wow-delay="800ms">' +
-            '<a class="pull-left" href="#"> <img class="media-object"' +
+            '<a class="pull-left"> <img class="media-object"' +
             'src="default.jpg" alt="">' +
             '</a>' +
             '<div class="media-body">' +
-            '<span><i class="fa fa-user"></i>Posted by <a href="#">'+comment.id+'</a></span>' +
+            '<span><i class="fa fa-user"></i>Posted by <a>'+ sessionStorage.getItem('loginSession') +'</a></span>' +
             '          <p>'+ $('#com-content').val() +'</p>' +
             '          <ul class="nav navbar-nav post-nav">' +
-             '           <li><a href="#"><i class="fa fa-clock-o"></i>방금'+time+'</a></li>' +
+             '           <li><a><i class="fa fa-clock-o"></i> 방금 전</a></li>' +
             '            <li><div class="deletecomment" id="comment_li_new"><i class="fa fa-reply"></i>삭제</div></li>' +
           '            </ul>' +
            '         </div>' +
-           '       </div></li>').appendTo(com);
+           '       </div></li>').prependTo(com);
         } 
       }, 'json');
     });

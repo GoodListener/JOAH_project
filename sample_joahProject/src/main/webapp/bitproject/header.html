@@ -48,7 +48,7 @@ Cufon.replace('label', { fontFamily: 'GeosansLight' });
 		</nav>
 		<nav class="main-nav2">
 			<ul>
-			  	<li><input style="display:none" id="after_login2" readonly><span style="display:none" id="after_login4">님</span></li>
+			  	<li><div id="after_login2"></div></li>
 				<li><a style="display:none" class="cd-signin" type="button" id="after_login3">My Page</a></li>
 				<li><a style="display:none" class="cd-signout" type="button" id="after_login1" >Log out</a></li>
 			</ul>
@@ -264,11 +264,10 @@ Cufon.replace('label', { fontFamily: 'GeosansLight' });
     $(document).ready( function() {
     var id = $.cookie("id");
     if (id != null && id != "") {
-      $("#signin-userID").val(id); // id textbox에 쿠키값 출력
+    	$("#signin-userID").val(); // id textbox에 쿠키값 출력
       $("#saveId").attr("checked", "checked"); // 체크박스에 체크
     }
   });  
-  
     $('#loginBtn').click( function(event) {
           var checkStatus = $("#saveId").is(":checked");
           if (checkStatus) {
@@ -285,7 +284,7 @@ Cufon.replace('label', { fontFamily: 'GeosansLight' });
             if (ajaxResult.status == "success") {
               idSession = ajaxResult.data.id;
               sessionStorage.setItem('loginSession',idSession);
-              location.href = "boardlist.html";
+              location.href = "";
             } else {
               alert("없는 아이디 이거나 패스워드가 일치하지 않습니다.");
             }
@@ -298,7 +297,7 @@ Cufon.replace('label', { fontFamily: 'GeosansLight' });
           var ajaxResult = resultObj.ajaxResult;
           if (ajaxResult.status == "success") {
             sessionStorage.removeItem('loginSession');
-            location.href = "boardlist.html";
+            location.href = "";
           }
         },'json');
       });
@@ -307,7 +306,7 @@ Cufon.replace('label', { fontFamily: 'GeosansLight' });
      $("#after_login1").show();
      $("#after_login2").show();
      $("#after_login4").show();
-     $('#after_login2').val(sessionStorage.getItem('loginSession'));
+     $("#after_login2").text(sessionStorage.getItem('loginSession') + "님");
      $("#after_login3").show();
      $("#com-content").show();
   } else {
