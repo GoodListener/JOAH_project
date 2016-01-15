@@ -9,7 +9,19 @@
     <id 		column="lno" 		property="no"/>
   </resultMap>
 
-  <select id="selectList" resultMap="locationMap">
+  <select id="selectList" resultMap="locationMap" parameterType="String">
+    select 
+      lno,
+      name,
+      content,
+      cost,
+      photo,
+      lat,
+      lng
+    from location
+    where int_code=#{intCode}
+  </select>
+  <select id="selectAll" resultMap="locationMap">
     select 
       lno,
       name,

@@ -23,8 +23,13 @@ public class LocationController {
   @Autowired ServletContext servletContext;
   
   @RequestMapping("location")
-  public Object loc(){
-    List<Location> locations = locationDao.selectList();
+  public Object loc(String intCode){
+    List<Location> locations;
+    if (intCode.equals("I-006")) {
+      locations = locationDao.selectAll();
+    } else {
+      locations = locationDao.selectList(intCode);
+    }
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     resultMap.put("data", locations);

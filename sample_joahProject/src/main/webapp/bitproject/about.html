@@ -125,11 +125,13 @@ $.ajax({
          <div class="right_content">
              <div class="menu_bar">
                <img src="18415.png"
-                  class="map_pic" height="30" width="30" /> <input type="button"
-                  class="form_mapSear" value=" food " /> <input type="button"
-                  class="form_mapSear" value=" watching " /> <input type="button"
-                  class="form_mapSear" value=" exercize " /> <input type="button"
-                  class="form_mapSear" value=" etc " />
+                  class="map_pic" height="30" width="30" /> 
+                  <input type="button" class="form_mapSear" id="I-001" value=" food " /> 
+                  <input type="button" class="form_mapSear" id="I-002" value=" entertain " /> 
+                  <input type="button" class="form_mapSear" id="I-003" value=" experience " /> 
+                  <input type="button" class="form_mapSear" id="I-004" value=" exercise " />
+                  <input type="button" class="form_mapSear" id="I-005" value=" show " />
+                  <input type="button" class="form_mapSear" id="I-006" value=" all " />
                <nav class="search_border"> 
                  <input type="text" class="search_text" placeholder="search" />
                  <button type="submit" class="search_but">Go</button>
@@ -213,13 +215,28 @@ $.ajax({
                           var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언.
                           oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨.
 
-                          var oMarkers = [];
-                          var mapInfoTestWindow = [];
                           
+                          
+                          /* 마커 추가하기 + 해당하는 Infowindow 만들기 n 반복*/
+                          
+                          var oMarkers = [];
+                          var openMarkers = [];
+                          var mapInfoTestWindow = [];
+                          var searchNo;
                           var objNo;
                           
-                          $.getJSON('ajax/location.do', function(resultObj) {
+                          /* 메뉴 클릭 했을 때에! */
+                          $(".form_mapSear").click(function(event) {
+                            searchNo = $(this).attr("id");
+                            console.log(openMarkers);
+                            for(var c = 0; c < openMarkers.length; c++){
+                              oMap.removeOverlay(oMarkers[openMarkers[c]]); // 열려있는 마커를 닫는다.
+                            }
+                            
+                          $.getJSON('ajax/location.do?intCode=' + searchNo, function(resultObj) {
+                            var i = 0;
                             for(var location of resultObj.data) {
+                            
                               oMarkers[location.no] = new nhn.api.map.Marker(oIcon, {
                                       title : location.name,
                                       smallSrc: location.no
@@ -253,10 +270,24 @@ $.ajax({
                              mapInfoTestWindow[location.no].attach('changeVisible', function(oCustomEvent) {
                                  if (oCustomEvent.visible) {
                                    oLabel.setVisible(false);
-                                 }
-                               });
-                            }
-                          });
+                                  }
+                                });
+                             oMarkers[location.no].setVisible(false);
+                             
+                             
+                               openMarkers[i] = location.no;
+                               i++; // 닫기 위해 기존 있던 마커넘버를 저장하는 것.
+                            } // for문 끝 
+                            
+                          }); // AJAX 호출 끝
+                            
+                          
+                        });
+                          
+                          
+                          
+                          
+                          /* 정보창에서 선택하는 것 */
                           
                           var targetNo;  // 열고싶은 창 번호.
                           var targetWindow = 0; // 열었던 창 번호.
@@ -353,18 +384,12 @@ $.ajax({
 
                           var radius = 200; // - radius의 단위는 meter
 
-                          /* var mapxy = document.getElementById('mapLatLng');
-                          var dist = document.getElementById('distance'); */
                           oMap.getCenter(); //TODO
                           circle.setRadius(radius); // - circle 의 반지름을 지정하며 단위는 meter이다.
-                          //circle.setStyle("strokeColor", "black"); // - 선의 색깔을 지정함.
-                          //circle.setStyle("strokeWidth", 3); // - 선의 두께를 지정함.
-                          //circle.setStyle("strokeOpacity", 1); // - 선의 투명도를 지정함.
-                          //circle.setStyle("fillColor", "none"); // - 채우기 색상. none 이면 투명하게 된다.
                           circle.setCenterPoint(oMap.getCenter()); // - circle 의 중심점을 지정한다.
                           oMap.addOverlay(circle);
                           oMap.attach('mousemove',function(oCustomEvent) { //마우스 움직일때마다 이벤트 발생.
-                                    $.getJSON('ajax/location.do', function(resultObj) {
+                                    $.getJSON('ajax/location.do?intCode=' + searchNo, function(resultObj) {
                                       for(var location of resultObj.data) {
                                       if (oMap.getCenter().getDistanceFrom(oMarkers[location.no].getPoint()) < 200) {
                                             oMarkers[location.no].setVisible(true);
@@ -373,7 +398,7 @@ $.ajax({
                                         }
                                     circle.setCenterPoint(oMap.getCenter());
                                   })
-                          });
+                          });  
                         </script>
    <script type="text/javascript">
                         try {document.execCommand('BackgroundImageCache', false, true);} catch(e) {}

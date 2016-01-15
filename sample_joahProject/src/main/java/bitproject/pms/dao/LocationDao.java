@@ -5,7 +5,8 @@ import java.util.List;
 import bitproject.pms.domain.Location;
 
 public interface LocationDao {
-  List<Location> selectList();
+  List<Location> selectList(String intCode);
+  List<Location> selectAll();
   /*Location selectOne(int no);*/
   /*int insert(Location location);
 
