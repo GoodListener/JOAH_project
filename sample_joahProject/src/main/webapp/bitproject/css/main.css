@@ -851,10 +851,17 @@ ul.sub-menu {
 }
 
 .person-info h2 {
+  padding-left: 3px;
+  padding-right: 3px;
   font-weight: 300;
   margin-bottom: 5px;
   font-size: 18px;
   text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+/*   font-family: Jeju Gothic; */
+  width: inherit;
 }
 
 .person-info h3 {
@@ -962,6 +969,11 @@ h3.top-zero{
 
 .recent-projects p.padding-bottom{
   padding-bottom: 50px;
+}
+
+.recent-projects p.padding-bottom1{
+    padding: 0 0 50px 0;
+    margin-top: -18px;
 }
 
 .choose{
@@ -1088,8 +1100,17 @@ ul.elements li > i{
 }
 
 .portfolio-info h2 {
+  margin: 15px 0 5px 0;
+  padding-left: 3px;
+  padding-right: 3px;
+  font-weight: 300;
   font-size: 18px;
-  margin: 15px 0 0;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+/*   font-family: Jeju Gothic; */
+  width: inherit;
 }
 
 .portfolio-filter {

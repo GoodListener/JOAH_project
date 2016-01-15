@@ -223,50 +223,17 @@ display:none;
 .row h1 {
 	font-size: 60px;
 }
-
-/* recommend course �씠誘몄� 媛꾧꺽 留욎떠二쇰뒗 class */
-.leftbox{
-width:290px;
-float:left;
-margin:-10px 55px 20px 30px;
+a.read_more {
+	float: right;
+    margin: -20px 260px -20px 0;
+    padding: 0;
+    color: #e66f59;
 }
-.leftbox_right{
-width:290px;
-float:right;
-margin:-10px 30px 20px 0;
-}
-
-/* Other's Date course �씠誘몄� 媛꾧꺽 留욎떠二쇰뒗 class */
-.leftbox2{
-width:217px;
-float:left;
-margin:-10px 30px 0 25px;
-}
-.leftbox2 img{
-width:217px;
-height: 100px;
-float:left;
-margin:-10px 0 5px 0;
-}
-.leftbox_right2{
-width:217px;
-float:right;
-margin:-10px 33px 0 -20px;
-}
-.leftbox_right2 img{
-width:217px;
-height: 100px;
-float:right;
-margin:-10px 0 5px 0;
-}
-
-/* recommend course�� Other's Date course�쓽  媛곴컖 �궗吏꾩쓽 �뜑蹂닿린 a �깭洹� */
-a.more{
-background:url(../../images/more_bullet.gif) no-repeat right;
-padding:0 25px 0 0; line-height:30px; 
-text-decoration:none; 
-float:right; 
-margin:10px 0 0 0;
+a.read_more:hover {
+	float: right;
+    margin: -20px 260px -20px 0;
+    padding: 0;
+    color: #bf361e;
 }
 
 /*-------------------------------------------------------*/

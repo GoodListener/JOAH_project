@@ -28,7 +28,8 @@
 <script type="text/javascript">
 Cufon.replace('.logo', { fontFamily: 'GeosansLight' });
 Cufon.replace('h1', { fontFamily: 'GeosansLight' });
-Cufon.replace('h2', { fontFamily: 'GeosansLight' });
+// Cufon.replace('h2', { fontFamily: 'GeosansLight' });
+Cufon.replace('h3', { fontFamily: 'GeosansLight' });
 Cufon.replace('fieldset', { fontFamily: 'GeosansLight' });
 </script>    
 <script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
@@ -154,7 +155,8 @@ $.ajax({
         <div class="container">
             <div class="row">
                 <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">Admin's Date Course</h1>
-                <p class="text-center padding-bottom wow fadeInDown" data-wow-duration="400ms" data-wow-delay="400ms">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br>
+                <a class="read_more wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms" href="admin_rec.html">Read More</a> <br>
+                <p class="text-center padding-bottom1 wow fadeInDown" data-wow-duration="400ms" data-wow-delay="400ms">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br>
                 Ut enim ad minim veniam, quis nostrud </p>
               <div class="wow fadeIn" id="admin"  ></div>
           </div>
@@ -174,7 +176,8 @@ $.ajax({
         <div class="container">
             <div class="row">
                 <h1 class="title text-center wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms">Users' Date Course</h1>
-                <p class="text-center padding-bottom wow fadeInDown" data-wow-duration="400ms" data-wow-delay="400ms">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br>
+                <a class="read_more wow fadeInDown" data-wow-duration="500ms" data-wow-delay="300ms" href="user_rec.html">Read More</a> <br>
+                <p class="text-center padding-bottom1 wow fadeInDown" data-wow-duration="400ms" data-wow-delay="400ms">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <br>
                 Ut enim ad minim veniam, quis nostrud </p>
               <div class="wow fadeIn" id="users"  ></div>
           </div>
@@ -185,55 +188,12 @@ $.ajax({
 <!--             users' Date Course 끝                  -->
 <!------------------------------------------------------>
 
-
-         
-         
-		<!--<div class="center_content">
-        
-        	<div class="leftbox">
-              <h2>From the Blog</h2>
-				<div class="news_box">
-                	<div class="date">12.05.2011</div>
-                    <h3><a href="#">Lore ipsum doloer ametis</a></h3>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    </p>
-                </div>       
-                      
-        	</div>
-        
-        
-        
-        	<div class="leftbox">
-              <h2>Testimonials</h2>
-              <div class="testimonial">
-                    <div class="testimonial_quotes">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="#">John doe - company name</a>
-                    </div>
-              </div>
-        	</div>
-            
-
-            
-        	<div class="leftbox_right">
-              <h2>Get in touch</h2>
-              
-              <p>
-              Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing</a> elit, <strong>sed do</strong> eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              
-        	</div> 
-
-        </div>  -->
-         
-        
         <div class="clear"></div>
         
 <!------------------------------------------>
 <!--            footer  시작               -->
 <!------------------------------------------>
-<!-- <div class="footer">
+<!--  <div class="footer">
     <div class="copyrights">
     Free CSS Template by <a href="http://csstemplatesmarket.com" target="_blank">Css templates market</a>
     </div>
@@ -242,9 +202,9 @@ $.ajax({
     <a href="#">About Us</a>
     <a href="#">Privacy Policy</a>
     <a href="#">Contact Us</a>
-    </div>
+    </div> -->
     <div class="clear"></div>
-</div> -->
+</div>
  <footer id="footer">
         <div class="container">
             <div class="row">
@@ -370,7 +330,7 @@ $.getJSON('ajax/list.do', function(resultObj) {
     	   "</div>" +
     	   "<div class='person-info'>" +
     	   "<h2>" + board.title + "</h2>" +
-    	   "<p>" + board.id + "</p>" +
+    	   "<h3>" + board.id + "</h3>" +
     	  "</div>").appendTo(table);
      } else break;
      count++;
@@ -402,9 +362,10 @@ $.getJSON('ajax/list.do', function(resultObj) {
   
   $.getJSON('ajax/list.do', function(resultObj) {
     var table = $("#recommend1, #admin, #users");
-    var count = 500;
+    var count = 0;
    for (var board of resultObj.data) {
-     $('<div class="col-sm-3 col-xs-6" data-wow-duration="1000ms" data-wow-delay="' + count +'ms">')
+     if (count <= 7) {
+     $('<div class="col-sm-3 col-xs-6" data-wow-duration="1000ms" data-wow-delay="500ms">')
      .html('<div class="portfolio-wrapper">' +
          '<div class="portfolio-single">' +
        '<div class="portfolio-thumb">' +
@@ -422,7 +383,8 @@ $.getJSON('ajax/list.do', function(resultObj) {
    '</div>' +
    '</div>' +
   '</div>').appendTo(table);
-     count += 100;
+     } else break;
+     count++;
    }
   });
   
