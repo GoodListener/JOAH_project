@@ -25,8 +25,8 @@ public class DefaultMemberService implements MemberService {
     return studentDao.selectList(paramMap);
   }*/
 
-  public void register(Member student) {
-    memberDao.insert(student);
+  public void register(Member member) {
+    memberDao.insert(member);
   }
 /*
   public void remove(String email) {
@@ -35,12 +35,12 @@ public class DefaultMemberService implements MemberService {
   
   public void change(Student student) {
     studentDao.update(student);
-  }
+  } */
 
-  public Student retrieve(String email) {
-    return studentDao.selectOne(email);
+  public Member retrieve(String id) {
+    return memberDao.selectOne(id);
   }
-
+/*
   public Student retrieve(String email, String password) {
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("email", email);

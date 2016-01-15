@@ -232,7 +232,7 @@ $.ajax({
        var count = 100;
        var dt, year, month, day, hour, minute, second, time;
       for (var comment of resultObj.data) {
-    	  dt = new Date(comment.createdTime);
+         dt = new Date(comment.createdTime);
         year = dt.getYear();
         month = dt.getMonth() + 1;
         day = dt.getDate();
@@ -257,12 +257,12 @@ $.ajax({
         count += 100;
         $("#comment" + comment.cno).click(function(event) {
                var commentNo = $(this).attr("id").split('comment')[1];
-        	     console.log(commentNo);
+                console.log(commentNo);
                $.getJSON('ajax/deletecomment.do?no='+ commentNo + '&id='+ sessionStorage.getItem('loginSession'), function(resultObj) {
                        var ajaxResult = resultObj.ajaxResult;
                        if (ajaxResult.status == "success") {
-                    	   $("#comment_li"+commentNo).remove();
-                    	   alert("게시물 삭제하였습니다.");
+                          $("#comment_li"+commentNo).remove();
+                          alert("게시물 삭제하였습니다.");
                        } else {
                           alert("게시 삭제에 실패했습니다.");
                       }
@@ -281,9 +281,9 @@ $.ajax({
       }, function(resultObj) {
         var ajaxResult = resultObj.ajaxResult;
         if (ajaxResult.status == "success") {
-        	var com = $("#commentList");
-        	$('<li id="comment_li_new" class="media">')
-        	.html('<div class="post-comment wow fadeInDown" data-wow-duration="100ms" data-wow-delay="800ms">' +
+           var com = $("#commentList");
+           $('<li id="comment_li_new" class="media">')
+           .html('<div class="post-comment wow fadeInDown" data-wow-duration="100ms" data-wow-delay="800ms">' +
             '<a class="pull-left"> <img class="media-object"' +
             'src="default.jpg" alt="">' +
             '</a>' +
@@ -318,7 +318,7 @@ $.ajax({
    if(sessionStorage.getItem('loginSession') != undefined) {
      $('#before_login').val(sessionStorage.getItem('loginSession'));
   } else {
-	  $('#after_login')
+     $('#after_login')
   } 
   
   </script>

@@ -62,16 +62,13 @@ public class MemberController {
   }
   
   
-  /*@RequestMapping("detail")
-  public String detail(String email, Model model) 
-          throws Exception {
+  @RequestMapping(value="detailmember")
+  public Object detail(String id) throws Exception {
+    Member member = memberDao.selectOne(id);
 
-    Student student = studentService.retrieve(email);
-    model.addAttribute("student", student);
-
-    return "student/StudentDetail";
+    return new AjaxResult("success", member);
   }
-
+  /*
   @RequestMapping("update")
   public String update(
       String name,

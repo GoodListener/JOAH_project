@@ -8,10 +8,12 @@ public interface MemberService {
       int pageSize, 
       String keyword, 
       String align);*/
-  void register(Member student);
+  void register(Member member);
   /*void remove(String email);
-  void change(Student student);
-  Student retrieve(String email);
+  void change(Student student);*/
+  
+  Member retrieve(String id);
+  /*
   Student retrieve(String email, String password);*/
 }
 

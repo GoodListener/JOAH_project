@@ -13,6 +13,8 @@ public interface MemberDao {
   Member login(Map<String,Object> paramMap);
   
   List<Member> idList();
+
+  Member selectOne(String id);
 /*
   int delete(String email);
   
@@ -21,6 +23,7 @@ public interface MemberDao {
   Student selectOne(String email);
 
   Student selectOneByEmailPassword(Map<String,Object> paramMap);*/
+
 }
 
 

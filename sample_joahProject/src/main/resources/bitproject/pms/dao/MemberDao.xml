@@ -32,14 +32,14 @@
 		cid=#{cid},
 		photo=#{photo}
 		where email=#{email}
-	</update>
+	</update>-->
 	
-	<select id="selectOne" resultType="student" parameterType="string">
-		<include refid="select_inc"/>
-		from student
-		where email=#{email}
+	<select id="selectOne" resultType="member" parameterType="string">
+		select id,pwd,name,email,gender,age,cid
+		from member
+		where id=#{id}
 	</select>
-	-->
+	
 	<select id="login" resultType="member" parameterType="map">
 		select id,name,email,gender,age,cid
 		from member
