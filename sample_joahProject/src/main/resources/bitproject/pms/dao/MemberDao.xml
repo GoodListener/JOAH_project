@@ -34,7 +34,7 @@
 		where email=#{email}
 	</update>-->
 	
-	<select id="selectOne" resultType="member" parameterType="string">
+	<select id="selectOne" resultType="string">
 		select id,pwd,name,email,gender,age,cid
 		from member
 		where id=#{id}

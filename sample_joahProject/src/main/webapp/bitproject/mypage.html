@@ -88,13 +88,13 @@ $.ajax({
               <li><a>Name<span class="pull-right"></span></a></li>
               <li><input id="member_name" style="border-radius:13px;"type="text"></li>
               <li><a>E-Mail<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
+              <li><input id="member_email" style="border-radius:13px;"type="text"></li>
               <li><a>Gender<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
+              <li><input id="member_gender" style="border-radius:13px;"type="text"></li>
               <li><a>Age<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
+              <li><input id="member_age" style="border-radius:13px;"type="text"></li>
               <li><a>Couple ID<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
+              <li><input id="member_cid" style="border-radius:13px;"type="text"></li>
             </ul>
             <input type="button" class="form_search" value="Modify" />
            </div>
@@ -402,7 +402,7 @@ $.ajax({
     <script type="text/javascript" src="js/main.js"></script>   
 	
 	<!--  my page minsu-->
-	
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>	
 	<script>
 	
 	 $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
@@ -410,15 +410,22 @@ $.ajax({
 	    if (ajaxResult.status == "success") {
 	      var member = ajaxResult.data;
 	      /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
-	      $("#member_id").text(sessionStorage.getItem('loginSession'));
-	      $("#member_pwd").text(member.pwd);
-	      $("#member_name").text(member.name);
-	      $("#member_email").text(member.email);
-	      $("#member_gender").text(member.gender);
-	      $("#member_age").text(member.age);
-	      $("#member_cid").text(member.cid);
+	      $("#member_id").val(sessionStorage.getItem('loginSession'));
+	      $("#member_pwd").val(member.pwd);
+	      $("#member_name").val(member.name);
+	      $("#member_email").val(member.email);
+	      $("#member_gender").val(member.gender);
+	      $("#member_age").val(member.age);
+	      $("#member_cid").val(member.cid);
 	    }
 	 }); 
+
+	 
+	 
+	     
+	 
+	 
+	
 	</script>
 
 </div>
