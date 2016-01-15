@@ -368,7 +368,7 @@ ul.sub-menu {
 **************************/
 
 #footer {
-  padding-bottom: 75px;
+  padding-bottom: 25px;
   background-image: url(../images/home/footer.png);
   background-repeat: repeat-x;
   background-position: bottom;
@@ -381,7 +381,7 @@ ul.sub-menu {
 }
 
 #footer .bottom-separator {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 #message {
@@ -662,9 +662,10 @@ ul.sub-menu {
 }
 
 .sun{
-  background-image: url(../images/home/tour-icon1.png);
+  background-image: url(../images/home/clients.png);
   background-repeat: no-repeat;
-  background-position: 100% bottom;
+  background-position: 90% bottom;
+  background-size: 10%;
 }
 
 
