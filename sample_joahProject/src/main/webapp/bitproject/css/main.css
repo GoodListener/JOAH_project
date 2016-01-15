@@ -4,7 +4,7 @@
   Author: Themeum
   Author Uri: http://www.themeum.com
   Description: Creative Site Template
-  Version: 1.1
+  Version: 1.1 
   */
 
   @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
@@ -455,7 +455,7 @@ ul.sub-menu {
 }
 
 .form-control {
-  border: 1px solid #d99c4e;
+  border: 1px solid #e66f59;
   font-weight: 300;
   outline: none;
   box-shadow: none;
@@ -464,14 +464,14 @@ ul.sub-menu {
 
 .form-control:hover, 
 .form-control:focus{
-  border-color: #d29948;
+  border-color: #bf361e;
   outline: none;
   box-shadow: none;
 }
 
 .btn-submit {
   width: 100%;
-  background-color: #d89b4e;
+  background-color: #e66f59;
   color: #fff;
   font-size: 14px;
   font-weight: 300;
