@@ -49,7 +49,7 @@
 <!------------------------------------------>
 <!--            Modal 시작                -->
 <!------------------------------------------>
-   <div class="cd-user-modal">
+   <div class="cd-user-modal " id="cd-user-modal">
       <!-- this is the entire modal form, including the background -->
       <div class="cd-user-modal-container">
          <!-- this is the container wrapper -->
@@ -100,7 +100,7 @@
 <!-- ---------------------------------------------------------------------------------------------- -->
 <!--                                             회원가입                                                                               -->
 <!-- ---------------------------------------------------------------------------------------------- -->
-         <div id="cd-signup">
+         <div id="cd-signup" role="dialog" data-keyboard="true">
             <!-- sign up form -->
             <form name='frm' class="cd-form">
                
@@ -153,9 +153,9 @@
                   <p style="border-radius: 0.25em; padding: 11px 20px; width:230px; margin-top:-10px" 
                      class="has-border" >
                <span style="color: #bcbcbc; font-size: 15px;">Gender</span>
-                  <input id="signup-gender-male" style="margin-left:25px" type="radio" name="radios" value="male">
+                  <input id="signup-gender-male" style="margin-left:25px" type="radio" name="radios" value="male" class="signup-gender">
                   <label style="margin-right: 10px; color:black;" for="radio1">Male</label>
-                  <input type="radio" id="signup-gender-female" name="radios" value="female">
+                  <input type="radio" id="signup-gender-female" name="radios" value="female" class="signup-gender">
                   <span class="cd-error-message" id="span-gender-error">성별을 설정해주세요.</span>
                   <label style="color:black;"for="radio2">Female</label>
                   
@@ -170,28 +170,28 @@
                    <img src="images/star1.svg" alt="" title="" border="0" /></td>
                 <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;font-size:15px;">Interest</td>
                 <td>
-                 <input onclick="CountChecked(this)"  style="margin:15px 0 0 15px;" type="checkbox" value="walking" name="interest" id="walking">
+                 <input onclick="CountChecked(this)"  style="margin:15px 0 0 15px;" type="checkbox" value="walking" name="interest" id="walking" class="inter">
                  <label for="walking">산책</label>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="food" name="interest" id="food">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="food" name="interest" id="food" class="inter">
                  <label for="food">맛집</label>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="culture" name="interest" id="culture">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="culture" name="interest" id="culture" class="inter">
                  <label style="padding-right:18px;" for="culture">문화/공연</label>
             
             <br>
             
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="exercise" name="interest" id="exercise">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="exercise" name="interest" id="exercise" class="inter">
                  <label for="exercise">운동</label>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="play" name="interest" id="play">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="play" name="interest" id="play" class="inter">
                  <label for="play">유흥</label>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="experience" name="interest" id="experience">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="experience" name="interest" id="experience" class="inter">
                  <label style="padding-right:18px;" for="experience">체험</label>
             
             <br>
             
             
-                 <input onclick="CountChecked(this)" style="margin:15px 0 13px 15px;" type="checkbox" value="leisure" name="interest" id="leisure">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 13px 15px;" type="checkbox" value="leisure" name="interest" id="leisure" class="inter">
                  <label for="leisure">여가</label>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 15px 15px;" type="checkbox" value="etc" name="interest" id="etc">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 15px 15px;" type="checkbox" value="etc" name="interest" id="etc" class="inter">
                  <label for="etc">기타</label>
                  </td>
               </tr>
@@ -366,21 +366,21 @@
            }
          }
      if( uID.val() == "" ){
-    	 $("#span-id-error").attr("class","cd-error-message is-visible");
+       $("#span-id-error").attr("class","cd-error-message is-visible");
        $("#span-id-error").text("아이디를 입력해주세요.");
        $("#signup-userID").addClass("has-error");
        $("#id-confirm").addClass("notvisible");
        return false;
      } else if (isExistID) {
-    	 $("#span-id-error").attr("class","cd-error-message is-visible");
-    	 $("#span-id-error").text("이미 존재하는 아이디 입니다.");
+       $("#span-id-error").attr("class","cd-error-message is-visible");
+       $("#span-id-error").text("이미 존재하는 아이디 입니다.");
        $("#signup-userID").addClass("has-error");
        $("#id-confirm").addClass("notvisible");
        isExistID = false;
        return false;
      } else {
-    	 $("#span-id-error").attr("class","cd-success-message");
-    	 $("#span-id-error").addClass("is-visible");
+       $("#span-id-error").attr("class","cd-success-message");
+       $("#span-id-error").addClass("is-visible");
        $("#signup-userID").addClass("has-success");
        $("#id-confirm").attr("class", "id-confirm visible");
        $("#id-confirm").text("좋은 아이디네요.");
@@ -524,6 +524,107 @@
              alert("게시물 등록에 실패했습니다.");
            } 
     }, 'json'); 
+   });
+   
+   //모달 초기화.
+   $('.cd-close-form').click(function(event) {
+	      //로그인 초기화
+	      $('#signin-userID').val('');
+	      $('#signin-password').val('');
+		  
+		  //비번찾기 초기화.	      
+	      $('#reset-email').val('');
+	      
+	      //회원가입 초기화
+	      //계정관련
+	      $('#signup-userID').val('');
+	      $('#span-id-error').addClass("hidden");
+	      $("#id-confirm").attr("class", "id-confirm hidden");
+	      
+	      //비밀번호 관련
+	      $('#signup-password').val('');
+	      $("#span-pwd-error").addClass("hidden");
+	   	  $('#signup-check-password').val('');
+	   	  $("#span-check-error").addClass("hidden");
+	   	  
+	   	  //이메일 관련
+	      $('#signup-email').val('');
+	      $("#span-email-error").addClass("hidden");
+	      
+	      //이름 관련
+	      $('#signup-username').val('');
+	      $("#span-username-error").addClass("hidden");
+	      
+	      //나이 관련
+	      $('#signup-age').val('');
+	      $("#span-age-error").addClass("hidden");
+	      
+	      //프로필 사진관련.
+	      $('#fphotofile').val('');
+	      $('#prev_procImageView').css('display', 'none');
+	      
+	      //성별 관련
+	      $('.signup-gender').prop("checked", false);
+	      
+	      //흥미관련
+	      $('.inter').prop("checked", false);
+	      totalChecked = 0; // 최대 선택갯수 초기화.
+	      
+	      $('.cd-form input.has-success').css('border', '1px solid #d2d8d8');
+	      
+	      $('.cd-form input.has-error').addClass(".cd-form input.has-border");
+	    });
+   
+   //esc로 닫을때.
+   $(document).keydown(function(e){
+       if(e.keyCode == 27){
+    	 //로그인 초기화
+ 	      $('#signin-userID').val('');
+ 	      $('#signin-password').val('');
+ 		  
+ 		  //비번찾기 초기화.	      
+ 	      $('#reset-email').val('');
+ 	      
+ 	      //회원가입 초기화
+ 	      //계정관련
+ 	      $('#signup-userID').val('');
+ 	      $('#span-id-error').addClass("hidden");
+ 	      $("#id-confirm").attr("class", "id-confirm hidden");
+ 	      
+ 	      //비밀번호 관련
+ 	      $('#signup-password').val('');
+ 	      $("#span-pwd-error").addClass("hidden");
+ 	   	  $('#signup-check-password').val('');
+ 	   	  $("#span-check-error").addClass("hidden");
+ 	   	  
+ 	   	  //이메일 관련
+ 	      $('#signup-email').val('');
+ 	      $("#span-email-error").addClass("hidden");
+ 	      
+ 	      //이름 관련
+ 	      $('#signup-username').val('');
+ 	      $("#span-username-error").addClass("hidden");
+ 	      
+ 	      //나이 관련
+ 	      $('#signup-age').val('');
+ 	      $("#span-age-error").addClass("hidden");
+ 	      
+ 	      //프로필 사진관련.
+ 	      $('#fphotofile').val('');
+ 	      $('#prev_procImageView').css('display', 'none');
+ 	      
+ 	      //성별 관련
+ 	      $('.signup-gender').prop("checked", false);
+ 	      
+ 	      //흥미관련
+ 	      $('.inter').prop("checked", false);
+ 	      totalChecked = 0; // 최대 선택갯수 초기화.
+ 	      
+ 	      $('.cd-form input.has-success').css('border', '1px solid #d2d8d8');
+ 	      
+ 	      $('.cd-form input.has-error').addClass(".cd-form input.has-border");
+    	   
+           }
    });
    
    </script>
