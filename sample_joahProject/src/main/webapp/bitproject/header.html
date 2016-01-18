@@ -206,10 +206,13 @@ Cufon.replace('label', { fontFamily: 'GeosansLight' });
               </tr>
             </table>
             
-            <div id="procImageView"
-                          style="width: 100px; height: 100px; margin:30px 0 0 23px; border: 1px solid silver;">
-                        </div><div class="Uploadbtn"><input class="input-upload" type="file" name="photofile" onchange="show(this)">
-                        <span>Upload</span></div> 
+             <!-- 프로필사진.  -->
+            <div id="procImageView" style="width: 100px; height: 100px; margin:30px 0 0 23px; border: 1px solid silver;"></div>
+            <div class="Uploadbtn">
+              <input id="fileupload" class="input-upload" type="file" name="file" onchange="show(this)">
+        	  <input id='fphotofile' type='hidden'>  
+              <span>Upload</span>
+            </div> 
             
 
                <p class="fieldset">
@@ -265,6 +268,8 @@ Cufon.replace('label', { fontFamily: 'GeosansLight' });
    <script type="text/javascript" src="js/jquery.cookie.js"></script>
    <script type="text/javascript" src="js/jquery.session.js"></script>
    <script type="text/javascript" src="../lib/myjs/main.js"></script>
+   <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+   <script type="text/javascript" src="js/jquery.fileupload.js"></script>
    <script>
     $(document).ready( function() {
     var id = $.cookie("id");
@@ -319,6 +324,35 @@ Cufon.replace('label', { fontFamily: 'GeosansLight' });
     $("#before_login2").show();
      $("#com-content2").show();
   }
+   
+   // 프로필 사진.
+   $('#fileupload').fileupload({
+       url: 'ajax/upload.do',
+       dataType: 'json',
+       maxFileSize: 10000000,
+       disableImageResize: /Android(?!.*Chrome)|Opera/
+         .test(window.navigator.userAgent),
+     }).on('fileuploadsubmit', function(e, data) {
+       // 서버에 일반 폼 데이터도 보내고 싶으면, submit 하기 전에
+       // 다음과 같이 formData 프로퍼티에 값을 설정하라!
+       /*
+       data.formData = {
+         data1: 'okok',
+         data2: 'nono'
+       };
+       */
+     }).on('fileuploaddone', function(e, data) {
+       console.log(data.result);
+       $('#files').html('');
+       $.each(data.result.data,function (index, file) {
+           $('<span/>')
+           .text(file.name 
+               + '(' + file.originName + ')'
+               + ', ' + file.size)
+               .appendTo('#files');
+           $('#fphotofile').val(file.name);
+       })
+       });
     
    /* 회원가입 */
    ////////////////
@@ -451,8 +485,6 @@ Cufon.replace('label', { fontFamily: 'GeosansLight' });
      }
    });
    
-   
-   
    $("#addBtn").click(function(event) {
 	   console.log(uGender.hasClass("has-success"));
     if(!uID.hasClass("has-success")) {
@@ -491,7 +523,8 @@ Cufon.replace('label', { fontFamily: 'GeosansLight' });
       email: $('#signup-email').val() ,
       name: $('#signup-username').val() ,
       age: $('#signup-age').val() ,
-      gender: uGender.val()
+      gender: uGender.val(),
+      photo: $('#fphotofile').val()
     }, function(resultObj) {
       var ajaxResult = resultObj.ajaxResult;
       if (ajaxResult.status == "success") {
