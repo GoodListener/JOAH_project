@@ -17,8 +17,8 @@
 	
 <!-- photo 빠짐 -->
 	<insert id="insert" parameterType="member">
-		insert into member(id,pwd,name,email,gender,age,cid)
-		values(#{id},sha1(#{password}),#{name},#{email},#{gender},#{age},#{cid})
+		insert into member(id,pwd,name,email,gender,age,cid,photo)
+		values(#{id},sha1(#{password}),#{name},#{email},#{gender},#{age},#{cid},#{photo})
 	</insert>
 
 	<!-- <delete id="delete" parameterType="string">

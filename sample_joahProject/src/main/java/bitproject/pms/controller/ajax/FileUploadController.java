@@ -19,9 +19,9 @@ import bitproject.pms.domain.FileItem;
 import bitproject.pms.util.MultipartHelper;
 
 @Controller("ajax.FileUploadController")
-@RequestMapping("/file/ajax/*")
+@RequestMapping("/bitproject/ajax/*")
 public class FileUploadController { 
-  public static final String SAVED_DIR = "/attachfile";
+  public static final String SAVED_DIR = "/profile_image";
   @Autowired ServletContext servletContext;
   
   @RequestMapping("upload")
@@ -53,8 +53,6 @@ public class FileUploadController {
         new HashMap<String,Object>();
     result.put("data", files);
     return result;
-    
-    
     
   }
   
