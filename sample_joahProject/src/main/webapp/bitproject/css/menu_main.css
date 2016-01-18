@@ -1,0 +1,108 @@
+/* @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); */
+
+/* ¸ðµçÆäÀÌÁöÀÇ °íÅë ½ºÅ¸ÀÏ */
+html {overflow-y:scroll; width:100%; height:100%;}
+body { margin: 0px; padding: 0px; font-family: "Dotum", arial, "Baekmuk Dotum", "Apple Gothic" ; font-size: small; color:#666;  }
+
+/* ÅÂ±× ÃÊ±âÈ­ */
+h1, h2, h3, h4, h5, h6, p, dl, dd, div, form  {margin: 0px;padding:0px;}
+ul, li { margin: 0px; padding: 0px; list-style:none; }
+img { border: 0px; }
+input, select { font-family:inherit; font-size:inherit; }
+input, fieldset { padding:0px; margin:0px; border:0px;}
+legend { padding:0px; margin:0px; width:0px; height:0px; overflow:hidden; font-size:0px; line-height:0px;}
+button {border:0px; cursor:pointer;}
+table { border-collapse:collapse; }
+a { text-decoration:none; }
+
+/* °øÅëÅ¬·¡½º ¸ðÀ½ */
+.absolute { position: absolute; }
+.relative { position: relative; }
+.floatL { float: left; }
+.floatR { float: right; }
+.pointer {cursor:pointer;}
+.none {display:none;}
+.hide {display:none;}
+
+   /* 메인 타임즈 여행기 : 서브타이틀 */
+   .m_times_waple_travel_02 {width:1160px; position:relative; display:block;}
+   .m_times_waple_travel_02 .info { width:980px; height:30px; }
+   .m_times_waple_travel_02 .info .dot { float:left; width:20px; height:30px; background:url('/common/m_times/image/common_img.png') no-repeat 0 0; margin-right:3px; text-indent:-100000px;}
+   .m_times_waple_travel_02 .info .stit {float:left; font-size:12px; text-align:left; color:#6b6d70; line-height:30px;}
+   .m_times_waple_travel_02 .info .more { float:right; width:120px; text-align:right; margin-right:3px; display:inline;}
+   .m_times_waple_travel_02 .info .more a {font-size:11px; font-weight:bold; color:#888; line-height:30px;}
+   .m_times_waple_travel_02 .info .more a:hover {color:#444;}
+   
+    /* 메인 타임즈 여행기 */
+   .m_times_waple_travel_02 .travel02 {width:1160px; height:490px; position:relative; top:30px; background:url('../images/pic02_bg.gif') no-repeat left 0; background-size: 1160px 480px; border:2px solid lightgray;}
+   .m_times_waple_travel_02 .travel02 .route01 {width:230px; position:absolute; left:48px; top:13px;}
+    .m_times_waple_travel_02 .travel02 .route01 ul { margin:0 auto;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt {text-align:center; font-size:12px; color:#585858; font-weight:bold;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .txt {height:33px; background:url('/images/pic01.png') no-repeat left 0; display:inline-block; letter-spacing:-1px;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .txt .box {height:25px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat right 0; padding:6px 10px 0 10px; display:inline-block;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat center bottom; z-index:50;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .poin_wrap { margin-top:6px;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .poin_wrap .time { line-height:12px; margin-bottom:3px;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .poin_wrap .poin_line {width:7px; height:61px; background:url('/common/m_times/image/waple_travel_02_poin01.png') no-repeat 0 0; position:relative; left:50%; margin-left:-4px; .left:0px; .margin-left:0px; }
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_img .badge_1 {width:80px; height:77px; position:absolute; right:-13px; top:-13px; background: url('/common/m_times/image/waple_travel_02_badge.png') no-repeat 0 0; text-indent: -100000px;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li a { display:block;}
+   .route_img {width:230px; height:180px; position:relative; }
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_img .txt_wrap {background:#f8f8f8; padding:10px; .margin-top:-4px; letter-spacing:-1px; }
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_img .txt_wrap .tit {font-weight:bold; color:#585858; line-height:16px; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_img .txt_wrap .txt {color:#858585; line-height:16px; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden;}
+   
+   
+   .m_times_waple_travel_02 .travel02 .route02 {width:230px; position:absolute; left:326px; top:18px;}
+    .m_times_waple_travel_02 .travel02 .route02 ul { margin:0 auto;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt {text-align:center; font-size:12px; color:#585858; font-weight:bold;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .txt {height:33px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat left 0; display:inline-block; letter-spacing:-1px;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .txt .box {height:25px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat right 0; padding:6px 10px 0 10px; display:inline-block;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat center bottom; z-index:50;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .poin_wrap { margin-top:6px;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .poin_wrap .time { line-height:12px; margin-bottom:3px;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .poin_wrap .poin_line {width:26px; height:41px; background:url('/common/m_times/image/waple_travel_02_poin02.png') no-repeat 0 0; position:relative; left:50%; margin-left:-20px; .left:0px; .margin-left:-15px;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_img .badge_1 {width:80px; height:77px; position:absolute; right:-13px; top:-13px; background: url('/common/m_times/image/waple_travel_02_badge.png') no-repeat 0 0; text-indent: -100000px;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li a { display:block;}
+   /* .m_times_waple_travel_02 .travel02 .route02 ul li.route_img {width:200px; height:220px; position:relative;  margin-left:-19px;}
+    */.m_times_waple_travel_02 .travel02 .route02 ul li.route_img .txt_wrap {background:#f8f8f8; padding:10px; .margin-top:-4px; letter-spacing:-1px; }
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_img .txt_wrap .tit {font-weight:bold; color:#585858; line-height:16px; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_img .txt_wrap .txt {color:#858585; line-height:16px; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden;}
+   
+
+   .m_times_waple_travel_02 .travel02 .route03 {width:230px; position:absolute; left:604px; top:18px;}
+    .m_times_waple_travel_02 .travel02 .route03 ul { margin:0 auto;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt {text-align:center; font-size:12px; color:#585858; font-weight:bold;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .txt {height:33px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat left 0; display:inline-block; letter-spacing:-1px;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .txt .box {height:25px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat right 0; padding:6px 10px 0 10px; display:inline-block;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat center bottom; z-index:50;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .poin_wrap {/* margin-top:6px; */}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .poin_wrap .time { line-height:12px; margin-bottom:3px;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .poin_wrap .poin_line {width:7px; height:61px; background:url('/common/m_times/image/waple_travel_02_poin01.png') no-repeat 0 0; position:relative; left:50%; margin-left:-4px; .left:0px; .margin-left:0px;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_img .badge_1 {width:80px; height:77px; position:absolute; right:-13px; top:-13px; background: url('/common/m_times/image/waple_travel_02_badge.png') no-repeat 0 0; text-indent: -100000px;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li a { display:block;}
+   /* .m_times_waple_travel_02 .travel02 .route03 ul li.route_img {width:250px; height:220px; position:relative; }
+    */.m_times_waple_travel_02 .travel02 .route03 ul li.route_img .txt_wrap {background:#f8f8f8; padding:10px; .margin-top:-4px; letter-spacing:-1px; }
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_img .txt_wrap .tit {font-weight:bold; color:#585858; line-height:16px; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_img .txt_wrap .txt {color:#858585; line-height:16px; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden;}
+   
+   .m_times_waple_travel_02 .travel02 .route04 {width:230px; position:absolute; left:884px; top:18px;}
+    .m_times_waple_travel_02 .travel02 .route04 ul { margin:0 auto;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt {text-align:center; font-size:12px; color:#585858; font-weight:bold;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .txt {height:33px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat left 0; display:inline-block; letter-spacing:-1px;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .txt .box {height:25px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat right 0; padding:6px 10px 0 10px; display:inline-block;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat center bottom; z-index:50;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .poin_wrap { margin-top:6px;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .poin_wrap .time { line-height:12px; margin-bottom:3px;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .poin_wrap .poin_line {width:26px; height:41px; background:url('/common/m_times/image/waple_travel_02_poin03.png') no-repeat 0 0; position:relative; left:50%; margin-left:0px; .left:0px; .margin-left:15px;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_img .badge_1 {width:80px; height:77px; position:absolute; right:-13px; top:-13px; background: url('/common/m_times/image/waple_travel_02_badge.png') no-repeat 0 0; text-indent: -100000px;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li a { display:block;}
+   /* .m_times_waple_travel_02 .travel02 .route04 ul li.route_img {width:231px; height:201px; position:relative; margin-left:19px;}
+    */.m_times_waple_travel_02 .travel02 .route04 ul li.route_img .txt_wrap {background:#f8f8f8; padding:10px; .margin-top:-4px; letter-spacing:-1px; }
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_img .txt_wrap .tit {font-weight:bold; color:#585858; line-height:16px; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_img .txt_wrap .txt {color:#858585; line-height:16px; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden;}
+   
+   .m_times_waple_travel_02 .travel02  .comment_wrap {position:relative; left:48px; top:390px; font-size:12px; text-align:left;}
+   .m_times_waple_travel_02 .travel02  .comment_wrap .title {background:#ff3c41; font-weight:bold; color:#fff; padding:3px 5px 2px 5px; display:inline-block; margin-left:10px;}
+   .m_times_waple_travel_02 .travel02  .comment_wrap .comment { color:#858585; line-height:9px; padding:8px 120px 0px 10px;}
+
+   
