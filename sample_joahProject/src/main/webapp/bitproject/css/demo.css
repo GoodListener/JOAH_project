@@ -69,11 +69,11 @@ a:hover, a:focus {
 	min-height: 100%;
 }
 
-p {
+/* p {
 	text-align: center;
 	padding: 1em;
 }
-
+ */
 /* Header */
 .codrops-header {
 	padding: 7em 0 3em;

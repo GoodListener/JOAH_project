@@ -333,19 +333,20 @@ xsigin/signup popup
   background-position: 50% 0;
 }
 .cd-form label.cd-userID {
-  background-image: url("../../images/cd-icon-username.svg");
+/*   background-image: url("../../images/cd-icon-username.svg"); */
+  background-image: url("../../images/users1.svg");
 }
 .cd-form label.cd-username {
-  background-image: url("../../images/cd-icon-username.svg");
+  background-image: url("../../images/name.svg");
 }
 .cd-form label.cd-email {
-  background-image: url("../../images/cd-icon-email.svg");
+  background-image: url("../../images/email.svg");
 }
 .cd-form label.cd-password {
-  background-image: url("../../images/cd-icon-password.svg");
+  background-image: url("../../images/password.svg");
 }
 .cd-form label.cd-userAge {
-  background-image: url("../../images/cd-icon-password.svg");
+  background-image: url("../../images/age.svg");
 }
 .cd-form label.cd-gender {
   background-image: url("../../images/cd-icon-password.svg");
