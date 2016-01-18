@@ -22,7 +22,7 @@
 	font-size: 1em;
 	font-family: 'Raleway', Arial, sans-serif;
 } */
-body{
+/* body{
 font-family: 'Raleway', Arial, sans-serif;
 padding:0;
 font-size:12px;
@@ -30,8 +30,7 @@ margin:0 auto;
 color:#545554;
 line-height: 1;
 background:url(../../images/bg.gif) repeat top left #FFFFFF;
-}
-
+} */
 a {
 	color: #2CC185;
 	text-decoration: none;

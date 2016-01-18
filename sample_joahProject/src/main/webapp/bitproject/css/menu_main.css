@@ -2,7 +2,7 @@
 
 /* ¸ðµçÆäÀÌÁöÀÇ °íÅë ½ºÅ¸ÀÏ */
 html {overflow-y:scroll; width:100%; height:100%;}
-body { margin: 0px; padding: 0px; font-family: "Dotum", arial, "Baekmuk Dotum", "Apple Gothic" ; font-size: small; color:#666;  }
+/* body { margin: 0px; padding: 0px; font-family: "Dotum", arial, "Baekmuk Dotum", "Apple Gothic" ; font-size: small; color:#666;  } */
 
 /* ÅÂ±× ÃÊ±âÈ­ */
 h1, h2, h3, h4, h5, h6, p, dl, dd, div, form  {margin: 0px;padding:0px;}

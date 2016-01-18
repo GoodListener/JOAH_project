@@ -46,15 +46,14 @@ float:left; margin:0 3px 0 3px;
 }
 
 .center_content{
-width:1160px; clear:both; padding:35px 0 0 0;
+width:1160px; clear:both; padding:0px 0 0px 0;
 }
 .center_content_pages{
-width:1160px; clear:both; 
+width:1160px; clear:both; padding:35px 0 0 0; 
 }
 
 /* pages_banner �뒗 二쇳솴�깋 �씈�뿉 湲��쟻�뒗嫄� */
 .pages_banner{ height:80px; background: #de462a no-repeat center; line-height:80px; font-size:24px; padding:0 0 0 30px; color: #fff}
-
 /*----------------menu tab----------------------*/
 .menu {font-size:14px;padding:5px 0 0px 0; float:left; width:1160px;margin-top: 20px;}
 /* remove all the bullets, borders and padding from the default list styling */
