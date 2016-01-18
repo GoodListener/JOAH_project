@@ -13,11 +13,11 @@
     width: 50%;
     }
 .menu .menu_login input{
-	background:url(../../images/bg.gif) repeat top left #FFFFFF;
-	width:80px;
-	border: none;
-	readonly;
-	
+   background:url(../../images/bg.gif) repeat top left #FFFFFF;
+   width:80px;
+   border: none;
+   readonly;
+   
     }
 /* -------------------------------- 
 
@@ -514,12 +514,12 @@ p.has-padding{
   transition: opacity 0.2s 0, visibility 0 0;
 }
 .cd-form .id-confirm {
-	position: absolute;
-	left:50px;
-	top: 55px;
-	visibility: hidden;
-	font-size: 11px;
-	color: #27A800;
+   position: absolute;
+   left:50px;
+   top: 55px;
+   visibility: hidden;
+   font-size: 11px;
+   color: #27A800;
 }
 .cd-form .id-confirm.visible {
   visibility: visible;
@@ -561,7 +561,7 @@ p.has-padding{
 } */
 
 .cd-form .cd-success-message.is-visible {
-	/* opacity: 0.8; */
+   /* opacity: 0.8; */
   visibility: hidden;
  /*  -webkit-transition: opacity 0.2s 0, visibility 0 0;
   -moz-transition: opacity 0.2s 0, visibility 0 0;

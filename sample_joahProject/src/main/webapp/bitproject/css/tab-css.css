@@ -385,10 +385,7 @@
 /*****************************/
 /* Flip */
 /*****************************/
-
-.tabs-style-flip {
-	max-width: 1200px;
-}
+.content_wrap .tabs-style-flip{width:900px; float:left; }
 
 .tabs-style-flip nav a {
 	padding: 0.5em 0;

@@ -105,4 +105,6 @@ a { text-decoration:none; }
    .m_times_waple_travel_02 .travel02  .comment_wrap .title {background:#ff3c41; font-weight:bold; color:#fff; padding:3px 5px 2px 5px; display:inline-block; margin-left:10px;}
    .m_times_waple_travel_02 .travel02  .comment_wrap .comment { color:#858585; line-height:9px; padding:8px 120px 0px 10px;}
 
-   
+    .content_wrap { width:1160px; height:600px; margin-bottom:40px;}
+	.content_wrap .content_wrap_L {width:910px; float:left; }
+	.content_wrap .content_wrap_R {width:250px; float:right; height: 500px; border:2px solid lightgray}
