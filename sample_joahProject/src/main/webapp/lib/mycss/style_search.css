@@ -221,6 +221,22 @@ margin-top:20px;
 /*.form_textarea{width:200px;height:70px;float:left;padding:10px 0px 30px 10px; background-color:#E7E5DE; border:none; color:#000; font-family:Arial, Helvetica, sans-serif; font-size:12px;}*/
 input.form_search{clear:both; margin:20px 0px 0px 11px; width:149px; height:34px; text-align:center; color:#fff; font-size:16px; background: #666666; border:none; font-weight:bold; padding:0 0 0 0px; cursor:pointer;}
 
+/*선택박스 그림*/
+div.select_div {
+	width:300px;
+	height:80px;
+	position: relative;
+	top: -70px;
+	left: 500px;
+	padding: 0;
+}
+div.select_div > div {
+	padding: 0;
+}
+div.select_div > div > img {
+  padding: 0;
+}
+/*선택박스 그림 끝*/
 /*-----------------------------------------------------*/
 /*     end left content <search option> 留뚮뱾湲�         */
 /*-----------------------------------------------------*/
