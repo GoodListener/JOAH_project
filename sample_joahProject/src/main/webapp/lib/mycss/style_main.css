@@ -346,3 +346,43 @@ width:960px; clear:both; padding:35px 0 0 0;
 .center_content_pages{
 width:960px; clear:both; padding:15px 0 0 0;
 }*/
+
+#hr_index {
+	margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 2px solid darkgray;
+    width:auto;
+}
+
+/*********************************
+           move comment 
+**************************************/
+.content_wrap_R hr {
+	width:auto;
+	height: 10px;
+	margin: 5px 0 0 0;
+}
+.vticker_li #byid{
+	text-align: right;
+	margin-right: 15px; 
+}
+.vticker{
+}
+.vticker ul{
+	width:240px;
+	padding: 0;
+}
+#vticker_li{
+	list-style: none;
+	border-bottom: 1px solid green;
+	padding: 10px 0 0 0px;
+	margin-top:10px;
+}
+.et-run{
+	background: red;
+}
+.img_size{
+	width: 70px;
+	height:70px;
+}

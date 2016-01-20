@@ -21,6 +21,15 @@
     order by cre_dt desc
   </select>
   
+  <select id="commentList" resultMap="commentMap">
+    select 
+      id,
+      cno,
+      content,
+      cre_dt
+    from comment
+    order by cre_dt desc
+  </select>
   
   <insert id="insert" parameterType="comment">
     insert into comment(id,bno,content, cre_dt) 

@@ -35,6 +35,18 @@ public class CommentController {
     return resultMap;
   }
   
+  @RequestMapping("listComment")
+  public Object listComment() throws Exception{
+    List<Comment> comments = commentDao.commentList();
+    
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", comments);
+    
+    return resultMap;
+  }
+  
   
  /* @RequestMapping(value="add", method=RequestMethod.GET)
   public String form() {

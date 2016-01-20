@@ -14,6 +14,8 @@ public interface CommentDao {
   int update(Location location);*/
   
   public int delete(Map<String, Object> paramMap);
+  
+  public List<Comment> commentList();
 
 
   /*Comment selectOne(int no);*/
