@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../lib/mycss/style_main.css" />
+	<link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
+	<link rel="stylesheet" type="text/javascript" href="../lib/myjs/jquery-latest.min.js"/>
+	<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+ 	 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	  <script type="text/javascript" src="js/wow.min.js"></script>
+ 	 <script type="text/javascript" src="js/main.js"></script>
+	
+</head>
+<body>
+	<header role="banner">
+		<div id="cd-logo"><a href="#0"><img src="img/cd-logo.svg" alt="Logo"></a></div>
+
+		<nav class="main-nav">
+			<ul>
+				<!-- inser more links here -->
+				<li><a class="cd-signin" href="#0">Sign in</a></li>
+				<li><a class="cd-signup" href="#0">Sign up</a></li>
+			</ul>
+		</nav>
+	</header>
+<!------------------------------------------>
+<!--            Modal 시작                -->
+<!------------------------------------------>
+   <div class="cd-user-modal " id="cd-user-modal">
+      <!-- this is the entire modal form, including the background -->
+      <div class="cd-user-modal-container">
+         <!-- this is the container wrapper -->
+         <ul class="cd-switcher">
+            <li><a href="#0">Sign in</a></li>
+            <li><a href="#0">New account</a></li>
+         </ul>
+
+         <div id="cd-login">
+            <!-- log in form -->
+            <form class="cd-form">
+            
+            
+            	<p class="fieldset">
+                  <label class="image-replace cd-password" for="signup-password">현재 비밀번호</label>
+                  <input class="full-width has-padding has-border"
+                     id="signup-password" type="password" placeholder="현재 비밀번호">
+                     <span class="cd-error-message" id="span-pwd-error">Error message here!</span>
+               </p>
+               
+               <p class="fieldset">
+                  <label class="image-replace cd-password" for="signup-password">새 비밀번호</label>
+                  <input class="full-width has-padding has-border"
+                     id="new-password" type="password" placeholder="새 비밀번호">
+                     <span class="cd-error-message" id="span-pwd-error">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <label class="image-replace cd-password" for="signup-check-password">새 비밀번호 확인</label> 
+                  <input class="full-width has-padding has-border" 
+                  	id="new-password-check" type="password" placeholder="새 비밀번호 확인">
+                  <span class="cd-error-message" id="span-check-error">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <input class="full-width" type="submit" value="변경하기" id="udatePwdBtn">
+               </p>
+            </form>
+
+            
+            <a href="#0" class="cd-close-form">Close</a>
+         </div>
+         <!-- cd-login -->
+<!-- ---------------------------------------------------------------------------------------------- -->
+<!--                                             정보수정.                                                                              -->
+<!-- ---------------------------------------------------------------------------------------------- -->
+         <div id="cd-signup" role="dialog" data-keyboard="true">
+            <!-- sign up form -->
+            <form name='frm' class="cd-form">
+               
+               <p class="fieldset" oncancel="">
+                  <label class="image-replace cd-userID" for="signup-userID">ID</label>
+                  <input class="full-width has-padding has-border"
+                      type="text" placeholder="ID" id="signup-userID">
+                  <span class="cd-error-message" id="span-id-error">Error message here!</span>
+                  <span class="id-confirm" id="id-confirm">좋다. 너무좋다!</span>
+               </p>
+              
+               <p class="fieldset">
+                  <label class="image-replace cd-email" for="signup-email">E-mail</label>
+                  <input class="full-width has-padding has-border" id="signup-email"
+                     type="text" placeholder="E-mail"> 
+                     <span class="cd-error-message" id="span-email-error">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <label class="image-replace cd-username" for="signup-username">Username</label>
+                  <input class="full-width has-padding has-border"
+                     id="signup-username" type="text" placeholder="Username">
+                  <span class="cd-error-message" id="span-username-error">Error message here!</span>
+               </p>
+
+              
+                 <table>
+                 <tr>
+                    <td>
+                  <p class="fieldset">
+                     <label class="image-replace cd-userAge" for="signup-userAge">Age</label>
+                      <input style="width:170px" class="has-padding has-border" type="number" id="signup-userAge"placeholder="Age" min="0" max="100">
+                      <span class="cd-error-message" id="span-age-error">Error message here!</span>
+                  </p>
+               </td>
+               <td>
+                  <p style="border-radius: 0.25em; padding: 11px 20px; width:230px; margin-top:-10px" 
+                     class="has-border" >
+               <span style="color: #bcbcbc; font-size: 15px;">Gender</span>
+                  <input id="signup-gender-male" style="margin-left:25px" type="radio" name="radios" value="male" class="signup-gender">
+                  <label style="margin-right: 10px; color:black;" for="radio1">Male</label>
+                  <input type="radio" id="signup-gender-female" name="radios" value="female" class="signup-gender">
+                  <span class="cd-error-message" id="span-gender-error">성별을 설정해주세요.</span>
+                  <label style="color:black;"for="radio2">Female</label>
+                  
+                  </p>
+               </td>
+               </tr>
+               </table>
+               <table style="border: 1px solid #d2d8d8; border-radius: 0.25em; padding: 12px 20px 12px 50px;
+                       margin: 22px 20px 16px 22px">
+              <tr>
+                <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;">
+                   <img alt="" title="" border="0" /></td>
+                <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;font-size:15px;">Interest</td>
+                <td>
+                 <input onclick="CountChecked(this)"  style="margin:15px 0 0 15px;" type="checkbox" value="walking" name="interest" id="walking" class="inter">
+                 <label for="walking">산책</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="food" name="interest" id="food" class="inter">
+                 <label for="food">맛집</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="culture" name="interest" id="culture" class="inter">
+                 <label style="padding-right:18px;" for="culture">문화/공연</label>
+            
+            <br>
+            
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="exercise" name="interest" id="exercise" class="inter">
+                 <label for="exercise">운동</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="play" name="interest" id="play" class="inter">
+                 <label for="play">유흥</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="experience" name="interest" id="experience" class="inter">
+                 <label style="padding-right:18px;" for="experience">체험</label>
+            
+            <br>
+            
+            
+                 <input onclick="CountChecked(this)" style="margin:15px 0 13px 15px;" type="checkbox" value="leisure" name="interest" id="leisure" class="inter">
+                 <label for="leisure">여가</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 15px 15px;" type="checkbox" value="etc" name="interest" id="etc" class="inter">
+                 <label for="etc">기타</label>
+                 </td>
+              </tr>
+            </table>
+            
+             <!-- 프로필사진.  -->
+            <div id="procImageView" style="width: 100px; height: 100px; margin:30px 0 0 23px; border: 1px solid silver;"></div>
+            <div class="Uploadbtn">
+              <input id="fileupload" class="input-upload" type="file" name="file" onchange="show(this)">
+             <input id='fphotofile' type='hidden'>  
+              <span>Upload</span>
+            </div> 
+            
+
+               <p class="fieldset">
+                  <input type="checkbox" id="accept-terms"> <label
+                     for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+               </p>
+
+               <p class="fieldset">
+                  <input class="full-width has-padding" type="submit" id="addBtn"
+                     value="Create account">
+               </p>
+            </form>
+
+            <a href="" class="cd-close-form">Close</a>
+         </div>
+         <!-- cd-signup -->
+      </div>
+      <!-- cd-user-modal-container -->
+</div>
+   <script type="text/javascript" src="js/jquery.cookie.js"></script>
+   <script type="text/javascript" src="js/jquery.session.js"></script>
+   <script type="text/javascript" src="../lib/myjs/main.js"></script>
+   <script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+   <script type="text/javascript" src="js/jquery.fileupload.js"></script>
+   <script>
+    $(document).ready( function() {
+    var id = $.cookie("id");
+    if (id != null && id != "") {
+       $("#signin-userID").val(); // id textbox에 쿠키값 출력
+      $("#saveId").attr("checked", "checked"); // 체크박스에 체크
+    }
+  });  
+    $('#loginBtn').click( function(event) {
+          var checkStatus = $("#saveId").is(":checked");
+          if (checkStatus) {
+            $.cookie("id", $("#signin-userID").val());
+          } else {
+            $.cookie("id", "");
+          }   
+           
+          $.post('ajax/login.do', {
+            id : $('#signin-userID').val(),
+            password : $('#signin-password').val(),
+          }, function(resultObj) {
+            var ajaxResult = resultObj.ajaxResult;
+            if (ajaxResult.status == "success") {
+              idSession = ajaxResult.data.id;
+              sessionStorage.setItem('loginSession',idSession);
+              location.href = "";
+            } else {
+              alert("없는 아이디 이거나 패스워드가 일치하지 않습니다.");
+            }
+          }, 'json');
+        });
+   });
+</script>
+</body>
+</html>
+
