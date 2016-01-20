@@ -85,21 +85,12 @@ $.ajax({
          <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
        <div class="left_content">
-         <label style="margin: 15px 0 15px -15px; font-size: 30px; ">Search Option</label>
+         <label style="margin: 15px 0 15px -15px; font-size: 30px; ">List</label>
         <div class="sidebar blog-sidebar">
-          <div class="sidebar-item categories">
-            <ul class="nav navbar-stacked">
-              <li><a href="#">Start Station<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">End Station<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">Cost<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a href="#">Age Group<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-            </ul>
-            <input type="button" class="form_search" value="Search" />
-           </div>
+          <div class="sidebar-item categories" id="searchList">
+          <!-- 여기에 검색 리스트 띄움. ul li 로 -->
+          </div>
+          <input type="button" class="form_search" value="Search" />
         </div>
       </div>
 
@@ -150,6 +141,21 @@ $.ajax({
           </div>
           <div class="col-sm-3" id="choice_div4">
             <img src="circle.png" class="img-circle">
+          </div>
+         </div>
+         
+         <div class="select_div_span row">
+          <div class="col-sm-3" id="choice_name1">
+          <span style="font-size:8px;"> </span>
+          </div>
+          <div class="col-sm-3" id="choice_name2">
+          <span style="font-size:8px;"> </span>
+          </div>
+          <div class="col-sm-3" id="choice_name3">
+          <span style="font-size:8px;"> </span>
+          </div>
+          <div class="col-sm-3" id="choice_name4">
+          <span style="font-size:8px;"> </span>
           </div>
          </div>
       </div>
@@ -221,19 +227,23 @@ $.ajax({
                           var mapInfoTestWindow = [];
                           var searchNo;
                           var objNo;
+                          var searchList = $("#searchList");
                           
                           /* 메뉴 클릭 했을 때에! */
                           $(".form_mapSear").click(function(event) {
                             searchNo = $(this).attr("id");
-                            console.log(openMarkers);
+                            $(".checked").removeClass("checked");
+                            $(this).addClass("checked");
                             for(var c = 0; c < openMarkers.length; c++){
                               oMap.removeOverlay(oMarkers[openMarkers[c]]); // 열려있는 마커를 닫는다.
                             }
-                            
                           $.getJSON('ajax/location.do?intCode=' + searchNo, function(resultObj) {
                             var i = 0;
                             for(var location of resultObj.data) {
-                            
+                            	$("<ul>")
+                            	.html("<li class='searchlists'><a>"+ location.name +"<br>"+ location.content +"</a></li>")
+                            	.appendTo(searchList); //리스트 띄우는 것.
+                            	
                               oMarkers[location.lno] = new nhn.api.map.Marker(oIcon, {
                                       title : location.name,
                                       smallSrc: location.lno
@@ -277,8 +287,7 @@ $.ajax({
                             } // for문 끝 
                             
                           }); // AJAX 호출 끝
-                            
-                          
+                          $(".searchlists").remove();
                         });
                           
                           
@@ -345,6 +354,7 @@ $.ajax({
                                         var location = ajaxResult.data;
                                         $("#choice_div1").html("<img src='"+ location.photo +"' id='img_icon' class='img-circle'>" +
                                             "<input type='hidden' name='lno1' value='"+ targetNo +"'>");
+                                        $("#choice_name1").html("<span class='span_label'>"+ location.name +"</span>");
                                       }
                                   });
                                   c_count++;
@@ -355,6 +365,7 @@ $.ajax({
                                           var location = ajaxResult.data;
                                           $("#choice_div2").html("<img src='"+ location.photo +"' class='img-circle'>" +
                                                   "<input type='hidden' name='lno2' value='"+ targetNo +"'>");
+                                          $("#choice_name2").html("<span class='span_label'>"+ location.name +"</span>");
                                         }
                                     });
                                   c_count++;
@@ -365,6 +376,7 @@ $.ajax({
                                           var location = ajaxResult.data;
                                           $("#choice_div3").html("<img src='"+ location.photo +"' class='img-circle'>" +
                                                   "<input type='hidden' name='lno3' value='"+ targetNo +"'>");
+                                          $("#choice_name3").html("<span class='span_label'>"+ location.name +"</span>");
                                         }
                                     });
                                   c_count++;
@@ -375,6 +387,7 @@ $.ajax({
                                           var location = ajaxResult.data;
                                           $("#choice_div4").html("<img src='"+ location.photo +"' class='img-circle'>" +
                                                   "<input type='hidden' name='lno4' value='"+ targetNo +"'>");
+                                          $("#choice_name4").html("<span class='span_label'>"+ location.name +"</span>");
                                         }
                                     });
                                   c_count++;
@@ -403,7 +416,6 @@ $.ajax({
                           oMap.addOverlay(oMarkers[location.lno]);
                             } 
                           }); */
-                          
                           
                           var circle = new nhn.api.map.Circle({
                             strokeColor : "blue",

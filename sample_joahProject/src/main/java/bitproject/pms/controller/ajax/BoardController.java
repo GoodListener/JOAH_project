@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import bitproject.pms.dao.BoardDao;
+import bitproject.pms.domain.AjaxResult;
 import bitproject.pms.domain.Board;
 
 @Controller("ajax.BoardController")
@@ -63,11 +64,11 @@ public class BoardController {
     return resultMap;
   }
   
-  /*@RequestMapping("detail")
+  @RequestMapping("detail")
   public Object detail(int no) throws Exception {
     Board board = boardDao.selectOne(no);
     return new AjaxResult("success", board);
-  }*/
+  }
 /*
   @RequestMapping(value="update", method=RequestMethod.POST)
   public AjaxResult update(Board board, MultipartFile file) throws Exception {

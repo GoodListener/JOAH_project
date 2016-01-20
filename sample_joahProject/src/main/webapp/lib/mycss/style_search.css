@@ -144,7 +144,7 @@ height: 70px;
 img.map_pic{position: relative; margin:0px 0 0px 0;}
 /*-----吏��룄 �븘�씠肄� �븣臾몄뿉 first button-----*/
 input.form_mapSear{clear:both; height:24px; text-align:center; color:#fff; font-size:14px; background: #666666; border:none; margin:22px 0px 0px 0px; cursor:pointer;}
-
+input.form_mapSear.checked{clear:both; height:24px; text-align:center; color:#fff; font-size:14px; background: #0a3; border:none; margin:22px 0px 0px 0px; cursor:pointer;}
 /*-----search button-----*/   
 .search_border {    
     margin: 18px 10px 0px 0px;
@@ -223,7 +223,7 @@ input.form_search{clear:both; margin:20px 0px 0px 11px; width:149px; height:34px
 
 /*선택박스 그림*/
 div.select_div {
-	width:300px;
+	width:360px;
 	height:80px;
 	position: relative;
 	top: -70px;
@@ -236,7 +236,20 @@ div.select_div > div {
 div.select_div > div > img {
   padding: 0;
 }
-/*선택박스 그림 끝*/
+/* 라벨링 */
+div.select_div_span {
+  width:360px;
+  height:80px;
+  position: relative;
+  top: -73px;
+  left: 505px;
+  padding: 0;
+}
+div.select_div_span .span_label {
+	font-size: 8px;
+}
+
+/*선택박스 그림 라벨 끝*/
 /*-----------------------------------------------------*/
 /*     end left content <search option> 留뚮뱾湲�         */
 /*-----------------------------------------------------*/

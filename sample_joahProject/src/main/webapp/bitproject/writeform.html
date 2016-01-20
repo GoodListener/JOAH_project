@@ -2,28 +2,30 @@
 <html>
 <head>
 <meta charset='UTF-8'>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Tab Styles Inspiration: A small collection of styles for tabs" />
-<meta name="keywords" content="tabs, inspiration, web design, css, modern, effects, svg" />
-<meta name="author" content="Codrops" />
-<title>JOAH | by One Point</title>
-<link rel="stylesheet" type="text/css" href="../lib/mycss/style_search.css" />
+<title>Hot place</title>
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+<!-- <link rel="stylesheet" href="../css/common.css"> -->
+<link rel="stylesheet" type="text/css" href="../lib/mycss/style_detail.css" />
 <link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
-
- <link href="css/bootstrap.min.css" rel="stylesheet">
- <link href="css/font-awesome.min.css" rel="stylesheet">
- <link href="css/lightbox.css" rel="stylesheet">
- <link href="css/animate.min.css" rel="stylesheet">
- <link href="css/main.css" rel="stylesheet">
- <link href="css/responsive.css" rel="stylesheet">
-  <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/lightbox.min.js"></script>
-  <script type="text/javascript" src="js/wow.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lightbox.min.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script> 
+<script type="text/javascript" src="../lib/myjs/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
-    <script type="text/javascript"
+
+
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/lightbox.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+<script type="text/javascript"
       src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=553205575474122b3423699dc799445d"></script>
 <!-- 맵 인포 윈도우 시작. -->
 <style>
@@ -63,36 +65,89 @@ $.ajax({
 		<!--              header  끝              -->
 		<!------------------------------------------>
 
-
-
     <!------------------------------------------>
     <!--              지도와 작성폼           -->
     <!------------------------------------------>
-		<div class="center_content_pages">
-			<div class="pages_banner">게시물 작성</div>
-			
-			<div class="form">
-			 <div class="contact-form bottom" style="width:800px; height:1200px; margin-left:18%">
-         <form id="main-contact-form" name="contact-form" method="post">
-         <h2 class="page-header" 
-         style="padding-bottom:5px;margin: 10px 0 10px;border-bottom: 1px solid #aaa;">Title</h2>
-			   <input type="text" name="name" class="form-control" required="required" placeholder="제목" style="width:800px">
-   			<h2 class="page-header" 
-         style="padding-bottom:5px;margin: 10px 0 10px;border-bottom: 1px solid #aaa;">Map</h2>
-   			<div id="testMap" style="width: 800px; height: 400px; margin: 0;"></div>
-   			<h2 class="page-header" 
-         style="padding-bottom:5px;margin: 10px 0 10px;border-bottom: 1px solid #aaa;">Content</h2>
-   			<textarea rows="10" cols="100" placeholder="내용을 입력하세요" style="width:800px"></textarea>
-   			<h2 class="page-header" 
-         style="padding-bottom:5px;margin: 10px 0 10px;border-bottom: 1px solid #aaa;">Photo</h2>
-			   <input type="file" name="photo[]">
-			   <button class="btn btn-primary" >게시</button>
-			   </form>
-			</div>
-		</div>
-	</div>
+    
+    <div class="center_content_pages">
+      <div class="pages_banner">게시물 등록</div>
+    </div>
+		<section id="portfolio">
+      <div class="right_content">
+        <h2>글 작성</h2>
+                <input type="text" name="name" class="form-control" required="required" placeholder="제목"
+                style="background-color:transparent; border:0 solid black; font-size:13px;">
+        
+            <div id="testMap" style="width: 800px; height: 400px; margin: 10px 0 0 0;"></div>
+         </div>
 
-
+             <div class="left_content">
+         <label style="margin: 15px 0 15px 15px; font-size: 30px; ">Category</label>
+        <div class="sidebar blog-sidebar">
+          <div class="sidebar-item categories">
+            <ul class="nav navbar-stacked">
+              <li><a>1 location<span class="pull-right"></span></a></li>
+              <li><input style="border-radius:13px;"type="text"></li>
+              <li><a>2 location<span class="pull-right"></span></a></li>
+              <li><input style="border-radius:13px;"type="text"></li>
+              <li><a>3 location<span class="pull-right"></span></a></li>
+              <li><input style="border-radius:13px;"type="text"></li>
+              <li><a>4 location<span class="pull-right"></span></a></li>
+              <li><input style="border-radius:13px;"type="text"></li>
+              <li><a>5 location<span class="pull-right"></span></a></li>
+              <li><input style="border-radius:13px;"type="text"></li>
+              <li><a>6 location<span class="pull-right"></span></a></li>
+              <li><input style="border-radius:13px;"type="text"></li>
+            </ul>
+           </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 밑줄 한줄 -->
+    <div>
+      <hr style="position:relative; width:90%; border-top: 2px solid lightgray; ">
+    </div>
+    <!-- 밑줄 한줄 끝 -->
+    
+    <section>
+      <div class="row">
+      <div class="col-sm-1"></div>
+                <div class="col-sm-5">
+                <h2>후기 작성</h2>
+                <textarea rows="13" cols="60" placeholder="내용을 입력해주세요"></textarea>
+                </div>
+                <div class="col-sm-6">
+                    <h2>PHOTO</h2>
+                    <input type="file">
+                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="900ms" data-wow-delay="100ms">
+                        <img src="images/portfolio/1.jpg"></div>
+                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="800ms" data-wow-delay="200ms">
+                        <img src="images/portfolio/2.jpg"></div>
+                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="700ms" data-wow-delay="300ms">
+                        <img src="images/portfolio/3.jpg"></div>
+                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="600ms" data-wow-delay="100ms">
+                        <img src="images/portfolio/4.jpg"></div>
+                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="500ms" data-wow-delay="200ms">
+                        <img src="images/portfolio/5.jpg"></div>
+                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="400ms" data-wow-delay="300ms">
+                        <img src="images/portfolio/6.jpg"></div>
+                    
+                </div>
+            </div>
+    </section>
+    <div>
+      <hr style="position:relative; width:90%; border-top: 2px solid lightgray; ">
+    </div>
+    <button class="btn btn-primary" style="position:relative; left:1020px;">게시</button>
+    <button class="btn btn-default" style="position:relative; left:900px;">게시</button>
+    
+<footer>
+    <div>
+      <hr style="position:relative; width:90%; border-top: 2px solid lightgray; ">
+    </div>
+    아에이오우아에이오우
+</footer>
 </div>
     <!------------------------------------------>
     <!--              지도스크립트            -->
