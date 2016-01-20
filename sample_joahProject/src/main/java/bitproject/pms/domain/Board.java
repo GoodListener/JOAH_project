@@ -6,7 +6,7 @@ import java.sql.Date;
 public class Board  implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  protected int     no;
+  protected int     bno;
   protected String  id;
   protected String  title;
   protected String  content;
@@ -24,17 +24,17 @@ public class Board  implements Serializable {
   
   @Override
   public String toString() {
-    return "Board [no=" + no + ", id=" + id + ", title=" + title + ", content=" + content + ", views=" + views
+    return "Board [bno=" + bno + ", id=" + id + ", title=" + title + ", content=" + content + ", views=" + views
         + ", createdDate=" + createdDate + ", likes=" + likes + ", dislikes=" + dislikes + ", heart=" + heart
         + ", startLocation=" + startLocation + ", endLocation=" + endLocation + ", icon=" + icon + ", ageGroup="
         + ageGroup + ", costAll=" + costAll + ", photo=" + photo + "]";
   }
   
-  public int getNo() {
-    return no;
+  public int getBno() {
+    return bno;
   }
-  public void setNo(int no) {
-    this.no = no;
+  public void setBno(int bno) {
+    this.bno = bno;
   }
   public String getId() {
     return id;

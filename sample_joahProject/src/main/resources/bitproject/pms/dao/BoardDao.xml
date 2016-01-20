@@ -6,7 +6,7 @@
 <mapper namespace="bitproject.pms.dao.BoardDao">
 
   <resultMap type="board" id="boardMap">
-    <id 		column="bno" 		property="no"/>
+    <id 		column="bno" 		property="bno"/>
     <result column="cre_dt" 		property="createdDate"/>
     <result column="st_loc" 		property="startLocation"/>
     <result column="ed_loc" 		property="endLocation"/>
@@ -42,9 +42,12 @@
   
     
   <insert id="insert" parameterType="board">
-    insert into board(title,content,views,cre_dt,likes,dislikes,st_loc,ed_loc,icon,age_gr,cost_all) 
-    values(#{title},#{content},#{views},now(),#{likes},#{dislikes},#{startLocation},
+    insert into board(id,title,content,views,cre_dt,likes,dislikes,heart,st_loc,ed_loc,icon,age_gr,cost_all) 
+    values(#{id},#{title},#{content},0,now(),0,0,#{heart},#{startLocation},
            #{endLocation},#{icon},#{ageGroup},#{costAll})
+    <selectKey resultType="int" keyProperty="bno">
+        SELECT LAST_INSERT_ID() as bno
+    </selectKey>
   </insert>
   
   <!--
@@ -78,9 +81,8 @@
       cost_all,
       photo
     from board
-    where bno=#{no}
+    where bno=#{bno}
   </select>
-  
   
   
 </mapper>

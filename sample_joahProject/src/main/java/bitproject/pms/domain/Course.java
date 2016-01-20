@@ -1,7 +1,7 @@
 package bitproject.pms.domain;
 
-public class Location {
-
+public class Course {
+  protected int bno;
   protected int lno;
   protected String name;
   protected String content;
@@ -10,12 +10,6 @@ public class Location {
   protected double lat;
   protected double lng;
   
-  public int getLno() {
-    return lno;
-  }
-  public void setLno(int lno) {
-    this.lno = lno;
-  }
   public String getName() {
     return name;
   }
@@ -52,10 +46,16 @@ public class Location {
   public void setLng(double lng) {
     this.lng = lng;
   }
-  
-  
-  
-  
-  
-  
+  public int getBno() {
+    return bno;
+  }
+  public void setBno(int bno) {
+    this.bno = bno;
+  }
+  public int getLno() {
+    return lno;
+  }
+  public void setLno(int lno) {
+    this.lno = lno;
+  }
 }

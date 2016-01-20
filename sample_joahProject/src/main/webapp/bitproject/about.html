@@ -158,10 +158,6 @@ $.ajax({
       <!--                            end center_content_pages =                               -->
       <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
-        <!-- 테스트용 데이터 -->
-        <p id="mapLatLng"></p>
-        <p id="distance"></p>
-        <!-- 테스트 끝 -->
 
       <div class="footer">
          <div class="copyrights">
@@ -347,8 +343,8 @@ $.ajax({
                                       var ajaxResult = resultObj.ajaxResult;
                                       if (ajaxResult.status == "success") {
                                         var location = ajaxResult.data;
-                                        $("#choice_div1").html("<img src='"+ location.photo +"' class='img-circle'>" +
-                                            "<input type='hidden' value='"+ targetNo +"'>");
+                                        $("#choice_div1").html("<img src='"+ location.photo +"' id='img_icon' class='img-circle'>" +
+                                            "<input type='hidden' name='lno1' value='"+ targetNo +"'>");
                                       }
                                   });
                                   c_count++;
@@ -358,7 +354,7 @@ $.ajax({
                                         if (ajaxResult.status == "success") {
                                           var location = ajaxResult.data;
                                           $("#choice_div2").html("<img src='"+ location.photo +"' class='img-circle'>" +
-                                                  "<input type='hidden' value='"+ targetNo +"'>");
+                                                  "<input type='hidden' name='lno2' value='"+ targetNo +"'>");
                                         }
                                     });
                                   c_count++;
@@ -368,7 +364,7 @@ $.ajax({
                                         if (ajaxResult.status == "success") {
                                           var location = ajaxResult.data;
                                           $("#choice_div3").html("<img src='"+ location.photo +"' class='img-circle'>" +
-                                                  "<input type='hidden' value='"+ targetNo +"'>");
+                                                  "<input type='hidden' name='lno3' value='"+ targetNo +"'>");
                                         }
                                     });
                                   c_count++;
@@ -378,7 +374,7 @@ $.ajax({
                                         if (ajaxResult.status == "success") {
                                           var location = ajaxResult.data;
                                           $("#choice_div4").html("<img src='"+ location.photo +"' class='img-circle'>" +
-                                                  "<input type='hidden' value='"+ targetNo +"'>");
+                                                  "<input type='hidden' name='lno4' value='"+ targetNo +"'>");
                                         }
                                     });
                                   c_count++;
@@ -432,7 +428,7 @@ $.ajax({
                                           oMarkers[location.lno].setVisible(false);
                                         }
                                     circle.setCenterPoint(oMap.getCenter());
-                                  })
+                                  })//여기서 너무 많은 쿼리가 발생됨. 이거 수정할 수 있으면 수정하기.
                           });  
                         </script>
    <script type="text/javascript">
@@ -449,26 +445,41 @@ $.ajax({
        }
    }); -->
    
-   <!-- 인풋값 저장해서 DB에 넣기 TODO
+  <!--   인풋값 저장해서 DB에 넣기 TODO -->
    <script>
-   $.post('ajax/addcourse.do', {
-       lno[]:[lno1,lno2,lno3,lno4],
-       ID:
-     }, function(resultObj) {
-       var ajaxResult = resultObj.ajaxResult;
-       if (ajaxResult.status == "success") {
-         
-       } else {
-         
-       }
-     }, 'json');
+   var boardNo;
+   var lnos = [];
+   $("#save_Btn").click(function(event) {
+	 lnos[0] = parseInt($("input[name='lno1']").val());
+   lnos[1] = parseInt($("input[name='lno2']").val());
+   lnos[2] = parseInt($("input[name='lno3']").val());
+   lnos[3] = parseInt($("input[name='lno4']").val());
+	    $.post('ajax/addboard.do', {
+		     id : sessionStorage.getItem('loginSession'),
+		     title : '아무거나',
+		     content : '아무거나넣음',
+		     likes : 0,
+		     dislikes : 0,
+		     heart : 'Y',
+		     icon : $('#img_icon').attr('src')
+		   }, function(resultObj) {
+		         boardNo = resultObj.data; // 데이터에서 넘버 받아와야 함.
+		         $.post('ajax/addcourse.do', {
+		             bno : boardNo,
+		             lnoArray: JSON.stringify(lnos)
+		           }, function(resultObj) {
+		               console.log("보드-코스 저장에 성공");
+		               location.href="index.html";
+		           }, 'json'); 
+		     }, 'json');
+   });
+   
+   
    
    </script>
- -->
+ 
 </body>
 </html>
 
 
 
-
-             

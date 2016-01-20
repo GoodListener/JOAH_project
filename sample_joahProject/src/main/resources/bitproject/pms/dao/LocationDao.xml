@@ -6,7 +6,7 @@
 <mapper namespace="bitproject.pms.dao.LocationDao">
 
   <resultMap type="location" id="locationMap">
-    <id 		column="lno" 		property="no"/>
+    <id 		column="lno" 		property="lno"/>
   </resultMap>
 
   <select id="selectList" resultMap="locationMap" parameterType="String">

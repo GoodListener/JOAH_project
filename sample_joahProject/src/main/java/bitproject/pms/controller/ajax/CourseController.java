@@ -9,66 +9,64 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import bitproject.pms.dao.BoardDao;
-import bitproject.pms.domain.Board;
+import bitproject.pms.dao.CourseDao;
+import bitproject.pms.domain.AjaxResult;
+import bitproject.pms.domain.Course;
 
-@Controller("ajax.BoardController")
+@Controller("ajax.CourseController")
 @RequestMapping("/bitproject/ajax/*")
-public class BoardController { 
+public class CourseController { 
   
   public static final String SAVED_DIR = "/attachfile";
   
-  @Autowired BoardDao boardDao;
+  @Autowired CourseDao courseDao;
   @Autowired ServletContext servletContext;
   
-  @RequestMapping("list")
-  public Object list(
-      @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="10") int pageSize,
-      @RequestParam(defaultValue="no") String keyword,
-      @RequestParam(defaultValue="desc") String align) throws Exception {
-    
-    HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("startIndex", (pageNo - 1) * pageSize);
-    paramMap.put("length", pageSize);
-    paramMap.put("keyword", keyword);
-    paramMap.put("align", align);
-    
-    List<Board> boards = boardDao.selectList(paramMap);
-    
+  @RequestMapping("courselist")
+  public Object loc(int bno){
+    List<Course> courses;
+    courses = courseDao.selectList(bno);
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
-    resultMap.put("data", boards);
+    resultMap.put("data", courses);
     
     return resultMap;
   }
   
-/*  
- @RequestMapping(value="add", method=RequestMethod.GET)
+  
+ /* @RequestMapping(value="add", method=RequestMethod.GET)
   public String form() {
     return "board/BoardForm";
   }*/
-
   
-  @RequestMapping(value="addboard", method=RequestMethod.POST)
-  public Object add(Board board) throws Exception {
-    boardDao.insert(board);
-    int boardNo = board.getBno();
-    System.out.println("LastInsert boardNo" + boardNo);
-    HashMap<String,Object> resultMap = new HashMap<>();
-    resultMap.put("status", "success");
-    resultMap.put("data", boardNo);
-    return resultMap;
+  
+  @RequestMapping(value="addcourse", method=RequestMethod.POST)
+  public AjaxResult add(String lnoArray, int bno) throws Exception {
+    int[] lnos = new int[4];
+    Course course = new Course();
+    lnoArray = lnoArray.substring(1,lnoArray.length() - 1);
+    int i = 0;
+    for (String lno : lnoArray.split(",")) {
+      if(lno.equals("null")) continue;
+      lnos[i] = Integer.parseInt(lno);
+      i++;
+    }
+    for(int lno : lnos) {
+      course.setLno(lno);
+      course.setBno(bno);
+      courseDao.insert(course);
+    }
+    return new AjaxResult("success", null);
   }
   
-  /*@RequestMapping("detail")
+ /*
+  @RequestMapping("locationDetail")
   public Object detail(int no) throws Exception {
-    Board board = boardDao.selectOne(no);
-    return new AjaxResult("success", board);
-  }*/
-/*
+    Location location = locationDao.selectOne(no);
+    return new AjaxResult("success", location);
+  }
+
   @RequestMapping(value="update", method=RequestMethod.POST)
   public AjaxResult update(Board board, MultipartFile file) throws Exception {
     

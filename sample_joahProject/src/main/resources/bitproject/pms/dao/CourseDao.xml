@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bitproject.pms.dao.CourseDao">
+
+  <resultMap type="course" id="courseMap">
+    <id 		column="bno" 		property="bno"/>
+  </resultMap>
+
+  <select id="selectList" resultMap="courseMap" parameterType="int">
+     select c.bno,l.lno,l.int_code,l.name,l.content,l.cost,l.photo,l.lat,l.lng
+     from cour_loc c join location l on c.lno=l.lno
+     where bno=#{bno}
+  </select>
+  
+  
+    
+  <insert id="insert" parameterType="course">
+    insert into cour_loc(lno, bno)
+    values(#{lno},#{bno})
+  </insert>
+
+  <!--
+  <delete id="delete" parameterType="map">
+    delete from course 
+  	where bno=#{no} and (pwd is null or pwd=#{password})
+  </delete>
+  
+  <update id=Course parameterType="course">
+    update course set 
+      title=#{title},
+      content=#{content},
+      cre_dt=now(),
+  	  afile=#{attachFile}
+    where bno=#{no} and (pwd is null or pwd=#{password})
+  </update>
+    -->
+<!--     
+  <select id="selectOne" resultMap="courseMap" parameterType="int">
+    select
+      lno,
+      name,
+      content,
+      cost,
+      photo
+    from course
+    where lno=#{no}
+  </select>
+   -->
+</mapper>
+
+
+
+
+
+
