@@ -74,32 +74,19 @@ $.ajax({
     </div>
 		<section id="portfolio">
       <div class="right_content">
-        <h2>글 작성</h2>
+        <h3>다녀온 데이트의 간단한 제목을 등록해주세요.</h3>
                 <input type="text" name="name" class="form-control" required="required" placeholder="제목"
                 style="background-color:transparent; border:0 solid black; font-size:13px;">
         
-            <div id="testMap" style="width: 800px; height: 400px; margin: 10px 0 0 0;"></div>
-         </div>
+         <div id="testMap" style="width: 800px; height:500px; margin: 10px 0 0 0;"></div>
+       </div>
 
-             <div class="left_content">
-         <label style="margin: 15px 0 15px 15px; font-size: 30px; ">Category</label>
+      <div class="left_content">
+         <label style="margin: 15px 0 15px 55px; font-size: 20px; ">다녀온 곳</label>
         <div class="sidebar blog-sidebar">
-          <div class="sidebar-item categories">
-            <ul class="nav navbar-stacked">
-              <li><a>1 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a>2 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a>3 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a>4 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a>5 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a>6 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-            </ul>
-           </div>
+          <div class="sidebar-item categories" id="visitedList">
+          <!-- 리스트 ajax로 띄움. -->  
+          </div>
         </div>
       </div>
     </section>
@@ -192,16 +179,17 @@ $.ajax({
                           /* 마커 추가하기 + 해당하는 Infowindow 만들기 n 반복*/
                           
                           var oMarkers = [];
-                          var openMarkers = [];
                           var mapInfoTestWindow = [];
                           var searchNo;
                           var objNo;
                           var boardNo = location.href.split('?')[1].split('=')[1];
-                          
+                          var visitedList = $("#visitedList");
                           $.getJSON('ajax/courselist.do?bno=' + boardNo, function(resultObj) {
-                            var i = 0;
                             for(var location of resultObj.data) {
-                            
+                            	$("<ul class='nav navbar-stacked'>")
+                            	.html("<li><a>"+ location.name +"</a></li>")
+                            	.appendTo(visitedList);
+                            	
                               oMarkers[location.lno] = new nhn.api.map.Marker(oIcon, {
                                       title : location.name,
                                       smallSrc: location.lno
@@ -240,8 +228,6 @@ $.ajax({
                              oMarkers[location.lno].setVisible(true);
                              
                              
-                               openMarkers[i] = location.lno;
-                               i++; // 닫기 위해 기존 있던 마커넘버를 저장하는 것.
                             } // for문 끝 
                             
                           }); // AJAX 호출 끝
