@@ -1,114 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>JOAH | by One Point</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet"> 
-   <link href="css/main.css" rel="stylesheet">
-   <link href="css/responsive.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>JOAH | by One Point</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="../lib/mycss/style_mypage.css" />
-    <link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
-    
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
+<link rel="stylesheet" type="text/css" href="../lib/mycss/style_mypage.css" />
+<link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
+<script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</head>
+<!--/head-->
 
 <body>
-<div id="main_container">
-<header id="h_title"></header>
+	<div id="main_container">
+		<header id="h_title"></header>
+		<div class="center_content_pages">
+			<div class="pages_banner">MY PAGE</div>
+		</div>
 
+		<!-------Side Menu Bar 시작------>
+		<section style="padding-top: 30px;">
+
+			<div class="row" id="row_mypage">
+				<div id='cssmenu' class='col-xs-3'>
+					<ul>
+						<li><a href='#'><span>회원 정보</span></a>
+							<ul>
+								<li><a href='mypage.html'><span>커플 정보</span></a></li>
+								<li><a href='#'><span>회원 정보 변경</span></a></li>
+								<li><a href='#'><span>비밀번호 변경</span></a></li>
+								<li><a href='#'><span>회원 탈퇴</span></a></li>
+							</ul></li>
+						<li><a href='#'><span>마이 리스트</span></a>
+							<ul>
+								<li><a href='#'><span>나의 찜목록</span></a></li>
+								<li><a href='#'><span>후기 미작성</span></a></li>
+								<li><a href='#'><span>내가 작성한 게시물</span></a></li>
+							</ul></li>
+						<li><a href='#'><span>문의</span></a>
+							<ul>
+								<li><a href='#'><span>1:1 문의</span></a></li>
+							</ul></li>
+					</ul>
+				</div>
+				<!-------Side Menu Bar 끝------>
+				<div class="col-xs-9">
+					<div id="couple_info"></div>
+				</div>
+			</div>
+		</section>
+
+
+	
+
+
+	</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
-<script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
-<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
 <script>
-$.ajax({
-    url : "header.html",
-    dataType : "html",
-    type : "get",  // post 또는 get
-    success : function(result){
-        $("#h_title").html(result);
-    }
-});
-</script>
-            <div class="center_content_pages">
-               <div class="pages_banner">MY PAGE</div>
-            </div>
-    
-    <!-------Side Menu Bar 시작------>
-    <section style="padding-top:30px;">
-    
-        <div class="row" id="row_mypage">
-    <div id='cssmenu' class='col-xs-3'>
-      <ul>
-         <li><a href='#'><span>회원 정보</span></a>
-            <ul>
-               <li><a href='#'><span>커플 정보</span></a></li>
-               <li><a href='#'><span>회원 정보 변경</span></a></li>
-               <li><a href='#'><span>비밀번호 변경</span></a></li>
-               <li><a href='#'><span>회원 탈퇴</span></a></li>
-            </ul>
-          </li>
-         <li><a href='#'><span>마이 리스트</span></a>
-            <ul>
-               <li><a href='#'><span>나의 찜목록</span></a></li>
-               <li><a href='#'><span>후기 미작성</span></a></li>
-               <li><a href='#'><span>내가 작성한 게시물</span></a></li>
-            </ul>
-         </li>
-         <li><a href='#'><span>문의</span></a>
-            <ul>
-               <li><a href='#'><span>1:1 문의</span></a></li>
-            </ul>
-           </li>
-      </ul>
-   </div>
-    <!-------Side Menu Bar 끝------>
-   <div class="col-xs-9">
-       <div id="couple_info"></div>
-   </div>
-      </div>
-    </section>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script>
-$(document).ready(function(){
-    $("#couple_info").load("my_couple.html #couple", function() {
-      $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
-        var ajaxResult = resultObj.ajaxResult;
-        if (ajaxResult.status == "success") {
-          var member = ajaxResult.data;
-          /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
-          $("#member_id").val(sessionStorage.getItem('loginSession'));
-          $("#member_pwd").val(member.pwd);
-          $("#member_name").val(member.name);
-          $("#member_email").val(member.email);
-          $("#member_gender").val(member.gender);
-          $("#member_age").val(member.age);
-          $("#member_cid").val(member.cid);
-        }
-     });  
-    });
-});
-</script>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/wow.min.js"></script>
-    <script type="text/javascript" src="js/jquery.countTo.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>   
-   
+   $(document).ready(function() {
+     $("#couple_info").load("load/my_couple.html");
+     $("#h_title").load("load/header.html");
+   });
+ </script>
 
-</div>
-   
 
 </body>
 </html>

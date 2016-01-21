@@ -1,0 +1,256 @@
+<script type="text/javascript" src="../lib/myjs/main.js"></script>
+<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="js/jquery.fileupload.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.session.js"></script>
+<script type="text/javascript" src="js/auth/login_logout.js"></script>
+<head>
+</head>
+
+
+<div class="logo">
+   <a href="index.html">JOAH</a>
+</div>
+<div class="slogan">| Couple Date Course Website</div>
+
+<div class="header_socials">
+   <a href="#"><img src="../images/rss.png" alt="" title="" border="0" /></a> 
+   <a href="#"><img src="../images/facebook.png" alt="" title="" border="0" /></a> 
+   <a href="#"><img src="../images/linkedin.png" alt="" title="" border="0" /></a> 
+   <a href="#"><img src="../images/twitter.png"   alt="" title="" border="0" /></a> 
+   <a href="#"><img src="../images/flickr.png" alt="" title="" border="0" /></a>
+</div>
+<div class="menu">
+   <div class="menu_bar">
+      <ul>
+         <li><a href="about.html">Map Search</a></li>
+         <li><a href="index.html">My List</a></li>
+         <li><a href="admin_rec.html">Admin Board</a></li>
+         <li><a href="user_rec.html">User Board</a></li>
+         <!-- <li><a href="#">Admin Menu</a>
+        <ul>
+            <li><a href="" title="">회원관리 </a></li>
+            <li><a href="" title="">1:1 문의 </a></li>
+            <li><a href="" title="">관리자 추천 게시판 </a></li>
+        </ul>
+        </li> -->
+      </ul>
+   </div>
+   <div class="menu_login">
+      <nav class="main-nav">
+         <ul>
+            <li><a style="display:none" class="cd-signin" id="before_login1">Sign in</a></li>
+            <li><a style="display:none" class="cd-signup" id="before_login2">Sign up</a></li>
+         </ul>
+      </nav>
+      <nav class="main-nav2">
+         <ul>
+              <li><div id="after_login2"></div></li>
+            <li><a style="display:none" class="cd-signin" type="button" href="mypage.html" id="after_login3">My Page</a></li>
+            <li><a style="display:none" class="cd-signout" type="button" id="after_login1" >Log out</a></li>
+         </ul>
+      </nav>
+   </div>
+</div>
+<!------------------------------------------>
+<!--            Modal 시작                -->
+<!------------------------------------------>
+   <div class="cd-user-modal " id="cd-user-modal">
+      <!-- this is the entire modal form, including the background -->
+      <div class="cd-user-modal-container">
+         <!-- this is the container wrapper -->
+         <ul class="cd-switcher">
+            <li><a href="#0">Sign in</a></li>
+            <li><a href="#0">New account</a></li>
+         </ul>
+
+         <div id="cd-login">
+         
+            <!-- log in form -->
+            
+            <form class="cd-form">
+            
+               <p class="fieldset">
+                  <label class="image-replace cd-userID" for="signin-userID">ID</label>
+                  <input class="full-width has-padding has-border" id="signin-userID"
+                     type="text" placeholder="ID"> 
+                     <span class="cd-error-message">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <label class="image-replace cd-password" for="signin-password">Password</label>
+                  <input class="full-width has-padding has-border"
+                     id="signin-password" type="text" placeholder="Password">
+                  <a href="#0" class="hide-password">Hide</a> <span
+                     class="cd-error-message">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <input type="checkbox" id="saveId"> 
+                  <label id="savelabel" for="saveId">ID Save</label>
+               </p>
+
+               <p class="fieldset">
+                  <input class="full-width" type="submit" value="Login" id="loginBtn">
+               </p>
+            </form>
+
+            <!-- <p class="cd-form-bottom-message">
+               <a href="#0">Forgot your password?</a>
+            </p> -->
+            <a href="#0" class="cd-close-form">Close</a>
+         </div>
+         <!-- cd-login -->
+<!-- ---------------------------------------------------------------------------------------------- -->
+<!--                                             회원가입                                                                               -->
+<!-- ---------------------------------------------------------------------------------------------- -->
+         <div id="cd-signup" role="dialog" data-keyboard="true">
+            <!-- sign up form -->
+            <form name='frm' class="cd-form">
+               
+               <p class="fieldset" oncancel="">
+                  <label class="image-replace cd-userID" for="signup-userID">ID</label>
+                  <input class="full-width has-padding has-border"
+                      type="text" placeholder="ID" id="signup-userID">
+                  <span class="cd-error-message" id="span-id-error">Error message here!</span>
+                  <span class="id-confirm" id="id-confirm">좋다.</span>
+               </p>
+
+               <p class="fieldset">
+                  <label class="image-replace cd-password" for="signup-password">Password</label>
+                  <input class="full-width has-padding has-border"
+                     id="signup-password" type="password" placeholder="Password">
+                     <span class="cd-error-message" id="span-pwd-error">Error message here!</span>
+               </p>
+
+             <p class="fieldset">
+                  <label class="image-replace cd-password" for="signup-check-password">Password Check</label> 
+                  <input class="full-width has-padding has-border" id="signup-check-password" type="password" placeholder="Password Check">
+                  <span class="cd-error-message" id="span-check-error">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <label class="image-replace cd-email" for="signup-email">E-mail</label>
+                  <input class="full-width has-padding has-border" id="signup-email"
+                     type="text" placeholder="E-mail"> 
+                     <span class="cd-error-message" id="span-email-error">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <label class="image-replace cd-username" for="signup-username">Username</label>
+                  <input class="full-width has-padding has-border"
+                     id="signup-username" type="text" placeholder="Username">
+                  <span class="cd-error-message" id="span-username-error">Error message here!</span>
+               </p>
+
+              
+                 <table>
+                 <tr>
+                    <td>
+                  <p class="fieldset">
+                     <label class="image-replace cd-userAge" for="signup-userAge">Age</label>
+                      <input style="width:170px" class="has-padding has-border" type="number" id="signup-userAge"placeholder="Age" min="0" max="100">
+                      <span class="cd-error-message" id="span-age-error">Error message here!</span>
+                  </p>
+               </td>
+               <td>
+                  <p style="border-radius: 0.25em; padding: 11px 20px; width:230px; margin-top:-10px" 
+                     class="has-border" >
+               <span style="color: #bcbcbc; font-size: 15px;">Gender</span>
+                  <input id="signup-gender-male" style="margin-left:25px" type="radio" name="radios" value="male" class="signup-gender">
+                  <label style="margin-right: 10px; color:black;" for="radio1">Male</label>
+                  <input type="radio" id="signup-gender-female" name="radios" value="female" class="signup-gender">
+                  <span class="cd-error-message" id="span-gender-error">성별을 설정해주세요.</span>
+                  <label style="color:black;"for="radio2">Female</label>
+                  
+                  </p>
+               </td>
+               </tr>
+               </table>
+               <table style="border: 1px solid #d2d8d8; border-radius: 0.25em; padding: 12px 20px 12px 50px;
+                       margin: 22px 20px 16px 22px">
+              <tr>
+                <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;">
+                   <img alt="" title="" border="0" /></td>
+                <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;font-size:15px;">Interest</td>
+                <td>
+                 <input onclick="CountChecked(this)"  style="margin:15px 0 0 15px;" type="checkbox" value="walking" name="interest" id="walking" class="inter">
+                 <label for="walking">산책</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="food" name="interest" id="food" class="inter">
+                 <label for="food">맛집</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="culture" name="interest" id="culture" class="inter">
+                 <label style="padding-right:18px;" for="culture">문화/공연</label>
+            
+            <br>
+            
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="exercise" name="interest" id="exercise" class="inter">
+                 <label for="exercise">운동</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="play" name="interest" id="play" class="inter">
+                 <label for="play">유흥</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="experience" name="interest" id="experience" class="inter">
+                 <label style="padding-right:18px;" for="experience">체험</label>
+            
+            <br>
+            
+            
+                 <input onclick="CountChecked(this)" style="margin:15px 0 13px 15px;" type="checkbox" value="leisure" name="interest" id="leisure" class="inter">
+                 <label for="leisure">여가</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 15px 15px;" type="checkbox" value="etc" name="interest" id="etc" class="inter">
+                 <label for="etc">기타</label>
+                 </td>
+              </tr>
+            </table>
+            
+             <!-- 프로필사진.  -->
+            <div id="procImageView" style="width: 100px; height: 100px; margin:30px 0 0 23px; border: 1px solid silver;"></div>
+            <div class="Uploadbtn">
+              <input id="fileupload" class="input-upload" type="file" name="file" onchange="show(this)">
+             <input id='fphotofile' type='hidden'>  
+              <span>Upload</span>
+            </div> 
+               <p class="fieldset">
+                  <input class="full-width has-padding" type="submit" id="addBtn"
+                     value="Create account">
+               </p>
+            </form>
+            <a href="" class="cd-close-form">Close</a>
+         </div>
+         <!-- cd-signup -->
+
+
+<!--    	비밀번호찾기       
+			<div id="cd-reset-password">
+            reset password form
+            <p class="cd-form-message">Lost your password? Please enter your
+               email address. You will receive a link to create a new password.</p>
+
+            <form class="cd-form">
+               <p class="fieldset">
+                  <label class="image-replace cd-email" for="reset-email">E-mail</label>
+                  <input class="full-width has-padding has-border" id="reset-email"
+                     type="email" placeholder="E-mail"> <span
+                     class="cd-error-message">Error message here!</span>
+               </p>
+
+               <p class="fieldset">
+                  <input class="full-width has-padding" type="submit"
+                     value="Reset password">
+               </p>
+            </form>
+
+            <p class="cd-form-bottom-message">
+               <a href="#0">Back to log-in</a>
+            </p>
+         </div>
+         <a href="#0" class="cd-close-form">Close</a>  -->
+      </div>
+      <!-- cd-user-modal-container -->
+   </div>
+   <!-- cd-user-modal -->
+   <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+   
+   
+   <!-- start 민수 회원가입 -->
+   <!-- <script type="text/javascript" src="../lib/jquery/jquery.js"></script> -->
+   <!-- cd-user-modal -->
+   <script type="text/javascript" src="js/auth/newMemeber.js"> </script>
