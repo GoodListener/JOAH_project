@@ -247,6 +247,14 @@ legend { /*Search option 湲� �궎�슦湲�*/
 /*          Side Menu Bar 시작                         */
 /*--------------------------------------*/
 
+.profile {
+/* 	padding-left: 50px; */
+/* 	margin-left: 10px; */
+}
+
+.container1 {
+    margin-left: 40px;
+}
 /* Base Styles */
 #cssmenu,
 #cssmenu ul,
@@ -269,7 +277,7 @@ legend { /*Search option 湲� �궎�슦湲�*/
 #cssmenu {
   width: 250px;
   background: #fff;
-  margin: 30px 20px;
+  margin-left: 30px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;

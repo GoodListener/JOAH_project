@@ -1254,6 +1254,7 @@ Portfolio with right sidebar
 .categories .navbar-stacked li a {
   font-size: 16px;
   color: #6a6a6a;
+  float: right;
   padding: 8px 0;
   padding-left: 0;
 }
