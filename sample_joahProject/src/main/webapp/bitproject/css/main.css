@@ -1893,19 +1893,22 @@ span.stButton_gradient,
 
 .post-comment{
   padding-left: 70px;
-  padding-top: 36px;
+  padding-top: 10px;
   border-top: 1px solid #f1e8dd;
 }
 
 .post-comment .pull-left img{
   margin-right: 60px;
-  border-left: 3px solid #dab074;
 }
 
 .post-comment .media-body{
   padding-top: 6px;
-  border-bottom: 0;
-  padding-bottom: 50px;
+  border: 1px solid lightgray;
+  background-color: #eee;
+  padding-bottom: 10px;
+  width:600px;
+  top: 50px;
+  border-radius:10px;
 }
 
 .post-comment .media-body p{

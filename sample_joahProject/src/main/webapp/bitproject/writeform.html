@@ -45,12 +45,12 @@
 <!-- 맵 인포 윈도우 끝-->
 </head>
 <body>
-	<div id="main_container">
+  <div id="main_container">
 
-		<!-- header -->
-		<header id="h_title"></header>
+    <!-- header -->
+    <header id="h_title"></header>
 
-		<script>
+    <script>
 $.ajax({
     url : "header.html",
     dataType : "html",
@@ -61,21 +61,21 @@ $.ajax({
 });
 </script>
 
-		<!------------------------------------------>
-		<!--              header  끝              -->
-		<!------------------------------------------>
+    <!------------------------------------------>
+    <!--              header  끝              -->
+    <!------------------------------------------>
 
     <!------------------------------------------>
     <!--              지도와 작성폼           -->
     <!------------------------------------------>
-    
+    <!-- <form action="post"> -->
     <div class="center_content_pages">
       <div class="pages_banner">게시물 등록</div>
     </div>
-		<section id="portfolio">
+    <section id="portfolio">
       <div class="right_content">
         <h3>다녀온 데이트의 간단한 제목을 등록해주세요.</h3>
-                <input type="text" name="name" class="form-control" required="required" placeholder="제목"
+                <input type="text" id="input_title" name="title" class="form-control" required="required" placeholder="제목"
                 style="background-color:transparent; border:0 solid black; font-size:13px;">
         
          <div id="testMap" style="width: 800px; height:500px; margin: 10px 0 0 0;"></div>
@@ -102,7 +102,7 @@ $.ajax({
       <div class="col-sm-1"></div>
                 <div class="col-sm-5">
                 <h2>후기 작성</h2>
-                <textarea rows="13" cols="60" placeholder="내용을 입력해주세요"></textarea>
+                <textarea id="input_content" rows="13" cols="60" placeholder="내용을 입력해주세요"></textarea>
                 </div>
                 <div class="col-sm-6">
                     <h2>PHOTO</h2>
@@ -126,9 +126,9 @@ $.ajax({
     <div>
       <hr style="position:relative; width:90%; border-top: 2px solid lightgray; ">
     </div>
-    <button class="btn btn-primary" style="position:relative; left:1020px;">게시</button>
-    <button class="btn btn-default" style="position:relative; left:900px;">게시</button>
-    
+    <button class="btn btn-primary" id="addToboard" style="position:relative; left:1020px;">게시판에 등록</button>
+    <button class="btn btn-default" id="share_facebook" style="position:relative; left:760px;">페이스북에 공유</button>
+    <!-- </form> -->
 <footer>
     <div>
       <hr style="position:relative; width:90%; border-top: 2px solid lightgray; ">
@@ -139,7 +139,7 @@ $.ajax({
     <!------------------------------------------>
     <!--              지도스크립트            -->
     <!------------------------------------------>
-	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
  <script type="text/javascript">
  var oPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);                       
  var oCenterPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);
@@ -186,10 +186,10 @@ $.ajax({
                           var visitedList = $("#visitedList");
                           $.getJSON('ajax/courselist.do?bno=' + boardNo, function(resultObj) {
                             for(var location of resultObj.data) {
-                            	$("<ul class='nav navbar-stacked'>")
-                            	.html("<li><a>"+ location.name +"</a></li>")
-                            	.appendTo(visitedList);
-                            	
+                              $("<ul class='nav navbar-stacked'>")
+                              .html("<li><a>"+ location.name +"</a></li>")
+                              .appendTo(visitedList);
+                              
                               oMarkers[location.lno] = new nhn.api.map.Marker(oIcon, {
                                       title : location.name,
                                       smallSrc: location.lno
@@ -343,6 +343,21 @@ $.ajax({
      </script>
      <script type="text/javascript">
        try {document.execCommand('BackgroundImageCache', false, true);} catch(e) {}
+     </script>
+     
+     <!-- 등록 폼 -->
+     <script>
+     $("#addToboard").click(function(event) {
+         console.log(boardNo);
+         $.post('ajax/realAddboard.do', {
+           bno: boardNo,
+           title: $('#input_title').val(),
+           content: $('#input_content').val(),
+           success: function(resultObj) {
+             alert("게시물등록성공.");
+           }
+        }, 'json');
+     });
      </script>
 </body>
 </html>

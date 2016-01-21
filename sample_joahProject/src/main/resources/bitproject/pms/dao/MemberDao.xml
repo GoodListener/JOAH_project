@@ -36,7 +36,7 @@
 	</update>-->
 	
 	<select id="selectOne" resultType="member" parameterType="string">
-		select id,pwd,name,email,gender,age,cid
+		select id,pwd,name,email,gender,age,cid,photo
 		from member
 		where id=#{id}
 	</select>

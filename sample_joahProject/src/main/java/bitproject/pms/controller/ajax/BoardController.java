@@ -69,11 +69,11 @@ public class BoardController {
     Board board = boardDao.selectOne(no);
     return new AjaxResult("success", board);
   }
-/*
-  @RequestMapping(value="update", method=RequestMethod.POST)
-  public AjaxResult update(Board board, MultipartFile file) throws Exception {
+
+  @RequestMapping(value="realAddboard", method=RequestMethod.POST)
+  public AjaxResult update(Board board) throws Exception {
     
-    if (file.getSize() > 0) {
+    /*if (file.getSize() > 0) {
       String newFileName = MultipartHelper.generateFilename(file.getOriginalFilename());  
       File attachfile = new File(servletContext.getRealPath(SAVED_DIR) 
                                   + "/" + newFileName);
@@ -81,16 +81,15 @@ public class BoardController {
       board.setAttachFile(newFileName);
     } else if (board.getAttachFile().length() == 0) {
       board.setAttachFile(null);
-    }
+    }*/
     
-    
-    if (boardDao.update(board) <= 0) {
+    if (boardDao.firstUpdate(board) <= 0) {
       return new AjaxResult("failure", null);
     } 
     
     return new AjaxResult("success", null);
   }
-  
+/*  
   @RequestMapping("delete.do")
   public AjaxResult delete(int no, String password) throws Exception {
 
