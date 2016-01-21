@@ -21,14 +21,11 @@
     order by cre_dt desc
   </select>
   
-  <select id="commentList" resultMap="commentMap">
-    select 
-      id,
-      cno,
-      content,
-      cre_dt
-    from comment
-    order by cre_dt desc
+   <select id="commentList" resultMap="commentMap">
+    select c.content,c.cre_dt,c.id,c.bno,
+           b.bno,b.photo,b.title
+    from comment c join board b on c.bno=b.bno
+    order by c.cre_dt desc
   </select>
   
   <insert id="insert" parameterType="comment">

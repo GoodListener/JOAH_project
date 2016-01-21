@@ -27,7 +27,8 @@
 
 	<update id="update" parameterType="student">
 		update student set
-		name=#{name},
+		name=#{name},0
+		
 		tel=#{tel},
 		cid=#{cid},
 		photo=#{photo}

@@ -6,12 +6,31 @@ public class Comment {
   protected String id;  
   protected String content;
   protected String createdTime;
+  protected String  photo;
+  protected String  title;
   
   @Override
   public String toString() {
     return "Comment [cno=" + cno + ", bno=" + bno + ", id=" + id + ", content=" + content + ", createdTime="
         + createdTime + "]";
   }
+  
+  public String getPhoto() {
+    return photo;
+  }
+
+  public void setPhoto(String photo) {
+    this.photo = photo;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
   public int getCno() {
     return cno;
   }
