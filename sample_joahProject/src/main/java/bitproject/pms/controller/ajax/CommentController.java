@@ -58,8 +58,8 @@ public class CommentController {
   public AjaxResult add(Comment comment) throws Exception {
     
     commentDao.insert(comment);
-    
-    return new AjaxResult("success", null);
+    int cno = comment.getCno();
+    return new AjaxResult("success", cno);
   }
 
 /*  @RequestMapping("locationDetail")

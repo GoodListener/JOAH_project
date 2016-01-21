@@ -32,6 +32,9 @@
   <insert id="insert" parameterType="comment">
     insert into comment(id,bno,content, cre_dt) 
     values(#{id},#{bno},#{content},now())
+    <selectKey resultType="int" keyProperty="cno">
+        SELECT LAST_INSERT_ID() as cno
+    </selectKey>
   </insert>
 
   

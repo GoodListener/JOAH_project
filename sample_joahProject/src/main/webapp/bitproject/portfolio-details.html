@@ -162,7 +162,7 @@ $.ajax({
           <form method="post" action="#" data-ajax="true">
             <div class="row">
               <div class="col-sm-2">
-                <img class="img-circle" id="profile_image" width="127" height="137" alt="">
+                <img class="img-circle" id="profile_image" width="120" height="120" alt="">
               </div>
 
               <div class="col-sm-9">
@@ -237,15 +237,14 @@ $.ajax({
         time = month + "월 " + day + "일 " + hour + "시" + minute + "분";
         $('<li id="comment_li'+comment.cno+'" class="media">')
         .html('<div class="post-comment wow fadeInDown" data-wow-duration="'+count+'ms" data-wow-delay="800ms">' +
-        '<a class="pull-left"><img class="img-circle" width="127" height="127"' +
+        '<a class="pull-left"><img class="img-circle" width="70" height="70"' +
         'src="../profile_image/'+ comment.photo +'" alt="">' +
         '</a>' +
         '<div class="media-body">' +
-        '<span><i class="fa fa-user"></i>Posted by <a>'+ comment.id +'</a></span>' +
-        '          <p>'+ comment.content +'</p>' +
+        '<span><i class="fa fa-user"></i>Posted by <a>'+ comment.id +'</a></span><a style="position:relative; left:50px;"><i class="fa fa-clock-o"></i>'+ time +'</a>' +
+        '          <p style="margin:0 20px 0 0; padding: 0 20px 0 0; position:relative; left:20px;">'+ comment.content +'</p>' +
         '          <ul class="nav navbar-nav post-nav">' +
-         '           <li><a><i class="fa fa-clock-o"></i>'+ time +'</a></li>' +
-        '            <li><div class="deletecomment" id="comment' + comment.cno + '"><i class="fa fa-reply"></i>삭제</div></li>' +
+        '            <li style="position:relative; left:500px;"><div class="deletecomment" id="comment' + comment.cno + '"><i class="fa fa-reply"></i>삭제</div></li>' +
       '            </ul>' +
        '         </div>' +
        '       </div></li>').appendTo(com);
@@ -266,32 +265,32 @@ $.ajax({
       }
    });
  
- 
+ var newListNo;
  $("#comment-add-btn").click(function(event) {
    $.post('ajax/addcomment.do', {
         id: sessionStorage.getItem('loginSession'),
         bno: no,
         content: $('#com-content').val(),
-        success:function(data) {
-        }
       }, function(resultObj) {
         var ajaxResult = resultObj.ajaxResult;
         if (ajaxResult.status == "success") {
+        	location.reload(true);
+        	/* console.log(ajaxResult.data);
+        	newListNo = ajaxResult.data;
            var com = $("#commentList");
-           $('<li id="comment_li_new" class="media">')
+           $('<li id="comment_li'+ ajaxResult.data +'" class="media">')
            .html('<div class="post-comment wow fadeInDown" data-wow-duration="100ms" data-wow-delay="800ms">' +
-            '<a class="pull-left"> <img class="img-circle" width="127" height="127"' +
+            '<a class="pull-left"> <img class="img-circle" width="70" height="70"' +
             'src="../profile_image/'+ cPhoto +'" alt="">' +
             '</a>' +
             '<div class="media-body">' +
-            '<span><i class="fa fa-user"></i>Posted by <a>'+ sessionStorage.getItem('loginSession') +'</a></span>' +
-            '          <p>'+ $('#com-content').val() +'</p>' +
+            '<span><i class="fa fa-user"></i>Posted by <a>'+ sessionStorage.getItem('loginSession') +'</a></span><a style="position:relative; left:50px;"><i class="fa fa-clock-o"></i>방금 전</a>' +
+            '          <p style="margin:0 20px 0 0; padding: 0 20px 0 0; position:relative; left:20px;">'+ $('#com-content').val() +'</p>' +
             '          <ul class="nav navbar-nav post-nav">' +
-             '           <li><a><i class="fa fa-clock-o"></i> 방금 전</a></li>' +
-            '            <li><div class="deletecomment" id="comment_li_new"><i class="fa fa-reply"></i>삭제</div></li>' +
+            '            <li style="position:relative; left:500px;"><div class="deletecomment" id="comment'+ newListNo +'"><i class="fa fa-reply"></i>삭제</div></li>' +
           '            </ul>' +
            '         </div>' +
-           '       </div></li>').prependTo(com);
+           '       </div></li>').prependTo(com); */// 이게 한줄로 끝나다니....짜증난다.
         } 
       }, 'json');
     });
