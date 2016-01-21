@@ -45,33 +45,20 @@ $.ajax({
             <div class="center_content_pages">
                <div class="pages_banner">MY PAGE</div>
             </div>
-
-<!--     <section id="page-breadcrumb">
-        <div class="vertical-center sun">
-             <div class="container">
-                <div class="row">
-                    <div class="action">
-                        <div class="col-sm-12">
-                            <h1 class="title">My page</h1>
-                            <p>Why our Clients love to work with us.</p>
-                        </div>
-                     </div>
-                </div>
-            </div>
-        </div>
-   </section>
-    /#page-breadcrumb -->
     
     <!-------Side Menu Bar 시작------>
-    <section style="padding-top:30px;" >
-        <div class="row">
-    <div id='cssmenu' class='col-md-3'>
+    <section style="padding-top:30px;">
+        <div class="row" id="row_mypage">
+    <div id='cssmenu' class='col-xs-3'>
       <ul>
-         <li><a href='#'><span>회원 정보</span></a></li>
+         <li><a href='#'><span>회원 정보</span></a>
             <ul>
+               <li><a href='#'><span>커플 정보</span></a></li>
                <li><a href='#'><span>회원 정보 변경</span></a></li>
                <li><a href='#'><span>비밀번호 변경</span></a></li>
+               <li><a href='#'><span>회원 탈퇴</span></a></li>
             </ul>
+          </li>
          <li><a href='#'><span>마이 리스트</span></a>
             <ul>
                <li><a href='#'><span>나의 찜목록</span></a></li>
@@ -87,15 +74,15 @@ $.ajax({
       </ul>
    </div>
     <!-------Side Menu Bar 끝------>
-
-        <div class="container1 col-md-4">
-            <div class="profile text-center" style="margin-left:7px;">
-                <h1 class="margin-bottom">Profile</h1>
-                <img src="images/aboutus/default.jpg" class="margin-bottom" id="img_mypage" alt="">
+	<div class="col-xs-9">
+	    <h1 class="margin-bottom">커플 정보</h1>
+        <div class="col-xs-6" style="position: relative;">
+            <div class="profile text-center">
+                <img src="images/aboutus/default.jpg" class="img_mypage" alt="">
             </div>
    
            <div class="center_content">
-         <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">회원 정보</label>
+         <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">내 정보</label>
         <div class="sidebar blog-sidebar">
           <div class="sidebar-item categories" style="position: ">
             <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;">
@@ -106,22 +93,21 @@ $.ajax({
               <li><a>E-Mail<input id="member_email" style="border-radius:13px;"type="text"></a></li>
               <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text"></a></li>
               <li><a>Age<input id="member_age" style="border-radius:13px;"type="text"></a></li>
-              <li><a>Couple ID<input id="member_cid" style="border-radius:13px;"type="text"></a></li>
-            </ul>
+              <!-- <li><a>Couple ID<input id="member_cid" style="border-radius:13px;"type="text"></a></li>
+             --></ul>
 <!--             <input type="button" class="form_search" value="Modify" /> -->
            </div>
         </div>
       </div>
      </div>
 
-        <div class="container1 col-md-4">
-            <div class="profile text-center" style="margin-left:7px;">
-                <h1 class="margin-bottom">커플 정보</h1>
+        <div class="col-xs-6" style="position: relative;">
+            <div class="profile text-center">
                 <img src="images/aboutus/default.jpg" class="margin-bottom" id="img_mypage" alt="">
             </div>
    
            <div class="center_content">
-         <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">회원 정보</label>
+         <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">애인 정보</label>
         <div class="sidebar blog-sidebar">
           <div class="sidebar-item categories" style="position: ">
             <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;">
@@ -132,19 +118,17 @@ $.ajax({
               <li><a>E-Mail<input id="member_email" style="border-radius:13px;"type="text"></a></li>
               <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text"></a></li>
               <li><a>Age<input id="member_age" style="border-radius:13px;"type="text"></a></li>
-              <li><a>Couple ID<input id="member_cid" style="border-radius:13px;"type="text"></a></li>
-            </ul>
+              <!-- <li><a>Couple ID<input id="member_cid" style="border-radius:13px;"type="text"></a></li>
+             --></ul>
 <!--             <input type="button" class="form_search" value="Modify" /> -->
            </div>
         </div>
       </div>
       </div>
       </div>
+      </div>
     </section>
-   
-
- 
-
+    
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/lightbox.min.js"></script>
@@ -169,14 +153,7 @@ $.ajax({
          $("#member_age").val(member.age);
          $("#member_cid").val(member.cid);
        }
-    }); 
-
-    
-    
-        
-    
-    
-   
+    });  
    </script>
 
 </div>

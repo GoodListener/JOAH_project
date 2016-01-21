@@ -38,12 +38,12 @@ a { text-decoration:none; }
    .m_times_waple_travel_02 .travel02 .route01 {width:230px; position:absolute; left:48px; top:13px;}
     .m_times_waple_travel_02 .travel02 .route01 ul { margin:0 auto;}
    .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt {text-align:center; font-size:12px; color:#585858; font-weight:bold;}
-   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .txt {height:33px; background:url('/images/pic01.png') no-repeat left 0; display:inline-block; letter-spacing:-1px;}
-   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .txt .box {height:25px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat right 0; padding:6px 10px 0 10px; display:inline-block;}
-   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat center bottom; z-index:50;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .txt {height:33px; display:inline-block; letter-spacing:-1px;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .txt .box {height:25px; padding:6px 10px 0 10px; display:inline-block;}
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; z-index:50;}
    .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .poin_wrap { margin-top:6px;}
    .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .poin_wrap .time { line-height:12px; margin-bottom:3px;}
-   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .poin_wrap .poin_line {width:7px; height:61px; background:url('/common/m_times/image/waple_travel_02_poin01.png') no-repeat 0 0; position:relative; left:50%; margin-left:-4px; .left:0px; .margin-left:0px; }
+   .m_times_waple_travel_02 .travel02 .route01 ul li.route_txt .poin_wrap .poin_line {width:7px; height:61px; position:relative; left:50%; margin-left:-4px; .left:0px; .margin-left:0px; }
    .m_times_waple_travel_02 .travel02 .route01 ul li.route_img .badge_1 {width:80px; height:77px; position:absolute; right:-13px; top:-13px; background: url('/common/m_times/image/waple_travel_02_badge.png') no-repeat 0 0; text-indent: -100000px;}
    .m_times_waple_travel_02 .travel02 .route01 ul li a { display:block;}
    .route_img {width:230px; height:180px; position:relative; }
@@ -55,12 +55,12 @@ a { text-decoration:none; }
    .m_times_waple_travel_02 .travel02 .route02 {width:230px; position:absolute; left:326px; top:18px;}
     .m_times_waple_travel_02 .travel02 .route02 ul { margin:0 auto;}
    .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt {text-align:center; font-size:12px; color:#585858; font-weight:bold;}
-   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .txt {height:33px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat left 0; display:inline-block; letter-spacing:-1px;}
-   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .txt .box {height:25px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat right 0; padding:6px 10px 0 10px; display:inline-block;}
-   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat center bottom; z-index:50;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .txt {height:33px; display:inline-block; letter-spacing:-1px;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .txt .box {height:25px; padding:6px 10px 0 10px; display:inline-block;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px;z-index:50;}
    .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .poin_wrap { margin-top:6px;}
    .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .poin_wrap .time { line-height:12px; margin-bottom:3px;}
-   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .poin_wrap .poin_line {width:26px; height:41px; background:url('/common/m_times/image/waple_travel_02_poin02.png') no-repeat 0 0; position:relative; left:50%; margin-left:-20px; .left:0px; .margin-left:-15px;}
+   .m_times_waple_travel_02 .travel02 .route02 ul li.route_txt .poin_wrap .poin_line {width:26px; height:41px; position:relative; left:50%; margin-left:-20px; .left:0px; .margin-left:-15px;}
    .m_times_waple_travel_02 .travel02 .route02 ul li.route_img .badge_1 {width:80px; height:77px; position:absolute; right:-13px; top:-13px; background: url('/common/m_times/image/waple_travel_02_badge.png') no-repeat 0 0; text-indent: -100000px;}
    .m_times_waple_travel_02 .travel02 .route02 ul li a { display:block;}
    /* .m_times_waple_travel_02 .travel02 .route02 ul li.route_img {width:200px; height:220px; position:relative;  margin-left:-19px;}
@@ -72,12 +72,12 @@ a { text-decoration:none; }
    .m_times_waple_travel_02 .travel02 .route03 {width:230px; position:absolute; left:604px; top:18px;}
     .m_times_waple_travel_02 .travel02 .route03 ul { margin:0 auto;}
    .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt {text-align:center; font-size:12px; color:#585858; font-weight:bold;}
-   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .txt {height:33px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat left 0; display:inline-block; letter-spacing:-1px;}
-   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .txt .box {height:25px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat right 0; padding:6px 10px 0 10px; display:inline-block;}
-   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat center bottom; z-index:50;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .txt {height:33px; display:inline-block; letter-spacing:-1px;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .txt .box {height:25px; padding:6px 10px 0 10px; display:inline-block;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; z-index:50;}
    .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .poin_wrap {/* margin-top:6px; */}
    .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .poin_wrap .time { line-height:12px; margin-bottom:3px;}
-   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .poin_wrap .poin_line {width:7px; height:61px; background:url('/common/m_times/image/waple_travel_02_poin01.png') no-repeat 0 0; position:relative; left:50%; margin-left:-4px; .left:0px; .margin-left:0px;}
+   .m_times_waple_travel_02 .travel02 .route03 ul li.route_txt .poin_wrap .poin_line {width:7px; height:61px; position:relative; left:50%; margin-left:-4px; .left:0px; .margin-left:0px;}
    .m_times_waple_travel_02 .travel02 .route03 ul li.route_img .badge_1 {width:80px; height:77px; position:absolute; right:-13px; top:-13px; background: url('/common/m_times/image/waple_travel_02_badge.png') no-repeat 0 0; text-indent: -100000px;}
    .m_times_waple_travel_02 .travel02 .route03 ul li a { display:block;}
    /* .m_times_waple_travel_02 .travel02 .route03 ul li.route_img {width:250px; height:220px; position:relative; }
@@ -88,12 +88,12 @@ a { text-decoration:none; }
    .m_times_waple_travel_02 .travel02 .route04 {width:230px; position:absolute; left:884px; top:18px;}
     .m_times_waple_travel_02 .travel02 .route04 ul { margin:0 auto;}
    .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt {text-align:center; font-size:12px; color:#585858; font-weight:bold;}
-   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .txt {height:33px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat left 0; display:inline-block; letter-spacing:-1px;}
-   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .txt .box {height:25px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat right 0; padding:6px 10px 0 10px; display:inline-block;}
-   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; background:url('/common/m_times/image/waple_travel_02_txt.png') no-repeat center bottom; z-index:50;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .txt {height:33px; display:inline-block; letter-spacing:-1px;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .txt .box {height:25px; padding:6px 10px 0 10px; display:inline-block;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .poin { position:absolute; top:24px; left:50%; margin-left:-4px; width:8px; height:9px; z-index:50;}
    .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .poin_wrap { margin-top:6px;}
    .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .poin_wrap .time { line-height:12px; margin-bottom:3px;}
-   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .poin_wrap .poin_line {width:26px; height:41px; background:url('/common/m_times/image/waple_travel_02_poin03.png') no-repeat 0 0; position:relative; left:50%; margin-left:0px; .left:0px; .margin-left:15px;}
+   .m_times_waple_travel_02 .travel02 .route04 ul li.route_txt .poin_wrap .poin_line {width:26px; height:41px; position:relative; left:50%; margin-left:0px; .left:0px; .margin-left:15px;}
    .m_times_waple_travel_02 .travel02 .route04 ul li.route_img .badge_1 {width:80px; height:77px; position:absolute; right:-13px; top:-13px; background: url('/common/m_times/image/waple_travel_02_badge.png') no-repeat 0 0; text-indent: -100000px;}
    .m_times_waple_travel_02 .travel02 .route04 ul li a { display:block;}
    /* .m_times_waple_travel_02 .travel02 .route04 ul li.route_img {width:231px; height:201px; position:relative; margin-left:19px;}
