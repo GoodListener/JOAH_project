@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<body>
+<div>
+	    <h1 class="margin-bottom">회원 정보 수정</h1>
+        <div class="col-xs-2" style="position: relative;">
+            <div class="profile text-center">
+                <img src="images/aboutus/default.jpg" id="img_my_info" alt="">
+            </div>
+            <div>
+            	<button>upload</button>
+            </div>
+        </div>
+   			<div class="col-xs-5">
+           <div class="center_content" id="my_info_center_content">
+        <div class="sidebar blog-sidebar">
+          <div class="sidebar-item categories">
+            <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;">
+              <li><a id="my_a">ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
+              <!-- <li><a>Password<input style="border-radius:13px;"type="text"></a></li>
+              <li><a>Password Check<input style="border-radius:13px;" type="text"></a></li> -->
+              <li><a id="my_a">Name<input id="member_name" style="border-radius:13px;"type="text"></a></li>
+              <li><a id="my_a">E-Mail<input id="member_email" style="border-radius:13px;"type="text"></a></li>
+              <!-- <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text"></a></li>
+               --><li><a id="my_a">Age<input id="member_age" style="border-radius:13px;"type="text"></a></li>
+              <!-- <li><a>Couple ID<input id="member_cid" style="border-radius:13px;"type="text"></a></li>
+             --></ul>
+<!--             <input type="button" class="form_search" value="Modify" /> -->
+           </div>
+        </div>
+      </div>
+      </div>
+      <div class="col-xs-5">
+        <div>
+          <label style="margin: 0 0 10px 15px;">관심사</label>
+        </div>
+            <table style="border: 1px solid #d2d8d8; border-radius: 0.25em; padding: 12px 20px 12px 50px;" id="interest_form">     		
+              <tbody>
+              <tr>
+                <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;">
+                   <img alt="" title="" border="0"></td>
+                <td>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="walking" name="interest" id="walking" class="inter">
+                 <label for="walking">산책</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="food" name="interest" id="food" class="inter">
+                 <label for="food">맛집</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="culture" name="interest" id="culture" class="inter">
+                 <label style="padding-right:18px;" for="culture">문화/공연</label>
+            
+            <br>
+            
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="exercise" name="interest" id="exercise" class="inter">
+                 <label for="exercise">운동</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="play" name="interest" id="play" class="inter">
+                 <label for="play">유흥</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="experience" name="interest" id="experience" class="inter">
+                 <label style="padding-right:18px;" for="experience">체험</label>
+            
+            <br>
+            
+            
+                 <input onclick="CountChecked(this)" style="margin:15px 0 13px 15px;" type="checkbox" value="leisure" name="interest" id="leisure" class="inter">
+                 <label for="leisure">여가</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 15px 15px;" type="checkbox" value="etc" name="interest" id="etc" class="inter">
+                 <label for="etc">기타</label>
+                 </td>
+              </tr>
+            </tbody></table>
+        </div>
+	</div>
+
+<script>
+$.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
+  var ajaxResult = resultObj.ajaxResult;
+  if (ajaxResult.status == "success") {
+    var member = ajaxResult.data;
+    /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
+    $("#member_id").val(sessionStorage.getItem('loginSession'));
+    $("#member_pwd").val(member.pwd);
+    $("#member_name").val(member.name);
+    $("#member_email").val(member.email);
+    $("#member_gender").val(member.gender);
+    $("#member_age").val(member.age);
+    $("#member_cid").val(member.cid);
+  }
+});  
+</script>
+
+</body>
+</html>

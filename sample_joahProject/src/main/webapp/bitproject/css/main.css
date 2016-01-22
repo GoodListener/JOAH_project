@@ -1243,10 +1243,6 @@ Portfolio with right sidebar
   margin-bottom: 48px;
 }
 
-.categories .navbar-stacked li {
-  border-bottom: 1px solid #ececec;
-}
-
 .categories .navbar-stacked li:last-child {
   border-bottom: 0px solid #ececec;
 }

@@ -312,6 +312,16 @@ legend { /*Search option 湲� �궎�슦湲�*/
 /*--------------------------------------*/
 /*             profile 끝                                  */
 /*--------------------------------------*/
-
-
+#interest_form {
+	float: right;
+	
+}
+#img_my_info {
+   width:100%;
+   height:100px;
+   margin-bottom: 35px;
+}
+#my_info_center_content {
+	width: auto;
+}
 
