@@ -68,52 +68,46 @@ public class MemberController {
 
     return new AjaxResult("success", member);
   }
-  /*
-  @RequestMapping("update")
-  public String update(
-      String name,
-      String email,
-      String tel,
-      String cid,
-      String photo,
-      MultipartFile photofile,
-      Model model) throws Exception {
-
-    String newFileName = null;
-    
-    if (photofile.getSize() > 0) {
-      newFileName = MultipartHelper.generateFilename(photofile.getOriginalFilename());  
-      File attachfile = new File(
-          servletContext.getRealPath(SAVED_DIR) + "/" + newFileName);
-      photofile.transferTo(attachfile);
-      
-      makeThumbnailImage(
-          servletContext.getRealPath(SAVED_DIR) + "/" + newFileName, 
-          servletContext.getRealPath(SAVED_DIR) + "/s-" + newFileName + ".png");
+  
+  @RequestMapping(value="updateinfo", method=RequestMethod.POST)
+  public AjaxResult update(Member member/* MultipartFile file,*/   /* 예전 파일 명 */) throws Exception {
+    /*if (file.getSize() > 0) {  //새로 업로드 한 파일이 있다.
+      String newFileName = MultipartHelper.generateFilename(file.getOriginalFilename());
+      File attachfile = new File(servletContext.gtRealPath(SAVED_DIR) + "/" + newFileName);
+      file.transferTo(attachfile);
+      board.setAttachFile(newFileName);
+    } else if (board.getAttachFile().length() == 0) {
+      board.setAttachFile(null);
+    }*/
+    if (memberDao.updateinfo(member) <= 0) {
+      return new AjaxResult("failure", null);
     }
-    
-    Student student = new Student();
-    student.setName(name);
-    student.setEmail(email);
-    student.setTel(tel);
-    student.setCid(cid);
-    
-    if (newFileName != null) {
-      student.setPhoto(newFileName);
-    } else if (newFileName == null && photo.length() > 0) {
-      student.setPhoto(photo);
-    }
-    
-    studentService.change(student);
-    return "redirect:list.do";
+    return new AjaxResult("success", null);
   }
   
-  @RequestMapping("delete")
-  public String delete(String email, Model model) throws Exception {
-    studentService.remove(email);
-    return "redirect:list.do";
+  @RequestMapping(value="updatepwd", method=RequestMethod.POST)
+  public AjaxResult updatep(Member member) throws Exception {
+    if (memberDao.updatepwd(member) <= 0) {
+      return new AjaxResult("failure", null);
+    }
+    return new AjaxResult("success", null);
   }
-  */
+
+  
+  @RequestMapping("deletemember.do")
+  public AjaxResult delete(String id, String password) throws Exception {
+
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("id", id);
+    paramMap.put("password", password);
+    
+    if (memberDao.delete(paramMap) <= 0) {
+      return new AjaxResult("failure", null);
+    } 
+
+    return new AjaxResult("success", null);
+  }
+ 
 /*  private void makeThumbnailImage(String originPath, String thumbPath) 
       throws IOException {
     Thumbnails.of(new File(originPath))

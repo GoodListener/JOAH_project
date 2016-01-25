@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<body>
+<div>
+	    <h1 class="margin-bottom">회원 탈퇴</h1>
+  <div style="margin-left: 20px;">
+	    <label style="size: 50px;">JOAH 아이디는 재사용 및 복구 불가 안내</label><br>
+		<span>회원탈퇴 진행 시 본인을 포함한 타인 모두</span>
+		<span style="color: red;">아이디 재사용이나 복구가 불가능합니다.</span><br>
+		<span>신중히 선택하신 후 결정해주세요.</span>
+		<br><br>
+  </div>		
+   			<div class="col-xs-12">
+   			<div class="pwd_form">
+           <div class="center_content" id="my_info_center_content">
+        <div class="sidebar blog-sidebar">
+          <div class="sidebar-item categories">
+            <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;">
+              <li><a id="my_a">ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
+              <li><a id="my_a">비밀번호<input id="new_pwd" style="border-radius:13px;"type="password" placeholder="비밀번호 입력"></a></li>
+              <li><a id="my_a">비밀번호 확인<input id="new_pwd_check" style="border-radius:13px;"type="password" placeholder="비밀번호 확인"></a></li> 
+           </ul>
+<!--             <input type="button" class="form_search" value="Modify" /> -->
+           </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      <div >
+        <button id="updateBtn2" style="float: right; margin-top: 50px;">확인</button>
+      </div>
+	</div>
+
+
+<script>
+$.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
+  var ajaxResult = resultObj.ajaxResult;
+  if (ajaxResult.status == "success") {
+    var member = ajaxResult.data;
+    /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
+    $("#member_id").val(sessionStorage.getItem('loginSession'));
+    $("#member_pwd").val(member.pwd);
+  }
+});  
+
+$("#updateBtn2").click(function(event) {
+  $.post('ajax/updatepwd.do', {
+	password: $('#new_pwd').val(),
+  }, function(resultObj) {
+    var ajaxResult = resultObj.ajaxResult;
+    if (ajaxResult.status == "success") {
+      alert("ok")
+          } else {
+          alert("게시물 변경에 실패했습니다.");
+        } 
+  }, 'json');
+});
+
+</script>
+
+</body>
+</html>

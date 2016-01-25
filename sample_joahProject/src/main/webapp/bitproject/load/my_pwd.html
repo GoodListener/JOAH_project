@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<body>
+<div>
+	    <h1 class="margin-bottom">비밀번호 변경</h1>
+  <div style="margin-left: 20px;">
+	    <span style="size: 50px;">안전한 비밀번호로 내정보를 보호하세요.</span><br>
+		<span style="color: red;">다른 아이디/사이트에서 사용한 적 없는 비밀번호</span><br>
+		<span style="color: red;">이전에 사용한 적 없는 비밀번호가 안전합니다.</span><br><br>
+  </div>		
+   			<div class="col-xs-12">
+   			<div class="pwd_form">
+           <div class="center_content" id="my_info_center_content">
+        <div class="sidebar blog-sidebar">
+          <div class="sidebar-item categories">
+            <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;">
+              <li><a id="my_a">ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
+              <li><a id="my_a">현재 비밀번호<input id="pwd" style="border-radius:13px;"type="password" placeholder="현재 비밀번호 입력"></a></li>
+              <li><a id="my_a">새 비밀번호<input id="new_pwd" style="border-radius:13px;"type="password" placeholder="새 비밀번호 입력"></a></li>
+              <li><a id="my_a">새 비밀번호 확인<input id="new_pwd_check" style="border-radius:13px;"type="password" placeholder="새 비밀번호 확인"></a></li> 
+           </ul>
+<!--             <input type="button" class="form_search" value="Modify" /> -->
+           </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      <div >
+        <button id="updateBtn2" style="float: right; margin-top: 50px;">변경</button>
+      </div>
+	</div>
+
+
+<script>
+$.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
+  var ajaxResult = resultObj.ajaxResult;
+  if (ajaxResult.status == "success") {
+    var member = ajaxResult.data;
+    /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
+    $("#member_id").val(sessionStorage.getItem('loginSession'));
+  }
+});  
+$("#updateBtn2").click(function(event) {
+  $.post('ajax/updatepwd.do', {
+	password: $('#new_pwd').val(),
+  }, function(resultObj) {
+    var ajaxResult = resultObj.ajaxResult;
+    if (ajaxResult.status == "success") {
+      alert("ok")
+          } else {
+          alert("게시물 변경에 실패했습니다.");
+        } 
+  }, 'json');
+});
+
+</script>
+
+</body>
+</html>

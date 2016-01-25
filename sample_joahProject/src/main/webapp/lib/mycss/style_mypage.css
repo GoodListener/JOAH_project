@@ -324,4 +324,6 @@ legend { /*Search option 湲� �궎�슦湲�*/
 #my_info_center_content {
 	width: auto;
 }
-
+.pwd_form {
+	width:48%;
+}

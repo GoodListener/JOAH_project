@@ -23,17 +23,24 @@
 
 	<!-- <delete id="delete" parameterType="string">
 		delete from student where email=#{value}
-	</delete>
+	</delete> -->
 
-	<update id="update" parameterType="student">
-		update student set
-		name=#{name},0
-		
-		tel=#{tel},
-		cid=#{cid},
-		photo=#{photo}
-		where email=#{email}
-	</update>-->
+	<update id="updateinfo" parameterType="member">
+		update member set
+		  id=#{id},
+		  name=#{name},		
+		  email=#{email},
+		  age=#{age},
+		  photo=#{photo}
+		where id=#{id}  
+ 		<!-- 처음에 password 먼저 확인하고 나중에 변경할 땐 그냥 ok 하도록--> 
+	</update>
+	
+	<update id="updatepwd" parameterType="member">
+		update member set
+	      pwd=sha1(#{password})	
+		where id=#{id}  
+	</update>
 	
 	<select id="selectOne" resultType="member" parameterType="string">
 		select id,pwd,name,email,gender,age,cid,photo
@@ -46,7 +53,11 @@
 		from member
 		where id=#{id} and pwd=sha1(#{password})
 	</select> 
-</mapper>
+	
+	<delete id="">
+	
+	</delete>
+</mapper> 
 
 
 

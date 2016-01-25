@@ -1,5 +1,6 @@
 package bitproject.pms.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,14 +16,24 @@ public interface MemberDao {
   List<Member> idList();
 
   Member selectOne(String id);
-/*
+
+  int updateinfo(Member member);
+
+  int updatepwd(Member member);
+  
   int delete(String email);
+
+  int delete(HashMap<String, Object> paramMap);
+/*
   
   int update(Student student);
 
   Student selectOne(String email);
 
   Student selectOneByEmailPassword(Map<String,Object> paramMap);*/
+
+
+
 
 }
 

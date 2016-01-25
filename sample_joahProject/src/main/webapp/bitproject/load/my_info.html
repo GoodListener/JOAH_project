@@ -47,19 +47,14 @@
                  <label for="food">맛집</label>
                  <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="culture" name="interest" id="culture" class="inter">
                  <label style="padding-right:18px;" for="culture">문화/공연</label>
-            
             <br>
-            
                  <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="exercise" name="interest" id="exercise" class="inter">
                  <label for="exercise">운동</label>
                  <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="play" name="interest" id="play" class="inter">
                  <label for="play">유흥</label>
                  <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="experience" name="interest" id="experience" class="inter">
                  <label style="padding-right:18px;" for="experience">체험</label>
-            
             <br>
-            
-            
                  <input onclick="CountChecked(this)" style="margin:15px 0 13px 15px;" type="checkbox" value="leisure" name="interest" id="leisure" class="inter">
                  <label for="leisure">여가</label>
                  <input onclick="CountChecked(this)" style="margin:15px 0 15px 15px;" type="checkbox" value="etc" name="interest" id="etc" class="inter">
@@ -67,8 +62,10 @@
                  </td>
               </tr>
             </tbody></table>
-        </div>
+        </div>쇼
+        <button id="updateBtn" style="float: right; margin-top: 50px;">변경</button>
 	</div>
+
 
 <script>
 $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
@@ -85,6 +82,23 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
     $("#member_cid").val(member.cid);
   }
 });  
+
+$("#updateBtn").click(function(event) {
+  $.post('ajax/updateinfo.do', {
+	name: $('#member_name').val(),
+    email: $('#member_email').val(),
+    age: $('#member_age').val(),
+  }, function(resultObj) {
+    var ajaxResult = resultObj.ajaxResult;
+    if (ajaxResult.status == "success") {
+      alert("ok")
+            location.href = "mypage.html";
+          } else {
+          alert("게시물 변경에 실패했습니다.");
+        } 
+  }, 'json');
+});
+
 </script>
 
 </body>
