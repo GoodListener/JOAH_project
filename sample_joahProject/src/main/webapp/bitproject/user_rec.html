@@ -165,7 +165,7 @@ console.log(location.href);
 console.log("pageNo = ",pageNo);
 
 //$.getJSON(contextRoot + '/board/ajax/list.do', function(resultObj) {
-$.getJSON('ajax/list.do', function(resultObj) {
+$.getJSON('ajax/list.do?pageNo=' + pageNo, function(resultObj) {
    var table = $("#boardList");
   for (var board of resultObj.data) {
     $("<div class='col-sm-6 portfolio-item branded mockup mobile isotope-item'" +

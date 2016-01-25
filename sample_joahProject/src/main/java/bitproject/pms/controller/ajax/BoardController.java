@@ -24,10 +24,15 @@ public class BoardController {
   @Autowired BoardService boardService;
   @Autowired ServletContext servletContext;
   
+  @RequestMapping("all")
+  public AjaxResult countAll() {
+    return new AjaxResult("success",boardService.countAllBoard());
+  }
+  
   @RequestMapping("list")
   public Object list(
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="10") int pageSize,
+      @RequestParam(defaultValue="6") int pageSize,
       @RequestParam(defaultValue="no") String keyword,
       @RequestParam(defaultValue="desc") String align) throws Exception {
     
@@ -99,8 +104,5 @@ public class BoardController {
     return new AjaxResult("success", null);
   }*/
   
-  @RequestMapping("all")
-  public AjaxResult countAll() {
-    return new AjaxResult("success",boardService.countAllBoard());
-  }
+  
 }

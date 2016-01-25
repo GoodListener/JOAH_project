@@ -44,12 +44,22 @@ $(document).ready( function() {
       });
   
    if(sessionStorage.getItem('loginSession') != undefined) {
-     $("#after_login1").show();
-     $("#after_login2").show();
-     $("#after_login4").show();
-     $("#after_login2").text(sessionStorage.getItem('loginSession') + "님");
-     $("#after_login3").show();
-     $("#com-content").show();
+	   if (sessionStorage.getItem('loginSession') != 'admin') {
+		   console.log(sessionStorage.getItem('loginSession'));
+		     $("#after_login1").show();
+		     $("#after_login2").show();
+		     $("#after_login2").text(sessionStorage.getItem('loginSession') + "님");
+		     $("#after_login3").show();
+		     $("#com-content").show();
+	   } else {
+		   console.log(sessionStorage.getItem('loginSession'));
+		   $("#after_login1").show();
+		     $("#after_login2").show();
+		     $("#after_login2").text(sessionStorage.getItem('loginSession') + "님");
+		     $("#after_login4").show();
+		     $("#com-content").show();
+	   }
+     
   } else {
     $("#before_login1").show();
     $("#before_login2").show();

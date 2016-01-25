@@ -24,20 +24,19 @@
      <!--  t2.name, -->
       t1.cre_dt 
     from board t1
-	<!--    where t1.isboard=1;-->
+	where t1.isboard=1
     <!-- join member t2 on t1.id = t2.id -->
     order by 
     <choose>
-      <when test="keyword == 'title'">title </when>
-      <when test="keyword == 'views'">views </when>
-      <otherwise>bno </otherwise>
+      <when test="keyword == 'title'">t1.title </when>
+      <when test="keyword == 'views'">t1.views </when>
+      <otherwise>t1.bno </otherwise>
     </choose>
     <choose>
       <when test="align == 'asc'">asc</when>
       <otherwise>desc</otherwise>
     </choose>
     limit #{startIndex}, #{length}
-    
   </select>
   
     
@@ -88,7 +87,7 @@
   <select id="selectCountAll" resultType="int">
     select count(*)
     from board
-  	where isboard=1;
+  	where isboard=1
   </select>  
   
   
