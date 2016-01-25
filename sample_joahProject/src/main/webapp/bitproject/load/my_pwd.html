@@ -43,6 +43,7 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 });  
 $("#updateBtn2").click(function(event) {
   $.post('ajax/updatepwd.do', {
+    id: $('#member_id').val(),
 	password: $('#new_pwd').val(),
   }, function(resultObj) {
     var ajaxResult = resultObj.ajaxResult;

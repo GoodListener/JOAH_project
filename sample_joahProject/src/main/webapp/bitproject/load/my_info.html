@@ -62,7 +62,7 @@
                  </td>
               </tr>
             </tbody></table>
-        </div>쇼
+        </div>
         <button id="updateBtn" style="float: right; margin-top: 50px;">변경</button>
 	</div>
 
@@ -85,6 +85,7 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 
 $("#updateBtn").click(function(event) {
   $.post('ajax/updateinfo.do', {
+	id: $('#member_id').val(),
 	name: $('#member_name').val(),
     email: $('#member_email').val(),
     age: $('#member_age').val(),

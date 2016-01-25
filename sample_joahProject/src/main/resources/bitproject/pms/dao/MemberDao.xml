@@ -27,7 +27,6 @@
 
 	<update id="updateinfo" parameterType="member">
 		update member set
-		  id=#{id},
 		  name=#{name},		
 		  email=#{email},
 		  age=#{age},
