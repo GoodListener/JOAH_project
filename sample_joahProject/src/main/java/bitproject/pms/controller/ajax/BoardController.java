@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import bitproject.pms.dao.BoardDao;
 import bitproject.pms.domain.AjaxResult;
 import bitproject.pms.domain.Board;
+import bitproject.pms.service.BoardService;
 
 @Controller("ajax.BoardController")
 @RequestMapping("/bitproject/ajax/*")
@@ -21,7 +21,7 @@ public class BoardController {
   
   public static final String SAVED_DIR = "/attachfile";
   
-  @Autowired BoardDao boardDao;
+  @Autowired BoardService boardService;
   @Autowired ServletContext servletContext;
   
   @RequestMapping("list")
@@ -31,13 +31,8 @@ public class BoardController {
       @RequestParam(defaultValue="no") String keyword,
       @RequestParam(defaultValue="desc") String align) throws Exception {
     
-    HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("startIndex", (pageNo - 1) * pageSize);
-    paramMap.put("length", pageSize);
-    paramMap.put("keyword", keyword);
-    paramMap.put("align", align);
     
-    List<Board> boards = boardDao.selectList(paramMap);
+    List<Board> boards = boardService.getBoardList(pageNo, pageSize, keyword, align);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
@@ -55,7 +50,7 @@ public class BoardController {
   
   @RequestMapping(value="addboard", method=RequestMethod.POST)
   public Object add(Board board) throws Exception {
-    boardDao.insert(board);
+    boardService.register(board);
     int boardNo = board.getBno();
     System.out.println("LastInsert boardNo" + boardNo);
     HashMap<String,Object> resultMap = new HashMap<>();
@@ -66,7 +61,7 @@ public class BoardController {
   
   @RequestMapping("detail")
   public Object detail(int no) throws Exception {
-    Board board = boardDao.selectOne(no);
+    Board board = boardService.retieve(no);
     return new AjaxResult("success", board);
   }
 
@@ -83,7 +78,7 @@ public class BoardController {
       board.setAttachFile(null);
     }*/
     
-    if (boardDao.firstUpdate(board) <= 0) {
+    if (boardService.firstUpdate(board) <= 0) {
       return new AjaxResult("failure", null);
     } 
     
@@ -103,4 +98,9 @@ public class BoardController {
 
     return new AjaxResult("success", null);
   }*/
+  
+  @RequestMapping("all")
+  public AjaxResult countAll() {
+    return new AjaxResult("success",boardService.countAllBoard());
+  }
 }
