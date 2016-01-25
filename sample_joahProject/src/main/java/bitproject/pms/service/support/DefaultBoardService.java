@@ -24,11 +24,25 @@ public class DefaultBoardService implements BoardService {
     
     return boardDao.selectList(paramMap);
   }
-  /*
+ 
   public void register(Board board) {
     boardDao.insert(board);
   }
   
+  public int countAllBoard() {
+    return boardDao.selectCountAll();
+  }
+  
+  public Board retieve(int no) {
+    return boardDao.selectOne(no);
+  }
+
+  @Override
+  public int firstUpdate(Board board) {
+    return boardDao.firstUpdate(board);
+  }
+  
+  /*
   public void remove(int no, String password) {
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("no", no);
@@ -41,9 +55,7 @@ public class DefaultBoardService implements BoardService {
     boardDao.update(board);
   }
 
-  public Board retieve(int no) {
-    return boardDao.selectOne(no);
-  }*/
+  */
 }
 
 
