@@ -92,7 +92,8 @@ $("#updateBtn").click(function(event) {
   }, function(resultObj) {
     var ajaxResult = resultObj.ajaxResult;
     if (ajaxResult.status == "success") {
-      alert("ok")
+      alert("정보가 변경되었습니다.");
+      location.href = "mypage.html";
             location.href = "mypage.html";
           } else {
           alert("게시물 변경에 실패했습니다.");

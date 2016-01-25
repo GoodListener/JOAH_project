@@ -15,7 +15,7 @@
         <div class="sidebar blog-sidebar">
           <div class="sidebar-item categories">
             <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;">
-              <li><a id="my_a">ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
+              <li><a id="my_a"><input id="member_id" style="display: none;" readonly></a></li>
               <li><a id="my_a">현재 비밀번호<input id="pwd" style="border-radius:13px;"type="password" placeholder="현재 비밀번호 입력"></a></li>
               <li><a id="my_a">새 비밀번호<input id="new_pwd" style="border-radius:13px;"type="password" placeholder="새 비밀번호 입력"></a></li>
               <li><a id="my_a">새 비밀번호 확인<input id="new_pwd_check" style="border-radius:13px;"type="password" placeholder="새 비밀번호 확인"></a></li> 
@@ -32,29 +32,42 @@
 	</div>
 
 
-<script>
+<script> 
+
 $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
   var ajaxResult = resultObj.ajaxResult;
   if (ajaxResult.status == "success") {
     var member = ajaxResult.data;
-    /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
     $("#member_id").val(sessionStorage.getItem('loginSession'));
   }
-});  
+});
+
 $("#updateBtn2").click(function(event) {
+  if ($('#new_pwd').val() != $('#new_pwd_check').val()) {
+    alert("비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요~");
+    return;
+  } 
   $.post('ajax/updatepwd.do', {
     id: $('#member_id').val(),
-	password: $('#new_pwd').val(),
+	password: $('#pwd').val(),
+	newPassword: $('#new_pwd').val(),
   }, function(resultObj) {
     var ajaxResult = resultObj.ajaxResult;
     if (ajaxResult.status == "success") {
-      alert("ok")
+      alert("비밀번호가 변경되었습니다. 다시 로그인 해주세용~");     
+       $.post('ajax/logout.do',
+          function(resultObj) {
+           var ajaxResult = resultObj.ajaxResult;
+           if (ajaxResult.status == "success") {
+             sessionStorage.removeItem('loginSession');
+             location.href = "index.html";
+           }
+         },'json'); 
           } else {
           alert("게시물 변경에 실패했습니다.");
         } 
   }, 'json');
 });
-
 </script>
 
 </body>

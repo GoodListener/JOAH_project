@@ -19,11 +19,9 @@ public interface MemberDao {
 
   int updateinfo(Member member);
 
-  int updatepwd(Member member);
+  int updatepwd(HashMap<String, Object> paramMap);
   
-  int delete(String email);
-
-  int delete(HashMap<String, Object> paramMap);
+  int deletemember(HashMap<String, Object> paramMap);
 /*
   
   int update(Student student);
@@ -31,6 +29,7 @@ public interface MemberDao {
   Student selectOne(String email);
 
   Student selectOneByEmailPassword(Map<String,Object> paramMap);*/
+
 
 
 

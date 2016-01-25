@@ -18,8 +18,8 @@
           <div class="sidebar-item categories">
             <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;">
               <li><a id="my_a">ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
-              <li><a id="my_a">비밀번호<input id="new_pwd" style="border-radius:13px;"type="password" placeholder="비밀번호 입력"></a></li>
-              <li><a id="my_a">비밀번호 확인<input id="new_pwd_check" style="border-radius:13px;"type="password" placeholder="비밀번호 확인"></a></li> 
+              <li><a id="my_a">비밀번호<input id="pwd" style="border-radius:13px;"type="password" placeholder="비밀번호 입력"></a></li>
+              <li><a id="my_a">비밀번호 확인<input id="pwd_check" style="border-radius:13px;"type="password" placeholder="비밀번호 확인"></a></li> 
            </ul>
 <!--             <input type="button" class="form_search" value="Modify" /> -->
            </div>
@@ -28,7 +28,7 @@
       </div>
       </div>
       <div >
-        <button id="updateBtn2" style="float: right; margin-top: 50px;">확인</button>
+        <button id="deleteBtn" style="float: right; margin-top: 50px;">확인</button>
       </div>
 	</div>
 
@@ -40,21 +40,20 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
     var member = ajaxResult.data;
     /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
     $("#member_id").val(sessionStorage.getItem('loginSession'));
-    $("#member_pwd").val(member.pwd);
   }
 });  
 
-$("#updateBtn2").click(function(event) {
-  $.post('ajax/updatepwd.do', {
-	password: $('#new_pwd').val(),
-  }, function(resultObj) {
-    var ajaxResult = resultObj.ajaxResult;
-    if (ajaxResult.status == "success") {
-      alert("ok")
+$("#deleteBtn").click(function(event) {
+	$.getJSON('ajax/deletemember.do?id=' + $('#member_id').val()
+	        + '&password=' 
+	        + $('#pwd').val(), function(resultObj) {
+        var ajaxResult = resultObj.ajaxResult;
+        if (ajaxResult.status == "success") {
+            location.href = "index.html";
           } else {
-          alert("게시물 변경에 실패했습니다.");
+          alert("게시물 삭제에 실패했습니다.");
         } 
-  }, 'json');
+	});
 });
 
 </script>

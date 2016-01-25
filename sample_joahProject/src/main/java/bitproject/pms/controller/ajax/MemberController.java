@@ -86,8 +86,14 @@ public class MemberController {
   }
   
   @RequestMapping(value="updatepwd", method=RequestMethod.POST)
-  public AjaxResult updatep(Member member) throws Exception {
-    if (memberDao.updatepwd(member) <= 0) {
+  public AjaxResult updatep(String id, String password, String newPassword) throws Exception {
+    
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("id", id);
+    paramMap.put("password", password);
+    paramMap.put("newPassword", newPassword);
+    
+    if (memberDao.updatepwd(paramMap) <= 0) {
       return new AjaxResult("failure", null);
     }
     return new AjaxResult("success", null);
@@ -101,7 +107,7 @@ public class MemberController {
     paramMap.put("id", id);
     paramMap.put("password", password);
     
-    if (memberDao.delete(paramMap) <= 0) {
+    if (memberDao.deletemember(paramMap) <= 0) {
       return new AjaxResult("failure", null);
     } 
 

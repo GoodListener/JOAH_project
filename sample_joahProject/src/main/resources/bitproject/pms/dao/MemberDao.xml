@@ -35,10 +35,10 @@
  		<!-- 처음에 password 먼저 확인하고 나중에 변경할 땐 그냥 ok 하도록--> 
 	</update>
 	
-	<update id="updatepwd" parameterType="member">
+	<update id="updatepwd" parameterType="map">
 		update member set
-	      pwd=sha1(#{password})	
-		where id=#{id}  
+	      pwd=sha1(#{newPassword})	
+		where id=#{id} and pwd=sha1(#{password})
 	</update>
 	
 	<select id="selectOne" resultType="member" parameterType="string">
@@ -53,8 +53,9 @@
 		where id=#{id} and pwd=sha1(#{password})
 	</select> 
 	
-	<delete id="">
-	
+	<delete id="deletemember" parameterType="map">
+	 	delete from member
+	 	where id=#{id} and pwd=sha1(#{password})	
 	</delete>
 </mapper> 
 
