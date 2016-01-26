@@ -85,7 +85,7 @@ $.ajax({
          <!--//////////////////////////////////////////////////////////////////////////////////// -->
 
        <div class="left_content">
-         <label style="margin: 15px 0 15px -15px; font-size: 30px; ">List</label>
+         <label style="margin: 5px 0 5px -15px; font-size: 30px; ">List</label>
         <div class="sidebar blog-sidebar">
           <div class="sidebar-item categories" id="searchList">
           <!-- 여기에 검색 리스트 띄움. ul li 로 -->
@@ -233,8 +233,9 @@ $.ajax({
                           $.getJSON('ajax/location.do?intCode=I-006', function(resultObj) {
                               var i = 0;
                               for(var location of resultObj.data) {
-                                $("<ul>")
-                                .html("<li class='searchlists'><a>"+ location.name +"<br>"+ location.content +"</a></li>")
+                                $("<ul class='inbox'>")
+                                .html("<li class='searchlists message'><span class='from'>"+ location.name +
+                                		"</span><br><span style='font-size:11px;'>"+ location.content +"</span></li>")
                                 .appendTo(searchList); //리스트 띄우는 것.
                                 
                                 oMarkers[location.lno] = new nhn.api.map.Marker(oIcon, {
@@ -256,11 +257,10 @@ $.ajax({
                                     '                <img src="'+ location.photo +'" width="73" height="70">' +
                                     '           </div>' +
                                     '            <div class="desc">' +
-                                    '                <div class="ellipsis">'+ location.content +
-                                    '                <div class="jibun ellipsis">' +
-                                    '                <div class="choice_1" id="choice_id'+location.lno+'"><button type="button" class="btn btn-default btn-xs" style="align:right;">선택</button></div>' + // 선택 분류할 때 div를 다르게 하기.
-                                    '            </div>' +
-                                    '        </div>' +
+                                    '                <div class="ellipsis">'+ location.content + '</div>' +
+                                    '                <div class="jibun ellipsis"></div>' +
+                                    '                <div class="choice_1" id="choice_id'+location.lno+'" style="position:relative; top:25px; left:180px">' +
+                                    '                <button type="button" class="btn btn-default btn-xs">선택</button></div>' + // 선택 분류할 때 div를 다르게 하기.
                                     '    </div>' +
                                     '</div>'
                                 });
@@ -297,8 +297,9 @@ $.ajax({
                           $.getJSON('ajax/location.do?intCode=' + searchNo, function(resultObj) {
                             var i = 0;
                             for(var location of resultObj.data) {
-                            	$("<ul>")
-                            	.html("<li class='searchlists'><a>"+ location.name +"<br>"+ location.content +"</a></li>")
+                            	$("<ul class='inbox'>")
+                            	.html("<li class='searchlists message'><span class='from'>"+ location.name +
+                            			"</span><br><span style='font-size:11px;'>"+ location.content +"</span></li>")
                             	.appendTo(searchList); //리스트 띄우는 것.
                              
                             	oMarkers[location.lno].setVisible(true);
