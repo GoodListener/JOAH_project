@@ -42,6 +42,17 @@ $(document).ready( function() {
           }
         },'json');
       });
+    
+    $('#admin_logout').click( function(event) {
+      $.post('ajax/logout.do',
+          function(resultObj) {
+        var ajaxResult = resultObj.ajaxResult;
+        if (ajaxResult.status == "success") {
+          sessionStorage.removeItem('loginSession');
+          location.href = "";
+        }
+      },'json');
+    });
   
    if(sessionStorage.getItem('loginSession') != undefined) {
 	   if (sessionStorage.getItem('loginSession') != 'admin') {
