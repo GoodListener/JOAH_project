@@ -41,7 +41,33 @@ border-bottom:1px #ebebeb solid;background-color:#fff;}
 /* make the second level visible when hover on first level list OR link */
 .menu ul li:hover ul, .menu ul a:hover ul {visibility:visible; height:auto; padding-bottom:3em; background:transparent url(../../images/trans.gif);}
 
+/* a {
+	color: #2CC185;
+	text-decoration: none;
+	outline: none;
+} */
 
+.logo a:hover, a:focus {
+	color: #74777b;
+}
+.logo{
+float:left;
+padding:0px 0 0 35px;
+font-size:50px;
+margin:20px 0 0 0;
+background:url(../../images/logo2.png) no-repeat left;
+background-position:0px 22px;
+}
+.logo a{ color:#454546; text-decoration:none; letter-spacing:-3px;}
+.slogan{ float:left; margin:57px 0 0 8px;}
+.header_socials{
+padding:50px 0 0 0;
+float:right;
+margin:0;
+}
+.header_socials a{
+float:left; margin:0 3px 0 3px;
+}
 /*-----------------------------------------------------------------------*/
 /*                             modal START                               */
 /*-----------------------------------------------------------------------*/
@@ -80,7 +106,7 @@ html * {
 
 body {
   font-size: 100%;
-  font-family: "PT Sans", sans-serif;
+/*   font-family: "PT Sans", sans-serif; */
   color: #505260;
   background-color: white;
 }
@@ -165,7 +191,15 @@ header[role=banner]::after {
   margin-right:-40px;
   cursor: pointer;
 }
-.main-nav ul, .main-nav2 ul {
+.main-nav3 {
+  float: right;
+  width: 44px;
+  height: 100%;
+  background: url("../../images/cd-icon-menu.svg") no-repeat center center;
+  margin-right:-58px;
+  cursor: pointer;
+}
+.main-nav ul, .main-nav2 ul, .main-nav3 ul {
   position: absolute;
   top: 0;
   left: 0;
@@ -176,14 +210,14 @@ header[role=banner]::after {
   -o-transform: translateY(-100%);
   transform: translateY(-100%);
 }
-.main-nav ul.is-visible, .main-nav2 ul.is-visible {
+.main-nav ul.is-visible, .main-nav2 ul.is-visible, .main-nav3 ul.is-visible {
   -webkit-transform: translateY(50px);
   -moz-transform: translateY(50px);
   -ms-transform: translateY(50px);
   -o-transform: translateY(50px);
   transform: translateY(50px);
 }
-.main-nav a, .main-nav2 a {
+.main-nav a, .main-nav2 a, .main-nav3 a {
   display: block;
   height: 50px;
   line-height: 50px;
@@ -193,13 +227,13 @@ header[role=banner]::after {
   color: #FFF;
 }
 @media only screen and (min-width: 768px) {
-  .main-nav, .main-nav2 {
+  .main-nav, .main-nav2, .main-nav3 {
     width: auto;
     height: auto;
     background: none;
     cursor: auto;
   }
-  .main-nav ul, .main-nav2 ul {
+  .main-nav ul, .main-nav2 ul, .main-nav3 ul {
     position: static;
     width: auto;
     -webkit-transform: translateY(0);
@@ -209,27 +243,28 @@ header[role=banner]::after {
     transform: translateY(0);
     line-height: 80px;
   }
-  .main-nav ul.is-visible, .main-nav2 ul.is-visible {
+  .main-nav ul.is-visible, .main-nav2 ul.is-visible, .main-nav3 ul.is-visible {
     -webkit-transform: translateY(0);
     -moz-transform: translateY(0);
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0);
   }
-  .main-nav li, .main-nav2 li {
+  .main-nav li, .main-nav2 li, .main-nav3 li {
     display: inline-block;
     margin-left: 1em;
   }
-  .main-nav li:nth-last-child(2), .main-nav2 li:nth-last-child(2) {
+  .main-nav li:nth-last-child(2), .main-nav2 li:nth-last-child(2), .main-nav3 li:nth-last-child(2) {
     margin-left: 2em;
   }
-  .main-nav a, .main-nav2 a {
+  .main-nav a, .main-nav2 a, .main-nav3 a {
     display: inline-block;
     height: auto;
     line-height: normal;
     background: transparent;
   }
   .main-nav a.cd-signin, .main-nav a.cd-signup,.main-nav a.cd-signout,
+  .main-nav3 a.cd-signin, .main-nav3 a.cd-signup,.main-nav3 a.cd-signout,
   .main-nav2 a.cd-signin, .main-nav2 a.cd-signup,.main-nav2 a.cd-signout {
     padding: .6em 1em;
     border: 1px solid #de462a;
@@ -238,6 +273,7 @@ header[role=banner]::after {
     margin: -2px;
   }
   .main-nav a.cd-signup,.main-nav a.cd-signout,
+  .main-nav3 a.cd-signup,.main-nav3 a.cd-signout,
   .main-nav2 a.cd-signup,.main-nav2 a.cd-signout {
     background: #de462a;
     color: #fff;

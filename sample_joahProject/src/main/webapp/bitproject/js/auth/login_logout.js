@@ -53,15 +53,15 @@ $(document).ready( function() {
 		     $("#com-content").show();
 	   } else {
 		   console.log(sessionStorage.getItem('loginSession'));
-		   $("#after_login1").show();
-		     $("#after_login2").show();
-		     $("#after_login2").text(sessionStorage.getItem('loginSession') + "님");
-		     $("#after_login4").show();
+		     $("#admin_logout").show();
+		     $("#admin_menu_id").show();
+		     $("#admin_menu_id").text(sessionStorage.getItem('loginSession') + "님");
+		     $("#admin_menu").show();
 		     $("#com-content").show();
 	   }
      
   } else {
     $("#before_login1").show();
     $("#before_login2").show();
-     $("#com-content2").show();
+    $("#com-content2").show();
   }

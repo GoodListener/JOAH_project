@@ -25,6 +25,17 @@
 <body>
 	<div id="main_container">
 		<header id="h_title"></header>
+
+<script>
+$.ajax({
+    url : "header.html",
+    dataType : "html",
+    type : "get",  // post 또는 get
+    success : function(result){
+        $("#h_title").html(result);
+     }
+});
+</script>
 		<div class="center_content_pages">
 			<div class="pages_banner">MY PAGE</div>
 		</div>
@@ -65,7 +76,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
 
-$("#h_title").load("load/header.html");
+/* $("#h_title").load("load/header.html"); */
 
 $(function () {
   $('#menubar a').click(function() {
