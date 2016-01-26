@@ -49,6 +49,8 @@
             isExistID = true;
           }
         }
+    
+    isID = /^[a-zA-Z0-9]{2,20}$/;
     if( uID.val() == "" ){
       $("#span-id-error").attr("class","cd-error-message is-visible");
       $("#span-id-error").text("아이디를 입력해주세요.");
@@ -61,6 +63,12 @@
       $("#signup-userID").addClass("has-error");
       $("#id-confirm").addClass("notvisible");
       isExistID = false;
+      return false;
+    } else if (!isID.test(uID.val())) {
+      $("#span-id-error").attr("class","cd-error-message is-visible");
+      $("#span-id-error").text("영문 혹은 숫자로 입력해주세요.(2~20글자)");
+      $("#signup-userID").addClass("has-error");
+      $("#id-confirm").addClass("notvisible");
       return false;
     } else {
       $("#span-id-error").attr("class","cd-success-message");
@@ -77,13 +85,18 @@
     uGender.addClass("has-success");
   }); /* 성별을 체크했을 때에 uGender 값 바꾸기. */
   
-  
+  var isPassword = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
   $("#signup-password").blur(function(event) {
       if (uPWD.val() == "") {
         $("#span-pwd-error").attr("class","cd-error-message");
         $("#span-pwd-error").addClass("is-visible");
         $("#signup-password").addClass("has-error");
         $("#span-pwd-error").text("비밀번호를 입력해주세요.");
+      } else if (!isPassword.test(uPWD.val())) {
+    	$("#span-pwd-error").attr("class","cd-error-message");
+        $("#span-pwd-error").addClass("is-visible");
+        $("#signup-password").addClass("has-error");
+        $("#span-pwd-error").text("비밀번호는 영문, 숫자, 특수문자 조합 8~15자로 입력해주세요.");
       } else {
          $("#span-pwd-error").attr("class","cd-success-message");
          $("#span-pwd-error").addClass("is-visible");
@@ -126,7 +139,7 @@
      }
   });
   
-  var isName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/; //영어도 되도록 하기.
+  var isName = /^[가-힣a-zA-Z]{2,10}$/; //영어도 되도록 하기.
   uName.blur(function(event) {
      if(uName.val() == "") {
         $("#span-username-error").attr("class","cd-error-message");
@@ -137,7 +150,7 @@
        $("#span-username-error").attr("class","cd-error-message");
       $("#span-username-error").addClass("is-visible");
       uName.addClass("has-error");
-      $("#span-username-error").text("이름은 한글, 영어(대,소문자)로 입력해주세요.");
+      $("#span-username-error").text("이름은 한글, 영어(대,소문자) 10자이내로 입력해주세요.");
     } else {
        $("#span-username-error").attr("class","cd-success-message");
       $("#span-username-error").addClass("is-visible");
