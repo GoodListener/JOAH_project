@@ -7,7 +7,7 @@ import java.util.Map;
 import bitproject.pms.domain.Member;
 
 public interface MemberDao {
-/*  List<Student> selectList(Map<String,Object> paramMap);*/
+  List<Member> selectList(Map<String,Object> paramMap);
 
   int insert(Member member);
   
@@ -22,6 +22,9 @@ public interface MemberDao {
   int updatepwd(HashMap<String, Object> paramMap);
   
   int deletemember(HashMap<String, Object> paramMap);
+  
+  int deleteAdmin(String id);
+  
 /*
   
   int update(Student student);

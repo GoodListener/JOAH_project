@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import bitproject.pms.dao.InterestDao;
 import bitproject.pms.dao.MemberDao;
@@ -38,6 +39,29 @@ public class MemberController {
     
     return resultMap;
   }
+  
+  @RequestMapping("/member/list")
+  public Object list(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="10") int pageSize,
+      @RequestParam(defaultValue="id") String keyword,
+      @RequestParam(defaultValue="desc") String align) throws Exception {
+    
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("startIndex", (pageNo - 1) * pageSize);
+    paramMap.put("length", pageSize);
+    paramMap.put("keyword", keyword);
+    paramMap.put("align", align);
+    
+    List<Member> members = memberDao.selectList(paramMap);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", members);
+    
+    return resultMap;
+  }
+  
   /*
   @RequestMapping(value="add", method=RequestMethod.GET)
   public String add() {
@@ -131,6 +155,16 @@ public class MemberController {
 
     return new AjaxResult("success", null);
   }
+  
+  @RequestMapping("deleteAdmin")
+  public AjaxResult deleteAdmin(String id) throws Exception {
+   
+    if (memberDao.deleteAdmin(id) <= 0) {
+      return new AjaxResult("failure", null);
+    } 
+    return new AjaxResult("success", null);
+  }
+ 
  
 /*  private void makeThumbnailImage(String originPath, String thumbPath) 
       throws IOException {

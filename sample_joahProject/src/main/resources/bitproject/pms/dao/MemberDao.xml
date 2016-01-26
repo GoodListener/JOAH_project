@@ -14,16 +14,32 @@
     select id
     from member
   </select>
+  
+  <select id="selectList" resultType="member" parameterType="map">
+    select 
+   	  id,
+   	  email,
+   	  gender,
+   	  age,
+   	  name,
+   	  cid
+    from member
+    order by
+	<choose>
+      <when test="keyword == 'id'"> id </when>
+    </choose>
+    <choose>
+      <when test="align == 'desc'">desc</when>
+      <otherwise>asc</otherwise>
+    </choose>
+		limit #{startIndex}, #{length}
+	</select>
 	
-<!-- photo 빠짐 -->
 	<insert id="insert" parameterType="member">
 		insert into member(id,pwd,name,email,gender,age,cid,photo)
 		values(#{id},sha1(#{password}),#{name},#{email},#{gender},#{age},#{cid},#{photo})
 	</insert>
 
-	<!-- <delete id="delete" parameterType="string">
-		delete from student where email=#{value}
-	</delete> -->
 
 	<update id="updateinfo" parameterType="member">
 		update member set
@@ -56,6 +72,11 @@
 	<delete id="deletemember" parameterType="map">
 	 	delete from member
 	 	where id=#{id} and pwd=sha1(#{password})	
+	</delete>
+	
+	<delete id="deleteAdmin" parameterType="string">
+	 	delete from member
+	 	where id=#{id}	
 	</delete>
 </mapper> 
 
