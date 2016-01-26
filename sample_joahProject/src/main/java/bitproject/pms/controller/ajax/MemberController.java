@@ -10,8 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import bitproject.pms.dao.InterestDao;
 import bitproject.pms.dao.MemberDao;
 import bitproject.pms.domain.AjaxResult;
+import bitproject.pms.domain.Interest;
 import bitproject.pms.domain.Member;
 
 @Controller("ajax.MemberController")
@@ -20,6 +22,7 @@ public class MemberController {
   
   public static final String SAVED_DIR = "/file";
   
+  @Autowired InterestDao interestDao;
   @Autowired MemberDao memberDao;
   @Autowired ServletContext servletContext;
 
@@ -42,9 +45,9 @@ public class MemberController {
   }
   */
   @RequestMapping(value="addmember", method=RequestMethod.POST)
-  public AjaxResult add( Member member/*,
+  public AjaxResult add(String interestList, Member member/*,
       MultipartFile photofile*/) throws Exception {
-
+    Interest interest = new Interest();
 /*    if (photofile.getSize() > 0) {
       String newFileName = MultipartHelper.generateFilename(photofile.getOriginalFilename());
       File file = new File(servletContext.getRealPath(SAVED_DIR) + "/" + newFileName);
@@ -54,8 +57,23 @@ public class MemberController {
           servletContext.getRealPath(SAVED_DIR) + "/s-" + newFileName);
       student.setPhoto(newFileName);
     }*/
-    
     memberDao.insert(member);
+    
+    String[] interests = new String[3];
+    interestList = interestList.substring(1,interestList.length() - 1);
+    int i = 0;
+    System.out.println(interestList);
+    for (String interToken : interestList.split(",")) {
+      if(interToken.equals("null")) continue;
+      interests[i] = interToken.substring(1, interToken.length() - 1);
+      i++;
+    }
+    interest.setId(member.getId());
+    for(String intResult : interests) {
+      interest.setInterestCode(intResult);
+      interestDao.insert(interest);
+    }
+    
 
     return new AjaxResult("success", null);
 

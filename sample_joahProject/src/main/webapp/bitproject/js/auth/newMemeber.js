@@ -126,7 +126,7 @@
      }
   });
   
-  var isName = /^[가-힝]{2,}$/; //영어도 되도록 하기.
+  var isName = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/; //영어도 되도록 하기.
   uName.blur(function(event) {
      if(uName.val() == "") {
         $("#span-username-error").attr("class","cd-error-message");
@@ -160,6 +160,8 @@
     }
   });
   
+  
+  var interest = [];
   $("#addBtn").click(function(event) {
      /* console.log(uGender.hasClass("has-success")); */
    if(!uID.hasClass("has-success")) {
@@ -193,6 +195,13 @@
       return;
    } */ //성별 아직 해결안됨 
    
+	  interest[0] = $("input[id='food']:checked").val();
+	  interest[1] = $("input[id='entertain']:checked").val();
+	  interest[2] = $("input[id='experience']:checked").val();
+	  interest[3] = $("input[id='exercise']:checked").val();
+	  interest[4] = $("input[id='show']:checked").val();
+   
+   
   $.post('ajax/addmember.do', {
      id: $('#signup-userID').val(),
      password: $('#signup-password').val(),
@@ -200,7 +209,8 @@
      name: $('#signup-username').val() ,
      age: $('#signup-age').val() ,
      gender: uGender.val(),
-     photo: $('#fphotofile').val()
+     photo: $('#fphotofile').val(),
+     interestList: JSON.stringify(interest)
    }, function(resultObj) {
      var ajaxResult = resultObj.ajaxResult;
      if (ajaxResult.status == "success") {

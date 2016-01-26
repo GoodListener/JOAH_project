@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bitproject.pms.dao.InterestDao">
+
+  <resultMap type="interest" id="interestMap">
+  <id     column="id"    property="id"/>
+  <result   column="int_code"    property="interestCode"/>
+  </resultMap>
+
+  <!-- <select id="selectList" resultMap="interestMap" parameterType="int">
+     select c.bno,l.lno,l.int_code,l.name,l.content,l.cost,l.photo,l.lat,l.lng
+     from cour_loc c join location l on c.lno=l.lno
+     where bno=#{bno}
+  </select> -->
+  
+  
+    
+  <insert id="insert" parameterType="interest">
+    insert into mem_int(id, int_code)
+    values(#{id},#{interestCode})
+  </insert>
+
+  <!--
+  <delete id="delete" parameterType="map">
+    delete from interest 
+  	where bno=#{no} and (pwd is null or pwd=#{password})
+  </delete>
+  
+  <update id=Interest parameterType="interest">
+    update interest set 
+      title=#{title},
+      content=#{content},
+      cre_dt=now(),
+  	  afile=#{attachFile}
+    where bno=#{no} and (pwd is null or pwd=#{password})
+  </update>
+    -->
+<!--     
+  <select id="selectOne" resultMap="interestMap" parameterType="int">
+    select
+      lno,
+      name,
+      content,
+      cost,
+      photo
+    from interest
+    where lno=#{no}
+  </select>
+   -->
+</mapper>
+
+
+
+
+
+

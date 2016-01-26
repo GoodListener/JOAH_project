@@ -455,7 +455,7 @@ $.ajax({
                           circle.setRadius(radius); // - circle 의 반지름을 지정하며 단위는 meter이다.
                           circle.setCenterPoint(oMap.getCenter()); // - circle 의 중심점을 지정한다.
                           oMap.addOverlay(circle);
-                          oMap.attach('mousemove',function(oCustomEvent) { //마우스 움직일때마다 이벤트 발생.
+                          oMap.attach('mouseup',function(oCustomEvent) { //마우스 움직일때마다 이벤트 발생.
                                     $.getJSON('ajax/location.do?intCode=' + searchNo, function(resultObj) {
                                       for(var location of resultObj.data) {
                                       if (oMap.getCenter().getDistanceFrom(oMarkers[location.lno].getPoint()) < 200) {
