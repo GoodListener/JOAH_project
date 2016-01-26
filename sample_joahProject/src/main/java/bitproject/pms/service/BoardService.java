@@ -9,6 +9,11 @@ public interface BoardService {
       int pageNo, int pageSize, 
       String keyword, String align);
   
+  // 작성중인 게시물 isboard=0인 게시물
+  List<Board> getBoardIngList(
+      int pageNo, int pageSize, 
+      String keyword, String align);
+  
   void register(Board board);
   
   int countAllBoard();

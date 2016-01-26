@@ -24,6 +24,17 @@ public class DefaultBoardService implements BoardService {
     
     return boardDao.selectList(paramMap);
   }
+  
+  public List<Board> getBoardIngList(int pageNo, int pageSize, 
+      String keyword, String align) {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("startIndex", (pageNo - 1) * pageSize);
+    paramMap.put("length", pageSize);
+    paramMap.put("keyword", keyword);
+    paramMap.put("align", align);
+    
+    return boardDao.selectIngList(paramMap);
+  }
  
   public void register(Board board) {
     boardDao.insert(board);

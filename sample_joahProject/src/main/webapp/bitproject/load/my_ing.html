@@ -1,25 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset='UTF-8'>
-<title>Hot place</title>
-<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../lib/mycss/style_board.css" />
-<link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/jquery.isotope.min.js"></script><!-- 레이아웃을 정리해주는 JS -->
-  <script type="text/javascript" src="js/wow.min.js"></script><!-- 애니메이트.css 연동 -->
-  <script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="../lib/myjs/jquery-ui.min.js"></script>
-
-
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/animate.min.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
-<link href="css/responsive.css" rel="stylesheet">
 <style>
 .paging  {
     line-height: 0;
@@ -93,14 +74,10 @@ b {
 </head>
 <body>
 
-
+<h1 class="margin-bottom">후기 미작성</h1>
 	<section id="portfolio">
-			<div class="container">
-				<div class="row">
-					<div class="portfolio-items" id="boardList"></div>
-						<ul class="paging"></ul>
-				</div>
-			</div>
+		<div class="portfolio-items" id="IngList"></div>
+			<ul class="paging col-xs-12"></ul>
 	</section>
 		
 <script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
@@ -114,19 +91,18 @@ if (location.href.indexOf('?') != -1) pageNo = location.href.split('?')[1].split
 console.log(location.href);
 console.log("pageNo = ",pageNo);
 
-//$.getJSON(contextRoot + '/board/ajax/list.do', function(resultObj) {
-$.getJSON('ajax/list.do', function(resultObj) {
-   var table = $("#boardList");
+$.getJSON('ajax/inglist.do?pageNo=' + pageNo, function(resultObj) {
+   var table = $("#IngList");
   for (var board of resultObj.data) {
-    $("<div class='col-sm-6 portfolio-item branded mockup mobile isotope-item'" +
-            "style='position: absolute; left: 15px; top: 0px; transform: translate3d(370px, 200px, 0px);'>")
+    $("<div class='col-xs-6 portfolio-item branded mockup mobile isotope-item'" +
+            "style='height:50%; left: -370px; top:-200px; transform: translate3d(370px, 200px, 0px);'>")
         .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
       "<div class='portfolio-thumb'> " +
-          "<a href='#' class='detailLnk'><img id='hot' src='images/portfolio/" + board.photo + "' class='img-responsive' alt=''></a>" +
+          "<a href='#' class='detailLnk'><img id='not' src='images/portfolio/" + board.photo + "' class='img-responsive' alt=''></a>" +
       "</div>" +
       "<div class='portfolio-view'>" +
           "<ul class='nav nav-pills'>" +
-              "<li><a href='portfolio-details.html?no=" + board.bno + "'><i class='fa fa-link'></i></a></li>" +
+              "<li><a href='writeform.html?no=" + board.bno + "'><i class='fa fa-link'></i></a></li>" +
               "<li><a href='images/portfolio/" + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
           "</ul>" +
       "</div>" +
@@ -149,7 +125,7 @@ $('#newBtn').click(function(event){
 // 게시물 제목을 클릭했을 때 호출될 함수
 function clickDetailLnk(event) {
 	event.preventDefault(); 
-	location.href = "form.html?no=" + $(event.target).attr("boardNo");
+	location.href = "writeform.html?no=" + $(event.target).attr("boardNo");
 }
 
 var totalPage = 1;
@@ -209,29 +185,29 @@ $.getJSON('ajax/all.do', function(resultObj) {
 
 function clickPageNo(event) {
 	event.preventDefault();
-  location.href = "user_rec.html?pageNo=" + $(event.target).attr("pageno");
+  location.href = "mypage.html?pageNo=" + $(event.target).attr("pageno");
 }
 //<<버튼을 클릭했을 때 호출될 함수
 function clickFir() {
   event.preventDefault();
-  location.href = "user_rec.html";
+  location.href = "mypage.html";
 }
 //<버튼을 클릭했을 때 호출될 함수
 function clickPrev() {
   event.preventDefault();
   var no = Math.floor((pageNo - 11) / 10) * 10 + parseInt(1);
-  location.href = "user_rec.html?pageNo=" + no;
+  location.href = "mypage.html?pageNo=" + no;
 }
 //>버튼을 클릭했을 때 호출될 함수
 function clickNext() {
 	event.preventDefault();
 	var no = Math.floor((pageNo*1 + parseInt(9)) / 10) * 10 + parseInt(1);
-	location.href = "user_rec.html?pageNo=" + no;
+	location.href = "mypage.html?pageNo=" + no;
 }
 //>>버튼을 클릭했을 때 호출될 함수
 function clickEnd() {
   event.preventDefault();
-  location.href = "user_rec.html?pageNo=" + totalPage;
+  location.href = "mypage.html?pageNo=" + totalPage;
 }
 
 </script>

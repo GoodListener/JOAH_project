@@ -1031,6 +1031,11 @@ ul.elements li > i{
   width: 100%;
   height: 350px;
 }
+.portfolio-thumb img#not {
+  border:2px solid lightgray;
+  width: 100%;
+  height: 250px;
+}
 
 .portfolio-thumb img#rec {
   border:2px solid lightgray;
