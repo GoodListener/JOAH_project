@@ -1,5 +1,6 @@
 package bitproject.pms.controller.ajax;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -43,14 +44,12 @@ public class CourseController {
   
   @RequestMapping(value="addcourse", method=RequestMethod.POST)
   public AjaxResult add(String lnoArray, int bno) throws Exception {
-    int[] lnos = new int[4];
+    List<Integer> lnos = new ArrayList<>();
     Course course = new Course();
     lnoArray = lnoArray.substring(1,lnoArray.length() - 1);
-    int i = 0;
     for (String lno : lnoArray.split(",")) {
       if(lno.equals("null")) continue;
-      lnos[i] = Integer.parseInt(lno);
-      i++;
+      lnos.add(Integer.parseInt(lno));
     }
     for(int lno : lnos) {
       course.setLno(lno);
