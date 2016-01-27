@@ -24,6 +24,7 @@
    	  name,
    	  cid
     from member
+  	where id!='admin'
     order by
 	<choose>
       <when test="keyword == 'id'"> id </when>
