@@ -7,6 +7,7 @@
 
   <resultMap type="location" id="locationMap">
     <id 		column="lno" 		property="lno"/>
+    <result column="int_code" property="interestCode"/>
   </resultMap>
 
   <select id="selectList" resultMap="locationMap" parameterType="String">
@@ -33,13 +34,12 @@
     from location
   </select>
   
-<!--     
+    
   <insert id="insert" parameterType="location">
-    insert into location(title,content,views,cre_dt,likes,dislikes,st_loc,ed_loc,icon,age_gr,cost_all) 
-    values(#{title},#{content},#{views},now(),#{likes},#{dislikes},#{startLocation},
-           #{endLocation},#{icon},#{ageGroup},#{costAll})
+    insert into location(int_code,name,content,photo,lat,lng) 
+    values(#{interestCode},#{name},#{content},#{photo},#{lat},#{lng})
   </insert>
-   -->
+
   <!--
   <delete id="delete" parameterType="map">
     delete from location 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>Hot place</title>
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div id="slist">
+검색어 : <input type="text" id="locinput"><br>
+pageNo : <input type="number" id="pageNo"><br>
+흥미코드 : <input type="text" id="interestCode"><br>
+<button type="button" id="inlocbtn">쿼리에넣기</button><br>
+I-001 : 음식 <br>
+I-002 : 엔터테인<br>
+I-003 : 경험<br>
+I-004 : 운동<br>
+I-005 : 쇼
+
+</div>
+
+<script type="text/javascript">
+var daumurl = 'https://apis.daum.net/local/v1/search/keyword.json?apikey=';
+var apikey = '714e1b1cd11e15c987d142a03e1b65db';
+	$("#inlocbtn").click(function(event) {
+		  var query = $("#locinput").val();
+		  var pageNo = $("#pageNo").val();
+		  var intCode = $("#interestCode").val();
+		  console.log(query);
+		  $.ajax({
+	        url: daumurl + apikey + "&query="+query +"&page="+pageNo,
+	        type: 'get',
+	        dataType: 'jsonp',
+	        success: function(data) {
+	        	console.log(data);
+	        	for (i = 0; i < 15; i++) {
+	          $.post('ajax/addlocation.do',{
+	            name : data.channel.item[i].title,
+	            content : data.channel.item[i].address,
+	            photo : data.channel.item[i].imageUrl,
+	            lng : data.channel.item[i].latitude,
+	            lat : data.channel.item[i].longitude, 
+	            interestCode : intCode
+	            }, function(resultObj) {
+	                console.log("보드-코스 저장에 성공");
+	            }, 'json');
+	        	}
+	        }
+		  });
+	});
+		  
+    
+</script>
+</body>
+</html>
+
+

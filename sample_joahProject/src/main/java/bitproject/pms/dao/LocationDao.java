@@ -8,8 +8,8 @@ public interface LocationDao {
   List<Location> selectList(String intCode);
   List<Location> selectAll();
   /*Location selectOne(int no);*/
-  /*int insert(Location location);
-
+  int insert(Location location);
+/*
   int delete(Map<String,Object> paramMap);
   
   int update(Location location);*/

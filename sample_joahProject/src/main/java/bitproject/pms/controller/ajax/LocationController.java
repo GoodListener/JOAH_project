@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import bitproject.pms.dao.LocationDao;
 import bitproject.pms.domain.AjaxResult;
@@ -42,24 +43,15 @@ public class LocationController {
   public String form() {
     return "board/BoardForm";
   }
+  */
   
-  
-  @RequestMapping(value="add", method=RequestMethod.POST)
-  public AjaxResult add(Board board, MultipartFile file) throws Exception {
-    
-    if (file.getSize() > 0) {
-      String newFileName = MultipartHelper.generateFilename(file.getOriginalFilename());  
-      File attachfile = new File(servletContext.getRealPath(SAVED_DIR) 
-                                  + "/" + newFileName);
-      file.transferTo(attachfile);
-      board.setAttachFile(newFileName);
-    }
-    
-    boardDao.insert(board);
-    
+  @RequestMapping(value="addlocation", method=RequestMethod.POST)
+  public AjaxResult add(Location location) throws Exception {
+    System.out.println(location);
+    locationDao.insert(location);
     return new AjaxResult("success", null);
   }
-  */
+
   @RequestMapping("locationDetail")
   public Object detail(int no) throws Exception {
     Location location = locationDao.selectOne(no);
