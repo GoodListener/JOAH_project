@@ -74,9 +74,9 @@ b {
 </head>
 <body>
 
-<h1 class="margin-bottom">후기 미작성</h1>
+<h1 class="margin-bottom">내가 작성한 게시물</h1>
 	<section id="portfolio">
-		<div class="portfolio-items" id="IngList"></div>
+		<div class="portfolio-items" id="MyList"></div>
 			<ul class="paging col-xs-12"></ul>
 	</section>
 		
@@ -91,9 +91,9 @@ if (location.href.indexOf('?') != -1) pageNo = location.href.split('?')[1].split
 console.log(location.href);
 console.log("pageNo = ",pageNo);
 
-$.getJSON('ajax/inglist.do?id=' + sessionStorage.getItem('loginSession') + '&pageNo=' + pageNo, function(resultObj) {
+$.getJSON('ajax/mylist.do?id=' + sessionStorage.getItem('loginSession') + '&pageNo=' + pageNo, function(resultObj) {
 //   var id = sessionStorage.getItem('loginSession');
-   var table = $("#IngList");
+   var table = $("#MyList");
   for (var board of resultObj.data) {
     $("<div class='col-xs-6 portfolio-item branded mockup mobile isotope-item'" +
             "style='height:50%; left: -370px; top:-200px; transform: translate3d(370px, 200px, 0px);'>")

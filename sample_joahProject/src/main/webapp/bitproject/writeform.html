@@ -354,8 +354,21 @@ $.ajax({
            title: $('#input_title').val(),
            content: $('#input_content').val(),
            success: function(resultObj) {
-             alert("게시물등록성공.");
+             console.log("user_rec 등록성공!");
            }
+        }, function(resultObj) {
+         //mylist.do
+           $.post('ajax/mylist.do', {
+             bno: boardNo,
+             title: $('#input_title').val(),
+             content: $('#input_content').val(),
+             success: function(resultObj) {
+             console.log("내가 작성한 게시물에 등록성공!");
+             }
+           }, function(resultObj) {
+             console.log("user_rec와 내가 작성한 게시물에 등록 성공");
+             location.href="index.html";
+           }, 'json');
         }, 'json');
      });
      </script>

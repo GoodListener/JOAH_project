@@ -46,16 +46,36 @@ public class BoardController {
     return resultMap;
   }
   
-//작성중인 게시물 isboard=0인 게시물
+//작성중인 게시물 isboard=0 이고 id=#{id}인 게시물
   @RequestMapping("inglist")
   public Object inglist(
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="6") int pageSize,
       @RequestParam(defaultValue="no") String keyword,
-      @RequestParam(defaultValue="desc") String align) throws Exception {
+      @RequestParam(defaultValue="desc") String align,
+      String id) throws Exception {
     
     
-    List<Board> boards = boardService.getBoardIngList(pageNo, pageSize, keyword, align);
+    List<Board> boards = boardService.getBoardIngList(pageNo, pageSize, keyword, align, id);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", boards);
+    
+    return resultMap;
+  }
+  
+//작성중인 게시물 isboard=1 이고 id=#{id}인 게시물
+  @RequestMapping("mylist")
+  public Object mylist(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="6") int pageSize,
+      @RequestParam(defaultValue="no") String keyword,
+      @RequestParam(defaultValue="desc") String align,
+      String id) throws Exception {
+    
+    
+    List<Board> boards = boardService.getBoardMyList(pageNo, pageSize, keyword, align, id);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");

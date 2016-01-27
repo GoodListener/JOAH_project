@@ -10,6 +10,8 @@ public interface BoardDao {
   
   List<Board> selectIngList(Map<String,Object> paramMap);
   
+  List<Board> selectMyList(Map<String,Object> paramMap);
+  
   Board selectOne(int no);
   
   int insert(Board board);
