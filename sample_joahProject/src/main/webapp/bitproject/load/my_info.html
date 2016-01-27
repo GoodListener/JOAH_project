@@ -14,7 +14,7 @@
   </div>		
         <div class="col-xs-2" style="position: relative;">
             <div class="profile text-center">
-                <img src="images/aboutus/default.jpg" id="img_my_info" alt="">
+                <img id='member_photo' alt="" width="100px" height="100px"><br><br>
             </div>
             <div>
             	<button>upload</button>
@@ -80,7 +80,6 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
   var ajaxResult = resultObj.ajaxResult;
   if (ajaxResult.status == "success") {
     var member = ajaxResult.data;
-    /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
     $("#member_id").val(sessionStorage.getItem('loginSession'));
     $("#member_pwd").val(member.pwd);
     $("#member_name").val(member.name);
@@ -88,6 +87,11 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
     $("#member_gender").val(member.gender);
     $("#member_age").val(member.age);
     $("#member_cid").val(member.cid);
+    if (member.photo == null || member.photo =="") {
+    	$('#member_photo').attr('src', '../profile_image/default.jpg');	
+    } else {
+	    $('#member_photo').attr('src', '../profile_image/' + member.photo);
+    }
   }
 });  
 
