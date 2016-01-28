@@ -91,9 +91,9 @@
   
     
   <insert id="insert" parameterType="board">
-    insert into board(id,title,content,views,cre_dt,likes,dislikes,heart,st_loc,ed_loc,icon,age_gr,cost_all) 
+    insert into board(id,title,content,views,cre_dt,likes,dislikes,heart,st_loc,ed_loc,icon,age_gr,cost_all,photo) 
     values(#{id},#{title},#{content},0,now(),0,0,#{heart},#{startLocation},
-           #{endLocation},#{icon},#{ageGroup},#{costAll})
+           #{endLocation},#{icon},#{ageGroup},#{costAll},#{photo})
     <selectKey resultType="int" keyProperty="bno">
         SELECT LAST_INSERT_ID() as bno
     </selectKey>

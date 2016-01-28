@@ -4,14 +4,14 @@
 <meta charset='UTF-8'>
 <title>Hot place</title>
 <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
-<!-- <link rel="stylesheet" href="../css/common.css"> -->
-<link rel="stylesheet" type="text/css" href="../lib/mycss/style_detail.css" />
-<link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/lightbox.min.js"></script>
-    <script type="text/javascript" src="js/wow.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script> 
+<link rel="stylesheet" type="text/css"
+	href="../lib/mycss/style_detail.css" />
+<link rel="stylesheet" type="text/css"
+	href="../lib/mycss/style_header.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="../lib/myjs/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
@@ -20,185 +20,172 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/lightbox.css" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
-    
 </head>
+<script id="_carbonads_projs" type="text/javascript"
+	src="//srv.carbonads.net/ads/C6AILKT.json?segment=placement:wwwredteamdesigncom&amp;callback=_carbonads_go"></script>
+<script type="text/javascript"
+	src="//fallbacks.carbonads.com/home/e99a260b94849497ea962f674f0aebd9/?145394566"></script>
 <body>
 <div id="main_container">
-      
-      
-        <!-- header -->
+<!-- header -->
 <header id="h_title"></header>
 
 <script type="text/javascript" src="../lib/jquery/jquery.js"></script>
 <script>
-$.ajax({
-    url : "header.html",
-    dataType : "html",
-    type : "get",  // post 또는 get
-    success : function(result){
-        $("#h_title").html(result);
-    }
-});
+$("#h_title").load("load/header.html");
 </script>
 
-  <div class="center_content_pages">
-    <div class="pages_banner">DETAIL</div>
-  </div>
+		<div class="center_content_pages">
+			<div class="pages_banner">DETAIL</div>
+		</div>
 
-  <section id="portfolio">
-      <div class="right_content">
-        <h1>
-          <label class="h23">No</label>
-          <label id ="data_no" class="h23"></label>
-          <label class="h23">&#41;&#09;&#09;</label>
-          <label id ="data_title" class="h23"></label>
-        </h1>
-            <div id="testMap" style="width: 800px; height: 400px; margin: 10px 0 0 0;"></div>
-         </div>
+		<section id="portfolio">
+			<div class="right_content">
+				<h1>
+					<label class="h23">No</label>
+					<label id="data_no" class="h23"></label>
+					<label class="h23">&#41;&#09;&#09;</label>
+					<label id="data_title" class="h23"></label>
+				</h1>
+				<div id="testMap"
+					style="width: 800px; height: 400px; margin: 10px 0 0 0;"></div>
+			</div>
 
-             <div class="left_content">
-         <label style="margin: 15px 0 15px 15px; font-size: 30px; ">Category</label>
-        <div class="sidebar blog-sidebar">
-          <div class="sidebar-item categories">
-            <ul class="nav navbar-stacked">
-              <li><a>1 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a>2 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a>3 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a>4 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a>5 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-              <li><a>6 location<span class="pull-right"></span></a></li>
-              <li><input style="border-radius:13px;"type="text"></li>
-            </ul>
-           </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- 밑줄 한줄 -->
-    <div>
-      <hr style="position:relative; width:90%; border-top: 2px solid lightgray; ">
-    </div>
-    <!-- 밑줄 한줄 끝 -->
-    
-    <section>
-      <div class="row pictures_div">
-                <div class="col-sm-6 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="0ms" id="photo_div">
-<!-- 사진 ajax 들어감 -->
-                </div>
-                <div class="col-sm-6 wow fadeInDown row" data-wow-duration="1000ms" data-wow-delay="0ms">
-                    <h2>PHOTO</h2>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="900ms" data-wow-delay="100ms">
-                        <img src="images/portfolio/1.jpg"></div>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="800ms" data-wow-delay="200ms">
-                        <img src="images/portfolio/2.jpg"></div>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="700ms" data-wow-delay="300ms">
-                        <img src="images/portfolio/3.jpg"></div>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="600ms" data-wow-delay="100ms">
-                        <img src="images/portfolio/4.jpg"></div>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="500ms" data-wow-delay="200ms">
-                        <img src="images/portfolio/5.jpg"></div>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="400ms" data-wow-delay="300ms">
-                        <img src="images/portfolio/6.jpg"></div>
-                    
-                </div>
-            </div>
-    </section>
-    <div>
-      <hr style="position:relative; width:90%; border-top: 2px solid lightgray;">
-    </div>
+			<div class="left_content">
+				<p>Location</p>
+				<ol class="rectangle-list">
+					<li><a>이름이 짱짱길때는 쩜쩜쩜으로 나와야해요!</a></li>
+					<li><a>List item</a></li>
+					<li><a>List item</a></li>
+					<li><a>List item</a></li>
+				</ol>
+			</div>
+		</section>
 
-    <section>
-      <div class="post-content overflow">
-        <h2 class="post-title bold">
-          <a id ="data_title2"></a>
-        </h2>
-        <h3 class="post-author">
-          <a>Posted by micron News</a>
-        </h3>
-        <p id="content">
-        </p>
-        <div class="post-bottom overflow">
-          <ul class="nav navbar-nav post-nav">
-            <li><a><i class="fa fa-tag"></i>Creative</a></li>
-            <li><a><i class="fa fa-heart"></i>32 Love</a></li>
-            <li><a><i class="fa fa-comments"></i>3 Comments</a></li>
-          </ul>
-        </div>
-        <div class="blog-share">
-          <span class='st_facebook_hcount'></span> <span
-            class='st_twitter_hcount'></span> <span class='st_linkedin_hcount'></span>
-          <span class='st_pinterest_hcount'></span> <span
-            class='st_email_hcount'></span>
-        </div>
-        <div class="author-profile padding">
-          <div class="row">
-            <div class="col-sm-2">
-              <img src="images/blogdetails/1.png" alt="">
-            </div>
-            <div class="col-sm-10">
-              <h3>Rodrix Hasel</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliq
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi</p>
-              <span>Website:<a href="www.jooomshaper.com">
-                  www.jooomshaper.com</a></span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="response-area">
-          <h2 class="bold">Comments</h2>
+		<!-- 밑줄 한줄 -->
+		<div>
+			<hr
+				style="position: relative; width: 90%; border-top: 2px solid lightgray;">
+		</div>
+		<!-- 밑줄 한줄 끝 -->
 
-          <form method="post" action="#" data-ajax="true">
-            <div class="row">
-              <div class="col-sm-2">
-                <img class="img-circle" id="profile_image" width="120" height="120" alt="">
-              </div>
+		<section>
+			<div class="row pictures_div">
+				<div class="col-sm-6 wow fadeInDown" data-wow-duration="1000ms"
+					data-wow-delay="0ms" id="photo_div">
+					<!-- 사진 ajax 들어감 -->
+				</div>
+				<div class="col-sm-6 wow fadeInDown row" data-wow-duration="1000ms"
+					data-wow-delay="0ms">
+					<h2>PHOTO</h2>
+					<div style="border: 1px solid gray" class="wow fadeInUp col-sm-4"
+						data-wow-duration="900ms" data-wow-delay="100ms">
+						<img src="images/portfolio/1.jpg">
+					</div>
+					<div style="border: 1px solid gray" class="wow fadeInUp col-sm-4"
+						data-wow-duration="800ms" data-wow-delay="200ms">
+						<img src="images/portfolio/2.jpg">
+					</div>
+					<div style="border: 1px solid gray" class="wow fadeInUp col-sm-4"
+						data-wow-duration="700ms" data-wow-delay="300ms">
+						<img src="images/portfolio/3.jpg">
+					</div>
+					<div style="border: 1px solid gray" class="wow fadeInUp col-sm-4"
+						data-wow-duration="600ms" data-wow-delay="100ms">
+						<img src="images/portfolio/4.jpg">
+					</div>
+					<div style="border: 1px solid gray" class="wow fadeInUp col-sm-4"
+						data-wow-duration="500ms" data-wow-delay="200ms">
+						<img src="images/portfolio/5.jpg">
+					</div>
+					<div style="border: 1px solid gray" class="wow fadeInUp col-sm-4"
+						data-wow-duration="400ms" data-wow-delay="300ms">
+						<img src="images/portfolio/6.jpg">
+					</div>
 
-              <div class="col-sm-9">
-                <dl class="comment_form_content">
-                  <dt>댓글 본문</dt>
-                  <dd>
-                    <div id="reply_indicator">
-                      <input type="hidden" name="parent" value="">
-                    </div>
-                    <textarea style="display:none" id="com-content" class="form-control" rows="3" name="cmt_content" placeholder="댓글 달리는 영역"></textarea>
-                    <textarea style="display:none" id="com-content2" class="form-control" rows="3" name="cmt_content" placeholder="로그인 한 후 이용 가능" readonly></textarea>
-                  </dd>
-                </dl>
-                <div class="buttons" style="float:right;">
-                  <input type="hidden" name="course_id" value="45"> <input
-                    type="hidden" name="module_id" value="0"> <input
-                    type="hidden" name="topic_id" value="0">
+				</div>
+			</div>
+		</section>
+		<div>
+			<hr
+				style="position: relative; width: 90%; border-top: 2px solid lightgray;">
+		</div>
 
-                  <button type="button" id="comment-add-btn" class="btn btn-success">
-                    <span>댓글 올리기</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
-          <!-- 댓글 DB 연동  -->
-          <ul id="commentList" class="media-list wow fadeInDown" >
-          
-          </ul>
-      </div>
-      </div>
-      </section>
-    </div>
-    
-<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
-  <script>
+		<section>
+			<div class="post-content overflow">
+				<h2 class="post-title bold">
+					<a id="data_title2"></a>
+				</h2>
+				<h3 class="post-author">
+					<a>Posted by micron News</a>
+				</h3>
+				<p id="content"></p>
+				<div class="post-bottom overflow">
+					<ul class="nav navbar-nav post-nav">
+						<li><a><i class="fa fa-tag"></i>Creative</a></li>
+						<li><a><i class="fa fa-heart"></i>32 Love</a></li>
+						<li><a><i class="fa fa-comments"></i>3 Comments</a></li>
+					</ul>
+				</div>
+				<div class="blog-share">
+					<span class='st_facebook_hcount'></span> <span
+						class='st_twitter_hcount'></span> <span class='st_linkedin_hcount'></span>
+					<span class='st_pinterest_hcount'></span> <span
+						class='st_email_hcount'></span>
+				</div>
+
+				<div class="response-area">
+					<h2 class="bold">Comments</h2>
+
+					<form method="post" action="#" data-ajax="true">
+						<div class="row">
+							<div class="col-sm-2">
+								<img class="img-circle" id="profile_image" width="120"
+									height="120" alt="">
+							</div>
+
+							<div class="col-sm-9">
+								<dl class="comment_form_content">
+									<dt>댓글 본문</dt>
+									<dd>
+										<div id="reply_indicator">
+											<input type="hidden" name="parent" value="">
+										</div>
+										<textarea style="display: none" id="com-content"
+											class="form-control" rows="3" name="cmt_content"
+											placeholder="댓글 달리는 영역"></textarea>
+										<textarea style="display: none" id="com-content2"
+											class="form-control" rows="3" name="cmt_content"
+											placeholder="로그인 한 후 이용 가능" readonly></textarea>
+									</dd>
+								</dl>
+								<div class="buttons" style="float: right;">
+									<input type="hidden" name="course_id" value="45"> <input
+										type="hidden" name="module_id" value="0"> <input
+										type="hidden" name="topic_id" value="0">
+
+									<button type="button" id="comment-add-btn"
+										class="btn btn-success">
+										<span>댓글 올리기</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+					<!-- 댓글 DB 연동  -->
+					<ul id="commentList" class="media-list wow fadeInDown">
+
+					</ul>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+	<script>
  var no = location.href.split('?')[1].split('=')[1];
  var cPhoto;
  $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), 

@@ -15,7 +15,7 @@ a{
 color:#de462a;
 text-decoration:underline;
 }
-#h23{font-size:35px;color:#343434;font-weight:bold;}
+.h23{font-size:35px;color:#343434;font-weight:bold;}
 h2{font-size:35px;color:#343434;padding:10px 0 10px 0;margin:0px 0 20px 0;font-weight:bold;}
 h3{font-size:20px; color:#343434; padding:0; margin:0px; font-weight:normal;}
 #main_container{
@@ -161,12 +161,90 @@ input.form_submit{float:right; clear:both; margin:7px 14px 0 0px; width:149px; h
 /*     left content <search option> 留뚮뱾湲�         */
 /*-------------------------------------------------*/
 .left_content{
-border-right:2px solid lightgray;
-width:250px;
-float:left;
-margin-left:50px;
-margin-top:20px;
-margin-bottom:65px;
+    background: white;
+	border:2px solid lightgray;
+	border-radius: 45px;
+	width:300px;
+	float:left;
+	margin: 85px 0 0 10px ;
+	padding: 80px 10px 70px 10px;
+}
+
+.left_content p {
+	font-size: 40px;
+	text-align: center;
+	margin: -10px 0 40px 0;
+}
+
+
+/* Location 다녀온 장소 리스트 css */
+.rectangle-list {
+	margin: 20px 0 0 21px;
+	width: 250px;
+	counter-reset: li;
+}
+.rectangle-list  li{
+	text-overflow: ellipsis;
+	margin: 20px 0;
+}
+.rectangle-list a{
+	position: relative;
+	height: 40px;
+	display: block;
+	padding: .4em .4em .4em .8em;
+	*padding: .4em;
+	margin: .5em 0 .5em 2.5em;
+	background: #ddd;
+	color: #444;
+	text-overflow: ellipsis;
+/* 	text-decoration: none; */
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-ms-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;	
+}
+
+.rectangle-list a:hover{
+	text-overflow: ellipsis;
+	background: #eee;
+	color: black;
+}	
+
+.rectangle-list a:before{
+	text-overflow: ellipsis;
+	content: counter(li);
+	counter-increment: li;
+	position: absolute;	
+	left: -3.5em;
+	top: 37%;
+	margin-top: -1em;
+	background: #fa8072;
+	height: 40px;
+	width: 40px;
+	line-height: 2.5em;
+	text-align: center;
+	font-weight: bold;
+}
+
+.rectangle-list a:after{
+	position: absolute;	
+	content: '';
+	border: .6em solid transparent;
+	left: -.7em;
+	top: 45%;
+	margin-top: -.4em;
+    margin-left: -2px;
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-ms-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;				
+}
+
+.rectangle-list a:hover:after{
+	left: -.5em;
+	border-left-color: #fa8072;				
 }
 
 /*�븳 以�*/

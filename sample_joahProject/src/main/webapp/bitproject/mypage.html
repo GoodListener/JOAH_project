@@ -46,20 +46,20 @@ $.ajax({
 			<div class="row" id="row_mypage">
 				<div id='cssmenu' class='col-xs-3'>
 					<ul id="menubar">
-						<li><a href='#'><span>회원 정보</span></a>
+						<li><a><span>회원 정보</span></a>
 							<ul>
 								<li><a id="my_couple"><span>커플 정보</span></a></li>
 								<li><a id="my_info"><span>회원 정보 변경</span></a></li>
 								<li><a id="my_pwd"><span>비밀번호 변경</span></a></li>
 								<li><a id="my_secession"><span>회원 탈퇴</span></a></li>
 							</ul></li>
-						<li><a href='#'><span>마이 리스트</span></a>
+						<li><a><span>마이 리스트</span></a>
 							<ul>
 								<li><a href='#'><span>나의 찜목록</span></a></li>
-								<li><a id='my_ing'><span>후기 미작성</span></a></li>
-								<li><a id='my_board'><span>내가 작성한 게시물</span></a></li>
+								<li><a href='my_ing.html'><span>후기 미작성</span></a></li>
+								<li><a href='my_board.html'><span>내가 작성한 게시물</span></a></li>
 							</ul></li>
-						<li><a href='#'><span>문의</span></a>
+						<li><a><span>문의</span></a>
 							<ul>
 								<li><a href=''><span>1:1 문의</span></a></li>
 							</ul></li>
@@ -68,11 +68,86 @@ $.ajax({
 				<!-------Side Menu Bar 끝------>
 				<div class="col-xs-9">
 					<div id="couple_info"></div>
+						<div id="couple">
+						  <h1 class="margin-bottom">커플 정보</h1>
+						  <div style="margin-left: 20px;">
+						    <p>
+							    <label>소중한 사람의 정보를 볼 수 있는 곳 입니다.</label><br>
+							    <span>너와 나의 </span>
+								<span style="color: skyblue;"><b>가입 정보</b></span>
+								<span>를 볼 수 있습니다.</span><br><br>
+							</p>
+						  </div>       
+				        <div class="col-xs-6" style="position: relative;">
+				            <div class="profile text-center">
+				           		<img src="images/aboutus/default.jpg" class="img_mypage">
+				            </div>
+				   
+				           <div class="center_content">
+				         <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">내 정보</label>
+				        <div class="sidebar blog-sidebar">
+				          <div class="sidebar-item categories" style="position: ">
+				            <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;">
+				              <li><a>ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
+				              <!-- <li><a>Password<input style="border-radius:13px;"type="text"></a></li>
+				              <li><a>Password Check<input style="border-radius:13px;" type="text"></a></li> -->
+				              <li><a>Name<input id="member_name" style="border-radius:13px;"type="text" readonly></a></li>
+				              <li><a>E-Mail<input id="member_email" style="border-radius:13px;"type="text" readonly></a></li>
+				              <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text" readonly></a></li>
+				              <li><a>Age<input id="member_age" style="border-radius:13px;"type="text" readonly></a></li>
+				              <!-- <li><a>Couple ID<input id="member_cid" style="border-radius:13px;"type="text"></a></li>
+				             --></ul>
+				           </div>
+				        </div>
+				      </div>
+				     </div>
+				
+				        <div class="col-xs-6" style="position: relative;">
+				            <div class="profile text-center">
+				            	<img src="images/aboutus/default.jpg" class="img_mypage" alt="">
+				            </div>
+				   
+				           <div class="center_content">
+				         <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">애인 정보</label>
+				        <div class="sidebar blog-sidebar">
+				          <div class="sidebar-item categories" style="position: ">
+				            <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;">
+				              <li><a>ID<input id="member_id2" style="border-radius:13px;"type="text" readonly></a></li>
+				              <!-- <li><a>Password<input style="border-radius:13px;"type="text"></a></li>
+				              <li><a>Password Check<input style="border-radius:13px;" type="text"></a></li> -->
+				              <li><a>Name<input id="member_name" style="border-radius:13px;"type="text"></a></li>
+				              <li><a>E-Mail<input id="member_email" style="border-radius:13px;"type="text"></a></li>
+				              <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text"></a></li>
+				              <li><a>Age<input id="member_age" style="border-radius:13px;"type="text"></a></li>
+				              <!-- <li><a>Couple ID<input id="member_cid" style="border-radius:13px;"type="text"></a></li>
+				             --></ul>
+				<!--             <input type="button" class="form_search" value="Modify" /> -->
+				           </div>
+				        </div>
+				      </div>
+				      </div>
+				    </div>
 				</div>
 			</div>
 		</section>
 
 	</div>
+	<script>
+$.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
+  var ajaxResult = resultObj.ajaxResult;
+  if (ajaxResult.status == "success") {
+    var member = ajaxResult.data;
+    /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
+    $("#member_id").val(sessionStorage.getItem('loginSession'));
+    $("#member_pwd").val(member.pwd);
+    $("#member_name").val(member.name);
+    $("#member_email").val(member.email);
+    $("#member_gender").val(member.gender);
+    $("#member_age").val(member.age);
+    $("#member_cid").val(member.cid);
+  }
+});  
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
 
@@ -81,6 +156,7 @@ $.ajax({
 $(function () {
   $('#menubar a').click(function() {
     $('#couple_info').load('load/' + $(this).attr('id') + '.html');
+    $('#couple').empty();
   });
 });
 
