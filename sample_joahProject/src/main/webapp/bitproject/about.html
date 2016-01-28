@@ -22,6 +22,14 @@
 <link href="css/responsive.css" rel="stylesheet">
     <script type="text/javascript"
       src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=553205575474122b3423699dc799445d"></script>
+      
+      
+<style>
+.list_example > li {display:none;}
+.list_example > li.on {display:list-item; line-height:30px; border-bottom:1px solid #ccc;}
+.list_example + div {margin-top:20px; text-align:center;}
+.list_example + div p {display:inline-block;}
+</style>      
 </head>
 
 
@@ -91,11 +99,20 @@ $.ajax({
          <input id="ed_loc" type="text"> <button id="ed_loc_btn" type="button">?</button> <br/>
          <label style="margin: 5px 0 5px -15px; font-size: 30px; ">List</label>
         <div class="sidebar blog-sidebar">
-          <div class="sidebar-item categories" id="searchList">
-          <!-- 여기에 검색 리스트 띄움. ul li 로 -->
-          </div>
-          <input type="button" class="form_search" value="Search" />
-        </div>
+					<div class="sidebar-item categories">
+						<ul class="list_example inbox" id="searchList">
+							<!-- 여기에 검색 리스트 띄움. ul li 로 ///////////////////////////////////////////////////// -->
+						</ul>
+						<div>
+							<button type="button">Prev</button>
+							<p>
+								<span>1</span>/<span></span>
+							</p>
+							<button type="button">Next</button>
+						</div>
+					</div>
+					<input type="button" class="form_search" value="Search" />
+				</div>
       </div>
 
             <!--//////////////////////////////////////////////////////////////////////////////////// -->
@@ -225,7 +242,6 @@ $.ajax({
 
 
  /* 마커 추가하기 + 해당하는 Infowindow 만들기 n 반복*/
-
  var oMarkers = [];
  var openMarkers = [];
  var mapInfoTestWindow = [];
@@ -234,12 +250,12 @@ $.ajax({
  var searchList = $("#searchList");
 
  //맨 처음 시작할 때 항상 전체 리스트 보이도록 하도록 하기.                          
- $.getJSON('ajax/location.do?intCode=I-006', function(resultObj) {
+ $.getJSON('ajax/location.do?intCode=I-006&lat=' + 37.5010226 +'&lng=' + 127.0396037, function(resultObj) {
    var i = 0;
    for(var location of resultObj.data) {
-     $("<ul class='inbox'>")
-     .html("<li class='searchlists message'><span class='from'>"+ location.name +
-         "</span><br><span style='font-size:11px;'>"+ location.content +"</span></li>")
+     $("<li class='searchlists message'>")
+     .html("<span class='from' style='white-space:nowrap;'>"+ location.name +
+         "</span><br><span style='font-size:11px;white-space:nowrap;'>"+ location.content +"</span></li>")
          .appendTo(searchList); //리스트 띄우는 것.
 
      oMarkers[location.lno] = new nhn.api.map.Marker(oIcon, {
@@ -276,18 +292,49 @@ $.ajax({
          oLabel.setVisible(false);
        }
      });
-     oMarkers[location.lno].setVisible(true);
+     oMarkers[location.lno].setVisible(false);
 
      openMarkers[i] = location.lno;
      i++; // 닫기 위해 기존 있던 마커넘버를 저장하는 것.
-     console.log("메뉴 수행중!");
    } // for문 끝 
    console.log("메뉴 이벤트 반복문 끝!");
+   
+   ////리스트를 위한 jQuery
+   $(".list_example + div > p > span:last-child").text(Math.ceil($(".list_example").children("li").size()/5));
+   $(".list_example > li").slice(0,5).addClass("on");
+   $(".list_example > li:nth-of-type(5n)").addClass("5n");
+   $(".list_example + div > button").click(function() {
+       var nav_list = $(this).parent("div").prev(".list_example");
+       if($(this).is(":last-child")) {
+           if(!$(nav_list).children("li:last").hasClass("on")) {
+               $(nav_list).children("li.on:last").nextUntil(".5n").addClass("on").next(".5n").addClass("on");
+               setTimeout(function() {
+                   $(nav_list).children("li.on:first").removeClass("on").nextUntil(".5n").removeClass("on").next(".5n").removeClass("on");
+               });
+               var paging = ($(nav_list).children("li.on:last").index()+1)/5;
+               $(this).siblings("p").children("span:first-child").text(Math.ceil(paging));
+           }
+       }
+       else {
+           if(!$(nav_list).children("li:first").hasClass("on")) {
+               $(nav_list).children("li.on:first").prev(".5n").addClass("on").prevUntil(".5n").addClass("on");
+               setTimeout(function() {
+                   $(nav_list).children("li.on:last").removeClass("on").prevUntil(".5n").removeClass("on");
+               });
+               var paging = ($(nav_list).children("li.on:first").index()+1)/5;
+               $(this).siblings("p").children("span:first-child").text(Math.ceil(paging));
+           }
+       }
+   }); // 리스트를 위한 jQuery
  }); // AJAX 호출 끝
 
 
  /* 메뉴 클릭 했을 때에 띄워진 마커를 숨기고 보이는 것의 기능만 하도록 하기. */
  $(".form_mapSear").click(function(event) {
+	 var lat = oMap.getCenter().getLat();
+	 console.log(lat);
+	 var lng = oMap.getCenter().getLng();
+	 console.log(lng);
    console.log("메뉴 이벤트 시작!");
    searchNo = $(this).attr("id");
    $(".checked").removeClass("checked");
@@ -295,24 +342,50 @@ $.ajax({
    for(var c = 0; c < openMarkers.length; c++){
      oMarkers[openMarkers[c]].setVisible(false);
      /* oMap.removeOverlay(oMarkers[openMarkers[c]]); // 열려있는 마커를 닫는다. */
-     console.log("오픈마커 정보 : " + openMarkers[c]);
    }
    console.log(searchNo);
-   $.getJSON('ajax/location.do?intCode=' + searchNo, function(resultObj) {
+   $.getJSON('ajax/location.do?intCode=' + searchNo + '&lat=' + lat +'&lng=' + lng, function(resultObj) {
      var i = 0;
      for(var location of resultObj.data) {
-       $("<ul class='inbox'>")
-       .html("<li class='searchlists message'><span class='from'>"+ location.name +
-           "</span><br><span style='font-size:11px;'>"+ location.content +"</span></li>")
-           .appendTo(searchList); //리스트 띄우는 것.
+    	 $("<li class='searchlists message'>")
+         .html("<span class='from' style='white-space:nowrap;'>"+ location.name +
+             "</span><br><span style='font-size:11px;white-space:nowrap;'>"+ location.content +"</span></li>")
+             .appendTo(searchList); //리스트 띄우는 것.
 
        oMarkers[location.lno].setVisible(true);
 
        openMarkers[i] = location.lno;
        i++; // 닫기 위해 기존 있던 마커넘버를 저장하는 것.
-       console.log("메뉴 수행중!");
      } // for문 끝 
      console.log("메뉴 이벤트 반복문 끝!");
+     
+     // 리스트를 위한 jQuery
+     $(".list_example + div > p > span:last-child").text(Math.ceil($(".list_example").children("li").size()/5));
+     $(".list_example > li").slice(0,5).addClass("on");
+     $(".list_example > li:nth-of-type(5n)").addClass("5n");
+     $(".list_example + div > button").click(function() {
+         var nav_list = $(this).parent("div").prev(".list_example");
+         if($(this).is(":last-child")) {
+             if(!$(nav_list).children("li:last").hasClass("on")) {
+                 $(nav_list).children("li.on:last").nextUntil(".5n").addClass("on").next(".5n").addClass("on");
+                 setTimeout(function() {
+                     $(nav_list).children("li.on:first").removeClass("on").nextUntil(".5n").removeClass("on").next(".5n").removeClass("on");
+                 });
+                 var paging = ($(nav_list).children("li.on:last").index()+1)/5;
+                 $(this).siblings("p").children("span:first-child").text(Math.ceil(paging));
+             }
+         }
+         else {
+             if(!$(nav_list).children("li:first").hasClass("on")) {
+                 $(nav_list).children("li.on:first").prev(".5n").addClass("on").prevUntil(".5n").addClass("on");
+                 setTimeout(function() {
+                     $(nav_list).children("li.on:last").removeClass("on").prevUntil(".5n").removeClass("on");
+                 });
+                 var paging = ($(nav_list).children("li.on:first").index()+1)/5;
+                 $(this).siblings("p").children("span:first-child").text(Math.ceil(paging));
+             }
+         }
+     }); // 리스트를 위한 jQuery
    }); // AJAX 호출 끝
    $(".searchlists").remove();
    console.log(".searchlists-> remove()");
@@ -503,7 +576,6 @@ $.ajax({
      }  
    });
  });
-
 </script>
 <script type="text/javascript">
     try {document.execCommand('BackgroundImageCache', false, true);} catch(e) {}
@@ -535,7 +607,8 @@ $.ajax({
 		     likes : 0,
 		     dislikes : 0,
 		     heart : 'Y',
-		     icon : $('#img_icon').attr('src')
+		     icon : $('#img_icon').attr('src'),
+		     photo : 'http://openapi.naver.com/map/getStaticMap?version=1.0&crs=EPSG:4326&center=127.1141382,37.3599968&level=8&w=520&h=350&maptype=default&markers=127.1141382,37.3599968%20&key=553205575474122b3423699dc799445d&uri=localhost:8080/sample_joahProject'
 		   }, function(resultObj) {
 		         boardNo = resultObj.data; // 데이터에서 넘버 받아와야 함.
 		         $.post('ajax/addcourse.do', {

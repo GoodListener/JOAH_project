@@ -10,15 +10,16 @@ public class Location {
   protected double lat;
   protected double lng;
   protected String interestCode;
-
+  protected double distance;
+  
+  
   
   
   @Override
   public String toString() {
     return "Location [lno=" + lno + ", name=" + name + ", content=" + content + ", cost=" + cost + ", photo=" + photo
-        + ", lat=" + lat + ", lng=" + lng + ", interestCode=" + interestCode + "]";
+        + ", lat=" + lat + ", lng=" + lng + ", interestCode=" + interestCode + ", distance=" + distance + "]";
   }
-  
   public int getLno() {
     return lno;
   }
@@ -67,7 +68,12 @@ public class Location {
   public void setInterestCode(String interestCode) {
     this.interestCode = interestCode;
   }
-
+  public double getDistance() {
+    return distance;
+  }
+  public void setDistance(double distance) {
+    this.distance = distance;
+  }
 
 
 
