@@ -46,13 +46,16 @@ public class MemberController {
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="10") int pageSize,
       @RequestParam(defaultValue="id") String keyword,
-      @RequestParam(defaultValue="desc") String align) throws Exception {
+      @RequestParam(defaultValue="desc") String align,
+      String word,String search) throws Exception {
     
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("startIndex", (pageNo - 1) * pageSize);
     paramMap.put("length", pageSize);
     paramMap.put("keyword", keyword);
     paramMap.put("align", align);
+    paramMap.put("search", search);
+    paramMap.put("word", word);
     
     List<Member> members = memberDao.selectList(paramMap);
     

@@ -16,18 +16,28 @@
 	  <a class='btn_type _forceWithdrawal' href='#'><span class='_forceWithdrawal deleteBtn'>강제 탈퇴</span></a>
 	</div>	
   </div>
+  
   <div id='_tableContent'>
 	<table border='1' cellspacing='0' class='tbl_lst_type' id="listTable">	
 	<caption>
 	  <span class='blind'>회원 관리 정보</span>
-	  </caption>				
+	  </caption>
+	   <form id="form1">
+		<select name='search'>
+		  <option value="all">전체</option>
+		  <option value="email">이메일</option>
+		  <option value="name">이름</option>
+		</select>
+		<input type="text" name="word">
+		<input type="submit" value="검색">
+	 </form>
 	  <colgroup>
 		  <col width='23'><col width='*'><col width='32'><col width='81'><col width='81'><col width='86'><col width='86'><col width='86'><col width='40'>
 	  </colgroup>
 	  <thead>
 		  <tr>
 			  <th scope='col' class='frst'><input name='c1' id='c1' title='선택' class='check _checkAll' type='checkbox'></th>
-			  <th scope='col'><strong>아이디(이름,이메일)</strong></th>
+			  <th scope='col' align='center'><strong>아이디(이름,이메일)</strong></th>
 			  <th scope='col'><strong class='line_r'><a href='#' class='btn_mem_view _detailViewAll'><span class='blind'>멤버 정보 상세보기</span></a></strong></th>
 			  <th scope='col' class='last'><strong>커플유무</strong></th>
 			  <th scope='col' class='last'><strong>관심사</strong></th>
@@ -39,7 +49,18 @@
   </div>
 </div>
 <script>
-$.getJSON('ajax/member/list.do', function(resultObj) {
+
+var search = '';
+var word = '';
+if (location.href.indexOf('?') != -1) {
+	search = location.href.split('?')[1].split('=')[1].split('&')[0];
+	word = location.href.split('&')[1].split('=')[1];
+}
+console.log(location.href);
+console.log("search = ",search);
+console.log("word = ",word);
+
+$.getJSON('ajax/member/list.do?search=' + search + '&word=' + word , function(resultObj) {
 	var table = $('#listTable');
   for (var member of resultObj.data) {
     $("<tr class='_checkable  line_b' memberid='newotc'>")
@@ -55,19 +76,19 @@ $.getJSON('ajax/member/list.do', function(resultObj) {
   	 +		 member.id + "( " + member.name + " ," + member.email + ")</a>"
   	 + "  </div>"
      + " </td>"
-     + " <td class='tc'>"
+     + " <td class='tc' align='center'>"
      + "    <a href='#' class='btn_mem_view _detailView'><span class='blind'>회원 정보 상세보기</span></a>"
      + "  </td>"
-     + "  <td class='tc'>"
+     + "  <td class='tc' align='center'>"
      + "     <span class='num' id='femail'>"+ member.cid +"</span>"
      + "  </td>"
-     + "  <td class='tc'>"
+     + "  <td class='tc' align='center'>"
      + "     <span class='num' id='femail'>"+ member.age +"</span>"
      + "  </td>"
-     + "  <td class='tr'>"
+     + "  <td class='tr' align='center'>"
      + "    <span class='num'>"+ member.age+"</span>"
      + "  </td>"
-     + " <td class='tr'>"
+     + " <td class='tr' align='center'>"
      + "   <span class='num'>"+ member.gender+"</span>"
      + "  </td>"
      + "  </tr>").appendTo(table);

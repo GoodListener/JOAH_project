@@ -25,7 +25,13 @@
    	  name,
    	  cid
     from member
-  	where id!='admin'
+  	<choose>
+	 <when test="search == 'name'"> where id!='admin'and (name like concat('%',#{word},'%')) </when>
+	 <when test="search == 'id'"> where id!='admin' and (id like concat('%',#{word},'%')) </when>
+	 <when test="search == 'all'">
+	 	where id!='admin' and (id like concat('%',#{word},'%')) or (name like concat('%',#{word},'%'))
+	 </when>
+	 </choose>
     order by
 	<choose>
       <when test="keyword == 'id'"> id </when>
