@@ -1,5 +1,6 @@
 package bitproject.pms.controller.ajax;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -83,27 +84,21 @@ public class MemberController {
     }*/
     memberDao.insert(member);
     
-    String[] interests = new String[3];
+    List<String> interests = new ArrayList<>();
     interestList = interestList.substring(1,interestList.length() - 1);
-    int i = 0;
     System.out.println(interestList);
     for (String interToken : interestList.split(",")) {
       if(interToken.equals("null")) continue;
-      interests[i] = interToken.substring(1, interToken.length() - 1);
-      i++;
+      interests.add(interToken.substring(1, interToken.length() - 1));
     }
     interest.setId(member.getId());
     for(String intResult : interests) {
       interest.setInterestCode(intResult);
       interestDao.insert(interest);
     }
-    
-
     return new AjaxResult("success", null);
-
   }
-  
-  
+    
   @RequestMapping(value="detailmember")
   public Object detail(String id) throws Exception {
     Member member = memberDao.selectOne(id);

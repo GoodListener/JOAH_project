@@ -49,24 +49,19 @@
                 <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;">
                    <img alt="" title="" border="0"></td>
                 <td>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="walking" name="interest" id="walking" class="inter">
-                 <label for="walking">산책</label>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="food" name="interest" id="food" class="inter">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="I-001" name="interest" id="food" class="food" >
                  <label for="food">맛집</label>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="culture" name="interest" id="culture" class="inter">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="I-005" name="interest" id="culture" class="culture" >
                  <label style="padding-right:18px;" for="culture">문화/공연</label>
             <br>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="exercise" name="interest" id="exercise" class="inter">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="I-004" name="interest" id="exercise" class="exercise" >
                  <label for="exercise">운동</label>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="play" name="interest" id="play" class="inter">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="I-002" name="interest" id="play" class="play" >
                  <label for="play">유흥</label>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="experience" name="interest" id="experience" class="inter">
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="I-003" name="interest" id="experience" class="experience" >
                  <label style="padding-right:18px;" for="experience">체험</label>
             <br>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 13px 15px;" type="checkbox" value="leisure" name="interest" id="leisure" class="inter">
-                 <label for="leisure">여가</label>
-                 <input onclick="CountChecked(this)" style="margin:15px 0 15px 15px;" type="checkbox" value="etc" name="interest" id="etc" class="inter">
-                 <label for="etc">기타</label>
+            <br>
                  </td>
               </tr>
             </tbody></table>
@@ -80,27 +75,112 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
   var ajaxResult = resultObj.ajaxResult;
   if (ajaxResult.status == "success") {
     var member = ajaxResult.data;
+    /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
     $("#member_id").val(sessionStorage.getItem('loginSession'));
     $("#member_pwd").val(member.pwd);
     $("#member_name").val(member.name);
     $("#member_email").val(member.email);
     $("#member_gender").val(member.gender);
     $("#member_age").val(member.age);
-    $("#member_cid").val(member.cid);
-    if (member.photo == null || member.photo =="") {
-    	$('#member_photo').attr('src', '../profile_image/default.jpg');	
-    } else {
-	    $('#member_photo').attr('src', '../profile_image/' + member.photo);
-    }
   }
 });  
 
+$.getJSON('ajax/interest.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
+  var ajaxResult = resultObj.ajaxResult;
+  if (ajaxResult.status == "success") {
+    var interests = ajaxResult.data;
+    console.log(interests[0]);
+    console.log(interests[1]);
+    console.log(interests[2]);
+    console.log(interests[3]);
+    console.log(interests[4]);
+    
+       if (interests[0] == 'I-001') {
+        $(".food").attr('checked', true);
+      } else if (interests[0] == 'I-002') {
+        $(".play").attr('checked', true);
+      } else if (interests[0] == 'I-003') {
+        $(".experience").attr('checked', true);
+      } else if (interests[0] == 'I-004') {
+        $(".exercise").attr('checked', true);
+      } else if (interests[0] == 'I-005') {
+        $(".culture").attr('checked', true);
+      } 
+       
+       if (interests[1] == 'I-001') {
+         $(".food").attr('checked', true);
+       } else if (interests[1] == 'I-002') {
+         $(".play").attr('checked', true);
+       } else if (interests[1] == 'I-003') {
+         $(".experience").attr('checked', true);
+       } else if (interests[1] == 'I-004') {
+         $(".exercise").attr('checked', true);
+       } else if (interests[1] == 'I-005') {
+         $(".culture").attr('checked', true);
+       } 
+       
+       if (interests[2] == 'I-001') {
+         $(".food").attr('checked', true);
+       } else if (interests[2] == 'I-002') {
+         $(".play").attr('checked', true);
+       } else if (interests[2] == 'I-003') {
+         $(".experience").attr('checked', true);
+       } else if (interests[2] == 'I-004') {
+         $(".exercise").attr('checked', true);
+       } else if (interests[2] == 'I-005') {
+         $(".culture").attr('checked', true);
+       } 
+        var maxChecked = 3;   //선택가능한 체크박스 갯수
+       var totalChecked = 0; // 설정 끝
+       function CountChecked(field) {
+           if (field.checked)
+               totalChecked += 1;
+           else
+               totalChecked -= 1;
+           if (totalChecked > maxChecked) {
+               alert ("최대 3개 까지만 가능합니다.");
+           field.checked = false;
+           totalChecked -= 1;
+           }
+       }
+       function ResetCount(){
+         totalChecked = 0;
+       } 
+  }
+});  
+
+
+
 $("#updateBtn").click(function(event) {
+  $.getJSON('ajax/interestdelete.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
+    var ajaxResult = resultObj.ajaxResult;
+    if (ajaxResult.status == "success") {
+    } else {
+      alert("실패하였습니다.");
+    }
+  });
+  var interest = [];
+  interest[0] = $("input[id='food']:checked").val();
+  interest[1] = $("input[id='play']:checked").val();
+  interest[2] = $("input[id='experience']:checked").val();
+  interest[3] = $("input[id='exercise']:checked").val();
+  interest[4] = $("input[id='culture']:checked").val();
+  $.post('ajax/interestinsert.do', {
+    id: $('#member_id').val(),
+    interestList: JSON.stringify(interest)
+  }, function(resultObj) {
+    var ajaxResult = resultObj.ajaxResult;
+    if (ajaxResult.status == "success") {
+           } else {
+           alert("게시물 등록에 실패했습니다.");
+         } 
+  }, 'json'); 
   $.post('ajax/updateinfo.do', {
 	id: $('#member_id').val(),
 	name: $('#member_name').val(),
     email: $('#member_email').val(),
     age: $('#member_age').val(),
+    
   }, function(resultObj) {
     var ajaxResult = resultObj.ajaxResult;
     if (ajaxResult.status == "success") {

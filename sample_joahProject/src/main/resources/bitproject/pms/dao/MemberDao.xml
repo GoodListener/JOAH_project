@@ -5,9 +5,10 @@
 
 <mapper namespace="bitproject.pms.dao.MemberDao">
 	
-	 <resultMap type="member" id="memberMap">
-    <id 		column="id" 		property="id"/>
-    <result 	column="pwd" 		property="password"/>
+	<resultMap type="member" id="memberMap">
+      <id 		column="id" 		property="id"/>
+      <result 	column="int_code" 	property="intCode"/>
+      <result 	column="pwd" 		property="password"/>
   	</resultMap>
 	
 	<select id="idList" resultType="member">

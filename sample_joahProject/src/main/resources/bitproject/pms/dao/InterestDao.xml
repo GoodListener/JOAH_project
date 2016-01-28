@@ -16,13 +16,23 @@
      where bno=#{bno}
   </select> -->
   
-  
-    
   <insert id="insert" parameterType="interest">
     insert into mem_int(id, int_code)
     values(#{id},#{interestCode})
   </insert>
-
+  
+  <insert id="interestdelete" parameterType="string">
+    delete from mem_int
+    where id=#{id}
+  </insert>
+  
+  <select id="selectList" resultMap="interestMap" parameterType="string">
+    select 
+      int_code
+    from mem_int
+    where id=#{id}
+  </select> 
+  
   <!--
   <delete id="delete" parameterType="map">
     delete from interest 

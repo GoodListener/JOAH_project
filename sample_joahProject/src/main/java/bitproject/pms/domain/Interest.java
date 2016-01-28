@@ -3,6 +3,12 @@ package bitproject.pms.domain;
 public class Interest {
   protected String id;
   protected String interestCode;
+  
+  
+  @Override
+  public String toString() {
+    return "Interest [id=" + id + ", interestCode=" + interestCode + "]";
+  }
   public String getId() {
     return id;
   }
