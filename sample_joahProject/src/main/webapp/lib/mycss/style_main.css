@@ -331,8 +331,8 @@ width:960px; clear:both; padding:15px 0 0 0;
 #vticker_li{
 	list-style: none;
 	border-bottom: 1px solid green;
-	padding: 10px 0 0 0px;
 	margin-top:10px;
+	background:url(../../images/bg.gif) repeat top left #FFFFFF;
 }
 .et-run{
 	background: red;
@@ -340,4 +340,12 @@ width:960px; clear:both; padding:15px 0 0 0;
 .img_size{
 	width: 70px;
 	height:70px;
+}
+.comment_content {
+	border: none;
+	width: 140px;
+	background:url(../../images/bg.gif) repeat top left #FFFFFF;
+}
+#commentList_img{
+
 }

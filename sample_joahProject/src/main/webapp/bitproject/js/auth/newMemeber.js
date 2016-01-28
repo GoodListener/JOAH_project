@@ -213,8 +213,15 @@
 	  interest[2] = $("input[id='experience']:checked").val();
 	  interest[3] = $("input[id='exercise']:checked").val();
 	  interest[4] = $("input[id='show']:checked").val();
-   
-   
+	  
+   console.log(uGender.val());
+   console.log($('#fphotofile').val());
+   if ($('#fphotofile').val() == "" && uGender.val() == 'male') {     
+     $('#fphotofile').val("defaultMale.jpg");
+   }
+   if ($('#fphotofile').val() == "" && uGender.val() == 'female') {     
+     $('#fphotofile').val("defaultFemale.jpg");
+   }
   $.post('ajax/addmember.do', {
      id: $('#signup-userID').val(),
      password: $('#signup-password').val(),

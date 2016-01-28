@@ -5,6 +5,7 @@ public class Course {
   protected int lno;
   protected String name;
   protected String content;
+  protected String gender;
   protected int cost;
   protected String photo;
   protected double lat;

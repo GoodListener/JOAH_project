@@ -16,7 +16,8 @@
       c.cno,
       c.content,
       c.cre_dt,
-      m.photo
+      m.photo,
+      m.gender
     from comment c join member m on c.id=m.id
     where c.bno=#{no}
     order by cre_dt desc
