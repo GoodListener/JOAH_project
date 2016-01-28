@@ -21,7 +21,7 @@
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
     <script type="text/javascript"
-      src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=553205575474122b3423699dc799445d"></script>
+      src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=ql7iZyYF1MnnPLwV_69L"></script>
       
       
 <style>
@@ -331,10 +331,8 @@ $.ajax({
 
  /* 메뉴 클릭 했을 때에 띄워진 마커를 숨기고 보이는 것의 기능만 하도록 하기. */
  $(".form_mapSear").click(function(event) {
-	 var lat = oMap.getCenter().getLat();
-	 console.log(lat);
-	 var lng = oMap.getCenter().getLng();
-	 console.log(lng);
+	 var mapLat = oMap.getCenter().getLat();
+	 var mapLng = oMap.getCenter().getLng();
    console.log("메뉴 이벤트 시작!");
    searchNo = $(this).attr("id");
    $(".checked").removeClass("checked");
@@ -344,7 +342,7 @@ $.ajax({
      /* oMap.removeOverlay(oMarkers[openMarkers[c]]); // 열려있는 마커를 닫는다. */
    }
    console.log(searchNo);
-   $.getJSON('ajax/location.do?intCode=' + searchNo + '&lat=' + lat +'&lng=' + lng, function(resultObj) {
+   $.getJSON('ajax/location.do?intCode=' + searchNo + '&lat=' + mapLat +'&lng=' + mapLng, function(resultObj) {
      var i = 0;
      for(var location of resultObj.data) {
     	 $("<li class='searchlists message'>")
@@ -563,7 +561,9 @@ $.ajax({
        circle.setCenterPoint(oMap.getCenter()); // - circle 의 중심점을 지정한다.
        oMap.addOverlay(circle);
        oMap.attach('mouseup',function(oCustomEvent) { //마우스 움직일때마다 이벤트 발생.
-         $.getJSON('ajax/location.do?intCode=' + searchNo, function(resultObj) {
+    	   var mapLat = oMap.getCenter().getLat();
+    	   var mapLng = oMap.getCenter().getLng();
+    	   $.getJSON('ajax/location.do?intCode=' + searchNo + '&lat=' + mapLat +'&lng=' + mapLng, function(resultObj) {
            for(var location of resultObj.data) {
              if (oMap.getCenter().getDistanceFrom(oMarkers[location.lno].getPoint()) < 1000) {
                oMarkers[location.lno].setVisible(true);
@@ -595,16 +595,37 @@ $.ajax({
    <script>
    var boardNo;
    var lnos = [];
+   
+   var photoMarker = [];
+   var markerUrl = "";
+   var objLngLat = [];
    var photoLng;
    var photoLat;
-   var photoMarker = [];
-   
-   
    $("#save_Btn").click(function(event) {
 	 lnos[0] = parseInt($("input[name='lno1']").val());
    lnos[1] = parseInt($("input[name='lno2']").val());
    lnos[2] = parseInt($("input[name='lno3']").val());
    lnos[3] = parseInt($("input[name='lno4']").val());
+   for (var i = 0; i < 4; i++) {
+	   if(!lnos[i]) {continue;}
+     $.getJSON('ajax/locationDetail.do?no=' + lnos[i], function(resultObj) {
+    	 var ajaxResult = resultObj.ajaxResult;
+       if (ajaxResult.status == "success") {
+           var locData = ajaxResult.data;
+           photoMarker[i] = locData.lng + "," + locData.lat; 
+           objLngLat[i] = new nhn.api.map.LatLng(locData.lat, locData.lng);
+           console.log(photoMarker[i]);
+           console.log(objLngLat[i]);
+           //ajax라서 밑에 for문과 순서가 맞지 않아서 다시 확실히 하고 정리해야함.
+       }
+     });
+   }
+   console.log("photoMarker.length : " + photoMarker.length);
+   for (var i = 0; i < photoMarker.length; i++) {
+	   markerUrl = "&markers=" + photoMarker[i];
+   }
+   console.log(markerUrl);
+   
 	    $.post('ajax/addboard.do', {
 		     id : sessionStorage.getItem('loginSession'),
 		     title : '아무거나',
@@ -613,7 +634,7 @@ $.ajax({
 		     dislikes : 0,
 		     heart : 'Y',
 		     icon : $('#img_icon').attr('src'),
-		     photo : 'http://openapi.naver.com/map/getStaticMap?version=1.0&crs=EPSG:4326&center=127.1141382,37.3599968&level=8&w=520&h=350&maptype=default&markers=127.1141382,37.3599968%20&key=553205575474122b3423699dc799445d&uri=localhost:8080/sample_joahProject'
+		     photo : 'http://openapi.naver.com/map/getStaticMap?version=1.0&crs=EPSG:4326&center=127.1141382,37.3599968&level=8&w=520&h=350&maptype=default'+ markerUrl +'&key=553205575474122b3423699dc799445d&uri=localhost:8080/sample_joahProject'
 		   }, function(resultObj) {
 		         boardNo = resultObj.data; // 데이터에서 넘버 받아와야 함.
 		         $.post('ajax/addcourse.do', {
@@ -621,7 +642,7 @@ $.ajax({
 		             lnoArray: JSON.stringify(lnos)
 		           }, function(resultObj) {
 		               console.log("보드-코스 저장에 성공");
-		               location.href="index.html";
+		               /* location.href="index.html"; */
 		           }, 'json'); 
 		     }, 'json');
    });

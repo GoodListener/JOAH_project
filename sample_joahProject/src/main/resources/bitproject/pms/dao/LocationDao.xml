@@ -62,7 +62,9 @@
       name,
       content,
       cost,
-      photo
+      photo,
+      lng,
+      lat
     from location
     where lno=#{no}
   </select>
