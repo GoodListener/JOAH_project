@@ -595,6 +595,11 @@ $.ajax({
    <script>
    var boardNo;
    var lnos = [];
+   var photoLng;
+   var photoLat;
+   var photoMarker = [];
+   
+   
    $("#save_Btn").click(function(event) {
 	 lnos[0] = parseInt($("input[name='lno1']").val());
    lnos[1] = parseInt($("input[name='lno2']").val());

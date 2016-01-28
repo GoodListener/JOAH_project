@@ -45,8 +45,6 @@ public class LocationController {
       for (Location locToken : locations) {
         locToken.setDistance(distCalc.calDistance(
             lat, lng, locToken.getLng(), locToken.getLat())); // 위도경도로 거리구하기
-        
-        System.out.println(locToken.getDistance());
       }
     }
     HashMap<String,Object> resultMap = new HashMap<>();
