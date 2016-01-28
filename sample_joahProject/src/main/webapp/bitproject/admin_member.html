@@ -1,11 +1,64 @@
 <!DOCTYPE html>
-<html lang='ko'>
+<html lang="en">
 <head>
-  <title>회원관리</title>
-  <link rel='stylesheet' href='css/admin_member.css' type='text/css'>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>JOAH | by One Point</title>
+<link rel='stylesheet' href='css/admin_member.css' type='text/css'>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="css/admin_member.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="../lib/mycss/style_mypage.css" />
+<link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
+<script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 </head>
+<!--/head-->
+
 <body>
-<div class='board_area'>
+	<div id="main_container">
+		<header id="h_title"></header>
+		<div class="center_content_pages">
+			<div class="pages_banner">MY PAGE</div>
+		</div>
+
+		<!-------Side Menu Bar 시작------>
+		<section style="padding-top: 30px;">
+
+			<div class="row" id="row_mypage">
+				<div id='cssmenu' class='col-xs-3'>
+					<ul id="menubar">
+						<li><a href='#'><span>관리자 정보</span></a>
+							<ul>
+								<li><a id="my_couple"><span>관리자 추천</span></a></li>
+								<li><a id="my_info"><span>관리자 정보 변경</span></a></li>
+								<li><a id="my_pwd"><span>비밀번호 변경</span></a></li>
+								<li><a id="my_secession"><span>작성한 게시물</span></a></li>
+							</ul></li>
+						<li><a href='#'><span>회원 관리</span></a>
+							<ul>
+								<li><a href='admin_member.html'><span>회원 목록</span></a></li>
+								<li><a id='my_ing'><span>후기 미작성</span></a></li>
+								<li><a href='#'><span>내가 작성한 게시물</span></a></li>
+							</ul></li>
+						<li><a href='#'><span>문의</span></a>
+							<ul>
+								<li><a href=''><span>1:1 문의</span></a></li>
+							</ul></li>
+					</ul>
+				</div>
+				<!-------Side Menu Bar 끝------>
+				<div class="col-xs-9">
+					<div id="couple_info"></div>
+					<div class='board_area'>
   <p class='board_tit'>
     <strong>회원수</strong>
     <em class='_memberCount'>1</em>
@@ -48,6 +101,23 @@
     </table>
   </div>
 </div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+$("#h_title").load("load/header.html");
+
+$(function () {
+  $('#menubar a').click(function() {
+    $('#couple_info').load('load/' + $(this).attr('id') + '.html');
+  });
+});
+
+ </script>
 <script>
 
 var search = '';
@@ -125,5 +195,6 @@ $('.deleteBtn').click(
 			}
 		});
 </script>
+
 </body>
 </html>
