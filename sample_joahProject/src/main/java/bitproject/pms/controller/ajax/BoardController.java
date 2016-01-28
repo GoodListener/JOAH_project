@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import bitproject.pms.service.BoardService;
 @Controller("ajax.BoardController")
 @RequestMapping("/bitproject/ajax/*")
 public class BoardController { 
-  
+  private static final Logger logger = Logger.getLogger(BoardController.class); 
   public static final String SAVED_DIR = "/attachfile";
   
   @Autowired BoardService boardService;
@@ -26,6 +27,7 @@ public class BoardController {
   
   @RequestMapping("all")
   public AjaxResult countAll() {
+    logger.debug("Board All() 호출됨.");
     return new AjaxResult("success",boardService.countAllBoard());
   }
   
@@ -36,7 +38,7 @@ public class BoardController {
       @RequestParam(defaultValue="no") String keyword,
       @RequestParam(defaultValue="desc") String align) throws Exception {
     
-    
+    logger.debug("Board list() 호출됨.");
     List<Board> boards = boardService.getBoardList(pageNo, pageSize, keyword, align);
     
     HashMap<String,Object> resultMap = new HashMap<>();
@@ -55,6 +57,7 @@ public class BoardController {
       @RequestParam(defaultValue="desc") String align,
       String id) throws Exception {
     
+    logger.debug("Board inglist() 호출됨");
     
     List<Board> boards = boardService.getBoardIngList(pageNo, pageSize, keyword, align, id);
     
@@ -75,6 +78,8 @@ public class BoardController {
       String id) throws Exception {
     
     
+    logger.debug("Board mylist() 호출됨.");
+    
     List<Board> boards = boardService.getBoardMyList(pageNo, pageSize, keyword, align, id);
     
     HashMap<String,Object> resultMap = new HashMap<>();
@@ -84,18 +89,14 @@ public class BoardController {
     return resultMap;
   }
   
-/*  
- @RequestMapping(value="add", method=RequestMethod.GET)
-  public String form() {
-    return "board/BoardForm";
-  }*/
-
-  
   @RequestMapping(value="addboard", method=RequestMethod.POST)
   public Object add(Board board) throws Exception {
     boardService.register(board);
     int boardNo = board.getBno();
+    
+    logger.debug("Board addboard() 호출됨.");
     System.out.println("LastInsert boardNo" + boardNo);
+    
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     resultMap.put("data", boardNo);
@@ -104,22 +105,17 @@ public class BoardController {
   
   @RequestMapping("detail")
   public Object detail(int no) throws Exception {
+    
+    logger.debug("Board detail() 호출됨.");
+    
     Board board = boardService.retieve(no);
     return new AjaxResult("success", board);
   }
 
   @RequestMapping(value="realAddboard", method=RequestMethod.POST)
   public AjaxResult update(Board board) throws Exception {
-    
-    /*if (file.getSize() > 0) {
-      String newFileName = MultipartHelper.generateFilename(file.getOriginalFilename());  
-      File attachfile = new File(servletContext.getRealPath(SAVED_DIR) 
-                                  + "/" + newFileName);
-      file.transferTo(attachfile);
-      board.setAttachFile(newFileName);
-    } else if (board.getAttachFile().length() == 0) {
-      board.setAttachFile(null);
-    }*/
+
+    logger.debug("Board realAddboard() 호출됨");
     
     if (boardService.firstUpdate(board) <= 0) {
       return new AjaxResult("failure", null);

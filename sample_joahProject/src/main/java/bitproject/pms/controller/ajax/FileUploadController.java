@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +22,18 @@ import bitproject.pms.util.MultipartHelper;
 @Controller("ajax.FileUploadController")
 @RequestMapping("/bitproject/ajax/*")
 public class FileUploadController { 
+  
+  private static final Logger logger = Logger.getLogger(FileUploadController.class); 
   public static final String SAVED_DIR = "/profile_image";
+  public static final String SAVED_DIR2 = "/board_image";
+  public static final String SAVED_DIR3 = "/board_image/thum";
   @Autowired ServletContext servletContext;
   
   @RequestMapping("upload")
   public Object upload(@RequestParam(required=false) MultipartFile[] file,
       HttpServletRequest request) throws Exception {
+    
+    logger.debug("upload() 호출됨.");
     
     String filename = null;
     File newPath = null;
@@ -59,6 +66,8 @@ public class FileUploadController {
   @RequestMapping(value="upload3", method=RequestMethod.POST)
   public Object upload(@RequestParam("file")MultipartFile file) throws Exception{
     
+    logger.debug("upload() 호출됨.");
+    
     HashMap<String,Object> resultMap = new HashMap<>();
     
     if (file.getSize() > 0) {
@@ -83,6 +92,8 @@ public class FileUploadController {
       String data2,
       @RequestParam(required=false) MultipartFile[] file,
       HttpServletRequest request) throws Exception {
+    
+    logger.debug("upload() 호출됨.");
          
       String filename = null;
       File newPath = null;
