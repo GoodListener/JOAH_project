@@ -15,7 +15,7 @@ import bitproject.pms.domain.CoupleRequest;
 
 
 @Controller("ajax.AddStudentController")
-@RequestMapping("/Addstudent/ajax/*")
+@RequestMapping("/CoupleRequest/ajax/*")
 public class CoupleRequestController { 
   private static final Logger logger = Logger.getLogger(CoupleRequestController.class); 
   

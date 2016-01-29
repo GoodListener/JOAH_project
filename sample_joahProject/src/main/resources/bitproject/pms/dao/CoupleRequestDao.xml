@@ -3,22 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="java76.pms.dao.CoupleRequestDao">
+<mapper namespace="bitproject.pms.dao.CoupleRequestDao">
 
 
 
-<insert id="insert" parameterType="coupleRequest">
+<insert id="insert" parameterType="CoupleRequest">
 		insert into couple_request(my_id,my_name,request_id,request_dt)
 		values(#{my_id},#{my_name},#{request_id},now())
 </insert>
 	
 	
-<select id="selectList" resultType="coupleRequest">
+<select id="selectList" resultType="CoupleRequest">
 		select my_id,my_name,request_id,request_dt
 		from couple_request
 </select>
 
-<select id="idList" resultType="coupleRequest">
+<select id="idList" resultType="CoupleRequest">
 		select my_id
 		from couple_request
 </select>
