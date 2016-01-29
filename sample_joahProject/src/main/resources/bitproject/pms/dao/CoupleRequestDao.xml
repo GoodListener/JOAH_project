@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="java76.pms.dao.CoupleRequestDao">
+
+
+
+<insert id="insert" parameterType="coupleRequest">
+		insert into couple_request(my_id,my_name,request_id,request_dt)
+		values(#{my_id},#{my_name},#{request_id},now())
+</insert>
+	
+	
+<select id="selectList" resultType="coupleRequest">
+		select my_id,my_name,request_id,request_dt
+		from couple_request
+</select>
+
+<select id="idList" resultType="coupleRequest">
+		select my_id
+		from couple_request
+</select>
+
+<delete id="delete" parameterType="map">
+		delete from couple_request 
+		where my_id=#{my_id}
+</delete>
+
+<!--	
+	
+
+	 <update id="update" parameterType="student">
+		update student set
+		name=#{name},
+		tel=#{tel},
+		cid=#{cid}
+		where email=#{email} and (pwd is null or pwd =sha1(#{password}))
+	</update>
+	
+	<select id="selectOne" resultType="student" parameterType="string">
+		<include refid="select_inc"/>
+		from student
+		where email=#{email}
+	</select>
+	
+	<select id="login" resultType="student" parameterType="map">
+		select name, email, tel, cid
+		from student
+		where email=#{email} and pwd=sha1(#{password})
+	</select>  -->
+</mapper>
+
+
+
+
+
