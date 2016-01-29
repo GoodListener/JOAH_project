@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<body>
+<div>
+  <h1 class="margin-bottom">회원 정보 수정</h1>
+  <div style="margin-left: 20px;">
+    <p>
+       <label>회원님의 JOAH 회원 정보를 수정할 수 있습니다.</label><br>
+	    <span>개인정보 보호를 위해 </span>
+		<span style="color: red;"><b>비밀번호</b></span>
+		<span>를 입력해주세요.</span><br><br>
+	</p>
+  </div>		
+   			<div class="col-xs-12">
+   			<div class="pwd_form">
+           <div class="center_content" id="my_info_center_content">
+        <div class="sidebar blog-sidebar">
+          <div class="sidebar-item categories">
+            <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;">
+              <li><a id="my_a">ID<input id="member_id" style="border-radius:13px;"readonly></a></li>
+              <li><a id="my_a">비밀번호<input id="pwd" style="border-radius:13px;"type="password" placeholder="비밀번호 입력"></a></li>
+           </ul>
+<!--             <input type="button" class="form_search" value="Modify" /> -->
+           </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      <div >
+        <button id="updateBtn2" style="float: right; margin-top: 50px;">확인</button>
+      </div>
+	</div>
+
+
+<script> 
+
+$.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
+  var ajaxResult = resultObj.ajaxResult;
+  if (ajaxResult.status == "success") {
+    var member = ajaxResult.data;
+    $("#member_id").val(sessionStorage.getItem('loginSession'));
+    
+    
+  }
+});
+
+$("#updateBtn2").click(function(event) {
+  $.post('ajax/login.do', {
+    id : $('#member_id').val(),
+    password : $('#pwd').val(),
+  }, function(resultObj) {
+    var ajaxResult = resultObj.ajaxResult;
+    if (ajaxResult.status == "success") {
+      idSession = ajaxResult.data.id;
+      sessionStorage.setItem('loginSession',idSession);
+      location.href = "my_info.html";
+    } else {
+      alert("비밀번호를 확인해주세요");
+    }
+  }, 'json');
+});
+</script>
+
+</body>
+</html>

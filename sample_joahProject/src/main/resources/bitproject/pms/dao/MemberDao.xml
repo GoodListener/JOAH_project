@@ -23,6 +23,7 @@
    	  gender,
    	  age,
    	  name,
+   	  photo,
    	  cid
     from member
   	<choose>

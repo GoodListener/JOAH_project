@@ -14,7 +14,7 @@
   </div>       
         <div class="col-xs-6" style="position: relative;">
             <div class="profile text-center">
-           		<img src="images/aboutus/default.jpg" class="img_mypage">
+           		<img id="member_img1">
             </div>
    
            <div class="center_content">
@@ -38,7 +38,7 @@
 
         <div class="col-xs-6" style="position: relative;">
             <div class="profile text-center">
-            	<img src="images/aboutus/default.jpg" class="img_mypage" alt="">
+            	<img id="member_img2">
             </div>
    
            <div class="center_content">
@@ -67,7 +67,8 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
   var ajaxResult = resultObj.ajaxResult;
   if (ajaxResult.status == "success") {
     var member = ajaxResult.data;
-    /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
+    $("#member_img1").val(member.photo);
+    $("#member_img2").val(member.photo);
     $("#member_id").val(sessionStorage.getItem('loginSession'));
     $("#member_pwd").val(member.pwd);
     $("#member_name").val(member.name);

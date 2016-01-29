@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>JOAH | by One Point</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="../lib/mycss/style_mypage.css" />
+<link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
+<script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</head>
+<!--/head-->
+
+<body>
+	<div id="main_container">
+		<header id="h_title"></header>
+
+<script>
+$.ajax({
+    url : "header.html",
+    dataType : "html",
+    type : "get",  // post 또는 get
+    success : function(result){
+        $("#h_title").html(result);
+     }
+});
+</script>
+		<div class="center_content_pages">
+			<div class="pages_banner">MY PAGE</div>
+		</div>
+
+		<!-------Side Menu Bar 시작------>
+		<section style="padding-top: 30px;">
+
+			<div class="row" id="row_mypage">
+				<div id='cssmenu' class='col-xs-3'>
+					<ul id="menubar">
+						<li><a><span>회원 정보</span></a>
+							<ul>
+								<li><a id="my_couple"><span>커플 정보</span></a></li>
+								<li><a id="my_filter"><span>회원 정보 변경</span></a></li>
+								<li><a id="my_pwd"><span>비밀번호 변경</span></a></li>
+								<li><a id="my_secession"><span>회원 탈퇴</span></a></li>
+							</ul></li>
+						<li><a><span>마이 리스트</span></a>
+							<ul>
+								<li><a href='#'><span>나의 찜목록</span></a></li>
+								<li><a href='my_ing.html'><span>후기 미작성</span></a></li>
+								<li><a href='my_board.html'><span>내가 작성한 게시물</span></a></li>
+							</ul></li>
+						<li><a><span>문의</span></a>
+							<ul>
+								<li><a href=''><span>1:1 문의</span></a></li>
+							</ul></li>
+					</ul>
+				</div>
+				<!-------Side Menu Bar 끝------>
+				<div class="col-xs-9">
+					<div id="couple_info"></div>
+						<div id="couple">
+						  <h1 class="margin-bottom">커플 정보</h1>
+						  <div style="margin-left: 20px;">
+    <p>
+       <label>회원님의 JOAH 회원 정보를 수정할 수 있습니다.</label><br>
+	   <span>내정보를 </span>
+	   <span style="color: skyblue;"><b>최신 정보로 관리</b></span>
+	   <span>해 주세요. </span><br><br>
+	</p>
+						  </div>    
+        <div class="col-xs-2" style="position: relative;">
+            <div class="profile text-center" id="member_photo"></div>
+            <div>
+            	<button>upload</button>
+            </div>
+        </div>						     
+   			<div class="col-xs-5">
+           <div class="center_content" id="my_info_center_content">
+        <div class="sidebar blog-sidebar">
+          <div class="sidebar-item categories">
+            <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;">
+              <li><a id="my_a">ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
+              <!-- <li><a>Password<input style="border-radius:13px;"type="text"></a></li>
+              <li><a>Password Check<input style="border-radius:13px;" type="text"></a></li> -->
+              <li><a id="my_a">Name<input id="member_name" style="border-radius:13px;"type="text"></a></li>
+              <li><a id="my_a">E-Mail<input id="member_email" style="border-radius:13px;"type="text"></a></li>
+              <!-- <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text"></a></li>
+               --><li><a id="my_a">Age<input id="member_age" style="border-radius:13px;"type="text"></a></li>
+              <!-- <li><a>Couple ID<input id="member_cid" style="border-radius:13px;"type="text"></a></li>
+             --></ul>
+<!--             <input type="button" class="form_search" value="Modify" /> -->
+           </div>
+        </div>
+      </div>
+      </div>
+				
+      <div class="col-xs-5">
+        <div>
+          <label style="margin: 0 0 10px 15px;">관심사</label>
+        </div>
+            <table style="border: 1px solid #d2d8d8; border-radius: 0.25em; padding: 12px 20px 12px 50px;" id="interest_form">     		
+              <tbody>
+              <tr>
+                <td style="color:#bcbcbc;vertical-align: middle;padding: 0px 15px;">
+                   <img alt="" title="" border="0"></td>
+                <td>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="I-001" name="interest" id="food" class="food" >
+                 <label for="food">맛집</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="I-005" name="interest" id="culture" class="culture" >
+                 <label style="padding-right:18px;" for="culture">문화/공연</label>
+            <br>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="I-004" name="interest" id="exercise" class="exercise" >
+                 <label for="exercise">운동</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="I-002" name="interest" id="play" class="play" >
+                 <label for="play">유흥</label>
+                 <input onclick="CountChecked(this)" style="margin:15px 0 0 15px;" type="checkbox" value="I-003" name="interest" id="experience" class="experience" >
+                 <label style="padding-right:18px;" for="experience">체험</label>
+            <br>
+            <br>
+                 </td>
+              </tr>
+            </tbody></table>
+        </div>
+         <button id="updateBtn" style="float: right; margin-top: 50px;">변경</button>       
+				    </div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+	<script>
+$.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
+  var ajaxResult = resultObj.ajaxResult;
+  if (ajaxResult.status == "success") {
+    var member = ajaxResult.data;
+    $("#member_photo").html("<img src='../profile_image/" + member.photo + "'width='100px' height='100px'><br><br>");
+    $("#member_id").val(sessionStorage.getItem('loginSession'));
+    $("#member_pwd").val(member.pwd);
+    $("#member_name").val(member.name);
+    $("#member_email").val(member.email);
+    $("#member_gender").val(member.gender);
+    $("#member_age").val(member.age);
+    $("#member_cid").val(member.cid);
+  }
+});  
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+
+/* $("#h_title").load("load/header.html"); */
+
+$(function () {
+  $('#menubar a').click(function() {
+    $('#couple_info').load('load/' + $(this).attr('id') + '.html');
+    $('#couple').empty();
+  });
+});
+
+ </script>
+
+
+</body>
+</html>

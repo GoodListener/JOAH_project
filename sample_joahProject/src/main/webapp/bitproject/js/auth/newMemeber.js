@@ -227,7 +227,7 @@
      password: $('#signup-password').val(),
      email: $('#signup-email').val() ,
      name: $('#signup-username').val() ,
-     age: $('#signup-age').val() ,
+     age: $('#signup-userAge').val() , 
      gender: uGender.val(),
      photo: $('#fphotofile').val(),
      interestList: JSON.stringify(interest)
