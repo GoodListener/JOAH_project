@@ -437,7 +437,7 @@ $.ajax({
            var ajaxResult = resultObj.ajaxResult;
            if (ajaxResult.status == "success") {
              var location = ajaxResult.data;
-             $("#choice_div1").html("<img src='"+ location.photo +"' id='img_icon' class='img-circle'>" +
+             $("#choice_div1").html("<img src='"+ location.photo +"' id='img_icon' class='img-circle' height='80px' width='80px'>" +
                  "<input type='hidden' name='lno1' value='"+ targetNo +"'>");
              $("#choice_name1").html("<span class='span_label'>"+ location.name +"</span>");
            }
@@ -448,7 +448,7 @@ $.ajax({
            var ajaxResult = resultObj.ajaxResult;
            if (ajaxResult.status == "success") {
              var location = ajaxResult.data;
-             $("#choice_div2").html("<img src='"+ location.photo +"' class='img-circle'>" +
+             $("#choice_div2").html("<img src='"+ location.photo +"' class='img-circle' height='80px' width='80px'>" +
                  "<input type='hidden' name='lno2' value='"+ targetNo +"'>");
              $("#choice_name2").html("<span class='span_label'>"+ location.name +"</span>");
            }
@@ -459,7 +459,7 @@ $.ajax({
            var ajaxResult = resultObj.ajaxResult;
            if (ajaxResult.status == "success") {
              var location = ajaxResult.data;
-             $("#choice_div3").html("<img src='"+ location.photo +"' class='img-circle'>" +
+             $("#choice_div3").html("<img src='"+ location.photo +"' class='img-circle' height='80px' width='80px'>" +
                  "<input type='hidden' name='lno3' value='"+ targetNo +"'>");
              $("#choice_name3").html("<span class='span_label'>"+ location.name +"</span>");
            }
@@ -470,7 +470,7 @@ $.ajax({
            var ajaxResult = resultObj.ajaxResult;
            if (ajaxResult.status == "success") {
              var location = ajaxResult.data;
-             $("#choice_div4").html("<img src='"+ location.photo +"' class='img-circle'>" +
+             $("#choice_div4").html("<img src='"+ location.photo +"' class='img-circle' height='80px' width='80px'>" +
                  "<input type='hidden' name='lno4' value='"+ targetNo +"'>");
              $("#choice_name4").html("<span class='span_label'>"+ location.name +"</span>");
            }
@@ -598,53 +598,49 @@ $.ajax({
    
    var photoMarker = [];
    var markerUrl = "";
-   var objLngLat = [];
+   var fullUrl = 'http://openapi.naver.com/map/getStaticMap?version=1.0&crs=EPSG:4326&key=553205575474122b3423699dc799445d&uri=localhost:8080/sample_joahProject&w=520&h=350&maptype=default';
+   var centerLoc = "";
    var photoLng;
    var photoLat;
+   var iCount;
    $("#save_Btn").click(function(event) {
 	 lnos[0] = parseInt($("input[name='lno1']").val());
    lnos[1] = parseInt($("input[name='lno2']").val());
    lnos[2] = parseInt($("input[name='lno3']").val());
    lnos[3] = parseInt($("input[name='lno4']").val());
-   for (var i = 0; i < 4; i++) {
-	   if(!lnos[i]) {continue;}
-     $.getJSON('ajax/locationDetail.do?no=' + lnos[i], function(resultObj) {
+   if (!lnos[0]) {
+	   alert("1개이상의 장소를 선택해주세요.");
+	   return;
+   }
+     $.getJSON('ajax/locationDetail.do?no=' + lnos[0], function(resultObj) { // 포기 1개 좌표 가져와서
     	 var ajaxResult = resultObj.ajaxResult;
        if (ajaxResult.status == "success") {
            var locData = ajaxResult.data;
-           photoMarker[i] = locData.lng + "," + locData.lat; 
-           objLngLat[i] = new nhn.api.map.LatLng(locData.lat, locData.lng);
-           console.log(photoMarker[i]);
-           console.log(objLngLat[i]);
-           //ajax라서 밑에 for문과 순서가 맞지 않아서 다시 확실히 하고 정리해야함.
-       }
+           photoMarker[0] = locData.lat + "," + locData.lng; 
+           fullUrl += "&markers=" + photoMarker[0];
+           centerLoc = "&center=" + photoMarker[0] + "&level=10";
+           
+           $.post('ajax/addboard.do', {
+               id : sessionStorage.getItem('loginSession'),
+               title : '아무거나',
+               content : '아무거나넣음',
+               likes : 0,
+               dislikes : 0,
+               heart : 'Y',
+               icon : $('#img_icon').attr('src'),
+               photo : fullUrl + centerLoc
+             }, function(resultObj) {
+                   boardNo = resultObj.data; // 데이터에서 넘버 받아와야 함.
+                   $.post('ajax/addcourse.do', {
+                       bno : boardNo,
+                       lnoArray: JSON.stringify(lnos)
+                     }, function(resultObj) {
+                         console.log("보드-코스 저장에 성공");
+                         location.href="index.html";
+                     }, 'json'); 
+               }, 'json');
+        }
      });
-   }
-   console.log("photoMarker.length : " + photoMarker.length);
-   for (var i = 0; i < photoMarker.length; i++) {
-	   markerUrl = "&markers=" + photoMarker[i];
-   }
-   console.log(markerUrl);
-   
-	    $.post('ajax/addboard.do', {
-		     id : sessionStorage.getItem('loginSession'),
-		     title : '아무거나',
-		     content : '아무거나넣음',
-		     likes : 0,
-		     dislikes : 0,
-		     heart : 'Y',
-		     icon : $('#img_icon').attr('src'),
-		     photo : 'http://openapi.naver.com/map/getStaticMap?version=1.0&crs=EPSG:4326&center=127.1141382,37.3599968&level=8&w=520&h=350&maptype=default'+ markerUrl +'&key=553205575474122b3423699dc799445d&uri=localhost:8080/sample_joahProject'
-		   }, function(resultObj) {
-		         boardNo = resultObj.data; // 데이터에서 넘버 받아와야 함.
-		         $.post('ajax/addcourse.do', {
-		             bno : boardNo,
-		             lnoArray: JSON.stringify(lnos)
-		           }, function(resultObj) {
-		               console.log("보드-코스 저장에 성공");
-		               /* location.href="index.html"; */
-		           }, 'json'); 
-		     }, 'json');
    });
    
    </script>

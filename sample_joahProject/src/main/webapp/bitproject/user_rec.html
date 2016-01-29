@@ -172,12 +172,12 @@ $.getJSON('ajax/list.do?pageNo=' + pageNo, function(resultObj) {
             "style='position: absolute; left: 15px; top: 0px; transform: translate3d(370px, 200px, 0px);'>")
         .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
       "<div class='portfolio-thumb'> " +
-          "<a href='#' class='detailLnk'><img id='hot' src='images/portfolio/" + board.photo + "' class='img-responsive' alt=''></a>" +
+          "<a href='#' class='detailLnk'><img id='hot' src='" + board.photo + "' class='img-responsive' alt=''></a>" +
       "</div>" +
       "<div class='portfolio-view'>" +
           "<ul class='nav nav-pills'>" +
               "<li><a href='portfolio-details.html?no=" + board.bno + "'><i class='fa fa-link'></i></a></li>" +
-              "<li><a href='images/portfolio/" + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
+              "<li><a href='" + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
           "</ul>" +
       "</div>" +
   "</div>" +
