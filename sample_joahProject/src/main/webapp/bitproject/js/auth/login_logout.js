@@ -42,6 +42,9 @@ $(document).ready( function() {
           }
         },'json');
       });
+    $('#alarm_img').click(function(event) {
+    	$('#effect').show("slide", 500);
+    });
     
     $('#admin_logout').click( function(event) {
       $.post('ajax/logout.do',
