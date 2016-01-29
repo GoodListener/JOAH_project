@@ -200,22 +200,21 @@ $.ajax({
                               mapInfoTestWindow[location.lno] = new nhn.api.map.InfoWindow({
                                 point: oMarkers[location.lno].getPoint(),
                                 content: '<div class="wrap">' +
-                                  '    <div class="info">' +
-                                  '        <div class="title">'+ location.name  +
-                                  '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-                                  '        </div>' +
-                                  '        <div class="body">' +
-                                  '            <div class="img">' +
-                                  '                <img src="'+ location.photo +'" width="73" height="70">' +
-                                  '           </div>' +
-                                  '            <div class="desc">' +
-                                  '                <div class="ellipsis">'+ location.content  + '여기다가 상세정보' +
-                                  '                <div class="jibun ellipsis">(우) 63309 (지번) ?? 2181</div>' +
-                                  '                <div class="choice_1" id="choice_id'+location.lno+'"><button type="button" class="btn btn-default btn-xs" style="align:right;">선택</button></div>' + // 선택 분류할 때 div를 다르게 하기.
-                                  '            </div>' +
-                                  '        </div>' +
-                                  '    </div>' +
-                                  '</div>'
+                                '    <div class="info">' +
+                                '        <div class="title">'+ location.name  +
+                                '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+                                '        </div>' +
+                                '        <div class="body">' +
+                                '            <div class="img">' +
+                                '                <img src="'+ location.photo +'" width="73" height="70">' +
+                                '           </div>' +
+                                '            <div class="desc">' +
+                                '                <div class="ellipsis">'+ location.content + '</div>' +
+                                '                <div class="jibun ellipsis"></div>' +
+                                '                <div class="choice_1" id="choice_id'+location.lno+'" style="position:relative; top:25px; left:150px">' +
+                                '                <button type="button" class="btn btn-default btn-xs">선택</button></div>' + // 선택 분류할 때 div를 다르게 하기.
+                                '    </div>' +
+                                '</div>'
                               });
                               mapInfoTestWindow[location.lno].setVisible(false);
                               oMap.addOverlay(mapInfoTestWindow[location.lno]);
@@ -229,7 +228,7 @@ $.ajax({
                              
                              
                             } // for문 끝 
-                            
+                            oMap.setCenter(new nhn.api.map.LatLng(location.lng, location.lat));
                           }); // AJAX 호출 끝
                             
                           

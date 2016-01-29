@@ -15,7 +15,7 @@ $(document).ready( function() {
             $.cookie("id", $("#signin-userID").val());
           } else {
             $.cookie("id", "");
-          }   
+          }
            
           $.post('ajax/login.do', {
             id : $('#signin-userID').val(),
@@ -61,6 +61,8 @@ $(document).ready( function() {
 		     $("#after_login2").show();
 		     $("#after_login2").text(sessionStorage.getItem('loginSession') + "님");
 		     $("#after_login3").show();
+		     $("#logAlarm").show();
+		     $("#after_login5").show();
 		     $("#com-content").show();
 	   } else {
 		   console.log(sessionStorage.getItem('loginSession'));
