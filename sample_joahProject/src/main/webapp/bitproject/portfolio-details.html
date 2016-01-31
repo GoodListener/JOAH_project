@@ -13,14 +13,18 @@
 <script type="text/javascript" src="../lib/myjs/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/jquery.jcarousel.css" />
-<link rel="stylesheet" type="text/css" href="css/skin.css" />
-
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
+
+<!-- Syntax Highlighter -->
+<link href="css/shCore.css" rel="stylesheet" type="text/css" />
+<link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+<!-- Demo CSS -->
+<link rel="stylesheet" href="flexslider.css" type="text/css" media="screen" />
+
 </head>
 <body>
 <div id="main_container">
@@ -59,62 +63,90 @@ $("#h_title").load("load/header.html");
          <p id="date" style="float:right;"></p>
       </section>
       
+      <!-- 이미지 슬라이더 -->
+      <section class="slider col-md-6">
+        <div id="slider" class="flexslider">
+          <ul class="slides">
+            <li>
+  	    	    <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_lemon.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_donut.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_caramel.jpg" />
+  	    		</li>
+            <li>
+  	    	    <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_lemon.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_donut.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_caramel.jpg" />
+  	    		</li>
+            <li>
+  	    	    <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_lemon.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_donut.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_caramel.jpg" />
+  	    		</li>
+          </ul>
+        </div>
+        <div id="carousel" class="flexslider">
+          <ul class="slides">
+            <li>
+  	    	    <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_lemon.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_donut.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_caramel.jpg" />
+  	    		</li>
+            <li>
+  	    	    <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_lemon.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_donut.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_caramel.jpg" />
+  	    		</li>
+            <li>
+  	    	    <img src="images/kitchen_adventurer_cheesecake_brownie.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_lemon.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_donut.jpg" />
+  	    		</li>
+  	    		<li>
+  	    	    <img src="images/kitchen_adventurer_caramel.jpg" />
+  	    		</li>
+          </ul>
+        </div>
+      </section>
       
-      <!-- 이미지 슬라이드 -->
-     <section class="col-md-12 margin-bottom">
-      <div id="slideshow-main">
-         <ul>
-            <li class="p1 active" id="photo_div"></li>
-            <li class="p2">
-               <a href="#">
-                  <img src="images/2_big.gif" width="430" height="290" alt=""/>
-               </a>
-            </li>
-            <li class="p3">
-               <a href="#">
-                  <img src="images/3_big.gif" width="430" height="290" alt=""/>
-               </a>
-            </li>
-            <li class="p4">
-               <a href="#">
-                  <img src="images/4_big.gif" width="430" height="290" alt=""/>
-               </a>
-            </li>
-            <li class="p5">
-               <a href="#">
-                  <img src="images/5_big.gif" width="430" height="290" alt=""/>
-               </a>
-            </li>
-            <li class="p6">
-               <a href="#">
-                  <img src="images/6_big.gif" width="430" height="290" alt=""/>
-<!--                   <span class="opacity"></span> -->
-<!--                   <span class="content"><h1>Title 6</h1><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span> -->
-               </a>
-            </li>
-            <li class="p7">
-               <a href="#">
-                  <img src="images/7_big.gif" width="430" height="290" alt=""/>
-<!--                   <span class="opacity"></span> -->
-<!--                   <span class="content"><h1>Title 7</h1><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p></span> -->
-               </a>
-            </li>
-         </ul>                              
-      </div>
-            
-      <div id="slideshow-carousel">            
-           <ul id="carousel" class="jcarousel jcarousel-skin-tango">
-            <li><a rel="p1" id="photo_div2"></a></li>
-            <li><a href="#" rel="p2"><img src="images/2_big.gif" width="206" height="95" alt="#"/></a></li>
-            <li><a href="#" rel="p3"><img src="images/3_big.gif" width="206" height="95" alt="#"/></a></li>
-            <li><a href="#" rel="p4"><img src="images/4_big.gif" width="206" height="95" alt="#"/></a></li>
-            <li><a href="#" rel="p5"><img src="images/5_big.gif" width="206" height="95" alt="#"/></a></li>
-            <li><a href="#" rel="p6"><img src="images/6_big.gif" width="206" height="95" alt="#"/></a></li>
-            <li><a href="#" rel="p7"><img src="images/7_big.gif" width="206" height="95" alt="#"/></a></li>
-           </ul>
-      </div>
-   </section>
-
       <section class="col-md-12">
          <div class="post-content">
             <h2 class="post-title bold">
@@ -123,7 +155,7 @@ $("#h_title").load("load/header.html");
             <h3 class="post-author">
                <a>Posted by micron News</a>
             </h3>
-            <p id="content"></p>
+            <p id="content1"></p>
             <div class="post-bottom overflow">
                <ul class="nav navbar-nav post-nav">
                   <li><a><i class="fa fa-tag"></i>Creative</a></li>
@@ -209,7 +241,7 @@ $("#h_title").load("load/header.html");
       $("#date").text(board.createdDate);
       $("#data_title2").text(board.title);
       $("#data_no").text(board.bno);
-      $("#content").text(board.content);
+      $("#content1").text(board.content);
     }
  });
  
@@ -306,65 +338,51 @@ $("#h_title").load("load/header.html");
   } else {
      $('#after_login')
   } 
- 
   </script>
-  <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-  <script type="text/javascript" src="js/jquery.jcarousel.pack.js"></script>
+  
+  <!-- jQuery -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
+
+  <!-- FlexSlider -->
+  <script defer src="jquery.flexslider.js"></script>
+
   <script type="text/javascript">
-  /* 이미지 슬라이드 스크립트 */
-  $(document).ready(function () {
-       
-       //jCarousel Plugin
-        $('#carousel').jcarousel({
-          vertical: true,
-          scroll: 1,
-          auto: 2,
-          wrap: 'last',
-          initCallback: mycarousel_initCallback
-          });
-
-    //Front page Carousel - Initial Setup
-       $('div#slideshow-carousel a img').css({'opacity': '0.5'});
-       $('div#slideshow-carousel a img:first').css({'opacity': '1.0'});
-       $('div#slideshow-carousel li a:first').append('<span class="arrow"></span>')
-
-   
-      //Combine jCarousel with Image Display
-     $('div#slideshow-carousel li a').hover(
-           function () {
-              if (!$(this).has('span').length) {
-               $('div#slideshow-carousel li a img').stop(true, true).css({'opacity': '0.5'});
-                 $(this).stop(true, true).children('img').css({'opacity': '1.0'});
-              }      
-           },
-           function () {
-              $('div#slideshow-carousel li a img').stop(true, true).css({'opacity': '0.5'});
-              $('div#slideshow-carousel li a').each(function () {
-
-                 if ($(this).has('span').length) $(this).children('img').css({'opacity': '1.0'});
-              });
-           }
-    ).click(function () {
-             $('span.arrow').remove();        
-       $(this).append('<span class="arrow"></span>');
-           $('div#slideshow-main li').removeClass('active');        
-           $('div#slideshow-main li.' + $(this).attr('rel')).addClass('active');   
-            
-           return false;
+    $(function(){
+      SyntaxHighlighter.all();
     });
- });
+    $(window).load(function(){
+      $('#carousel').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 210,
+        itemMargin: 5,
+        asNavFor: '#slider'
+      });
 
-
- //Carousel Tweaking
- function mycarousel_initCallback(carousel) {
-    // Pause autoscrolling if the user moves with the cursor over the clip.
-    carousel.clip.hover(function() {
-       carousel.stopAuto();
-    }, function() {
-       carousel.startAuto();
+      $('#slider').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        sync: "#carousel"
+      });
     });
- }
   </script>
+
+
+  <!-- Syntax Highlighter -->
+  <script type="text/javascript" src="js/shCore.js"></script>
+  <script type="text/javascript" src="js/shBrushXml.js"></script>
+  <script type="text/javascript" src="js/shBrushJScript.js"></script>
+
+  <!-- Optional FlexSlider Additions -->
+  <script src="js/jquery.easing.js"></script>
+  <script src="js/jquery.mousewheel.js"></script>
+  <script defer src="js/demo.js"></script>
+  
 
 </body>
 </html>
