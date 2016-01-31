@@ -42,8 +42,19 @@ $(document).ready( function() {
           }
         },'json');
       });
+    //알람 이미지를 클릭하면 바가 뜨고 안뜨고 하는 것.
     $('#alarm_img').click(function(event) {
-    	$('#effect').show("slide", 500);
+    	if($('#alarm_tri').attr("class") != "on") {
+    	$('#alarm_tri').show("slide");
+    	$('#alarm_bar').show("slide");
+    	$('#alarm_tri').attr("class","on");
+    	$('#alarm_bar').attr("class","on");
+    	} else {
+    	$('#alarm_tri').hide("slide");
+    	$('#alarm_bar').hide("slide");
+    	$('#alarm_tri').attr("class","off");
+    	$('#alarm_bar').attr("class","off");
+    	}
     });
     
     $('#admin_logout').click( function(event) {
