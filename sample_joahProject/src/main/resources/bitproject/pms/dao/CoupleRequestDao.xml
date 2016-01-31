@@ -13,7 +13,7 @@
 </insert>
 	
 	
-<select id="selectList" resultType="CoupleRequest">
+<select id="selectlist" resultType="CoupleRequest">
 		select my_id,my_name,request_id,request_dt
 		from couple_request
 </select>
