@@ -14,14 +14,14 @@ import bitproject.pms.domain.AjaxResult;
 import bitproject.pms.domain.CoupleRequest;
 
 
-@Controller("ajax.AddStudentController")
-@RequestMapping("/CoupleRequest/ajax/*")
+@Controller("ajax.CoupleRequestController")
+@RequestMapping("/bitproject/ajax/*")
 public class CoupleRequestController { 
   private static final Logger logger = Logger.getLogger(CoupleRequestController.class); 
   
   @Autowired CoupleRequestDao coupleRequestDao;
   
-  @RequestMapping("list")
+  @RequestMapping("/CR/list")
   public Object list() throws Exception {
     
     logger.debug("커플 신청 list");
@@ -37,7 +37,7 @@ public class CoupleRequestController {
     return resultMap;
   }
   
-  @RequestMapping(value="add", method=RequestMethod.POST)
+  @RequestMapping(value="/CR/add", method=RequestMethod.POST)
   public AjaxResult add(CoupleRequest coupleRequest) throws Exception {
     
     logger.debug("친구 신청됨.");
@@ -47,7 +47,7 @@ public class CoupleRequestController {
     return new AjaxResult("success", null);
   }
   
-  @RequestMapping("delete")
+  @RequestMapping("/CR/delete")
   public AjaxResult delete(String my_id) throws Exception {
     
     logger.debug("친구 신청취소됨.");
@@ -59,7 +59,7 @@ public class CoupleRequestController {
     return new AjaxResult("success", null);
   }
   
-  @RequestMapping("idcheck")
+  @RequestMapping("/CR/idcheck")
   public Object idcheck() throws Exception {
     
     logger.debug("커플 중복신청 방지.");
