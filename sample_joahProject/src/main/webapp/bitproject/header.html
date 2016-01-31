@@ -50,10 +50,13 @@
 				    <li>
 				    	<div style="display: none" class="cd-signin" id="logAlarm">
 					     	<img src="alarm.png" width=40px height=40px class="img-circle" id="alarm_img">
-					     	 <div id="alarm_bar">
-							      <span style="font-size:10px;">후기를 작성하지 않은 게시물이 있습니다</span>
+					     	 <div style="display:none" id="alarm_bar"> 
+					     	      <p>알 림</p>
+					     	    <ul id="alarmlist">
+							        <li class="alarm"><span style="font-size:10px;" id="alarm_message">알림이 없습니다.</span></li>
+					     	    </ul>
 						     </div>
-						     <div id="alarm_tri"></div>
+						     <div style="display:none" id="alarm_tri"></div>
 					    </div>
 				    </li>
 				<li><a style="display: none" class="cd-signin" type="button"
@@ -70,6 +73,19 @@
       </nav>
    </div>
 </div>
+<script>
+var count = 0;
+$.getJSON('ajax/inglist.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
+	for (var board of resultObj.data) {
+		count++;
+	}
+	if (count != 0) {
+	    $("#alarm_bar").html('<p>알 림</p><span style="font-size:10px;" id="alarm_message">' +
+	    '<a href="#" style="background:none;color:#337ab7;text-decoration:none;border:0px;font-size:10px;padding:0;margin:0;float:none;">후기를 등록하지 않은 '+ count +'개의 글</a></span>');
+	}
+});
+</script>
+
 <!------------------------------------------>
 <!--            Modal 시작                -->
 <!------------------------------------------>
