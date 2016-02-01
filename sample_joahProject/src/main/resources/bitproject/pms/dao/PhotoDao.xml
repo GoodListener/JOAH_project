@@ -7,12 +7,12 @@
 	
 	<resultMap type="photo" id="photoMap">
     <id 		column="pno" 		property="pno"/>
-    <result column="photo" 		property="photoName[]"/>
+    <result column="photo" 		property="photoName"/>
   </resultMap>
   
 	<insert id="insertPhoto" parameterType="photo">
     insert into photo(bno,photo) 
-    values(#{bno},#{photoName[]})
+    values(#{bno},#{photoName})
   </insert>
 	
 </mapper> 

@@ -109,7 +109,8 @@ $.ajax({
                 <div class="col-sm-6">
                     <h2>PHOTO</h2>
                     <input type='file' class="form-control" id="ffile" name="files" multiple>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="900ms" data-wow-delay="100ms">
+                    <div class='images'></div>
+                        <!-- <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="900ms" data-wow-delay="100ms">
                         <img src="images/portfolio/1.jpg"></div>
                         <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="800ms" data-wow-delay="200ms">
                         <img src="images/portfolio/2.jpg"></div>
@@ -120,7 +121,7 @@ $.ajax({
                         <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="500ms" data-wow-delay="200ms">
                         <img src="images/portfolio/5.jpg"></div>
                         <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="400ms" data-wow-delay="300ms">
-                        <img src="images/portfolio/6.jpg"></div>
+                        <img src="images/portfolio/6.jpg"></div> -->
                     
                 </div>
             </div>
@@ -342,44 +343,33 @@ $.ajax({
                             }
                           }); 
      </script>
-     <script type="text/javascript">
-       try {document.execCommand('BackgroundImageCache', false, true);} catch(e) {}
-     </script>
-     
-     <!-- 등록 폼 -->
-     <!-- <script>
-     $("#addToboard").click(function(event) {
-         console.log(boardNo);
-         $.post('ajax/realAddboard.do', {
-           bno: boardNo,
-           title: $('#input_title').val(),
-           content: $('#input_content').val(),
-           success: function(resultObj) {
-             console.log("user_rec 등록성공!");
-           }
-        }, function(resultObj) {
-         //mylist.do
-           $.post('ajax/mylist.do', {
-             bno: boardNo,
-             title: $('#input_title').val(),
-             content: $('#input_content').val(),
-             success: function(resultObj) {
-             console.log("내가 작성한 게시물에 등록성공!");
-             }
-           }, function(resultObj) {
-             console.log("user_rec와 내가 작성한 게시물에 등록 성공");
-             location.href="index.html";
-           }, 'json');
-        }, 'json');
-     });
-     </script> -->
+<script type="text/javascript">
+ try {document.execCommand('BackgroundImageCache', false, true);} catch(e) {}
+</script>
 <script>
+var ppp = [];
+
+$(function() { 
 $('#ffile').fileupload({
   url:'ajax/photo/upload.do',
   dataType: 'json',
   singleFileUploads: false, // 서버에 한 번만 요청을 보내라.
   add: function (e, data) {
+  
   console.log("파일을 추가하였음...");
+  
+  console.log(data);
+  console.log(data.files);
+  console.log(data.files[0]);
+  console.log(data.files[0].name);
+
+  var photodata = data.files
+  
+  for (var i=0; i<photodata.length; i++) {
+	  ppp.push(photodata[i].name  +  ",");
+  }
+  console.log(ppp);
+  
   $('#addToboard').click(function(event) {
    console.log("서버에 전송함...");
    data.formData = {
@@ -391,11 +381,18 @@ $('#ffile').fileupload({
    console.log(data.result.ajaxResult.data);
    var photo = data.result.ajaxResult.data
    console.log(photo.length);
+   
+   var photoName ='';
+   
+   for (var i = 0; i<ppp.length;i++) {
+	   photoName += ppp[i];
+   }
+   console.log(photoName)
     		  
   /*  for (var i = 0; i < photo.length; i++) {	 */
    $.post('ajax/photo/add.do', {	
    	 bno : boardNo,
-   	 photoName: photo,
+   	 photoName: photoName,
    	 success: function(resultObj) {
         console.log("내가 작성한 게시물에 등록성공!");
         }
@@ -417,6 +414,66 @@ $('#ffile').fileupload({
    }, 'json');
 }
 });
+});
+
+$(function(){
+    $("#ffile").change(function () {
+        if (typeof (FileReader) != "undefined") {
+            var dvPreview = $(".images");
+            var regex = /^([가-힣a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+            $($(this)[0].files).each(function () {
+                var file = $(this);
+                if (regex.test(file[0].name.toLowerCase())) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var img = $("<img />");
+                        
+                        img.attr("name",file[0].name);
+                       
+                        img.attr("id","multi");
+                        img.attr("style", "width:150px; height:150px; margin-right: 10px;margin-top:10px;");
+                        img.attr("src", e.target.result);
+                        
+                        dvPreview.append(img);
+                        
+                        var x= $("<div />");
+                        
+                        x.attr("class","fa fa-times");
+                        x.attr("style","margin-bottom:100px");
+                        dvPreview.append(x);
+                        
+                        
+                        $(".fa-times").on('click',function(){
+                        	
+                        	console.log(($(this).prev().attr('name')+","));
+                        	
+                      	  for(var i=0; i< ppp.length; i++) {
+                      		  if( ($(this).prev().attr('name')+",") == ppp[i]) {
+                      			  for (i ; i < ppp.length -1;  i++) {
+                      				  ppp[i] = ppp[i+1];
+                      			  }
+                      			  ppp.length = ppp.length - 1 ;
+                      		  }
+                      	  }	
+                      	  
+                      	console.log(ppp[i]);
+                      	
+                      	  $(this).prev().remove();
+                          $(this).remove();
+                          }); 
+                    }
+                    reader.readAsDataURL(file[0]);
+                }  else {
+                    alert(file[0].name + " is not a valid image file.");
+                    dvPreview.html("");
+                    return false;
+                }
+            });
+        } else {
+            alert("This browser does not support HTML5 FileReader.");
+        }
+    });
+ });
 </script>
      
 </body>
