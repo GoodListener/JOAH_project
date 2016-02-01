@@ -5,6 +5,16 @@
 
 <mapper namespace="bitproject.pms.dao.PhotoDao"> 
 	
+	<resultMap type="photo" id="photoMap">
+    <id 		column="pno" 		property="pno"/>
+    <result column="photo" 		property="photoName[]"/>
+  </resultMap>
+  
+	<insert id="insertPhoto" parameterType="photo">
+    insert into photo(bno,photo) 
+    values(#{bno},#{photoName[]})
+  </insert>
+	
 </mapper> 
 
 

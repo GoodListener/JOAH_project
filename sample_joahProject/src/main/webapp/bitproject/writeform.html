@@ -7,15 +7,17 @@
 <!-- <link rel="stylesheet" href="../css/common.css"> -->
 <link rel="stylesheet" type="text/css" href="../lib/mycss/style_detail.css" />
 <link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/lightbox.min.js"></script>
-    <script type="text/javascript" src="js/wow.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script> 
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lightbox.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script> 
+<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="../lib/myjs/jquery-ui.min.js"></script>
-<script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
-
+<script src="../lib/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="../lib/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="../lib/blueimp-file-upload/js/jquery.fileupload.js"></script>
 
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -106,7 +108,7 @@ $.ajax({
                 </div>
                 <div class="col-sm-6">
                     <h2>PHOTO</h2>
-                    <input type="file">
+                    <input type='file' class="form-control" id="ffile" name="files" multiple>
                         <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="900ms" data-wow-delay="100ms">
                         <img src="images/portfolio/1.jpg"></div>
                         <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="800ms" data-wow-delay="200ms">
@@ -139,7 +141,7 @@ $.ajax({
     <!------------------------------------------>
     <!--              지도스크립트            -->
     <!------------------------------------------>
-  <script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+  
  <script type="text/javascript">
  var oPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);                       
  var oCenterPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);
@@ -345,7 +347,7 @@ $.ajax({
      </script>
      
      <!-- 등록 폼 -->
-     <script>
+     <!-- <script>
      $("#addToboard").click(function(event) {
          console.log(boardNo);
          $.post('ajax/realAddboard.do', {
@@ -370,6 +372,52 @@ $.ajax({
            }, 'json');
         }, 'json');
      });
-     </script>
+     </script> -->
+<script>
+$('#ffile').fileupload({
+  url:'ajax/photo/upload.do',
+  dataType: 'json',
+  singleFileUploads: false, // 서버에 한 번만 요청을 보내라.
+  add: function (e, data) {
+  console.log("파일을 추가하였음...");
+  $('#addToboard').click(function(event) {
+   console.log("서버에 전송함...");
+   data.formData = {
+    };
+    data.submit();
+    });
+   },
+   done: function (e, data) {
+   console.log(data.result.ajaxResult.data);
+   var photo = data.result.ajaxResult.data
+   console.log(photo.length);
+    		  
+  /*  for (var i = 0; i < photo.length; i++) {	 */
+   $.post('ajax/photo/add.do', {	
+   	 bno : boardNo,
+   	 photoName: photo,
+   	 success: function(resultObj) {
+        console.log("내가 작성한 게시물에 등록성공!");
+        }
+   	 }
+  /* } */
+   , 
+   function(resultObj) {
+   $.post('ajax/realAddboard.do', {
+   bno: boardNo,
+   title: $('#input_title').val(),
+   content: $('#input_content').val(),
+   success: function(resultObj) {
+   console.log("user_rec 등록성공!");
+   }
+   }, function(resultObj) {
+   console.log("user_rec와 내가 작성한 게시물에 등록 성공");
+   location.href="index.html";
+   }, 'json');
+   }, 'json');
+}
+});
+</script>
+     
 </body>
 </html>

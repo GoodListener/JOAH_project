@@ -9,6 +9,7 @@ public class Photo implements Serializable {
   protected String  originName;
   protected int     pno;
   protected int     bno;
+  
   public String getPhotoName() {
     return photoName;
   }
