@@ -378,21 +378,12 @@ $('#ffile').fileupload({
     });
    },
    done: function (e, data) {
-   console.log(data.result.ajaxResult.data);
-   var photo = data.result.ajaxResult.data
-   console.log(photo.length);
-   
-   var photoName ='';
-   
-   for (var i = 0; i<ppp.length;i++) {
-	   photoName += ppp[i];
-   }
-   console.log(photoName)
+      var photo = data.result.ajaxResult.data
     		  
   /*  for (var i = 0; i < photo.length; i++) {	 */
    $.post('ajax/photo/add.do', {	
    	 bno : boardNo,
-   	 photoName: photoName,
+   	 photoName: JSON.stringify(photo),
    	 success: function(resultObj) {
         console.log("내가 작성한 게시물에 등록성공!");
         }

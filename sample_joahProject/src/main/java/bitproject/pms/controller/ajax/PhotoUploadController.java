@@ -54,9 +54,13 @@ public class PhotoUploadController {
   
   @RequestMapping(value="photo/add", method=RequestMethod.POST) 
   public AjaxResult add(Photo photo){
-    
-    photoDao.insertPhoto(photo);
-    
+    String photoName = photo.getPhotoName();
+    photoName = photoName.substring(1,photoName.length() - 1);
+    for (String photoes : photoName.split(",")) {
+      photoes = photoes.substring(1,photoes.length() - 1);
+      photo.setPhotoName(photoes);
+      photoDao.insertPhoto(photo);
+    }
     return new AjaxResult("success", null);
   }
   
