@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import bitproject.pms.dao.LocationDao;
 import bitproject.pms.domain.AjaxResult;
 import bitproject.pms.domain.Location;
-import bitproject.pms.util.DistanceCalculator;
 
 @Controller("ajax.LocationController")
 @RequestMapping("/bitproject/ajax/*")
@@ -26,27 +25,32 @@ public class LocationController {
   
   @RequestMapping("location")
   public Object loc(String intCode, double lat, double lng){
-    DistanceCalculator distCalc = new DistanceCalculator();
-    //LatLng1 은 기준점 스크립트에서 가져온다. 
-    // LatLng2는 쿼리에서 검색한 좌표 
-    // -> location 객체에 distance라는 변수가 있어야겠네.
-    // -> 디스턴스를 위주로 몇 이하인 애들만 짤라내서 결과 출력하기. 
-    /*distCalc.calDistance(lat1, lon1, lat2, lon2);*/
+    
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("intCode", intCode);
+    paramMap.put("lat", lat);
+    paramMap.put("lng", lng);
     
     List<Location> locations;
+    
     if (intCode.equals("I-006")) {
-      locations = locationDao.selectAll();
-      for (Location locToken : locations) {
-        locToken.setDistance(distCalc.calDistance(
-            lat, lng, locToken.getLng(), locToken.getLat())); // 위도경도로 거리구하기
-      }
+      locations = locationDao.selectAll(paramMap);
+      
     } else {
-      locations = locationDao.selectList(intCode);
-      for (Location locToken : locations) {
-        locToken.setDistance(distCalc.calDistance(
-            lat, lng, locToken.getLng(), locToken.getLat())); // 위도경도로 거리구하기
-      }
+      locations = locationDao.selectList(paramMap);
     }
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", locations);
+    
+    return resultMap;
+  }
+  
+  @RequestMapping("allLocation")
+  public Object allLoc(){
+    
+    List<Location> locations = locationDao.allLocation();
+    
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     resultMap.put("data", locations);

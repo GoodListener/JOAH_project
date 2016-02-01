@@ -245,13 +245,13 @@ $.ajax({
  var searchList = $("#searchList");
 
  //맨 처음 시작할 때 항상 전체 리스트 보이도록 하도록 하기.                          
- $.getJSON('ajax/location.do?intCode=I-006&lat=' + 37.5010226 +'&lng=' + 127.0396037, function(resultObj) {
+ $.getJSON('ajax/allLocation.do', function(resultObj) {
    var i = 0;
    for(var location of resultObj.data) {
-     $("<li class='searchlists message' id='li"+location.lno+"'>")
+     /* $("<li class='searchlists message' id='li"+location.lno+"'>")
      .html("<span class='from' style='white-space:nowrap;'>"+ location.name +
          "</span><br><span style='font-size:11px;white-space:nowrap;'>"+ location.content +"</span></li>")
-         .appendTo(searchList); //리스트 띄우는 것.
+         .appendTo(searchList); //리스트 띄우는 것. */
 
      oMarkers[location.lno] = new nhn.api.map.Marker(oIcon, {
        title : location.name,
@@ -394,7 +394,9 @@ $.ajax({
      }, function() {
     	 oMarkers[$(this).attr("id").substring(2)].setIcon(oIcon); 
      });
+     
      $("li.searchlists").click(function() {
+    	 /* 정보창 띄우기 */
     	 if (targetWindow == 0) {
 				 mapInfoTestWindow[oMarkers[$(this).attr("id").substring(2)]._smallSrc].setVisible(true);
 				 oMap.setCenter(oMarkers[$(this).attr("id").substring(2)].getPoint());
@@ -402,6 +404,7 @@ $.ajax({
     	 } else if (targetWindow != 0) {
  	       mapInfoTestWindow[targetWindow].setVisible(false);
  	       mapInfoTestWindow[$(this).attr("id").substring(2)].setVisible(true);
+ 	       oMap.setCenter(oMarkers[$(this).attr("id").substring(2)].getPoint());
  	       targetWindow = oMarkers[$(this).attr("id").substring(2)]._smallSrc;
     	 }
      });

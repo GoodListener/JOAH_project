@@ -10,7 +10,7 @@
     <result column="int_code" property="interestCode"/>
   </resultMap>
 
-  <select id="selectList" resultMap="locationMap" parameterType="String">
+  <select id="selectList" resultMap="locationMap" parameterType="map">
     select 
       lno,
       name,
@@ -18,11 +18,36 @@
       cost,
       photo,
       lat,
-      lng
+      lng,
+      (6371*acos(cos(radians(#{lat}))*cos(radians(lng))*cos(radians(lat)
+      -radians(#{lng}))+sin(radians(#{lat}))*sin(radians(lng))))
+      as distance
     from location
     where int_code=#{intCode}
+    having distance &lt; 1.5
+    ORDER BY distance 
+    LIMIT 0,1000
   </select>
-  <select id="selectAll" resultMap="locationMap">
+  
+  <select id="selectAll" resultMap="locationMap" parameterType="map">
+    select 
+      lno,
+      name,
+      content,
+      cost,
+      photo,
+      lat,
+      lng,
+      (6371*acos(cos(radians(#{lat}))*cos(radians(lng))*cos(radians(lat)
+      -radians(#{lng}))+sin(radians(#{lat}))*sin(radians(lng))))
+      as distance
+    from location
+    having distance &lt; 1.5
+    ORDER BY distance 
+    LIMIT 0,1000
+  </select>
+  
+  <select id="allLocation" resultMap="locationMap">
     select 
       lno,
       name,
@@ -33,7 +58,6 @@
       lng
     from location
   </select>
-  
     
   <insert id="insert" parameterType="location">
     insert into location(int_code,name,content,photo,lat,lng) 
