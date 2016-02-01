@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ import bitproject.pms.domain.Member;
 @Controller("ajax.MemberController")
 @RequestMapping("/bitproject/ajax/*")
 public class MemberController {
-  
+  private static final Logger logger = Logger.getLogger(MemberController.class); 
   public static final String SAVED_DIR = "/file";
   
   @Autowired InterestDao interestDao;
@@ -102,12 +103,6 @@ public class MemberController {
     return new AjaxResult("success", null);
   }
     
-  @RequestMapping(value="detailmember")
-  public Object detail(String id) throws Exception {
-    Member member = memberDao.selectOne(id);
-
-    return new AjaxResult("success", member);
-  }
   
   @RequestMapping(value="updateinfo", method=RequestMethod.POST)
   public AjaxResult update(Member member/* MultipartFile file,*/   /* 예전 파일 명 */) throws Exception {
@@ -174,6 +169,22 @@ public class MemberController {
       return new AjaxResult("failure", null);
     } 
     return new AjaxResult("success", null);
+  }
+  
+  
+  @RequestMapping(value="detailmember")
+  public Object detail(String id) throws Exception {
+    logger.debug("detailmember 호출");
+    Member member = memberDao.selectOne(id);
+    return new AjaxResult("success", member);
+  }
+  
+  
+  @RequestMapping("/member/coupleinfo")
+  public Object coupleinfo(String id) throws Exception {
+    logger.debug("coupleinfo 호출");
+    Member member = memberDao.coupleinfo(id);
+    return new AjaxResult("success", member);
   }
  
  

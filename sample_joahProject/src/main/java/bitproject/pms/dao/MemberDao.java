@@ -16,7 +16,7 @@ public interface MemberDao {
   List<Member> idList();
 
   Member selectOne(String id);
-
+  
   int updateinfo(Member member);
 
   int updatepwd(HashMap<String, Object> paramMap);
@@ -26,6 +26,8 @@ public interface MemberDao {
   int deleteAdmin(String id);
 
   int secession(HashMap<String, Object> paramMap);
+  
+  Member coupleinfo(String id);
   
 /*
   

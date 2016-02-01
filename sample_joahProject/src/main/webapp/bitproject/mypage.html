@@ -16,7 +16,8 @@
 <link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
 <script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
 
-<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/wow.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </head>
@@ -84,7 +85,7 @@ $.ajax({
 		  <div class="col-xs-12" style="margin-top: 20px;">
 	        <div class="col-xs-6" style="position: relative;">
 	          <div class="profile text-center">
-	            <img src="images/aboutus/default.jpg" class="img_mypage">
+	            <img src="../profile_image/default.jpg" class="img_mypage">
 	          </div>	   
 	          <div class="center_content">
 	            <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">내 정보</label>
@@ -101,67 +102,22 @@ $.ajax({
 	            </div>
 	          </div>
 	        </div>
-<!-- 	        
-	        <div class="col-xs-6" style="position: relative;">
-	          <div class="profile text-center">
-	            <img src="images/aboutus/default.jpg" class="img_mypage">
-	          </div>	   
-	          <div class="center_content">
-	            <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">애인 정보</label>
-	            <div class="sidebar blog-sidebar">
-	              <div class="sidebar-item categories" style="position: ">
-	                <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;">
-		              <li><a>ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>Name<input id="member_name" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>E-Mail<input id="member_email" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>Age<input id="member_age" style="border-radius:13px;"type="text" readonly></a></li>
-	                </ul>
-	              </div>
-	            </div>
-	          </div>
-	        </div> -->
-				       <div class="col-xs-6 solo_heaven" style="position: relative;">
-				       		<div>
-				       		  <form id="form1">
-							    <select name='search'>
-							    <option value="id">아이디</option>
-							    </select>
-							    <input type="text" name="word">
-		 					    <input type="submit" value="검색">
-	 						  </form>
-	 						</div><br><br>
-				       		<div id="test1111"></div>
-				   
-				           <div class="center_content search_id"> </div>
-				            <button type='button' id='requestCouple'>커플 신청</button>
-				            <button type='button' id='cancleCouple'>커플 신청 취소</button>	
-				        	
-				       <!--  
-				       <div class="profile text-center">
-				            	<img src="images/aboutus/default.jpg" class="img_mypage" alt="">
-				            </div>
-				         <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;"/>상대 정보</label>
-				       <div class="sidebar blog-sidebar">
-				          <div class="sidebar-item categories" style="position: ">
-				            <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;">
-				              <li><a>ID<input id="member_id2" style="border-radius:13px;"type="text" readonly></a></li>
-				              <li><a>Name<input id="member_name" style="border-radius:13px;"type="text"></a></li>
-				              <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text"></a></li>
-				              <li><a>Age<input id="member_age" style="border-radius:13px;"type="text"></a></li>
-				            </ul>
-				           </div>
-				        </div>	 -->
-				      
-				      </div>     		        			
-		  </div>
-		</div>
-		</div>
-	</section>
-	
-</div> <!-- main container close -->
+	        <div class="col-xs-6" id="coupleCheck" style="position: relative;"></div>
+		</div>     		        			
+	</div>
+</div>
+</section>
+</div>
 <script>
-	var myName = '';
+var myName = '';
+var coupleCheck = '';
+var search = '';
+var word = '';
+if (location.href.indexOf('?') != -1) {
+	search = location.href.split('?')[1].split('=')[1].split('&')[0];
+	word = location.href.split('&')[1].split('=')[1];
+}
+
 $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
   var ajaxResult = resultObj.ajaxResult;
   if (ajaxResult.status == "success") {
@@ -176,96 +132,151 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
     $("#member_gender").val(member.gender);
     $("#member_age").val(member.age);
     $("#member_cid").val(member.cid);
+    coupleCheck = member.cid;
+    console.log("coupleCheck : " + coupleCheck);
+    
+    
+    if (coupleCheck === null || coupleCheck === '') {
+    	
+var soloHeaven = $('#coupleCheck');
+    	
+    	$('#coupleCheck')
+    	.html(
+    	   "<div>"
+ 		 + "<form id='form1'>"
+		 + "<select name='search'>"
+		 + "<option value='id'>아이디</option>"
+		 + "</select>"
+		 + "<input type='text' name='word'>"
+		 + "<input type='submit' value='검색'>"
+		 + "</form></div><br><br><div id='searchSolo'></div>"
+		 + "<div class='center_content search_id'></div>"
+         + "<button type='button' id='requestCouple'>커플 신청</button>"
+         + "<button type='button' id='cancleCouple'>커플 신청 취소</button>"
+         ).appendTo(soloHeaven);
+    	
+    } else {
+    	
+    	$.getJSON('ajax/member/coupleinfo.do?id=' + coupleCheck, function(resultObj) {
+   		 console.log("coupleCheck2 : " + coupleCheck);	
+   		var ajaxResult = resultObj.ajaxResult;
+   		var coupleHell = $('#coupleCheck')
+   		console.log(resultObj.ajaxResult);
+   		if (ajaxResult.status == "success") {
+   			
+   			$('#coupleCheck')
+   			.html(
+   			   "<div class='profile text-center'>"
+   		     + "<img class='img_mypage'></div>" 
+   	         + "<div class='center_content'>"
+   	         + "<label style='margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;'>애인 정보</label>"
+   	         + "<div class='sidebar blog-sidebar'>"
+   	         + "<div class='sidebar-item categories' style='position:'>"
+   	         + "<ul class='nav navbar-stacked' style='margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;'>"
+   		     + "<li><a>ID<input id='couple_id' style='border-radius:13px;'type='text' readonly></a></li>"
+   		     + "<li><a>Name<input id='couple_name' style='border-radius:13px;'type='text'readonly></a></li>"
+   		     + "<li><a>E-Mail<input id='couple_email' style='border-radius:13px;'type='text' readonly></a></li>"
+   		     + "<li><a>Gender<input id='couple_gender' style='border-radius:13px;'type='text' readonly></a></li>"
+   		     + "<li><a>Age<input id='couple_age' style='border-radius:13px;'type='text' readonly></a></li>"
+   	         + "</ul></div></div></div>").appendTo(coupleHell);
+   			
+   			 var couple = ajaxResult.data;
+   			 console.log(ajaxResult.data);
+   			 $("#couple_id").val(couple.id);
+   			 $("#couple_name").val(couple.name);
+   			 $("#couple_email").val(couple.email);
+   			 $("#couple_gender").val(couple.gender);
+   			 $("#couple_age").val(couple.age);
+   			 $(".img_mypage").attr("src", "../profile_image/"+member.photo);
+   		}	
+   	});
+    }
   }
+  
+  if (word != '' && search !='') {
+		$.getJSON('ajax/member/list.do?search=' + search + '&word=' + word , function(resultObj) {
+			var search_Solo = $('#searchSolo');
+			 for (var member of resultObj.data) {
+				 
+				$("#searchSolo")
+				.html("<label style='margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;'/>검색 정보</label><br><br><br>"
+					+ "<div class='profile text-center'>"	
+					+ "<div class='sidebar-item categories' style='position:'>"
+		            + "<ul class='nav navbar-stacked' style='margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;'><br><br>"
+		            + "<br><br><img src='../profile_image/" + member.photo +"' class='img_mypage' alt=''>"
+		            + "</div><div>아이디(이름) : "
+		            + "<input value='     "  + member.id  + "(" + member.name + ")' style='border-radius:13px;'type='text' readonly></div><br>"
+		            + "<div>나이 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<input value='           "  + member.age  
+		            + "' style='border-radius:13px;'type='text' readonly></div><br>"
+		            ).appendTo(search_Solo);
+				
+				
+
+					
+			 }
+		});
+		
+		$('#requestCouple').click(function(event) {
+			
+			var my_Id = sessionStorage.getItem('loginSession');
+			var IdCheck = 0;
+			
+			console.log("상대방아이디" + word);
+			console.log("내이메일" + my_Id);
+				
+			 $.getJSON('ajax/CR/idcheck.do', function(resultObj){
+			    for (var couple_request of resultObj.data) {
+			      if(my_Id == couple_request.my_id){
+			    	  IdCheck = 1;
+			      }
+			    }
+			    console.log(IdCheck);
+			    if (IdCheck!=1) {
+				    	$.post('ajax/CR/add.do', {	
+						my_id : my_Id,
+						my_name : myName,
+						request_id : word,
+					    }, function(resultObj) {
+						var ajaxResult = resultObj.ajaxResult;
+						if (ajaxResult.status == "success") {
+							alert("커플 신청 성공.");
+							location.href = "mypage.html";
+						} else {
+							alert("이미 커플중이거나 커플 신청상태 입니다.");
+						}
+					}, 'json');  
+			    } else {
+			    	alert("이미 커플중이거나 커플 신청상태 입니다.");
+			    }
+			}) 
+		});
+		
+		$('#cancleCouple').click(
+				function(event) {
+					var my_Id = sessionStorage.getItem('loginSession')
+					$.getJSON('ajax/CR/delete.do?my_id=' + my_Id, function(resultObj) {
+						console.log("커플신청 취소함.");
+						var ajaxResult = resultObj.ajaxResult;
+						if (ajaxResult.status == "success") {
+							alert("커플 신청 취소 성공.");
+							location.href = "mypage.html";
+						} else {
+							alert("커플 신청 중이 아닙니다.");
+						}
+					})
+				});
+	}
+  
+  
 }); 
 
-var search = '';
-var word = '';
-if (location.href.indexOf('?') != -1) {
-	search = location.href.split('?')[1].split('=')[1].split('&')[0];
-	word = location.href.split('&')[1].split('=')[1];
-}
 
-if (word != '' && search !='') {
-	$.getJSON('ajax/member/list.do?search=' + search + '&word=' + word , function(resultObj) {
-		var table = $('#test1111');
-		 for (var member of resultObj.data) {
-			 
-			 var photo = member.photo;
-			 
-			 if (photo == null || photo == '') {
-				 photo = 'default.jpg';
-			 }
-			 
-			$("#test1111")
-			.html("<label style='margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;'/>검색 정보</label><br><br><br>"
-				+ "<div class='profile text-center'>"	
-				+ "<div class='sidebar-item categories' style='position:'>"
-	            + "<ul class='nav navbar-stacked' style='margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;'><br><br>"
-	            + "<br><br><img src='../profile_image/" + photo +"' class='img_mypage' alt=''>"
-	            + "</div><div>아이디(이름) : "
-	            + "<input value='     "  + member.id  + "(" + member.name + ")' style='border-radius:13px;'type='text' readonly></div><br>"
-	            + "<div>나이 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<input value='           "  + member.age  
-	            + "' style='border-radius:13px;'type='text' readonly></div><br>"
-	            ).appendTo(table);
-		 }
-	});
-}
 
-$('#requestCouple').click(function(event) {
-	
-	var my_Id = sessionStorage.getItem('loginSession');
-	var IdCheck = 0;
-	
-	console.log("상대방아이디" + word);
-	console.log("내이메일" + my_Id);
-		
-	 $.getJSON('ajax/CR/idcheck.do', function(resultObj){
-	    for (var couple_request of resultObj.data) {
-	      if(my_Id == couple_request.my_id){
-	    	  IdCheck = 1;
-	      }
-	    }
-	    console.log(IdCheck);
-	    if (IdCheck!=1) {
-		    	$.post('ajax/CR/add.do', {	
-				my_id : my_Id,
-				my_name : myName,
-				request_id : word,
-			    }, function(resultObj) {
-				var ajaxResult = resultObj.ajaxResult;
-				if (ajaxResult.status == "success") {
-					alert("커플 신청 성공.");
-					location.href = "mypage.html";
-				} else {
-					alert("이미 커플중이거나 커플 신청상태 입니다.");
-				}
-			}, 'json');  
-	    } else {
-	    	alert("이미 커플중이거나 커플 신청상태 입니다.");
-	    }
-	}) 
-});
 
-$('#cancleCouple').click(
-		function(event) {
-			var my_Id = sessionStorage.getItem('loginSession')
-			$.getJSON('ajax/CR/delete.do?my_id=' + my_Id, function(resultObj) {
-				console.log("커플신청 취소함.");
-				var ajaxResult = resultObj.ajaxResult;
-				if (ajaxResult.status == "success") {
-					alert("커플 신청 취소 성공.");
-					location.href = "mypage.html";
-				} else {
-					alert("커플 신청 중이 아닙니다.");
-				}
-			})
-		});
+
+
+
+
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script>
- </script>
-
-
 </body>
 </html>

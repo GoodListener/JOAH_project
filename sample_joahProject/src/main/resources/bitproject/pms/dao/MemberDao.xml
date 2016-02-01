@@ -66,12 +66,6 @@
 		where id=#{id} and pwd=sha1(#{password})
 	</update>
 	
-	<select id="selectOne" resultType="member" parameterType="string">
-		select id,pwd,name,email,gender,age,cid,photo
-		from member
-		where id=#{id}
-	</select>
-	
 	<select id="login" resultType="member" parameterType="map">
 		select id,name,email,gender,age,cid
 		from member
@@ -93,6 +87,19 @@
 	      secession='0'
 		where id=#{id} and pwd=sha1(#{password})
 	</update>
+	
+	<select id="selectOne" resultType="member" parameterType="string">
+		select id,pwd,name,email,gender,age,cid,photo
+		from member
+		where id=#{id}
+	</select>
+	
+	<select id="coupleinfo" resultType="member" parameterType="string">
+		select id,pwd,name,email,gender,age,cid,photo
+		from member
+		where id=#{id}
+	</select>
+  
 </mapper> 
 
 
