@@ -11,20 +11,21 @@
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
-
+	<link rel="stylesheet" href="css/admin_member.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="../lib/mycss/style_mypage.css" />
 <link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
 <script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
 
-<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
 </head>
 <!--/head-->
 
 <body>
-<div id="main_container">
-  <header id="h_title"></header>
+	<div id="main_container">
+		<header id="h_title"></header>
 
 <script>
 $.ajax({
@@ -36,91 +37,74 @@ $.ajax({
      }
 });
 </script>
-	
-  <div class="center_content_pages">
-    <div class="pages_banner">MY PAGE</div>
-  </div>
-	
-	<!-------Side Menu Bar 시작------>
-	<section style="padding-top: 30px;">
-	  <div class="row" id="row_mypage">
-		<div id='cssmenu' class='col-xs-3'>
-		  <ul id="menubar">
-			<li><a><span>회원 정보</span></a>
-			  <ul>
-				<li><a href='mypage.html'><button class="menubar_button_c">커플 정보</button></a></li>
-				<li><a href='my_filter.html'><button class="menubar_button">회원 정보 변경</button></a></li>
-				<li><a href='my_pwd.html'><button class="menubar_button">비밀번호 변경</button></a></li>
-				<li><a href='my_secession.html'><button class="menubar_button">회원 탈퇴</button></a></li>
-			  </ul>
-			</li>
-			<li><a><span>마이 리스트</span></a>
-			  <ul>
-				<li><a href='#'><button class="menubar_button">나의 찜목록</button></a></li>
-				<li><a href='my_ing.html'><button class="menubar_button">후기 미작성</button></a></li>
-				<li><a href='my_board.html'><button class="menubar_button">내가 작성한 게시물</button></a></li>
-			  </ul>
-			</li>
-			<li><a><span>문의</span></a>
-			  <ul>
-				<li><a href=''><span>1:1 문의</span></a></li>
-		      </ul>
-		    </li>
-		  </ul>
+		<div class="center_content_pages">
+			<div class="pages_banner">MY PAGE</div>
 		</div>
-	<!-------Side Menu Bar 끝------>
-	  <div class="col-xs-9">
-		<div id="couple_info"></div>
-		  <div id="couple">
-		    <div class="col-xs-12">
- 		      <label style="font-size: 30px; color: red;">커플 정보</label>
- 		      <label>&#124;</label>
-		      <label style="margin-top: 10px;">소중한 사람의 정보를 볼 수 있는 곳 입니다.</label>
-		      <label style="margin-top: 10px;">너와 나의 </label>
-			  <label style="color: skyblue;margin-top: 10px;"><b>가입 정보</b></label>
-			  <label style="margin-top: 10px;">를 볼 수 있습니다.</label><br><br>
-		    </div>   
-		  </div>  
-		  <div class="col-xs-12" style="margin-top: 20px;">
-	        <div class="col-xs-6" style="position: relative;">
-	          <div class="profile text-center">
-	            <img src="images/aboutus/default.jpg" class="img_mypage">
-	          </div>	   
-	          <div class="center_content">
-	            <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">내 정보</label>
-	            <div class="sidebar blog-sidebar">
-	              <div class="sidebar-item categories" style="position: ">
-	                <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;">
-		              <li><a>ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>Name<input id="member_name" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>E-Mail<input id="member_email" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>Age<input id="member_age" style="border-radius:13px;"type="text" readonly></a></li>
-	                </ul>
-	              </div>
-	            </div>
-	          </div>
-	        </div>
-<!-- 	        
-	        <div class="col-xs-6" style="position: relative;">
-	          <div class="profile text-center">
-	            <img src="images/aboutus/default.jpg" class="img_mypage">
-	          </div>	   
-	          <div class="center_content">
-	            <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">애인 정보</label>
-	            <div class="sidebar blog-sidebar">
-	              <div class="sidebar-item categories" style="position: ">
-	                <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;">
-		              <li><a>ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>Name<input id="member_name" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>E-Mail<input id="member_email" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text" readonly></a></li>
-		              <li><a>Age<input id="member_age" style="border-radius:13px;"type="text" readonly></a></li>
-	                </ul>
-	              </div>
-	            </div>
-	          </div>
-	        </div> -->
+
+		<!-------Side Menu Bar 시작------>
+		<section style="padding-top: 30px;">
+
+			<div class="row" id="row_mypage">
+				<div id='cssmenu' class='col-xs-3'>
+					<ul id="menubar">
+						<li><a><span>회원 정보</span></a>
+							<ul>
+								<li><a id="my_couple"><span>커플 정보</span></a></li>
+								<li><a id="my_filter"><span>회원 정보 변경</span></a></li>
+								<li><a id="my_pwd"><span>비밀번호 변경</span></a></li>
+								<li><a id="my_secession"><span>회원 탈퇴</span></a></li>
+							</ul></li>
+						<li><a><span>마이 리스트</span></a>
+							<ul>
+								<li><a href='#'><span>나의 찜목록</span></a></li>
+								<li><a href='my_ing.html'><span>후기 미작성</span></a></li>
+								<li><a href='my_board.html'><span>내가 작성한 게시물</span></a></li>
+							</ul></li>
+						<li><a><span>문의</span></a>
+							<ul>
+								<li><a href=''><span>1:1 문의</span></a></li>
+							</ul></li>
+					</ul>
+				</div>
+				<!-------Side Menu Bar 끝------>
+				<div class="col-xs-9">
+					<div id="couple_info"></div>
+						<div id="couple">
+						  <h1 class="margin-bottom">커플 정보</h1>
+						  <div style="margin-left: 20px;">
+						    <p>
+							    <label><span>소중한 사람의 정보를 볼 수 있는 곳 입니다.</span>
+							    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							       커플을 신청하세요!</span></label><br>
+							    <span>너와 나의 </span>
+								<span style="color: skyblue;"><b>가입 정보</b></span>
+								<span>를 볼 수 있습니다.</span><br><br>
+							</p>
+						  </div>       
+				        <div class="col-xs-6" style="position: relative;">
+				            <div class="profile text-center">
+				           		<img src="images/aboutus/default.jpg" class="img_mypage">
+				            </div>
+				   
+				           <div class="center_content">
+				         <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">내 정보</label>
+				        <div class="sidebar blog-sidebar">
+				          <div class="sidebar-item categories" style="position: ">
+				            <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;">
+				              <li><a>ID<input id="member_id" style="border-radius:13px;"type="text" readonly></a></li>
+				              <!-- <li><a>Password<input style="border-radius:13px;"type="text"></a></li>
+				              <li><a>Password Check<input style="border-radius:13px;" type="text"></a></li> -->
+				              <li><a>Name<input id="member_name" style="border-radius:13px;"type="text" readonly></a></li>
+				              <li><a>E-Mail<input id="member_email" style="border-radius:13px;"type="text" readonly></a></li>
+				              <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text" readonly></a></li>
+				              <li><a>Age<input id="member_age" style="border-radius:13px;"type="text" readonly></a></li>
+				              <!-- <li><a>Couple ID<input id="member_cid" style="border-radius:13px;"type="text"></a></li>
+				             --></ul>
+				           </div>
+				        </div>
+				      </div>
+				     </div>
+				     
 				       <div class="col-xs-6 solo_heaven" style="position: relative;">
 				       		<div>
 				       		  <form id="form1">
@@ -153,14 +137,39 @@ $.ajax({
 				           </div>
 				        </div>	 -->
 				      
-				      </div>     		        			
-		  </div>
-		</div>
-		</div>
-	</section>
-	
-</div> <!-- main container close -->
-<script>
+				      </div> 
+						
+				       <!--  <div class="col-xs-6" style="position: relative;">
+				            <div class="profile text-center">
+				            	<img src="images/aboutus/default.jpg" class="img_mypage" alt="">
+				            </div>
+				   
+				           <div class="center_content">
+				         <label style="margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;">애인 정보</label>
+				        <div class="sidebar blog-sidebar">
+				          <div class="sidebar-item categories" style="position: ">
+				            <ul class="nav navbar-stacked" style="margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;">
+				              <li><a>ID<input id="member_id2" style="border-radius:13px;"type="text" readonly></a></li>
+				              <li><a>Password<input style="border-radius:13px;"type="text"></a></li>
+				              <li><a>Password Check<input style="border-radius:13px;" type="text"></a></li>
+				              <li><a>Name<input id="member_name" style="border-radius:13px;"type="text"></a></li>
+				              <li><a>E-Mail<input id="member_email" style="border-radius:13px;"type="text"></a></li>
+				              <li><a>Gender<input id="member_gender" style="border-radius:13px;"type="text"></a></li>
+				              <li><a>Age<input id="member_age" style="border-radius:13px;"type="text"></a></li>
+				              <li><a>Couple ID<input id="member_cid" style="border-radius:13px;"type="text"></a></li>
+				            </ul>
+				           </div>
+				        </div>
+				      </div>
+				      </div> -->
+				      
+				    </div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+	<script>
 	var myName = '';
 $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
   var ajaxResult = resultObj.ajaxResult;
@@ -262,8 +271,17 @@ $('#cancleCouple').click(
 			})
 		});
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
+
+/* $("#h_title").load("load/header.html"); */
+
+$(function () {
+  $('#menubar a').click(function() {
+    $('#couple_info').load('load/' + $(this).attr('id') + '.html');
+    $('#couple').empty();
+  });
+});
+
  </script>
 
 

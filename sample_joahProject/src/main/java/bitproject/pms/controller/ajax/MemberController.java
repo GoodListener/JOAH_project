@@ -138,6 +138,19 @@ public class MemberController {
     }
     return new AjaxResult("success", null);
   }
+  
+  @RequestMapping(value="secession", method=RequestMethod.POST)
+  public AjaxResult secession(String id, String password) throws Exception {
+    
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("id", id);
+    paramMap.put("password", password);
+    
+    if (memberDao.secession(paramMap) <= 0) {
+      return new AjaxResult("failure", null);
+    }
+    return new AjaxResult("success", null);
+  }
 
   
   @RequestMapping("deletemember.do")

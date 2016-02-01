@@ -27,7 +27,7 @@ $(document).ready( function() {
               sessionStorage.setItem('loginSession',idSession);
               location.href = "";
             } else {
-              alert("없는 아이디 이거나 패스워드가 일치하지 않습니다.");
+              alert("아이디가 존재하지 않거나 패스워드가 일치하지 않습니다.");
             }
           }, 'json');
         });

@@ -278,16 +278,23 @@ legend { /*Search option 湲� �궎�슦湲�*/
   padding: 5px 12px;
   display: block;
 }
-#cssmenu ul ul li {
+#cssmenu ul ul li:FOCUS {
+  border:2px solid red;
   padding: 3px 0;
 }
-#cssmenu ul ul a {
+#cssmenu a:FOCUS {
+  bprder:3px solid red;
   display: block;
   color: #595959;
   font-size: 13px;
   font-weight: bold;
 }
-#cssmenu ul ul a:hover {
+#cssmenu ul ul a:focus {
+  color: #79980d;
+}
+
+#cssmenu a:focus {
+  background-color: purple;
   color: #79980d;
 }
 
@@ -321,4 +328,29 @@ legend { /*Search option 湲� �궎�슦湲�*/
 }
 .pwd_form {
 	width:48%;
+}
+
+li a .menubar_button {
+	border: none;
+	color: darkgray;
+	background-color: rgba( 255, 255, 255, 0.5 );
+}
+li a .menubar_button_c {
+	font-weight:bold;
+	border: none;
+	color: red;
+	background-color: rgba( 255, 255, 255, 0.5 );
+}
+
+.bt_confirm {
+    width: 74px;
+    height: 36px;
+    border: 1px solid red; 
+    background-color: pink;
+}
+.bt_cancle {
+    width: 74px;
+    height: 36px;
+    border: 1px solid darkgray; 
+    background-color: skyblue;
 }

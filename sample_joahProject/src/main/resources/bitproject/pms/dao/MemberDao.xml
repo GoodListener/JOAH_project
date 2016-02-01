@@ -54,8 +54,8 @@
 		update member set
 		  name=#{name},		
 		  email=#{email},
-		  age=#{age},
-		  photo=#{photo}
+		  age=#{age}
+<!-- 		  ,photo=#{photo} -->
 		where id=#{id}  
  		<!-- 처음에 password 먼저 확인하고 나중에 변경할 땐 그냥 ok 하도록--> 
 	</update>
@@ -75,7 +75,7 @@
 	<select id="login" resultType="member" parameterType="map">
 		select id,name,email,gender,age,cid
 		from member
-		where id=#{id} and pwd=sha1(#{password})
+		where id=#{id} and pwd=sha1(#{password}) and secession='1'
 	</select> 
 	
 	<delete id="deletemember" parameterType="map">
@@ -87,6 +87,12 @@
 	 	delete from member
 	 	where id=#{id}	
 	</delete>
+	
+	<update id="secession" parameterType="map">
+		update member set
+	      secession='0'
+		where id=#{id} and pwd=sha1(#{password})
+	</update>
 </mapper> 
 
 

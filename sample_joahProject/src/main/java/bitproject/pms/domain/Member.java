@@ -14,17 +14,31 @@ public class Member implements Serializable {
   protected String photo;
   protected String cid; // couple id
   
+  protected int secession;
+  
   public Member() {}
   
   public Member(String name, String email) {
     this.email = email;
     this.name = name;
   }  
+
   
+
   @Override
   public String toString() {
-    return "Student [id=" + id + ", password=" + password + ", name=" + name + ", email=" + email + ", gender=" + gender
-        + ", age=" + age + ", photo=" + photo + ", cid=" + cid + "]";
+    return "Member [id=" + id + ", password=" + password + ", name=" + name + ", email=" + email + ", gender=" + gender
+        + ", age=" + age + ", photo=" + photo + ", cid=" + cid + ", secession=" + secession + "]";
+  }
+  
+  
+
+  public int getSecession() {
+    return secession;
+  }
+
+  public void setSecession(int secession) {
+    this.secession = secession;
   }
 
   public String getId() {

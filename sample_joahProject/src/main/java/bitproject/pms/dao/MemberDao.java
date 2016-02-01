@@ -24,6 +24,8 @@ public interface MemberDao {
   int deletemember(HashMap<String, Object> paramMap);
   
   int deleteAdmin(String id);
+
+  int secession(HashMap<String, Object> paramMap);
   
 /*
   
