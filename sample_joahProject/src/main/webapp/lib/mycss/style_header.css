@@ -7,7 +7,7 @@
 /* float the top list items to make it horizontal and a relative positon so that you can control the dropdown menu positon */
 .menu ul li {float:left;height:35px;line-height:35px;}
 /* style the sub level list items */
-.menu ul ul li {display:block;width: auto;height:auto;position:relative;line-height:1em;}
+/* .menu ul ul li {display:block;width: auto;height:auto;position:relative;line-height:1em;} */
 /* style the links for the top level */
 .menu a, .menu a:visited {display:block;float:left;height:100%;font-size:14px;text-decoration:none;color:#5a5a5a;padding:0 3px 0 3px; margin:0 30px 0 0;}
 .menu a.current{ background-color:#FFFFFF;}
@@ -32,14 +32,17 @@ border-bottom:1px #ebebeb solid;background-color:#fff;}
 /* second */
 .menu ul ul a:hover{background-color:#de462a; color:#FFFFFF;}
 .menu ul ul :hover > a {background-color:#de462a;}
+
 /* hide the sub levels and give them a positon absolute so that they take up no room */
-.menu ul ul {visibility:hidden;position:absolute;height:0;top:35px;left:0;width:14em; border:none; z-index:9999; background-color:#FFFFFF;}
+/* .menu ul ul {visibility:hidden;position:absolute;height:0;top:35px;left:0;width:14em; border:none; z-index:9999; background-color:#FFFFFF;}*/
+
 /* position the third level flyout menu */
 .menu ul ul ul{left:14em;top:0;width:14em;}
 /* position the third level flyout menu for a left flyout */
 .menu ul ul ul.left {left:-14em;}
 /* make the second level visible when hover on first level list OR link */
-.menu ul li:hover ul, .menu ul a:hover ul {visibility:visible; height:auto; padding-bottom:3em; background:transparent url(../../images/trans.gif);}
+
+/* .menu ul li:hover ul, .menu ul a:hover ul {visibility:visible; height:auto; padding-bottom:3em; background:transparent url(../../images/trans.gif);} */
 
 /* a {
 	color: #2CC185;
@@ -746,18 +749,23 @@ p.has-padding{
     left: -80px;
     top: 53px;
     min-width: 200px;
-    min-height: 100px;
+    min-height: 90px;
     background-color: #fafafa;
     -webkit-border-radius: 2px;
     -webkit-box-shadow:0px 0px 5px gray;
     text-align: center;
-    padding-top: 5px;
 }
+#alarm_bar p {
+	padding-left: 5px;
+	font-size: 12px;
+	background-color: #B2CCFF;
+}
+
 /* 알람바세모 */
 #alarm_tri {
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid #fafafa;
+    border-bottom: 10px solid #B2CCFF;
     position: absolute;
     float: left;
     left: 10px;
@@ -775,9 +783,55 @@ p.has-padding{
 	right:30px;
 }
 /* 알람 메세지 */ 
-#alarm_message{
-/*   text-align: center; */
+li.alarm_li{
+	border-bottom:1px solid gray;
+	width:100%;
+	margin:0;
+	padding:0;
+	height:15px;
+	font-size: 10px;
 }
+
+ul#alarmlist{
+	
+}
+
+#couple_alarm{
+	  display: block;
+    font-size: 10px;
+    text-align: center;
+    color: #545554;
+    width: 100%;
+    height: auto;
+    line-height: 0;
+    padding: 0;
+    margin:0;
+    border-bottom: 0;
+    background-color: none;
+}
+
+#couple_alarm:HOVER{
+	background-color: #DAD9FF;
+}
+
+#review_alarm{
+	  display: block;
+    font-size: 10px;
+    text-align: center;
+    color: #545554;
+    width: 100%;
+    height: auto;
+    line-height: 0;
+    padding: 0;
+    margin:0;
+    border-bottom: 0;
+    background-color: none;
+}
+
+#review_alarm:HOVER{
+  background-color: #DAD9FF;
+}
+
 
 html, body, div, span, applet, object, iframe,
 blockquote, pre,

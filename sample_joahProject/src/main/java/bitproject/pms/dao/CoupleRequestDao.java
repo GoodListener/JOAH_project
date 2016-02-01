@@ -14,6 +14,8 @@ public interface CoupleRequestDao {
   int delete(String my_id);
 
   List<CoupleRequest> idList();
+
+  CoupleRequest selectOne(String id);
   
   /* 
   int update(Student student);

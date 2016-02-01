@@ -75,14 +75,15 @@ public class CoupleRequestController {
   }
   
   
-  /*
-  @RequestMapping("detail")
-  public Object detail(String email) throws Exception {
-    Student student = studentDao.selectOne(email);
-    return new AjaxResult("success", student);
+  
+  @RequestMapping("/CR/alarm")
+  public Object alarm(String id) throws Exception {
+    CoupleRequest coupleRequest = coupleRequestDao.selectOne(id);
+    System.out.println(coupleRequest);
+    return new AjaxResult("success", coupleRequest);
   }
 
-  @RequestMapping(value="update", method=RequestMethod.POST)
+  /*@RequestMapping(value="update", method=RequestMethod.POST)
   public AjaxResult update(Student student, MultipartFile file) throws Exception {
     
     if (file.getSize() > 0) {
@@ -101,7 +102,6 @@ public class CoupleRequestController {
     } 
     
     return new AjaxResult("success", null);
-  }
+  }*/
   
- */
 }

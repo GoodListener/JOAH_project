@@ -28,6 +28,11 @@
 		where my_id=#{my_id}
 </delete>
 
+	<select id="selectOne" resultType="CoupleRequest" parameterType="string">
+    select my_id, my_name, request_dt
+		from couple_request
+		where request_id=#{id}
+	</select>
 <!--	
 	
 
@@ -39,11 +44,6 @@
 		where email=#{email} and (pwd is null or pwd =sha1(#{password}))
 	</update>
 	
-	<select id="selectOne" resultType="student" parameterType="string">
-		<include refid="select_inc"/>
-		from student
-		where email=#{email}
-	</select>
 	
 	<select id="login" resultType="student" parameterType="map">
 		select name, email, tel, cid
