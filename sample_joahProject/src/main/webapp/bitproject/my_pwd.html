@@ -96,7 +96,8 @@ $.ajax({
 	           </div>
 	         </div>
 	         <div class="col-xs-6">
-	           <p style="color:gold;font-size:10px; position: relative; top:42px;">회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</p>
+	           <p style="color:cornflowerblue;font-size:10px; position: relative; top:42px;">회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</p>
+	           <p style="color:cornflowerblue;font-size:10px; position: relative; top:103px;">비밀번호는 영문, 숫자, 특수문자 조합 8~15자로 입력해주세요.</p>
 	         </div>
 	       </div>	
 	       <div style="float:left; margin-left:40%; margin-top: 30px;">
@@ -119,6 +120,7 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
   }
 });
 
+var isPassword = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 $("#updateBtn2").click(function(event) {
   if ($('#new_pwd').val() != $('#new_pwd_check').val()) {
     alert("비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요~");
