@@ -65,6 +65,11 @@ public class DefaultBoardService implements BoardService {
   public int firstUpdate(Board board) {
     return boardDao.firstUpdate(board);
   }
+
+  @Override
+  public int updateViews(int bno) {
+    return boardDao.updateViews(bno);
+  }
   
   /*
   public void remove(int no, String password) {

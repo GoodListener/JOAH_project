@@ -115,12 +115,16 @@ public class BoardController {
   @RequestMapping(value="realAddboard", method=RequestMethod.POST)
   public AjaxResult update(Board board) throws Exception {
 
-    logger.debug("Board realAddboard() 호출됨");
-    
     if (boardService.firstUpdate(board) <= 0) {
       return new AjaxResult("failure", null);
     } 
     
+    return new AjaxResult("success", null);
+  }
+  
+  @RequestMapping("updateViews")
+  public AjaxResult updateViews(int no) throws Exception {
+    boardService.updateViews(no);
     return new AjaxResult("success", null);
   }
 /*  

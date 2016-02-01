@@ -115,6 +115,12 @@
     where bno=#{bno}
   </update>
 
+
+  <update id="updateViews" parameterType="int">
+    update board set 
+      views=views+1
+      where bno=#{bno}
+  </update>
     
   <select id="selectOne" resultMap="boardMap" parameterType="int">
     select

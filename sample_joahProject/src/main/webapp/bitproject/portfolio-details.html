@@ -229,6 +229,8 @@ $("#h_title").load("header.html");
         $("#profile_image").attr("src", "../profile_image/"+cPhoto);
       }
    });
+ /*조회수 올리기*/
+ $.getJSON('ajax/updateViews.do?no=' + no);
  
  $.getJSON('ajax/detail.do?no=' + no, function(resultObj) {
     var ajaxResult = resultObj.ajaxResult;

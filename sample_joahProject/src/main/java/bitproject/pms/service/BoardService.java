@@ -26,6 +26,8 @@ public interface BoardService {
   Board retieve(int no);
   
   int firstUpdate(Board board);
+
+  int updateViews(int bno);
   
   /*
   void remove(int no, String password);

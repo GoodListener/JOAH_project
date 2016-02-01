@@ -19,6 +19,8 @@ public interface BoardDao {
   int firstUpdate(Board board);
   
   int selectCountAll();
+
+  int updateViews(int bno);
   
   /*
   int delete(Map<String,Object> paramMap);

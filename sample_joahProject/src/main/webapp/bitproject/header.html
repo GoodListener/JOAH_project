@@ -78,6 +78,8 @@
 <script>
 var count = 0;
 /* after_login5 사진넣기. */
+
+if(sessionStorage.getItem('loginSession')){
 $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
 	var ajaxResult = resultObj.ajaxResult;
 	if (ajaxResult.status == "success") {
@@ -85,13 +87,12 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 		$("#after_login5").html("<img src=../profile_image/"+ member.photo +" width=40px height=40px class='img-circle'>");
 	}
 });
-
+}
 $.getJSON('ajax/CR/alarm.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
 	var ajaxResult = resultObj.ajaxResult;
 	if (ajaxResult.status == "success") {  
 	    var coupleRequest = ajaxResult.data;
 	    if(coupleRequest) {
-	      $("#alarmlist").html('');
 	      $("<a id='couple_alarm'>").html('<li class="alarm_li">'+ coupleRequest.my_id +'님께 커플신청이 왔습니다.</li>').appendTo($("#alarmlist"));
 	    }
 	    $.getJSON('ajax/inglist.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
