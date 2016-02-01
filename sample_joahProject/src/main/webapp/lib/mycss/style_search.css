@@ -193,6 +193,33 @@ div.select_div_span .span_label {
 }
 
 /*선택박스 그림 라벨 끝*/
+
+/* 리스트 UL LI SPAN */
+.searchlists span {
+	  display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list_example > li {display:none;}
+.list_example > li.on {    
+    display: list-item;
+    line-height: 16px;
+    margin-top: 3px;
+    padding-top: 3px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+}
+.list_example > li.on:HOVER{
+    background-color: pink;
+    cursor: pointer;
+}
+.list_example + div {margin-top:20px; text-align:center;}
+.list_example + div p {display:inline-block;}
+/* 리스트 UL LI SPAN 끝 */
+
 /*-----------------------------------------------------*/
 /*     end left content <search option> 留뚮뱾湲�         */
 /*-----------------------------------------------------*/

@@ -22,14 +22,6 @@
 <link href="css/responsive.css" rel="stylesheet">
     <script type="text/javascript"
       src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=ql7iZyYF1MnnPLwV_69L"></script>
-      
-      
-<style>
-.list_example > li {display:none;}
-.list_example > li.on {display:list-item; line-height:30px; border-bottom:1px solid #ccc;}
-.list_example + div {margin-top:20px; text-align:center;}
-.list_example + div p {display:inline-block;}
-</style>      
 </head>
 
 
@@ -403,8 +395,16 @@ $.ajax({
     	 oMarkers[$(this).attr("id").substring(2)].setIcon(oIcon); 
      });
      $("li.searchlists").click(function() {
-    	 oMap.setCenter(oMarkers[$(this).attr("id").substring(2)].getPoint());
-       });
+    	 if (targetWindow == 0) {
+				 mapInfoTestWindow[oMarkers[$(this).attr("id").substring(2)]._smallSrc].setVisible(true);
+				 oMap.setCenter(oMarkers[$(this).attr("id").substring(2)].getPoint());
+				 targetWindow = oMarkers[$(this).attr("id").substring(2)]._smallSrc;
+    	 } else if (targetWindow != 0) {
+ 	       mapInfoTestWindow[targetWindow].setVisible(false);
+ 	       mapInfoTestWindow[$(this).attr("id").substring(2)].setVisible(true);
+ 	       targetWindow = oMarkers[$(this).attr("id").substring(2)]._smallSrc;
+    	 }
+     });
 
    }); // AJAX 호출 끝
    $(".searchlists").remove();

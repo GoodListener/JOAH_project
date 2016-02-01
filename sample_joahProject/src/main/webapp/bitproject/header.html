@@ -53,9 +53,9 @@
 					     	 <div style="display:none" id="alarm_bar"> 
 					     	      <p>알 림</p>
 					     	    <ul id="alarmlist">
-							        <li class="alarm_li">알림이 없습니다.</li>
 					     	    </ul>
 						     </div>
+						     <div style="display:none" id="alarm_new"></div>
 						     <div style="display:none" id="alarm_tri"></div>
 					    </div>
 				    </li>
@@ -77,6 +77,8 @@
 <!-- 알림 스크립트문. -->
 <script>
 var count = 0;
+var count_couple = 0;
+var isAlarm = false;
 /* after_login5 사진넣기. */
 
 if(sessionStorage.getItem('loginSession')){
@@ -94,13 +96,22 @@ $.getJSON('ajax/CR/alarm.do?id=' + sessionStorage.getItem('loginSession'), funct
 	    var coupleRequest = ajaxResult.data;
 	    if(coupleRequest) {
 	      $("<a id='couple_alarm'>").html('<li class="alarm_li">'+ coupleRequest.my_id +'님께 커플신청이 왔습니다.</li>').appendTo($("#alarmlist"));
+	      isAlarm = true;
+	      count_couple = 1;
 	    }
 	    $.getJSON('ajax/inglist.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
 	    	  for (var board of resultObj.data) {
 	    	    count++;
 	    	  }
 	    	  if (count != 0) {
-	    	      $("<a id='review_alarm'>").html('<li class="alarm_li">후기를 작성하지 않은 '+ count +'개의 코스</li>').appendTo($("#alarmlist"));
+	    	      $("<a id='review_alarm' href='my_ing.html'>").html('<li class="alarm_li">후기를 작성하지 않은 '+ count +'개의 코스</li>').appendTo($("#alarmlist"));
+	    	      isAlarm = true;
+	    	  }
+	    	  if (!isAlarm) {
+	    		  $("<a id='review_alarm'>").html("<li class='alarm_li'>알림이 없습니다.</li>").appendTo($("#alarmlist"));
+	    	  } else {
+	    		  $("#alarm_new").css("display", "inherit");
+	    		  $("#alarm_new").html("<span>"+ (count+count_couple) +"</span");
 	    	  }
 	    });
 	    
