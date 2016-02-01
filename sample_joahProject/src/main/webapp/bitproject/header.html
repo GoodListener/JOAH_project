@@ -45,7 +45,7 @@
       </nav>
       <nav class="main-nav2">
          <ul>
-            <li><div style="display:none" id="after_login5"><img src="1.png" width=40px height=40px class="img-circle"></div></li>
+            <li><div style="display:none" id="after_login5"><!-- 사진들어감 ajax로 --></div></li>
             <li><div style="display:none" id="after_login2"></div></li>
 				    <li>
 				    	<div style="display: none" class="cd-signin" id="logAlarm">
@@ -77,8 +77,14 @@
 <!-- 알림 스크립트문. -->
 <script>
 var count = 0;
-
-
+/* after_login5 사진넣기. */
+$.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
+	var ajaxResult = resultObj.ajaxResult;
+	if (ajaxResult.status == "success") {
+		var member = ajaxResult.data;
+		$("#after_login5").html("<img src=../profile_image/"+ member.photo +" width=40px height=40px class='img-circle'>");
+	}
+});
 
 $.getJSON('ajax/CR/alarm.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
 	var ajaxResult = resultObj.ajaxResult;
