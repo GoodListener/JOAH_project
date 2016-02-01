@@ -115,11 +115,11 @@ b {
 							data-filter="*">All</a></li>
 						<!-- <li><a class="btn btn-default" href="#"
 							data-filter=".branded">Branded</a></li> -->
-						<li><a class="btn btn-default" href="#" data-filter=".design">Food</a></li>
-						<li><a class="btn btn-default" href="#" data-filter=".folio">Entertain</a></li>
-						<li><a class="btn btn-default" href="#" data-filter=".logos">Experience</a></li>
-						<li><a class="btn btn-default" href="#" data-filter=".mobile">Excercise</a></li>
-						<li><a class="btn btn-default" href="#" data-filter=".mockup">Show</a></li>
+						<li><a class="btn btn-default" href="#" data-filter=".food">Food</a></li>
+						<li><a class="btn btn-default" href="#" data-filter=".ent">Entertain</a></li>
+						<li><a class="btn btn-default" href="#" data-filter=".exp">Experience</a></li>
+						<li><a class="btn btn-default" href="#" data-filter=".exercise">Exercise</a></li>
+						<li><a class="btn btn-default" href="#" data-filter=".show">Show</a></li>
 					</ul>
 					<!--/#portfolio-filter-->
 
@@ -168,7 +168,8 @@ console.log("pageNo = ",pageNo);
 $.getJSON('ajax/list.do?pageNo=' + pageNo, function(resultObj) {
    var table = $("#boardList");
   for (var board of resultObj.data) {
-    $("<div class='col-sm-6 portfolio-item branded mockup mobile isotope-item'" +
+	  
+    $("<div id='b_list"+ board.bno +"' class='col-sm-6 portfolio-item isotope-item'" +
             "style='position: absolute; left: 15px; top: 0px; transform: translate3d(370px, 200px, 0px);'>")
         .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
       "<div class='portfolio-thumb'> " +
@@ -181,12 +182,27 @@ $.getJSON('ajax/list.do?pageNo=' + pageNo, function(resultObj) {
           "</ul>" +
       "</div>" +
   "</div>" +
-  "<div class='portfolio-info'>" +
-  "<h2>" + "No." + board.bno + "<br><br>" +"Title : "+board.title+"<br>" + "Date : "+ board.createdDate +"     Id : "+ board.id +"</h2>" +
+  "<div class='portfolio-info'>" + 
+  "<span class='pf-info-user'><i class='fa fa-user'></i> "+ board.id + "</span>" +
+  "<a class='pf-info-alink' href=portfolio-details.html?no=" + board.bno + 
+		  "><span class='pf-info-title'><i class='fa fa-flag'></i> "+board.title+"</span></a>" + 
+  "<span class='pf-info-date'><i class='fa fa-calendar'></i> "+ board.createdDate +"</span>" +
   "</div>" +
+  "<div class='portfolio-views'><span class='views-span'>조회수 " + board.views + "</span></div>" +
 "</div>" +
-"</div>")
-         .appendTo(table);
+"</div>").appendTo(table);
+	  
+    if(board.intCode.indexOf('I-001')+1) {
+    	$("#b_list"+ board.bno).addClass("food");
+    }  if (board.intCode.indexOf('I-002')+1) {
+    	$("#b_list"+ board.bno).addClass("ent");
+    }  if (board.intCode.indexOf('I-003')+1) {
+    	$("#b_list"+ board.bno).addClass("exp");
+    }  if (board.intCode.indexOf('I-004')+1) {
+    	$("#b_list"+ board.bno).addClass("exercise");
+    }  if (board.intCode.indexOf('I-005')+1) {
+    	$("#b_list"+ board.bno).addClass("show");
+    }
   }
   // 제목 링크에 클릭 이벤트 리스너를 등록한다.
   $("a.detailLnk").click(clickDetailLnk);

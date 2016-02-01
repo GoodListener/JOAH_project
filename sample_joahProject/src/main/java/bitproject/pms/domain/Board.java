@@ -21,15 +21,16 @@ public class Board  implements Serializable {
   protected int     ageGroup;
   protected int     costAll;
   protected String  photo;
+  protected String  intCode;
   
+ 
   @Override
   public String toString() {
     return "Board [bno=" + bno + ", id=" + id + ", title=" + title + ", content=" + content + ", views=" + views
         + ", createdDate=" + createdDate + ", likes=" + likes + ", dislikes=" + dislikes + ", heart=" + heart
         + ", startLocation=" + startLocation + ", endLocation=" + endLocation + ", icon=" + icon + ", ageGroup="
-        + ageGroup + ", costAll=" + costAll + ", photo=" + photo + "]";
+        + ageGroup + ", costAll=" + costAll + ", photo=" + photo + ", intCode=" + intCode + "]";
   }
-  
   public int getBno() {
     return bno;
   }
@@ -120,6 +121,11 @@ public class Board  implements Serializable {
   public void setPhoto(String photo) {
     this.photo = photo;
   }
-  
+  public String getIntCode() {
+    return intCode;
+  }
+  public void setIntCode(String intCode) {
+    this.intCode = intCode;
+  }
   
 }
