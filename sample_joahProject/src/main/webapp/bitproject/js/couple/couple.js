@@ -29,8 +29,9 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
     	$.getJSON('ajax/CR/requestCheck.do', function(resultObj){
 		    for (var request of resultObj.data) {
 		     if (request.my_id == sessionStorage.getItem('loginSession')) {
-		    	 console.log("181818181818181818188");
+		    	 
 		    	 var soloHeaven = $('#coupleCheck');
+		    	 
 		    	 $('#coupleCheck')
 		     	.html(
 		     	  "<div>" + request.request_id +"님 께 커플신청중...</div>"
@@ -51,15 +52,21 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 		 					})
 		 				});
 		     } else if (request.request_id == sessionStorage.getItem('loginSession')) {
+		    	 
 		    	 console.log("111111111111118");
+		    	 console.log(request.request_id);
+		    	 var dd = request.my_id;
+		    	 console.log(dd);
+		    	 
 		    	 var soloHeaven = $('#coupleCheck');
+		    	 
 		    	 $('#coupleCheck')
 		     	.html(
-		         + "<div>" + request.my_id +"님 께서 커플신청을 하셨습니다...</div>"
+		         "<div>"+dd+"님 께서 커플신청을 하셨습니다...</div><br>"
 		         + "<button type='button' id='acceptBtn'>커플 수락</button>"
 		         + "<button type='button' id='rejectBtn'>커플 거절</button>"		
 		         ).appendTo(soloHeaven);
-		    	 
+		    	 console.log(dd);
 		    	  $('#acceptBtn').click(
 			 				function(event) {
 			 					var my_Id = sessionStorage.getItem('loginSession')
@@ -213,7 +220,6 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 				}, 'json');
    				alert("커플이 해제되었습니다.");
    			 });
-   			 
    		}	
    	});
     }
