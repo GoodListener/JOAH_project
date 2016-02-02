@@ -2,6 +2,7 @@ package bitproject.pms.controller.ajax;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 
@@ -75,6 +76,20 @@ public class PhotoUploadController {
     return new AjaxResult("success", null);
   }
   
-  
+  @RequestMapping("photodetail")
+  public Object detail(int no) throws Exception {
+    
+    logger.debug("Photo photo/detail() 호출됨.");
+    
+    ArrayList<Photo> photo = photoDao.selectPhotoOne(no);
+    List<String> photos = new ArrayList<>();
+    
+    for (int phot = 0; phot <photo.size(); phot++) {
+      photos.add(photo.get(phot).getPhotoName());
+      System.out.println(photos.get(phot));
+    }
+    
+    return new AjaxResult("success", photo);
+  }
   
 }
