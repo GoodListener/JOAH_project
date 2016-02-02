@@ -29,6 +29,7 @@ public interface BoardService {
 
   int updateViews(int bno);
   
+  int updatePhoto(Board board);
   /*
   void remove(int no, String password);
   void change(Board board);

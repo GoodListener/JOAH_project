@@ -70,6 +70,11 @@ public class DefaultBoardService implements BoardService {
   public int updateViews(int bno) {
     return boardDao.updateViews(bno);
   }
+
+  @Override
+  public int updatePhoto(Board board) {
+    return boardDao.updatePhoto(board);
+  }
   
   /*
   public void remove(int no, String password) {

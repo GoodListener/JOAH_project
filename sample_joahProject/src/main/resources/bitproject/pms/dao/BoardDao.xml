@@ -125,6 +125,12 @@
       views=views+1
       where bno=#{bno}
   </update>
+  
+  <update id="updatePhoto" parameterType="board">
+    update board set 
+      photo=#{photo}
+      where bno=#{bno}
+  </update>
     
   <select id="selectOne" resultMap="boardMap" parameterType="int">
     select

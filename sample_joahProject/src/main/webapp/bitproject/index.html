@@ -433,16 +433,24 @@ $.ajax({
 <!-- <script type="text/javascript" src="../lib/myjs/main.js"></script> -->
 <script>
 
+var photoLocation = "";
+
+
 $.getJSON('ajax/list.do', function(resultObj) {
     var table = $("#hotPlace1");
     var count = 0;
    for (var board of resultObj.data) {
+	   if (board.photo.length < 40) {
+		    photoLocation = "../board_photo/";
+		  } else {
+		    photoLocation = "";
+		  }
      if (count >= 0 && count <= 3) {
       $("<div class='col-sm-3 col-xs-6'>")
      .html("<div class='team-single-wrapper'>" +
            "<div class='team-single'>" + 
        "<div class='person-thumb'>" +
-           "<img src='" + board.photo + "' class='img-responsive' alt=''>" +
+           "<img src='" + photoLocation + board.photo + "' class='img-responsive' alt=''>" +
        "</div>" +
        "<div class='social-profile'>" +
            "<ul class='nav nav-pills'>" +
@@ -463,7 +471,7 @@ $.getJSON('ajax/list.do', function(resultObj) {
             .html("<div class='team-single-wrapper'>" +
                   "<div class='team-single'>" + 
               "<div class='person-thumb'>" +
-                  "<img src='" + board.photo + "' class='img-responsive' alt=''>" +
+                  "<img src='" + photoLocation + board.photo + "' class='img-responsive' alt=''>" +
               "</div>" +
               "<div class='social-profile'>" +
                   "<ul class='nav nav-pills'>" +
@@ -509,16 +517,21 @@ $.getJSON('ajax/list.do', function(resultObj) {
     var table = $("#recommend1, #admin, #users");
     var count = 0;
    for (var board of resultObj.data) {
+	   if (board.photo.length < 40) {
+	        photoLocation = "../board_photo/";
+	   } else {
+	        photoLocation = "";
+	   }
      if (count <= 5) {
      $('<div class="col-xs-6 col-sm-4" data-wow-duration="1000ms" data-wow-delay="500ms">')
      .html('<div class="portfolio-wrapper">' +
          '<div class="portfolio-single">' +
        '<div class="portfolio-thumb">' +
-           '<img id="rec" src="' + board.photo + '" class="img-responsive" alt="">' +
+           '<img id="rec" src="' + photoLocation + board.photo + '" class="img-responsive" alt="">' +
        '</div>' +
        '<div class="portfolio-view">' +
            "<ul class='nav nav-pills'>" +
-           '<li><a href="' + board.photo + '" data-lightbox="example-set">' + 
+           '<li><a href="' + photoLocation + board.photo + '" data-lightbox="example-set">' + 
              '<i class="fa fa-eye"></i></a></li>' +
            "</ul>" +
        "</div>" +
@@ -537,10 +550,15 @@ $.getJSON('ajax/list.do', function(resultObj) {
         var com = $("#commentList");
         var count = 100;
        for (var comment of resultObj.data) {
+    	   if (comment.photo.length < 40) {
+    	          photoLocation = "../board_photo/";
+    	     } else {
+    	          photoLocation = "";
+    	     }
          $('<li id="vticker_li" style="padding: 0px; height: 85.0909px;">')         
          .html('<dl>' + 
 	             '<dd class="col-xs-4">'+
-	               '<img style="height:65px;max-width:60px;" src="'+ comment.photo +'" alt="">' +
+	               '<img style="height:65px;max-width:60px;" src="'+ photoLocation + comment.photo +'" alt="">' +
 	               '</p>'+
 	             '</dd>'+
                  '<dd class="col-xs-8">'+ 

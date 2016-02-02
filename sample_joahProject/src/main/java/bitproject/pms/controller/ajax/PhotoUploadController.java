@@ -15,7 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import bitproject.pms.dao.PhotoDao;
 import bitproject.pms.domain.AjaxResult;
+import bitproject.pms.domain.Board;
 import bitproject.pms.domain.Photo;
+import bitproject.pms.service.BoardService;
 import bitproject.pms.util.MultipartHelper;
 
 @Controller("ajax.PhotoUploadController")
@@ -26,6 +28,7 @@ public class PhotoUploadController {
   public static final String SAVED_DIR = "/board_photo";
   @Autowired ServletContext servletContext;
   @Autowired PhotoDao photoDao;
+  @Autowired BoardService boardService;
   
   @RequestMapping(value="photo/upload", method=RequestMethod.POST)
   public AjaxResult upload(
@@ -56,10 +59,18 @@ public class PhotoUploadController {
   public AjaxResult add(Photo photo){
     String photoName = photo.getPhotoName();
     photoName = photoName.substring(1,photoName.length() - 1);
+    int count=0;
+    Board board = new Board();
     for (String photoes : photoName.split(",")) {
       photoes = photoes.substring(1,photoes.length() - 1);
+      if(count == 0) {
+        board.setBno(photo.getBno());
+        board.setPhoto(photoes);
+        boardService.updatePhoto(board);
+      }
       photo.setPhotoName(photoes);
       photoDao.insertPhoto(photo);
+      count++;
     }
     return new AjaxResult("success", null);
   }

@@ -164,21 +164,27 @@ if (location.href.indexOf('?') != -1) pageNo = location.href.split('?')[1].split
 console.log(location.href);
 console.log("pageNo = ",pageNo);
 
+var photoLocation = "";
+
 //$.getJSON(contextRoot + '/board/ajax/list.do', function(resultObj) {
 $.getJSON('ajax/list.do?pageNo=' + pageNo, function(resultObj) {
    var table = $("#boardList");
   for (var board of resultObj.data) {
-	  
+	  if (board.photo.length < 40) {
+		  photoLocation = "../board_photo/";
+	  } else {
+		  photoLocation = "";
+	  }
     $("<div id='b_list"+ board.bno +"' class='col-sm-6 portfolio-item isotope-item'" +
             "style='position: absolute; left: 15px; top: 0px; transform: translate3d(370px, 200px, 0px);'>")
         .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
       "<div class='portfolio-thumb'> " +
-          "<a href='#' class='detailLnk'><img id='hot' src='" + board.photo + "' class='img-responsive' alt=''></a>" +
+          "<a href='#' class='detailLnk'><img id='hot' src='"+ photoLocation + board.photo + "' class='img-responsive' alt=''></a>" +
       "</div>" +
       "<div class='portfolio-view'>" +
           "<ul class='nav nav-pills'>" +
               "<li><a href='portfolio-details.html?no=" + board.bno + "'><i class='fa fa-circle-o-notch'></i></a></li>" +
-              "<li><a href='" + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
+              "<li><a href='"+ photoLocation + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
           "</ul>" +
       "</div>" +
   "</div>" +
