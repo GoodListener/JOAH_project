@@ -42,6 +42,8 @@ public class MemberController {
     return resultMap;
   }
   
+  
+  
   @RequestMapping("/member/list")
   public Object list(
       @RequestParam(defaultValue="1") int pageNo,
@@ -59,6 +61,22 @@ public class MemberController {
     paramMap.put("word", word);
     
     List<Member> members = memberDao.selectList(paramMap);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", members);
+    
+    return resultMap;
+  }
+  
+  @RequestMapping("coupleSearch")
+  public Object list(String word,String search) throws Exception {
+    
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("search", search);
+    paramMap.put("word", word);
+    
+    List<Member> members = memberDao.coupleSearch(paramMap);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
@@ -185,6 +203,20 @@ public class MemberController {
     logger.debug("coupleinfo 호출");
     Member member = memberDao.coupleinfo(id);
     return new AjaxResult("success", member);
+  }
+  
+  @RequestMapping("couplecheck")
+  public Object couplecheck() throws Exception {
+    
+    logger.debug("커플 체크중입니다.");
+    
+    List<Member> members = memberDao.couplecheck();
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", members);
+    
+    return resultMap;
   }
  
  

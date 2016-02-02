@@ -8,12 +8,16 @@ import bitproject.pms.domain.Member;
 
 public interface MemberDao {
   List<Member> selectList(Map<String,Object> paramMap);
+  
+  List<Member> coupleSearch(Map<String,Object> paramMap);
 
   int insert(Member member);
   
   Member login(Map<String,Object> paramMap);
   
   List<Member> idList();
+  
+  List<Member> couplecheck();
 
   Member selectOne(String id);
   

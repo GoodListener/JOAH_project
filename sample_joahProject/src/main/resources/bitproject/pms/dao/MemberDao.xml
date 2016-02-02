@@ -16,6 +16,12 @@
     from member
   </select>
   
+  <select id="couplecheck" resultType="member">
+    select id, cid
+    from member
+  </select>
+  
+  
   <select id="selectList" resultType="member" parameterType="map">
     select 
    	  id,
@@ -42,6 +48,21 @@
       <otherwise>asc</otherwise>
     </choose>
 		limit #{startIndex}, #{length}
+	</select>
+	
+	<select id="coupleSearch" resultType="member" parameterType="map">
+    select 
+   	  id,
+   	  email,
+   	  gender,
+   	  age,
+   	  name,
+   	  photo,
+   	  cid
+    from member
+  	<choose>
+	 <when test="search == 'id'"> where id!='admin' and (id like concat(#{word})) </when>
+	 </choose>
 	</select>
 	
 	<insert id="insert" parameterType="member">

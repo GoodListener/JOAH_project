@@ -155,6 +155,21 @@ var soloHeaven = $('#coupleCheck');
          + "<button type='button' id='cancleCouple'>커플 신청 취소</button>"
          ).appendTo(soloHeaven);
     	
+    	$('#cancleCouple').click(
+				function(event) {
+					var my_Id = sessionStorage.getItem('loginSession')
+					$.getJSON('ajax/CR/delete.do?my_id=' + my_Id, function(resultObj) {
+						console.log("커플신청 취소함.");
+						var ajaxResult = resultObj.ajaxResult;
+						if (ajaxResult.status == "success") {
+							alert("커플 신청 취소 성공.");
+							location.href = "mypage.html";
+						} else {
+							alert("커플 신청 중이 아닙니다.");
+						}
+					})
+				});
+    	
     } else {
     	
     	$.getJSON('ajax/member/coupleinfo.do?id=' + coupleCheck, function(resultObj) {
@@ -194,7 +209,7 @@ var soloHeaven = $('#coupleCheck');
   }
   
   if (word != '' && search !='') {
-		$.getJSON('ajax/member/list.do?search=' + search + '&word=' + word , function(resultObj) {
+		$.getJSON('ajax/coupleSearch.do?search=' + search + '&word=' + word , function(resultObj) {
 			var search_Solo = $('#searchSolo');
 			 for (var member of resultObj.data) {
 				 
@@ -219,52 +234,68 @@ var soloHeaven = $('#coupleCheck');
 		$('#requestCouple').click(function(event) {
 			
 			var my_Id = sessionStorage.getItem('loginSession');
-			var IdCheck = 0;
+			var IdCheck = 0; // 1 이면 커플신청중임 0이면 커플 신청중 아님.
+			var CidCheck = 0; //1 이면 상대방이 이미 커플이 있음. 0이면 상대방이 커플이 없음.
 			
-			console.log("상대방아이디" + word);
-			console.log("내이메일" + my_Id);
+			console.log("상대방아이디 - " + word);
+			console.log("내이메일 - " + my_Id);
+			
+			if (word == sessionStorage.getItem('loginSession') ) {
+				console.log("아무리 외로워도 본인과 커플 ㄴㄴ ");
+				alert('본인에게 커플 신청을 할 수 없습니다.');
+			} else {
 				
-			 $.getJSON('ajax/CR/idcheck.do', function(resultObj){
-			    for (var couple_request of resultObj.data) {
-			      if(my_Id == couple_request.my_id){
-			    	  IdCheck = 1;
-			      }
-			    }
-			    console.log(IdCheck);
-			    if (IdCheck!=1) {
-				    	$.post('ajax/CR/add.do', {	
-						my_id : my_Id,
-						my_name : myName,
-						request_id : word,
-					    }, function(resultObj) {
-						var ajaxResult = resultObj.ajaxResult;
-						if (ajaxResult.status == "success") {
-							alert("커플 신청 성공.");
-							location.href = "mypage.html";
-						} else {
-							alert("이미 커플중이거나 커플 신청상태 입니다.");
-						}
-					}, 'json');  
-			    } else {
-			    	alert("이미 커플중이거나 커플 신청상태 입니다.");
-			    }
-			}) 
+				$.getJSON('ajax/couplecheck.do', function(resultObj){
+				    for (var member of resultObj.data) {
+				    	if (member.id == word) {
+				    		
+				    		if ((member.cid == null || member.cid == '')) {
+				    			
+				    			console.log("나는 커플이 없따 ㅠㅠ!!!");
+				    			console.log(member);
+				    			
+				    			$.getJSON('ajax/CR/idcheck.do', function(resultObj){
+				    			    for (var couple_request of resultObj.data) {
+				    			      if(my_Id == couple_request.my_id){
+				    			    	  IdCheck = 1;
+				    			      }
+				    			    }
+				    			    console.log(IdCheck);
+				    			    if (IdCheck!=1) {
+				    				    	$.post('ajax/CR/add.do', {	
+				    						my_id : my_Id,
+				    						my_name : myName,
+				    						request_id : word,
+				    					    }, function(resultObj) {
+				    						var ajaxResult = resultObj.ajaxResult;
+				    						if (ajaxResult.status == "success") {
+				    							alert("커플 신청 성공.");
+				    							location.href = "mypage.html";
+				    						} else {
+				    							alert("오류!!!!");
+				    						}
+				    					}, 'json');  
+				    			    } else {
+				    			    	alert("커플 신청중 입니다. 커플 신청을 취소하고 다시 신청해주세요.");
+				    			    }
+				    			})
+				    			
+				    		} else {
+				    			console.log("나는 커플이 있따!!!");
+				    			console.log(member);
+				    			alert("상대방은 이미 커플중입니다..");
+				    		}
+				    	} 
+				    }
+				 })
+				
+			}
+			
+			
+			
 		});
 		
-		$('#cancleCouple').click(
-				function(event) {
-					var my_Id = sessionStorage.getItem('loginSession')
-					$.getJSON('ajax/CR/delete.do?my_id=' + my_Id, function(resultObj) {
-						console.log("커플신청 취소함.");
-						var ajaxResult = resultObj.ajaxResult;
-						if (ajaxResult.status == "success") {
-							alert("커플 신청 취소 성공.");
-							location.href = "mypage.html";
-						} else {
-							alert("커플 신청 중이 아닙니다.");
-						}
-					})
-				});
+		
 	}
   
   
