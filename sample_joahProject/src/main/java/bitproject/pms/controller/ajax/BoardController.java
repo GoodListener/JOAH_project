@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import bitproject.pms.dao.CommentDao;
 import bitproject.pms.domain.AjaxResult;
 import bitproject.pms.domain.Board;
+import bitproject.pms.domain.Comment;
 import bitproject.pms.service.BoardService;
 
 @Controller("ajax.BoardController")
@@ -23,6 +25,7 @@ public class BoardController {
   public static final String SAVED_DIR = "/attachfile";
   
   @Autowired BoardService boardService;
+  @Autowired CommentDao commentDao;
   @Autowired ServletContext servletContext;
   
   @RequestMapping("all")
@@ -107,8 +110,9 @@ public class BoardController {
   public Object detail(int no) throws Exception {
     
     logger.debug("Board detail() 호출됨.");
-    
+    Comment comment = commentDao.countComment(no);
     Board board = boardService.retieve(no);
+    board.setCommentCount(comment.getCount());
     return new AjaxResult("success", board);
   }
 

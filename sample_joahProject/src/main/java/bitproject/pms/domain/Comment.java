@@ -9,12 +9,22 @@ public class Comment {
   protected String  photo; //memverPhoto
   protected String  bphoto;//boardPhoto
   protected String  title;
+  protected int count;
   
-  
+
+
   @Override
   public String toString() {
     return "Comment [cno=" + cno + ", bno=" + bno + ", id=" + id + ", content=" + content + ", createdTime="
-        + createdTime + ", photo=" + photo + ", bphoto=" + bphoto + ", title=" + title + "]";
+        + createdTime + ", photo=" + photo + ", bphoto=" + bphoto + ", title=" + title + ", count=" + count + "]";
+  }
+
+  public int getCount() {
+    return count;
+  }
+
+  public void setCount(int count) {
+    this.count = count;
   }
 
   public String getBphoto() {

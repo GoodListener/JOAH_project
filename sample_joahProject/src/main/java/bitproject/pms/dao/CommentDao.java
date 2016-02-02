@@ -16,8 +16,9 @@ public interface CommentDao {
   public int delete(Map<String, Object> paramMap);
   
   public List<Comment> commentList();
-
-
+  
+  Comment countComment(int no);
+  
   /*Comment selectOne(int no);*/
 }
 

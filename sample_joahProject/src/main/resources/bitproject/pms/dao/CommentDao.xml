@@ -53,18 +53,15 @@
     where bno=#{no} and (pwd is null or pwd=#{password})
   </update>
     -->
- <!--    
-  <select id="selectOne" resultMap="commentMap" parameterType="int">
+    
+  <select id="countComment" resultMap="commentMap" parameterType="int">
     select
-      lno,
-      name,
-      content,
-      cost,
-      photo
+      bno,
+      count(cno) as count
     from comment
-    where lno=#{no}
+    where bno=#{no}
   </select>
-   -->
+  
 </mapper>
 
 
