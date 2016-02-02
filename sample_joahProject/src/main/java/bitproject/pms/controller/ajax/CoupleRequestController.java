@@ -49,28 +49,39 @@ public class CoupleRequestController {
   
   @RequestMapping("/CR/delete")
   public AjaxResult delete(String my_id) throws Exception {
-    
     logger.debug("친구 신청취소됨.");
-    
     if (coupleRequestDao.delete(my_id) <= 0) {
       return new AjaxResult("failure", null);
     } 
-
     return new AjaxResult("success", null);
+  }
+  
+  @RequestMapping("/CR/reject")
+  public AjaxResult reject(String request_id) throws Exception {
+    logger.debug("친구 신청취소됨.");
+    if (coupleRequestDao.reject(request_id) <= 0) {
+      return new AjaxResult("failure", null);
+    } 
+    return new AjaxResult("success", null);
+  }
+  
+  @RequestMapping("/CR/requestCheck")
+  public Object requestCheck() throws Exception {
+    logger.debug("requestCheck ㅎ");
+    List<CoupleRequest> coupleRequests = coupleRequestDao.requestCheck();
+    HashMap<String, Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", coupleRequests);
+    return resultMap;
   }
   
   @RequestMapping("/CR/idcheck")
   public Object idcheck() throws Exception {
-    
     logger.debug("커플 중복신청 방지.");
-    
     List<CoupleRequest> coupleRequests = coupleRequestDao.idList();
-
     HashMap<String, Object> resultMap = new HashMap<>();
-
     resultMap.put("status", "success");
     resultMap.put("data", coupleRequests);
-    
     return resultMap;
   }
   

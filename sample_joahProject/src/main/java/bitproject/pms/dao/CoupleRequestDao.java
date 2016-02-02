@@ -12,10 +12,15 @@ public interface CoupleRequestDao {
   List<CoupleRequest> selectList();
   
   int delete(String my_id);
-
+  
+  int reject(String request_id);
+  
   List<CoupleRequest> idList();
+  
+  List<CoupleRequest> requestCheck();
 
   CoupleRequest selectOne(String id);
+
   
   /* 
   int update(Student student);

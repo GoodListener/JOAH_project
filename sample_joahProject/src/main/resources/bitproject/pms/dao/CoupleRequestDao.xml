@@ -23,9 +23,19 @@
 		from couple_request
 </select>
 
+<select id="requestCheck" resultType="CoupleRequest">
+		select my_id,request_id
+		from couple_request
+</select>
+
 <delete id="delete" parameterType="map">
 		delete from couple_request 
 		where my_id=#{my_id}
+</delete>
+
+<delete id="reject" parameterType="map">
+		delete from couple_request 
+		where request_id=#{request_id}
 </delete>
 
 	<select id="selectOne" resultType="CoupleRequest" parameterType="string">
