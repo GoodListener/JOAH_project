@@ -25,6 +25,9 @@ public interface MemberDao {
   
   int updateCid(Member Member);
 
+  int farewellCid(Member Member);
+  
+
   int updatepwd(HashMap<String, Object> paramMap);
   
   int deletemember(HashMap<String, Object> paramMap);

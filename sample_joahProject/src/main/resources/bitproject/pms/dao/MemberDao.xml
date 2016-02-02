@@ -87,6 +87,12 @@
 		where id=#{id}  
 	</update>
 	
+	<update id="farewellCid" parameterType="member">
+		update member set
+		  cid=#{cid}		
+		where id=#{id}  
+	</update>
+	
 	<update id="updatepwd" parameterType="map">
 		update member set
 	      pwd=sha1(#{newPassword})	
