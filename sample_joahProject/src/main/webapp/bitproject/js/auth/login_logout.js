@@ -38,7 +38,7 @@ $(document).ready( function() {
           var ajaxResult = resultObj.ajaxResult;
           if (ajaxResult.status == "success") {
             sessionStorage.removeItem('loginSession');
-            location.href = "";
+            location.href = "index.html";
           }
         },'json');
       });

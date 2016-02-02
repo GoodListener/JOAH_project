@@ -100,15 +100,15 @@ color:#de462a;
 	float:right;
 }
 
-.right_content img {
+/* .right_content img {
 	margin: 0 0 8px 15px;
 	width: 60px;
 	height: 60px;
-}
+} */
 
 
 li #list1 {
-	width:auto;
+	width:100%;
 	height:300px;
 }
 
@@ -182,10 +182,10 @@ input.form_mapSear{clear:both; height:24px; text-align:center; color:#fff; font-
 /* 	margin: -10px 0 0 0; */
 }
 
-#testMap img {
+/* #testMap img {
   width:44px;
   height:10px;
-}
+} */
 
 /*-----save 踰꾪듉 -----*/
 input.form_submit{float:right; clear:both; margin:7px 14px 0 0px; width:149px; height:34px; text-align:center; color:#fff; font-size:16px; background: #666666; border:none; font-weight:bold; padding:0 0 0 0px; cursor:pointer;}
@@ -203,16 +203,16 @@ input.form_submit{float:right; clear:both; margin:7px 14px 0 0px; width:149px; h
    border-radius: 45px;
    width:300px;
    float:left;
-   margin: 85px 0 0 10px ;
-   padding: 80px 10px 70px 10px;
+   margin: 45px 0 0 10px ;
+   padding: 70px 10px 30px 10px;
+   height: 446px;
 }
 
 .left_content p {
    font-size: 40px;
    text-align: center;
-   margin: -10px 0 40px 0;
+   margin: -19px 0 40px 0;
 }
-
 
 /* Location 다녀온 장소 리스트 css */
 .rectangle-list {
@@ -222,7 +222,6 @@ input.form_submit{float:right; clear:both; margin:7px 14px 0 0px; width:149px; h
 }
 .rectangle-list  li{
 	text-overflow: ellipsis;
-	margin: 20px 0;
 }
 .rectangle-list a{
 	/* white-space: nowrap;

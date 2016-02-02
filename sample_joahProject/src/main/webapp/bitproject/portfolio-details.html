@@ -64,30 +64,30 @@ $("#h_title").load("header.html");
       <div class="pages_banner">DETAIL</div>
     </div>
 
-    <section class="col-md-12 margin-bottom" id="portfolio">
+<section class="col-md-12 margin-bottom" id="portfolio">
+        <h1 style="border-bottom:solid darkgrey 2px;padding-bottom:10px;margin: 39px 0 -10px 30px;">
+           <i class="fa fa-thumb-tack" style="padding: 0 15px;"></i><label id="data_title" class="h23"></label>
+        </h1>
       <!-- LOCATION 정보 나오는 div -->
       <div class="left_content">
         <p>LOCATION</p>
-        <ol class="rectangle-list">
-          <li><a>이름이 짱짱길때는 쩜쩜쩜으로 나와야해요!</a></li>
-          <li><a>List item</a></li>
-          <li><a>List item</a></li>
-          <li><a>List item</a></li>
+        <ol class="rectangle-list" id="visitedList">
         </ol>
       </div>
 
-      <!-- 대표이미지 나오는 div -->
+      <!-- 지도 나오는 div -->
       <div class="right_content">
-            <h1>
-               <label id="data_title" class="h23"></label>
-            </h1>
-            <div id="testMap" style="width: 800px; height:500px; margin: 10px 0 0 0;"></div>
+            <div id="testMap" style="width: 800px; height:500px; margin: 20px 0 0 0;">
+               <p style="margin: 0 0 10px 10px;font-size: 17px;"><i class="fa fa-heartbeat"></i><b> #id님이 다녀온 데이트 코스</b></p>
+              </div>
          </div>
-      <p id="date" style="float: right;"></p>
     </section>
 
+
     <!-- 이미지 슬라이더 -->
-    <section class="slider col-md-6">
+    <section class="slider col-md-6" style="margin-right: 50px;">
+      <h2 style="text-align: center;"><b>데이트 후기 사진</b></h2>
+      <p style="text-align: center;"><b>Date Course Pictures Date Course Pictures.</b></p>
       <div id="slider" class="flexslider">
         <ul class="slides" id="slides1"></ul>
       </div>
@@ -95,21 +95,46 @@ $("#h_title").load("header.html");
         <ul class="slides" id="slides2"></ul>
       </div>
     </section>
+    
+    <!-- content -->
+    <section class="slider col-md-5" style="border-left: 3px solid black; ">
+<!-- 	  <div class="post-content"> -->
+	  <div style="margin-left: 50px;">
+        <h3 class="post-title bold" style="text-align : center;background-color: white; border:3px solid black;">
+          <label style="margin: 5px 0 5px 0;"id="data_title2"></label>
+        </h3>
+        
+        <label style="margin-top:10px ;float: right;" id="date"></label>  <br><br>
+        <p id="content1" style="height:250px;"></p>
+        
+        <h3 class="post-title bold" style="text-align : center;background-color: white; border:3px solid black;">
+          <label style="margin: 5px 0 5px 0;">글쓴이 프로필</label>
+        </h3>
+        
+        <div class="col-xs-12">
+        
+          <div class="col-xs-5" style="margin-top: 15px;margin-left: -10px;">
+            <a class="pull-left" id="member_photo"></a>
+          </div>
+          
+          <div class="col-xs-7" style="margin-top: 5px">
+            <p id="id"></p>
+            <p id="member_email"></p>
+            <p id="member_gender"></p>
+          </div>
+
+        </div>
+  
+
+</div>
+    </section>
 
     <section class="col-md-12">
-      <div class="post-content">
-        <h2 class="post-title bold">
-          <a id="data_title2"></a>
-        </h2>
-        <h3 class="post-author">
-          <a>Posted by micron News</a>
-        </h3>
-        <p id="content1"></p>
-        <div class="post-bottom overflow">
+      <div style="float: right;">
+              <div class="post-bottom overflow">
           <ul class="nav navbar-nav post-nav">
-            <li><a><i class="fa fa-tag"></i><span id="post-tag-name">태그</span></a></li>
-                  <li><a><i class="fa fa-heart"></i><span id="post-hearts-count">찜</span></a></li>
-                  <li><a><i class="fa fa-comments"></i><span id="post-com-count">댓글 수</span></a></li>
+            <li><a><i class="fa fa-comments"></i><span id="post-com-count">댓글 수</span></a></li>
+			<li id='facebook'></li>
 <!--            <li><a name="fb_share" type="button_count" href="http://www.facebook.com/sharer.php">공유하기</a></li> -->
 <!--                <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> -->
           </ul>
@@ -119,8 +144,9 @@ $("#h_title").load("header.html");
             class='st_twitter_hcount'></span> <span class='st_linkedin_hcount'></span>
           <span class='st_pinterest_hcount'></span> <span
             class='st_email_hcount'></span>
-        </div>
-
+        </div>  
+       </div> 
+        
         <div class="response-area">
           <h2 class="bold">Comments</h2>
 
@@ -164,7 +190,6 @@ $("#h_title").load("header.html");
 
           </ul>
         </div>
-      </div>
     </section>
   </div>
   <!-- main_container 끝 -->
@@ -376,6 +401,9 @@ $("#h_title").load("header.html");
 </script>
   <script>
  var no = location.href.split('?')[1].split('=')[1];
+ 
+ $('#facebook').html("<div class='fb-share-button' data-href='http://192.168.0.66:8080/sample_joahProject/bitproject/portfolio-details.html?no=" + no +  "'data-layout='button_count'></div>");
+ 
  var cPhoto;
  $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), 
      function(resultObj) {
@@ -399,10 +427,40 @@ $("#h_title").load("header.html");
 	      $("#date").text(board.createdDate);
 	      $("#data_title2").text(board.title);
 	      $("#data_no").text(board.bno);
+	      $("#id").text(board.id);
 	      $("#content1").text(board.content);
 	      $("#post-com-count").text(board.commentCount + " Comments");
+	      
+	      $.getJSON('ajax/detailmember.do?id=' + board.id, function(resultObj) {
+	        var ajaxResult = resultObj.ajaxResult;
+	        if (ajaxResult.status == "success") {
+	          console.log(board.id);
+	          var member = ajaxResult.data;
+	          $("#member_photo").html('<img class="img-circle" width="110" height="110"' +
+	  	          'src="../profile_image/'+ member.photo +'" alt="">');
+	          
+	          
+	          
+	          
+	          
+	          
+	          
+	          console.log("난 member id" + member.id);
+	          console.log("난 member id" + member.email);
+	          console.log("난 member id" + member.gender);
+	          $("#member_id").val(sessionStorage.getItem('loginSession'));
+	          $("#member_pwd").val(member.pwd);
+	          $("#member_name").val(member.name);
+	          $("#member_email").text(member.email);
+	          $("#member_gender").text(member.gender);
+	          $("#member_age").val(member.age);
+	          $("#member_cid").val(member.cid);
+	        }
+	      });  
 	    }
 	 });
+ 
+
  
  $.getJSON('ajax/photodetail.do?no=' + no , function(resultObj) {
    var ajaxResult = resultObj.ajaxResult;
@@ -559,6 +617,16 @@ $("#h_title").load("header.html");
   <script src="js/jquery.easing.js"></script>
   <script src="js/jquery.mousewheel.js"></script>
   <script defer src="js/demo.js"></script>
+  
+ <div id="fb-root"></div> <!-- facebook share -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 
 
 </body>

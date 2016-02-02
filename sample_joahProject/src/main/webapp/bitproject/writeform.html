@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/lightbox.min.js"></script>
 <script type="text/javascript" src="js/wow.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script> 
 <script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
@@ -22,7 +21,6 @@
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/lightbox.css" rel="stylesheet">
 <link href="css/animate.min.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
 <link href="css/responsive.css" rel="stylesheet">
@@ -74,23 +72,23 @@ $.ajax({
     <div class="center_content_pages">
       <div class="pages_banner">게시물 등록</div>
     </div>
-    <section id="portfolio">
-      <div class="right_content">
-        <h3>다녀온 데이트의 간단한 제목을 등록해주세요.</h3>
-                <input type="text" id="input_title" name="title" class="form-control" required="required" placeholder="제목"
-                style="background-color:transparent; border:0 solid black; font-size:13px;">
-        
-         <div id="testMap" style="width: 800px; height:500px; margin: 10px 0 0 0;"></div>
-       </div>
-
+    
+    <section class="col-md-12 margin-bottom" id="portfolio">
+       <h1 style="border-bottom:solid darkgrey 2px;padding-bottom:10px;margin: 39px 0 -10px 30px;display:inline-block;" class="col-md-12">
+          <i class="fa fa-thumb-tack" style="padding: 0 15px;"></i><input type="text" id="input_title" name="title" class="form-control" required="required" placeholder="제목"
+                      style="background-color:transparent; border:0 solid black; font-size:13px;">
+       </h1>
       <div class="left_content">
-         <label style="margin: 15px 0 15px 55px; font-size: 20px; ">다녀온 곳</label>
-        <div class="sidebar blog-sidebar">
-          <div class="sidebar-item categories" id="visitedList">
-          <!-- 리스트 ajax로 띄움. -->  
-          </div>
-        </div>
+        <p>LOCATION</p>
+        <ol class="rectangle-list" id="visitedList">
+        </ol>
       </div>
+      
+      <div class="right_content">
+         <div id="testMap" style="width: 800px; height:500px; margin: 10px 0 0 0;">
+            <p style="margin: 0 0 10px 10px;font-size: 17px;"><i class="fa fa-heartbeat"></i><b> #id님이 다녀온 데이트 코스</b></p>
+          </div>
+       </div>
     </section>
     
     <!-- 밑줄 한줄 -->
@@ -110,19 +108,6 @@ $.ajax({
                     <h2>PHOTO</h2>
                     <input type='file' class="form-control" id="ffile" name="files" multiple>
                     <div class='images'></div>
-                        <!-- <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="900ms" data-wow-delay="100ms">
-                        <img src="images/portfolio/1.jpg"></div>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="800ms" data-wow-delay="200ms">
-                        <img src="images/portfolio/2.jpg"></div>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="700ms" data-wow-delay="300ms">
-                        <img src="images/portfolio/3.jpg"></div>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="600ms" data-wow-delay="100ms">
-                        <img src="images/portfolio/4.jpg"></div>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="500ms" data-wow-delay="200ms">
-                        <img src="images/portfolio/5.jpg"></div>
-                        <div style="border:1px solid gray" class="wow fadeInUp col-sm-4" data-wow-duration="400ms" data-wow-delay="300ms">
-                        <img src="images/portfolio/6.jpg"></div> -->
-                    
                 </div>
             </div>
     </section>
@@ -366,7 +351,7 @@ $('#ffile').fileupload({
   var photodata = data.files
   
   for (var i=0; i<photodata.length; i++) {
-	  ppp.push(photodata[i].name  +  ",");
+     ppp.push(photodata[i].name  +  ",");
   }
   console.log(ppp);
   
@@ -379,15 +364,15 @@ $('#ffile').fileupload({
    },
    done: function (e, data) {
       var photo = data.result.ajaxResult.data
-    		  
-  /*  for (var i = 0; i < photo.length; i++) {	 */
-   $.post('ajax/photo/add.do', {	
-   	 bno : boardNo,
-   	 photoName: JSON.stringify(photo),
-   	 success: function(resultObj) {
+            
+  /*  for (var i = 0; i < photo.length; i++) {    */
+   $.post('ajax/photo/add.do', {   
+       bno : boardNo,
+       photoName: JSON.stringify(photo),
+       success: function(resultObj) {
         console.log("내가 작성한 게시물에 등록성공!");
         }
-   	 }
+       }
   /* } */
    , 
    function(resultObj) {
@@ -435,21 +420,21 @@ $(function(){
                         
                         
                         $(".fa-times").on('click',function(){
-                        	
-                        	console.log(($(this).prev().attr('name')+","));
-                        	
-                      	  for(var i=0; i< ppp.length; i++) {
-                      		  if( ($(this).prev().attr('name')+",") == ppp[i]) {
-                      			  for (i ; i < ppp.length -1;  i++) {
-                      				  ppp[i] = ppp[i+1];
-                      			  }
-                      			  ppp.length = ppp.length - 1 ;
-                      		  }
-                      	  }	
-                      	  
-                      	console.log(ppp[i]);
-                      	
-                      	  $(this).prev().remove();
+                           
+                           console.log(($(this).prev().attr('name')+","));
+                           
+                           for(var i=0; i< ppp.length; i++) {
+                              if( ($(this).prev().attr('name')+",") == ppp[i]) {
+                                 for (i ; i < ppp.length -1;  i++) {
+                                    ppp[i] = ppp[i+1];
+                                 }
+                                 ppp.length = ppp.length - 1 ;
+                              }
+                           }   
+                           
+                         console.log(ppp[i]);
+                         
+                           $(this).prev().remove();
                           $(this).remove();
                           }); 
                     }

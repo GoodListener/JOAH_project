@@ -1,0 +1,1 @@
+var contextRoot = 'http://192.168.0.23:8080/sample_joahProject';
