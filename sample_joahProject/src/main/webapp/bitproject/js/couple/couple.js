@@ -182,9 +182,9 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
    		     + "<li><a>Name<input id='couple_name' style='border-radius:13px;'type='text'readonly></a></li>"
    		     + "<li><a>E-Mail<input id='couple_email' style='border-radius:13px;'type='text' readonly></a></li>"
    		     + "<li><a>Gender<input id='couple_gender' style='border-radius:13px;'type='text' readonly></a></li>"
-   		     + "<li><a>Age<input id='couple_age' style='border-radius:13px;'type='text' readonly></a></li>"
-   	         + "</ul></div></div></div>"
-   	         + "<button type='button' id='farewellBtn'>커플끊기</button>").appendTo(coupleHell);
+   		     + "<li><a>Age<input id='couple_age' style='border-radius:13px;'type='text' readonly></a></li><br>" 
+   	         + "</ul><div class='farewellBtn'><button type='button' id='farewellBtn'>커플끊기</button></div></div></div></div>"
+   	         ).appendTo(coupleHell);
    			
    			 var couple = ajaxResult.data;
    			 console.log(ajaxResult.data);
