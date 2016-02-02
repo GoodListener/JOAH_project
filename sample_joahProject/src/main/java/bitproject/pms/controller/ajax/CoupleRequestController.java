@@ -49,7 +49,7 @@ public class CoupleRequestController {
   
   @RequestMapping("/CR/delete")
   public AjaxResult delete(String my_id) throws Exception {
-    logger.debug("친구 신청취소됨.");
+    logger.debug("커플 신청취소됨.");
     if (coupleRequestDao.delete(my_id) <= 0) {
       return new AjaxResult("failure", null);
     } 
@@ -58,8 +58,17 @@ public class CoupleRequestController {
   
   @RequestMapping("/CR/reject")
   public AjaxResult reject(String request_id) throws Exception {
-    logger.debug("친구 신청취소됨.");
+    logger.debug("커플 신청 거절됨.");
     if (coupleRequestDao.reject(request_id) <= 0) {
+      return new AjaxResult("failure", null);
+    } 
+    return new AjaxResult("success", null);
+  }
+  
+  @RequestMapping("/CR/accept")
+  public AjaxResult accept(String request_id) throws Exception {
+    logger.debug("커플 신청 거절됨.");
+    if (coupleRequestDao.accept(request_id) <= 0) {
       return new AjaxResult("failure", null);
     } 
     return new AjaxResult("success", null);

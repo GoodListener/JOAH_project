@@ -15,6 +15,8 @@ public interface CoupleRequestDao {
   
   int reject(String request_id);
   
+  int accept(String request_id);
+  
   List<CoupleRequest> idList();
   
   List<CoupleRequest> requestCheck();

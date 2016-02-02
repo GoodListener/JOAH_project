@@ -22,6 +22,8 @@ public interface MemberDao {
   Member selectOne(String id);
   
   int updateinfo(Member member);
+  
+  int updateCid(Member Member);
 
   int updatepwd(HashMap<String, Object> paramMap);
   

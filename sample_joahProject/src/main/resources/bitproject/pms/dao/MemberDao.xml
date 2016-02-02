@@ -81,6 +81,12 @@
  		<!-- 처음에 password 먼저 확인하고 나중에 변경할 땐 그냥 ok 하도록--> 
 	</update>
 	
+	<update id="updateCid" parameterType="member">
+		update member set
+		  cid=#{cid}		
+		where id=#{id}  
+	</update>
+	
 	<update id="updatepwd" parameterType="map">
 		update member set
 	      pwd=sha1(#{newPassword})	

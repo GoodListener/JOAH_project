@@ -38,6 +38,11 @@
 		where request_id=#{request_id}
 </delete>
 
+<delete id="accept" parameterType="map">
+		delete from couple_request 
+		where request_id=#{request_id}
+</delete>
+
 	<select id="selectOne" resultType="CoupleRequest" parameterType="string">
     select my_id, my_name, request_dt
 		from couple_request

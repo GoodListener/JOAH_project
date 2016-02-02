@@ -122,6 +122,14 @@ public class MemberController {
   }
     
   
+  @RequestMapping(value="updateCid", method=RequestMethod.POST)
+  public AjaxResult updateCid(Member member) throws Exception {
+    if (memberDao.updateCid(member) <= 0) {
+      return new AjaxResult("failure", null);
+    }
+    return new AjaxResult("success", null);
+  }
+  
   @RequestMapping(value="updateinfo", method=RequestMethod.POST)
   public AjaxResult update(Member member/* MultipartFile file,*/   /* 예전 파일 명 */) throws Exception {
     /*if (file.getSize() > 0) {  //새로 업로드 한 파일이 있다.

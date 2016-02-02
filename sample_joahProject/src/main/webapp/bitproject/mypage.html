@@ -171,20 +171,43 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 		         + "<button type='button' id='rejectBtn'>커플 거절</button>"		
 		         ).appendTo(soloHeaven);
 		    	 
-		    	 /* $('#acceptBtn').click(
+		    	  $('#acceptBtn').click(
 			 				function(event) {
 			 					var my_Id = sessionStorage.getItem('loginSession')
+			 					
 			 					$.getJSON('ajax/CR/reject.do?request_id=' + my_Id, function(resultObj) {
-			 						console.log("커플신청 거절함.");
+			 						console.log("커플신청 수락함.");
 			 						var ajaxResult = resultObj.ajaxResult;
 			 						if (ajaxResult.status == "success") {
-			 							alert("커플 신청 거절 성공.");
+			 							
+			 							$.post('ajax/updateCid.do', {
+			 								id : my_Id,
+			 								cid : request.my_id,
+			 							}, function(resultObj) {
+			 								var ajaxResult = resultObj.ajaxResult;
+			 								if (ajaxResult.status == "success") {
+			 								} else {
+			 									alert("게시물 변경에 실패했습니다.");
+			 								}
+			 							}, 'json');
+			 							
+			 							$.post('ajax/updateCid.do', {
+			 								id : request.my_id,
+			 								cid : my_Id,
+			 							}, function(resultObj) {
+			 								var ajaxResult = resultObj.ajaxResult;
+			 								if (ajaxResult.status == "success") {
+			 								} else {
+			 									alert("게시물 변경에 실패했습니다.");
+			 								}
+			 							}, 'json');
+			 							alert("커플 신청 수락 성공.");
 			 							location.href = "mypage.html";
 			 						} else {
 			 							alert("오류!");
 			 						}
 			 					})
-			 				}); */
+			 				}); 
 		    	 
 		    	 $('#rejectBtn').click(
 		 				function(event) {
