@@ -5,9 +5,9 @@
 <title>Hot place</title>
 <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" type="text/css"
-	href="../lib/mycss/style_detail.css" />
+  href="../lib/mycss/style_detail.css" />
 <link rel="stylesheet" type="text/css"
-	href="../lib/mycss/style_header.css" />
+  href="../lib/mycss/style_header.css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/wow.min.js"></script>
@@ -26,131 +26,355 @@
 <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
 <!-- Demo CSS -->
 <link rel="stylesheet" href="flexslider.css" type="text/css"
-	media="screen" />
+  media="screen" />
+
+<!-- 네이버지도 -->
+<script type="text/javascript"
+      src="http://openapi.map.naver.com/openapi/v2/maps.js?clientId=ql7iZyYF1MnnPLwV_69L"></script>
+      
+<!-- 맵 인포 윈도우 시작. -->
+<style>
+.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+    .info .close:hover {cursor: pointer;}
+    .info .body {position: relative;overflow: hidden;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+</style>
+<!-- 맵 인포 윈도우 끝-->
 
 </head>
 <body>
-	<div id="main_container">
-		<!-- header -->
-		<header id="h_title"></header>
+  <div id="main_container">
+    <!-- header -->
+    <header id="h_title"></header>
 
-		<script type="text/javascript" src="../lib/jquery/jquery.js"></script>
-		<script>
+    <script type="text/javascript" src="../lib/jquery/jquery.js"></script>
+    <script>
 $("#h_title").load("header.html");
 </script>
 
-		<div class="center_content_pages">
-			<div class="pages_banner">DETAIL</div>
-		</div>
+    <div class="center_content_pages">
+      <div class="pages_banner">DETAIL</div>
+    </div>
 
-		<section class="col-md-12 margin-bottom" id="portfolio">
-			<!-- LOCATION 정보 나오는 div -->
-			<div class="left_content">
-				<p>LOCATION</p>
-				<ol class="rectangle-list">
-					<li><a>이름이 짱짱길때는 쩜쩜쩜으로 나와야해요!</a></li>
-					<li><a>List item</a></li>
-					<li><a>List item</a></li>
-					<li><a>List item</a></li>
-				</ol>
-			</div>
+    <section class="col-md-12 margin-bottom" id="portfolio">
+      <!-- LOCATION 정보 나오는 div -->
+      <div class="left_content">
+        <p>LOCATION</p>
+        <ol class="rectangle-list">
+          <li><a>이름이 짱짱길때는 쩜쩜쩜으로 나와야해요!</a></li>
+          <li><a>List item</a></li>
+          <li><a>List item</a></li>
+          <li><a>List item</a></li>
+        </ol>
+      </div>
 
-			<!-- 대표이미지 나오는 div -->
-			<div class="right_content">
-				<h1>
-					<img src="Love-Letter.png" id="detail"> <label
-						id="data_title" class="h23"></label>
-				</h1>
-				<div id="testMap"></div>
-			</div>
-			<p id="date" style="float: right;"></p>
-		</section>
+      <!-- 대표이미지 나오는 div -->
+      <div class="right_content">
+            <h1>
+               <label id="data_title" class="h23"></label>
+            </h1>
+            <div id="testMap" style="width: 800px; height:500px; margin: 10px 0 0 0;"></div>
+         </div>
+      <p id="date" style="float: right;"></p>
+    </section>
 
-		<!-- 이미지 슬라이더 -->
-		<section class="slider col-md-6">
-			<div id="slider" class="flexslider">
-				<ul class="slides" id="slides1"></ul>
-			</div>
-			<div id="carousel" class="flexslider">
-				<ul class="slides" id="slides2"></ul>
-			</div>
-		</section>
+    <!-- 이미지 슬라이더 -->
+    <section class="slider col-md-6">
+      <div id="slider" class="flexslider">
+        <ul class="slides" id="slides1"></ul>
+      </div>
+      <div id="carousel" class="flexslider">
+        <ul class="slides" id="slides2"></ul>
+      </div>
+    </section>
 
-		<section class="col-md-12">
-			<div class="post-content">
-				<h2 class="post-title bold">
-					<a id="data_title2"></a>
-				</h2>
-				<h3 class="post-author">
-					<a>Posted by micron News</a>
-				</h3>
-				<p id="content1"></p>
-				<div class="post-bottom overflow">
-					<ul class="nav navbar-nav post-nav">
-						<li><a><i class="fa fa-tag"></i>Creative</a></li>
-						<li><a><i class="fa fa-heart"></i>32 Love</a></li>
-						<li><a><i class="fa fa-comments"></i>3 Comments</a></li>
-<!-- 						<li><a name="fb_share" type="button_count" href="http://www.facebook.com/sharer.php">공유하기</a></li> -->
+    <section class="col-md-12">
+      <div class="post-content">
+        <h2 class="post-title bold">
+          <a id="data_title2"></a>
+        </h2>
+        <h3 class="post-author">
+          <a>Posted by micron News</a>
+        </h3>
+        <p id="content1"></p>
+        <div class="post-bottom overflow">
+          <ul class="nav navbar-nav post-nav">
+            <li><a><i class="fa fa-tag"></i><span id="post-tag-name">태그</span></a></li>
+                  <li><a><i class="fa fa-heart"></i><span id="post-hearts-count">찜</span></a></li>
+                  <li><a><i class="fa fa-comments"></i><span id="post-com-count">댓글 수</span></a></li>
+<!--            <li><a name="fb_share" type="button_count" href="http://www.facebook.com/sharer.php">공유하기</a></li> -->
 <!--                <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> -->
-					</ul>
-				</div>
-				<div class="blog-share">
-					<span class='st_facebook_hcount'></span> <span
-						class='st_twitter_hcount'></span> <span class='st_linkedin_hcount'></span>
-					<span class='st_pinterest_hcount'></span> <span
-						class='st_email_hcount'></span>
-				</div>
+          </ul>
+        </div>
+        <div class="blog-share">
+          <span class='st_facebook_hcount'></span> <span
+            class='st_twitter_hcount'></span> <span class='st_linkedin_hcount'></span>
+          <span class='st_pinterest_hcount'></span> <span
+            class='st_email_hcount'></span>
+        </div>
 
-				<div class="response-area">
-					<h2 class="bold">Comments</h2>
+        <div class="response-area">
+          <h2 class="bold">Comments</h2>
 
-					<form method="post" action="#" data-ajax="true">
-						<div class="row">
-							<div class="col-sm-2">
-								<img class="img-circle" id="profile_image" width="120"
-									height="120" alt="">
-							</div>
+          <form method="post" action="#" data-ajax="true">
+            <div class="row">
+              <div class="col-sm-2">
+                <img class="img-circle" id="profile_image" width="120"
+                  height="120" alt="">
+              </div>
 
-							<div class="col-sm-9">
-								<dl class="comment_form_content">
-									<dt>댓글 본문</dt>
-									<dd>
-										<div id="reply_indicator">
-											<input type="hidden" name="parent" value="">
-										</div>
-										<textarea style="display: none" id="com-content"
-											class="form-control" rows="3" name="cmt_content"
-											placeholder="댓글 달리는 영역"></textarea>
-										<textarea style="display: none" id="com-content2"
-											class="form-control" rows="3" name="cmt_content"
-											placeholder="로그인 한 후 이용 가능" readonly></textarea>
-									</dd>
-								</dl>
-								<div class="buttons" style="float: right;">
-									<input type="hidden" name="course_id" value="45"> <input
-										type="hidden" name="module_id" value="0"> <input
-										type="hidden" name="topic_id" value="0">
+              <div class="col-sm-9">
+                <dl class="comment_form_content">
+                  <dt>댓글 본문</dt>
+                  <dd>
+                    <div id="reply_indicator">
+                      <input type="hidden" name="parent" value="">
+                    </div>
+                    <textarea style="display: none" id="com-content"
+                      class="form-control" rows="3" name="cmt_content"
+                      placeholder="댓글 달리는 영역"></textarea>
+                    <textarea style="display: none" id="com-content2"
+                      class="form-control" rows="3" name="cmt_content"
+                      placeholder="로그인 한 후 이용 가능" readonly></textarea>
+                  </dd>
+                </dl>
+                <div class="buttons" style="float: right;">
+                  <input type="hidden" name="course_id" value="45"> <input
+                    type="hidden" name="module_id" value="0"> <input
+                    type="hidden" name="topic_id" value="0">
 
-									<button type="button" id="comment-add-btn"
-										class="btn btn-success">
-										<span>댓글 올리기</span>
-									</button>
-								</div>
-							</div>
-						</div>
-					</form>
-					<!-- 댓글 DB 연동  -->
-					<ul id="commentList" class="media-list wow fadeInDown">
+                  <button type="button" id="comment-add-btn"
+                    class="btn btn-success">
+                    <span>댓글 올리기</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <!-- 댓글 DB 연동  -->
+          <ul id="commentList" class="media-list wow fadeInDown">
 
-					</ul>
-				</div>
-			</div>
-		</section>
-	</div>
-	<!-- main_container 끝 -->
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- main_container 끝 -->
 
-	<script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
-	<script>
+  <script type="text/javascript" src="../lib/jquery/jquery.min.js"></script>
+     <!-- 지도 SCRIPT  -->
+   <script type="text/javascript">
+ var oPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);                       
+ var oCenterPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);
+                        nhn.api.map.setDefaultPoint('LatLng');
+                        oMap = new nhn.api.map.Map('testMap', {
+                            point : oPoint, // 여기에다 현재 위치를 추가하면 됨.
+                            zoom : 10,
+                            enableWheelZoom : true,
+                            enableDragPan : true,
+                            enableDblClickZoom : true,
+                            mapMode : 0, // 맵 모드 0:기본 1:위성 2:기본+위성
+                            activateTrafficMap : false,
+                            activateBicycleMap : false,
+                            minMaxLevel : [ 1, 14 ],
+                            size : new nhn.api.map.Size(800, 400)
+                          // 지도 크기.
+                          });
+
+                          var mapZoom = new nhn.api.map.ZoomControl(); // - 줌 컨트롤 선언
+                          oMap.addControl(mapZoom); // - 줌 컨트롤 추가.
+                          mapZoom.setPosition({
+                            left : 760,
+                            bottom : 25
+                          }); // - 줌 컨트롤 위치 지정.
+
+                          // 아이콘설정
+                          var oSize = new nhn.api.map.Size(20, 21);
+                          var oOffset = new nhn.api.map.Size(14, 37);
+                          var oIcon = new nhn.api.map.Icon('1.png', oSize, oOffset); // 지도에 표시될 아이콘
+
+
+                          var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언.
+                          oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨.
+
+                          
+                          
+                          /* 마커 추가하기 + 해당하는 Infowindow 만들기 n 반복*/
+                          
+                          var oMarkers = [];
+                          var mapInfoTestWindow = [];
+                          var searchNo;
+                          var objNo;
+                          var boardNo = location.href.split('?')[1].split('=')[1];
+                          var visitedList = $("#visitedList");
+                          $.getJSON('ajax/courselist.do?bno=' + boardNo, function(resultObj) {
+                            for(var location of resultObj.data) {
+                              $("<ul class='nav navbar-stacked'>")
+                              .html("<li><a>"+ location.name +"</a></li>")
+                              .appendTo(visitedList);
+                              
+                              oMarkers[location.lno] = new nhn.api.map.Marker(oIcon, {
+                                      title : location.name,
+                                      smallSrc: location.lno
+                                    });
+                              oMarkers[location.lno].setPoint(new nhn.api.map.LatLng(location.lng, location.lat))
+                              oMap.addOverlay(oMarkers[location.lno]);
+                              
+                              mapInfoTestWindow[location.lno] = new nhn.api.map.InfoWindow({
+                                point: oMarkers[location.lno].getPoint(),
+                                content: '<div class="wrap">' +
+                                '    <div class="info">' +
+                                '        <div class="title">'+ location.name  +
+                                '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+                                '        </div>' +
+                                '        <div class="body">' +
+                                '            <div class="img">' +
+                                '                <img src="'+ location.photo +'" width="73" height="70">' +
+                                '           </div>' +
+                                '            <div class="desc">' +
+                                '                <div class="ellipsis">'+ location.content + '</div>' +
+                                '                <div class="jibun ellipsis"></div>' +
+                                '                <div class="choice_1" id="choice_id'+location.lno+'" style="position:relative; top:25px; left:150px">' +
+                                '                <button type="button" class="btn btn-default btn-xs">선택</button></div>' + // 선택 분류할 때 div를 다르게 하기.
+                                '    </div>' +
+                                '</div>'
+                              });
+                              mapInfoTestWindow[location.lno].setVisible(false);
+                              oMap.addOverlay(mapInfoTestWindow[location.lno]);
+                              
+                             mapInfoTestWindow[location.lno].attach('changeVisible', function(oCustomEvent) {
+                                 if (oCustomEvent.visible) {
+                                   oLabel.setVisible(false);
+                                  }
+                                });
+                             oMarkers[location.lno].setVisible(true);
+                             
+                             
+                            } // for문 끝 
+                            oMap.setCenter(new nhn.api.map.LatLng(location.lng, location.lat));
+                          }); // AJAX 호출 끝
+                            
+                          
+                          /* 정보창에서 선택하는 것 */
+                          var c_count = 1; // 다른 선택창에 정보 기록하려고
+                          var filterOne = 0;
+                          var targetNo;  // 열고싶은 창 번호.
+                          var targetWindow = 0; // 열었던 창 번호.
+                          oMap.attach('click', function(oCustomEvent) {
+                            var oTarget = oCustomEvent.target;
+                            if (oTarget instanceof nhn.api.map.Marker) {
+                                if (oCustomEvent.clickCoveredMarker) {
+                                    return; //중복마커일때 처리하는 부분
+                                }  
+                              targetNo = oTarget._smallSrc;
+                              
+                              if (targetWindow == 0) {
+                                mapInfoTestWindow[targetNo].setVisible(true);
+                                mapInfoTestWindow[targetNo].setPosition({right : 15, top : 30});
+                                mapInfoTestWindow[targetNo].autoPosition();
+                                targetWindow = targetNo;
+                                
+                              } else if (targetWindow != 0) {
+                                mapInfoTestWindow[targetWindow].setVisible(false);
+                                mapInfoTestWindow[targetNo].setVisible(true);
+                                mapInfoTestWindow[targetNo].setPosition({right : 15, top : 30});
+                                mapInfoTestWindow[targetNo].autoPosition();
+                                targetWindow = targetNo;
+                              }
+                           } 
+                               if (!(oTarget instanceof nhn.api.map.Marker)) {
+                                mapInfoTestWindow[targetWindow].setVisible(false);
+                              } // 마커가 아니면 클릭시 닫힌다. 
+                               console.log(targetNo);
+                          });
+                          
+                          console.log(targetNo);
+                          
+                          
+
+                          function closeOverlay() {
+                            mapInfoTestWindow[targetWindow].setVisible(false);
+                          }
+                          
+                          oMap.attach('mouseenter', function(oCustomEvent) {
+                            var oTarget = oCustomEvent.target;
+                            // 마커위에 마우스 올라간거면
+                            if (oTarget instanceof nhn.api.map.Marker) {
+                              var oMarker = oTarget;
+                              oLabel.setVisible(true, oMarker); // - 특정 마커를 지정하여 해당 마커의 title을 보여준다.
+                            }
+                            
+                            $("#choice_id"+ targetNo).click(function(event) {
+                              if(targetNo != filterOne) {
+                                event.preventDefault();
+                                console.log("카운트 : "+c_count);
+                                if ((c_count%4) == 1) {
+                                  /* $("#choice_div1").text(targetNo); */
+                                  $.getJSON('ajax/locationDetail.do?no=' + targetNo, function(resultObj) {
+                                      var ajaxResult = resultObj.ajaxResult;
+                                      if (ajaxResult.status == "success") {
+                                        var location = ajaxResult.data;
+                                        $("#choice_div1").html("<img src='"+ location.photo +"' id='img_icon' class='img-circle'>" +
+                                            "<input type='hidden' name='lno1' value='"+ targetNo +"'>");
+                                      }
+                                  });
+                                  c_count++;
+                                } else if ((c_count%4) == 2) {
+                                  $.getJSON('ajax/locationDetail.do?no=' + targetNo, function(resultObj) {
+                                        var ajaxResult = resultObj.ajaxResult;
+                                        if (ajaxResult.status == "success") {
+                                          var location = ajaxResult.data;
+                                          $("#choice_div2").html("<img src='"+ location.photo +"' class='img-circle'>" +
+                                                  "<input type='hidden' name='lno2' value='"+ targetNo +"'>");
+                                        }
+                                    });
+                                  c_count++;
+                                } else if ((c_count%4) == 3) {
+                                  $.getJSON('ajax/locationDetail.do?no=' + targetNo, function(resultObj) {
+                                        var ajaxResult = resultObj.ajaxResult;
+                                        if (ajaxResult.status == "success") {
+                                          var location = ajaxResult.data;
+                                          $("#choice_div3").html("<img src='"+ location.photo +"' class='img-circle'>" +
+                                                  "<input type='hidden' name='lno3' value='"+ targetNo +"'>");
+                                        }
+                                    });
+                                  c_count++;
+                                } else if ((c_count%4) == 0) {
+                                  $.getJSON('ajax/locationDetail.do?no=' + targetNo, function(resultObj) {
+                                        var ajaxResult = resultObj.ajaxResult;
+                                        if (ajaxResult.status == "success") {
+                                          var location = ajaxResult.data;
+                                          $("#choice_div4").html("<img src='"+ location.photo +"' class='img-circle'>" +
+                                                  "<input type='hidden' name='lno4' value='"+ targetNo +"'>");
+                                        }
+                                    });
+                                  c_count++;
+                                }
+                              }
+                               filterOne = targetNo;
+                            });
+                          });
+                          
+                          oMap.attach('mouseleave', function(oCustomEvent) {
+                            var oTarget = oCustomEvent.target;
+                            // 마커위에서 마우스 나간거면
+                            if (oTarget instanceof nhn.api.map.Marker) {
+                              oLabel.setVisible(false);
+                            }
+                          }); 
+     </script>
+<script type="text/javascript">
+ try {document.execCommand('BackgroundImageCache', false, true);} catch(e) {}
+</script>
+  <script>
  var no = location.href.split('?')[1].split('=')[1];
  var cPhoto;
  $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), 
@@ -165,17 +389,20 @@ $("#h_title").load("header.html");
  $.getJSON('ajax/updateViews.do?no=' + no);
  
  $.getJSON('ajax/detail.do?no=' + no, function(resultObj) {
-    var ajaxResult = resultObj.ajaxResult;
-    if (ajaxResult.status == "success") {
-      var board = ajaxResult.data;
-      $("#testMap").html("<img src='images/portfolio/"+ board.photo +"'>")
-      $("#data_title").text(board.title);
-      $("#date").text(board.createdDate);
-      $("#data_title2").text(board.title);
-      $("#data_no").text(board.bno);
-      $("#content1").text(board.content);
-    }
- });
+	    var ajaxResult = resultObj.ajaxResult;
+	    if (ajaxResult.status == "success") {
+	      var board = ajaxResult.data;
+	      /* $("#testMap").html("<img src='images/portfolio/"+ board.photo +"'>") */
+	      $("#photo_div").html("<img src='images/portfolio/"+ board.photo +"' class='img-responsive' alt=''>")
+	      $("#photo_div2").html("<img src='images/portfolio/"+ board.photo +"' class='img-responsive' alt=''>")
+	      $("#data_title").text(board.title);
+	      $("#date").text(board.createdDate);
+	      $("#data_title2").text(board.title);
+	      $("#data_no").text(board.bno);
+	      $("#content1").text(board.content);
+	      $("#post-com-count").text(board.commentCount + " Comments");
+	    }
+	 });
  
  $.getJSON('ajax/photodetail.do?no=' + no , function(resultObj) {
    var ajaxResult = resultObj.ajaxResult;
@@ -289,15 +516,15 @@ $("#h_title").load("header.html");
   } 
   </script>
 
-	<!-- jQuery -->
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
+  <!-- jQuery -->
+  <script
+    src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
 
-	<!-- FlexSlider -->
-	<script defer src="jquery.flexslider.js"></script>
+  <!-- FlexSlider -->
+  <script defer src="jquery.flexslider.js"></script>
 
-	<script type="text/javascript">
+  <script type="text/javascript">
     $(function(){
       SyntaxHighlighter.all();
     });
@@ -323,15 +550,15 @@ $("#h_title").load("header.html");
   </script>
 
 
-	<!-- Syntax Highlighter -->
-	<script type="text/javascript" src="js/shCore.js"></script>
-	<script type="text/javascript" src="js/shBrushXml.js"></script>
-	<script type="text/javascript" src="js/shBrushJScript.js"></script>
+  <!-- Syntax Highlighter -->
+  <script type="text/javascript" src="js/shCore.js"></script>
+  <script type="text/javascript" src="js/shBrushXml.js"></script>
+  <script type="text/javascript" src="js/shBrushJScript.js"></script>
 
-	<!-- Optional FlexSlider Additions -->
-	<script src="js/jquery.easing.js"></script>
-	<script src="js/jquery.mousewheel.js"></script>
-	<script defer src="js/demo.js"></script>
+  <!-- Optional FlexSlider Additions -->
+  <script src="js/jquery.easing.js"></script>
+  <script src="js/jquery.mousewheel.js"></script>
+  <script defer src="js/demo.js"></script>
 
 
 </body>

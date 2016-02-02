@@ -22,14 +22,23 @@ public class Board  implements Serializable {
   protected int     costAll;
   protected String  photo;
   protected String  intCode;
+  protected int     commentCount; // 댓글수
   
  
+  
   @Override
   public String toString() {
     return "Board [bno=" + bno + ", id=" + id + ", title=" + title + ", content=" + content + ", views=" + views
         + ", createdDate=" + createdDate + ", likes=" + likes + ", dislikes=" + dislikes + ", heart=" + heart
         + ", startLocation=" + startLocation + ", endLocation=" + endLocation + ", icon=" + icon + ", ageGroup="
-        + ageGroup + ", costAll=" + costAll + ", photo=" + photo + ", intCode=" + intCode + "]";
+        + ageGroup + ", costAll=" + costAll + ", photo=" + photo + ", intCode=" + intCode + ", commentCount="
+        + commentCount + "]";
+  }
+  public int getCommentCount() {
+    return commentCount;
+  }
+  public void setCommentCount(int commentCount) {
+    this.commentCount = commentCount;
   }
   public int getBno() {
     return bno;
