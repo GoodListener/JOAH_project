@@ -119,17 +119,24 @@ $.ajax({
     <button class="btn btn-primary" id="addToboard" style="float: right; margin-bottom:20px; margin-left: 10px; margin-right: 55px;">게시판에 등록</button>
     <button class="btn btn-default" id="share_facebook" style="float: right; margin-bottom:20px;" >삭제</button>
     <!-- </form> -->
-<footer>
-    <div>
-      <hr style="position:relative; width:90%; border-top: 2px solid lightgray; ">
-    </div>
-    아에이오우아에이오우
-</footer>
+
 </div>
+
+  <script>
+$.ajax({
+    url : "footer.html",
+    dataType : "html",
+    type : "get",  // post 또는 get
+    success : function(result){
+        $("#footer_id").html(result);
+     }
+});
+</script>
+<footer id="footer_id">
+</footer>
     <!------------------------------------------>
     <!--              지도스크립트            -->
     <!------------------------------------------>
-  
  <script type="text/javascript">
  var oPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);                       
  var oCenterPoint = new nhn.api.map.LatLng(37.5010226, 127.0396037);

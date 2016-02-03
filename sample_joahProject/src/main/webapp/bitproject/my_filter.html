@@ -108,6 +108,18 @@ $.ajax({
 	</section>
 	
 </div> <!-- main container close -->
+<script>
+$.ajax({
+    url : "footer.html",
+    dataType : "html",
+    type : "get",  // post 또는 get
+    success : function(result){
+        $("#footer_id").html(result);
+     }
+});
+</script>
+<footer id="footer_id">
+</footer>
 <script> 
 
 $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
