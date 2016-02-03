@@ -123,7 +123,7 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 		     }
 		     else {
 		    	 
-      	var soloHeaven = $('#coupleCheck');
+      	var soloHeaven = $('#coupleCheck'); 
     	
     	$('#coupleCheck')
     	.html(
