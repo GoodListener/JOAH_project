@@ -333,6 +333,7 @@ $.ajax({
 </script>
 <script>
 var ppp = [];
+var upload = 0;
 
 $(function() { 
 $('#ffile').fileupload({
@@ -341,6 +342,7 @@ $('#ffile').fileupload({
   singleFileUploads: false, // 서버에 한 번만 요청을 보내라.
   add: function (e, data) {
   
+  upload = 1;
   console.log("파일을 추가하였음...");
   
   console.log(data);
@@ -354,7 +356,6 @@ $('#ffile').fileupload({
      ppp.push(photodata[i].name  +  ",");
   }
   console.log(ppp);
-  
   $('#addToboard').click(function(event) {
    console.log("서버에 전송함...");
    data.formData = {
@@ -450,6 +451,21 @@ $(function(){
         }
     });
  });
+  if (upload == 0) {
+	  $('#addToboard').click(function(event) {
+		  $.post('ajax/realAddboard.do', {
+			   bno: boardNo,
+			   title: $('#input_title').val(),
+			   content: $('#input_content').val(),
+			   success: function(resultObj) {
+			   console.log("user_rec 등록성공!");
+			   }
+			   }, function(resultObj) {
+			   console.log("user_rec와 내가 작성한 게시물에 등록 성공");
+			   location.href="index.html";
+			   }, 'json')
+	  });
+} 
 </script>
      
 </body>
