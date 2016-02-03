@@ -99,9 +99,9 @@ $.ajax({
 	           <p style="color:cornflowerblue;font-size:10px; position: relative; top:88px;">회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번 확인 합니다.</p>
 	         </div>
 	       </div>
-	       <div style="float:left; margin-left:40%; margin-top: 30px;">
-	         <button id="updateBtn2" class="bt_confirm">확인</button>
-	         <button id="updateBtn2" class="bt_cancle">취소</button>
+	       <div style="float:right; margin-left:40%; margin-top: 30px;display: inline-flex;">
+	         <button id="updateBtn2" class="btn btn-submit1">확인</button>
+	         <a id="cancelBtn" class="btn btn-submit2" href="mypage.html">취소</a>
 	       </div>	
 		</div>
 	  </div>
@@ -135,6 +135,7 @@ $("#updateBtn2").click(function(event) {
     }
   }, 'json');
 });
+
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
