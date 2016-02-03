@@ -86,8 +86,24 @@ height: 70px;
 }
 img.map_pic{position: relative; margin:0px 0 0px 0;}
 /*-----吏��룄 �븘�씠肄� �븣臾몄뿉 first button-----*/
-input.form_mapSear{clear:both; height:24px; text-align:center; color:#fff; font-size:14px; background: #666666; border:none; margin:22px 0px 0px 0px; cursor:pointer;}
-input.form_mapSear.checked{clear:both; height:24px; text-align:center; color:#fff; font-size:14px; background: #0a3; border:none; margin:22px 0px 0px 0px; cursor:pointer;}
+input.form_mapSear{clear:both; height:24px; text-align:center; color:#fff; font-size:14px; background: #999; border:none; margin:22px 0px 0px 0px; cursor:pointer;}
+input.form_mapSear.checked{clear:both; height:24px; text-align:center; color:#fff; font-size:14px; background: #ff8040; border:none; margin:22px 0px 0px 0px; cursor:pointer;}
+input.form_mapSear:HOVER{
+	box-shadow:0 0 1px 1px #f0874f;
+}
+
+/* 출발 도착 검색 버튼 */
+#st_loc_btn{
+	background-color: #d76613;
+  border-color: #cf480e;
+  color: #fff;
+}
+#ed_loc_btn{
+	background-color: #d76613;
+  border-color: #cf480e;
+  color: #fff;
+}
+
 /*-----search button-----*/   
 .search_border {    
     margin: 18px 10px 0px 0px;

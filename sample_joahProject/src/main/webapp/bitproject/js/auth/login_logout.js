@@ -80,6 +80,7 @@ $(document).ready( function() {
 		     $("#com-content").show();
 	   } else {
 		   console.log(sessionStorage.getItem('loginSession'));
+		     $("#admin_ul").show();
 		     $("#admin_logout").show();
 		     $("#admin_menu_id").show();
 		     $("#admin_menu_id").text(sessionStorage.getItem('loginSession') + "님");

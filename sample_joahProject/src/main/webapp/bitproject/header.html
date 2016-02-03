@@ -14,11 +14,10 @@
 <div class="slogan">| Couple Date Course Website</div>
 
 <div class="header_socials">
-   <a href="#"><img src="../images/rss.png" alt="" title="" border="0" /></a> 
-   <a href="#"><img src="../images/facebook.png" alt="" title="" border="0" /></a> 
-   <a href="#"><img src="../images/linkedin.png" alt="" title="" border="0" /></a> 
-   <a href="#"><img src="../images/twitter.png"   alt="" title="" border="0" /></a> 
-   <a href="#"><img src="../images/flickr.png" alt="" title="" border="0" /></a>
+   <ul style="left:-100px">
+     <li><div style="display:none" id="after_login5"><!-- 사진들어감 ajax로 --></div></li>
+     <li><div style="display:none" id="after_login2"></div></li>
+   </ul>
 </div>
 <div class="menu">
    <div class="menu_bar">
@@ -44,8 +43,6 @@
       </nav>
       <nav class="main-nav2">
          <ul>
-            <li><div style="display:none" id="after_login5"><!-- 사진들어감 ajax로 --></div></li>
-            <li><div style="display:none" id="after_login2"></div></li>
 				    <li>
 				    	<div style="display: none" class="cd-signin" id="logAlarm">
 					     	<img src="alarm.png" width=40px height=40px class="img-circle" id="alarm_img">
@@ -64,7 +61,7 @@
          </ul>
       </nav>
       <nav class="main-nav3">
-         <ul>
+         <ul id="admin_ul" style="display:none">
             <li><div id="admin_menu_id"></div></li>
             <li><a style="display:none" class="cd-signin" type="button" href="adminpage.html" id="admin_menu">관리자 메뉴</a></li>
             <li><a style="display:none" class="cd-signout" type="button" id="admin_logout" >Log out</a></li>
