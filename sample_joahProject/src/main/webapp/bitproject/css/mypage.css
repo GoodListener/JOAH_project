@@ -13,6 +13,21 @@
     height: 35px;
 }
 .farewellBtn {
-	position:fixed;
-    right: 120px;
+	position:relative;
+    left: 220px;
+}
+#search_couple {
+	margin: 18px 10px 0px 0px;
+    display: inline-block;
+    zoom: 1;
+    border: solid 1px #d2d2d2;
+    padding: 3px 5px;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+    -webkit-box-shadow: 0 1px 0px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 1px 0px rgba(0,0,0,.1);
+    box-shadow: 0 1px 0px rgba(0,0,0,.1);
+    background: #f1f1f1;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
 }

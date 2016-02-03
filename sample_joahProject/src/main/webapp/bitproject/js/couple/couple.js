@@ -131,9 +131,9 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
  		 + "<form id='form1'>"
 		 + "<select name='search'>"
 		 + "<option value='id'>아이디</option>"
-		 + "</select>"
-		 + "<input type='text' name='word'>"
-		 + "<input type='submit' value='검색'>"
+		 + "</select>&nbsp;&nbsp;&nbsp;"
+		 + "<input type='text' name='word'id='search_couple'>"
+		 + "<input type='submit' value='회원검색'>"
 		 + "</form></div><br><br><div id='searchSolo'></div>"
 		 + "<div class='center_content search_id'></div>"
          + "<button type='button' id='requestCouple'>커플 신청</button>"
@@ -183,7 +183,8 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
    		     + "<li><a>E-Mail<input id='couple_email' style='border-radius:13px;'type='text' readonly></a></li>"
    		     + "<li><a>Gender<input id='couple_gender' style='border-radius:13px;'type='text' readonly></a></li>"
    		     + "<li><a>Age<input id='couple_age' style='border-radius:13px;'type='text' readonly></a></li><br>" 
-   	         + "</ul><div class='farewellBtn'><button type='button' id='farewellBtn'>커플끊기</button></div></div></div></div>"
+   	         + "</ul><div class='farewellBtn'><img src='images/mypage/farewellBtn.png' width='70px' height='50px'>" 
+   	         + "<button type='button' id='farewellBtn'>커플끊기</button></div></div></div></div>"
    	         ).appendTo(coupleHell);
    			
    			 var couple = ajaxResult.data;
