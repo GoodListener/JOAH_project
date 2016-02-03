@@ -75,8 +75,8 @@
 		update member set
 		  name=#{name},		
 		  email=#{email},
-		  age=#{age}
-<!-- 		  ,photo=#{photo} -->
+		  age=#{age},
+ 		  photo=#{photo}
 		where id=#{id}  
  		<!-- 처음에 password 먼저 확인하고 나중에 변경할 땐 그냥 ok 하도록--> 
 	</update>

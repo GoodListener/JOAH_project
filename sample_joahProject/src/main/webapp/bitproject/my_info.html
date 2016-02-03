@@ -19,6 +19,9 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="js/jquery.fileupload.js"></script>
 </head>
 <!--/head-->
 
@@ -81,8 +84,10 @@ $.ajax({
 		<div class="col-xs-12" style="margin-top: 20px;">				    
         <div class="col-xs-2" style="position: relative;">
             <div class="profile text-center" id="member_photo"></div>
-            <div style="float: left; margin-left: 30px;">
-            	<button>upload</button>
+            <div class="Uploadbtn">
+             <input id="fileupload" class="input-upload" type="file" name="file" onchange="profile_show(this)">
+             <input id='fphotofile' type='hidden'>  
+             <span>Upload</span>
             </div>
         </div>						     
    			<div class="col-xs-5">
@@ -143,13 +148,44 @@ $.ajax({
 		</section>
 
 	</div>
-	<script>
+<script>
+  function profile_show(e) {
+    previewImage(e, "procImageView", "100", "100");
+  }
+</script>
+<script>
+
+var beforeImg = '';
+var afterImg = '';
+var updateImg = '';
+
+$('#fileupload').fileupload({
+    url: 'ajax/upload.do',
+    dataType: 'json',
+    maxFileSize: 10000000,
+    disableImageResize: /Android(?!.*Chrome)|Opera/
+      .test(window.navigator.userAgent),
+  }).on('fileuploaddone', function(e, data) {
+    console.log(data.result);
+    $('#files').html('');
+    $.each(data.result.data,function (index, file) {
+        $('<span/>')
+        .text(file.name 
+            + '(' + file.originName + ')'
+            + ', ' + file.size)
+            .appendTo('#files');
+        $('#fphotofile').val(file.name);
+        afterImg = file.name;
+    })
+    });
+    
 $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
   var ajaxResult = resultObj.ajaxResult;
   if (ajaxResult.status == "success") {
     var member = ajaxResult.data;
     $("#member_photo").html("<img src='../profile_image/" + member.photo + "'width='140px' height='140px' style='margin-left:14px;'><br><br>");
     console.log("member Photo  --> " + member.photo);
+    beforeImg = member.photo;
     $("#member_id").val(sessionStorage.getItem('loginSession'));
     $("#member_pwd").val(member.pwd);
     $("#member_name").val(member.name);
@@ -159,8 +195,6 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
     $("#member_cid").val(member.cid);
   }
 });  
-</script>
-<script>
 
 $.getJSON('ajax/interest.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) {
   var ajaxResult = resultObj.ajaxResult;
@@ -247,12 +281,19 @@ $("#updateBtn").click(function(event) {
            alert("게시물 등록에 실패했습니다.");
          } 
   }, 'json'); 
+  
+  if (afterImg == '') {
+	  updateImg = beforeImg;
+  } else {
+	  updateImg = afterImg;
+  }
+  
   $.post('ajax/updateinfo.do', {
 	id: $('#member_id').val(),
 	name: $('#member_name').val(),
     email: $('#member_email').val(),
     age: $('#member_age').val(),
-    
+    photo: updateImg
   }, function(resultObj) {
     var ajaxResult = resultObj.ajaxResult;
     if (ajaxResult.status == "success") {
