@@ -330,8 +330,8 @@ width:960px; clear:both; padding:15px 0 0 0;
 }
 #vticker_li{
 	list-style: none;
-	border-bottom: 1px solid green;
-	margin-top:10px;
+	border-bottom: 2px solid black;
+	margin-top:20px;
 	background:url(../../images/bg.gif) repeat top left #FFFFFF;
 }
 .et-run{

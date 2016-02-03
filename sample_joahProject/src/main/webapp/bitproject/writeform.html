@@ -86,8 +86,10 @@ $.ajax({
       
       <div class="right_content">
          <div id="testMap" style="width: 800px; height:500px; margin: 10px 0 0 0;">
-            <p style="margin: 0 0 10px 10px;font-size: 17px;"><i class="fa fa-heartbeat"></i><b> #id님이 다녀온 데이트 코스</b></p>
+            <p style="margin: 0 0 10px 10px;font-size: 17px;"><i class="fa fa-heartbeat"></i><b>등록된 데이트 코스</b></p>
+            
           </div>
+          
        </div>
     </section>
     
@@ -98,15 +100,15 @@ $.ajax({
     <!-- 밑줄 한줄 끝 -->
     
     <section>
-      <div class="row">
+      <div class="row" style="width: 1160px;">
       <div class="col-sm-1"></div>
-                <div class="col-sm-5">
-                <h2>후기 작성</h2>
-                <textarea id="input_content" rows="13" cols="60" placeholder="내용을 입력해주세요"></textarea>
+                <div class="col-sm-5" style="border-right: 3px solid black; ">
+                    <h2 style="text-align: center;"><b>데이트 후기 등록</b></h2>
+                <textarea id="input_content" rows="13" cols="60" placeholder=" 내용을 입력해주세요"></textarea>
                 </div>
-                <div class="col-sm-6">
-                    <h2>PHOTO</h2>
-                    <input type='file' class="form-control" id="ffile" name="files" multiple>
+                <div class="col-sm-6" >
+                    <h2 style="text-align: center;"><b>데이트 후기 사진 등록</b></h2>
+                    <input type='file' class="form-control" id="ffile" name="files" multiple style="width: 95%;">
                     <div class='images'></div>
                 </div>
             </div>
@@ -114,8 +116,8 @@ $.ajax({
     <div>
       <hr style="position:relative; width:90%; border-top: 2px solid lightgray; ">
     </div>
-    <button class="btn btn-primary" id="addToboard" style="position:relative; left:1020px;">게시판에 등록</button>
-    <button class="btn btn-default" id="share_facebook" style="position:relative; left:760px;">페이스북에 공유</button>
+    <button class="btn btn-primary" id="addToboard" style="float: right; margin-bottom:20px; margin-left: 10px; margin-right: 55px;">게시판에 등록</button>
+    <button class="btn btn-default" id="share_facebook" style="float: right; margin-bottom:20px;" >삭제</button>
     <!-- </form> -->
 <footer>
     <div>
@@ -333,7 +335,6 @@ $.ajax({
 </script>
 <script>
 var ppp = [];
-var upload = 0;
 
 $(function() { 
 $('#ffile').fileupload({
@@ -342,7 +343,6 @@ $('#ffile').fileupload({
   singleFileUploads: false, // 서버에 한 번만 요청을 보내라.
   add: function (e, data) {
   
-  upload = 1;
   console.log("파일을 추가하였음...");
   
   console.log(data);
@@ -356,6 +356,7 @@ $('#ffile').fileupload({
      ppp.push(photodata[i].name  +  ",");
   }
   console.log(ppp);
+  
   $('#addToboard').click(function(event) {
    console.log("서버에 전송함...");
    data.formData = {
@@ -451,21 +452,26 @@ $(function(){
         }
     });
  });
-  if (upload == 0) {
-	  $('#addToboard').click(function(event) {
-		  $.post('ajax/realAddboard.do', {
-			   bno: boardNo,
-			   title: $('#input_title').val(),
-			   content: $('#input_content').val(),
-			   success: function(resultObj) {
-			   console.log("user_rec 등록성공!");
-			   }
-			   }, function(resultObj) {
-			   console.log("user_rec와 내가 작성한 게시물에 등록 성공");
-			   location.href="index.html";
-			   }, 'json')
-	  });
-} 
+ 
+$.getJSON('ajax/detail.do?no=' + no, function(resultObj) {
+  var ajaxResult = resultObj.ajaxResult;
+  if (ajaxResult.status == "success") {
+    var board = ajaxResult.data;
+    $("#photo_div").html("<img src='images/portfolio/"+ board.photo +"' class='img-responsive' alt=''>")
+    $("#photo_div2").html("<img src='images/portfolio/"+ board.photo +"' class='img-responsive' alt=''>")
+    $("#data_title").text(board.title);
+    $("#date").text(board.createdDate);
+    $("#data_title2").text(board.title);
+    $("#data_no").text(board.bno);
+    $("#member_id").text(board.id);
+    $("#member_id2").text(board.id);
+    $("#member_id3").text(board.id);
+    console.log(board.id);
+    $("#content1").text(board.content);
+    $("#post-com-count").text(board.commentCount + " Comments");
+
+  }
+});
 </script>
      
 </body>

@@ -78,8 +78,8 @@ $("#h_title").load("header.html");
       <!-- 지도 나오는 div -->
       <div class="right_content">
             <div id="testMap" style="width: 800px; height:500px; margin: 20px 0 0 0;">
-               <p style="margin: 0 0 10px 10px;font-size: 17px;"><i class="fa fa-heartbeat"></i><b> #id님이 다녀온 데이트 코스</b></p>
-              </div>
+               <p style="margin: 0 0 10px 10px;font-size: 17px;"><i class="fa fa-heartbeat"></i><b>&#32;&#32;<a id="member_id">&#32;&#32;</a>님이 다녀온 데이트 코스</b></p>
+            </div>
          </div>
     </section>
 
@@ -437,24 +437,15 @@ $("#h_title").load("header.html");
 	          console.log(board.id);
 	          var member = ajaxResult.data;
 	          $("#member_photo").html('<img class="img-circle" width="110" height="110"' +
-	  	          'src="../profile_image/'+ member.photo +'" alt="">');
-	          
-	          
-	          
-	          
-	          
-	          
-	          
-	          console.log("난 member id" + member.id);
-	          console.log("난 member id" + member.email);
-	          console.log("난 member id" + member.gender);
-	          $("#member_id").val(sessionStorage.getItem('loginSession'));
-	          $("#member_pwd").val(member.pwd);
+	  	          'src="../profile_image/'+ member.photo +'" alt="">');	          
+	          $("#member_id").text(member.id);
+	          $("#member_id2").text(member.id);
+	          $("#member_id3").text(member.id);
+	          console.log("member"+member.id);
 	          $("#member_name").val(member.name);
 	          $("#member_email").text(member.email);
 	          $("#member_gender").text(member.gender);
 	          $("#member_age").val(member.age);
-	          $("#member_cid").val(member.cid);
 	        }
 	      });  
 	    }
