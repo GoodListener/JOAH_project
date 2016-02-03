@@ -774,16 +774,14 @@ p.has-padding{
 }
 /* 로그인 했을 때 사진 */
 #after_login5 {
-	position: relative;
-  left: 0px;
-  top: 30px;
+	position:relative;
+	right: 30px;
 }
 
 /* 로그인 했을 때 아이디 */
 #after_login2 {
-    position: relative;
-    top: 6px;
-    left: -46px;
+	position:relative;
+	right:30px;
 }
 /* 알람 메세지 */ 
 li.alarm_li{

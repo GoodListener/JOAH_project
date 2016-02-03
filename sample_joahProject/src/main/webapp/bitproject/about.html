@@ -223,10 +223,16 @@ $.ajax({
  }); // - 줌 컨트롤 위치 지정.
 
  //아이콘설정
- var oSize = new nhn.api.map.Size(20, 21);
+ var oSize = new nhn.api.map.Size(23, 23);
  var oOffset = new nhn.api.map.Size(14, 37);
- var oIcon = new nhn.api.map.Icon('1.png', oSize, oOffset); // 지도에 표시될 아이콘
-
+ var oIcon;
+ 
+ var foodIcon = new nhn.api.map.Icon('icon/marker_food.png', oSize, oOffset); // 지도에 표시될 아이콘
+ var entIcon = new nhn.api.map.Icon('icon/marker_ent.png', oSize, oOffset); // 지도에 표시될 아이콘
+ var expIcon = new nhn.api.map.Icon('icon/marker_exp.png', oSize, oOffset); // 지도에 표시될 아이콘
+ var exerciseIcon = new nhn.api.map.Icon('icon/marker_exercise.png', oSize, oOffset); // 지도에 표시될 아이콘
+ var showIcon = new nhn.api.map.Icon('icon/marker_show.png', oSize, oOffset); // 지도에 표시될 아이콘
+ 
  var checkSize = new nhn.api.map.Size(25, 26);
  var checkedIcon = new nhn.api.map.Icon('2.png', checkSize, oOffset); // 지도에 체크된 아이콘
  
@@ -247,19 +253,33 @@ $.ajax({
  //맨 처음 시작할 때 항상 전체 리스트 보이도록 하도록 하기.                          
  $.getJSON('ajax/allLocation.do', function(resultObj) {
    var i = 0;
+   
    for(var location of resultObj.data) {
      /* $("<li class='searchlists message' id='li"+location.lno+"'>")
      .html("<span class='from' style='white-space:nowrap;'>"+ location.name +
          "</span><br><span style='font-size:11px;white-space:nowrap;'>"+ location.content +"</span></li>")
          .appendTo(searchList); //리스트 띄우는 것. */
-
-     oMarkers[location.lno] = new nhn.api.map.Marker(oIcon, {
+     if (location.interestCode == "I-001") { oIcon = foodIcon; }
+     else if (location.interestCode == "I-002") { oIcon = entIcon; }
+     else if (location.interestCode == "I-003") { oIcon = expIcon; }
+     else if (location.interestCode == "I-004") { oIcon = exerciseIcon; }
+     else if (location.interestCode == "I-005") { oIcon = showIcon; }
+     
+         oMarkers[location.lno] = new nhn.api.map.Marker(oIcon, {
        title : location.name,
        smallSrc: location.lno
      });
      oMarkers[location.lno].setPoint(new nhn.api.map.LatLng(location.lng, location.lat))
      oMap.addOverlay(oMarkers[location.lno]);
-
+     
+     if(!location.photo.length) { // 0일때
+    	 if (location.interestCode == "I-001") { location.photo = "icon/marker_food.png"; }
+       else if (location.interestCode == "I-002") { location.photo = "icon/marker_ent.png"; }
+       else if (location.interestCode == "I-003") { location.photo = "icon/marker_exp.png"; }
+       else if (location.interestCode == "I-004") { location.photo = "icon/marker_exercise.png"; }
+       else if (location.interestCode == "I-005") { location.photo = "icon/marker_show.png"; }
+     }
+     
      mapInfoTestWindow[location.lno] = new nhn.api.map.InfoWindow({
        point: oMarkers[location.lno].getPoint(),
        content: '<div class="wrap">' +
@@ -390,6 +410,7 @@ $.ajax({
      }); // 리스트를 위한 jQuery */
      /* 리스트에 hover 일 때 해당하는 마커 딱 바뀌기 */
      $("li.searchlists").hover(function() {
+    	 oIcon = oMarkers[$(this).attr("id").substring(2)].getIcon();
     	 oMarkers[$(this).attr("id").substring(2)].setIcon(checkedIcon); 
      }, function() {
     	 oMarkers[$(this).attr("id").substring(2)].setIcon(oIcon); 
@@ -460,6 +481,13 @@ $.ajax({
            var ajaxResult = resultObj.ajaxResult;
            if (ajaxResult.status == "success") {
              var location = ajaxResult.data;
+             if(!location.photo.length) { // 0일때
+                 if (location.interestCode == "I-001") { location.photo = "icon/marker_food.png"; }
+                 else if (location.interestCode == "I-002") { location.photo = "icon/marker_ent.png"; }
+                 else if (location.interestCode == "I-003") { location.photo = "icon/marker_exp.png"; }
+                 else if (location.interestCode == "I-004") { location.photo = "icon/marker_exercise.png"; }
+                 else if (location.interestCode == "I-005") { location.photo = "icon/marker_show.png"; }
+             }
              $("#choice_div1").html("<img src='"+ location.photo +"' id='img_icon' class='img-circle' height='80px' width='80px'>" +
                  "<input type='hidden' name='lno1' value='"+ targetNo +"'>");
              $("#choice_name1").html("<span class='span_label'>"+ location.name +"</span>");
@@ -471,6 +499,13 @@ $.ajax({
            var ajaxResult = resultObj.ajaxResult;
            if (ajaxResult.status == "success") {
              var location = ajaxResult.data;
+             if(!location.photo.length) { // 0일때
+                 if (location.interestCode == "I-001") { location.photo = "icon/marker_food.png"; }
+                 else if (location.interestCode == "I-002") { location.photo = "icon/marker_ent.png"; }
+                 else if (location.interestCode == "I-003") { location.photo = "icon/marker_exp.png"; }
+                 else if (location.interestCode == "I-004") { location.photo = "icon/marker_exercise.png"; }
+                 else if (location.interestCode == "I-005") { location.photo = "icon/marker_show.png"; }
+             }
              $("#choice_div2").html("<img src='"+ location.photo +"' class='img-circle' height='80px' width='80px'>" +
                  "<input type='hidden' name='lno2' value='"+ targetNo +"'>");
              $("#choice_name2").html("<span class='span_label'>"+ location.name +"</span>");
@@ -482,6 +517,13 @@ $.ajax({
            var ajaxResult = resultObj.ajaxResult;
            if (ajaxResult.status == "success") {
              var location = ajaxResult.data;
+             if(!location.photo.length) { // 0일때
+                 if (location.interestCode == "I-001") { location.photo = "icon/marker_food.png"; }
+                 else if (location.interestCode == "I-002") { location.photo = "icon/marker_ent.png"; }
+                 else if (location.interestCode == "I-003") { location.photo = "icon/marker_exp.png"; }
+                 else if (location.interestCode == "I-004") { location.photo = "icon/marker_exercise.png"; }
+                 else if (location.interestCode == "I-005") { location.photo = "icon/marker_show.png"; }
+             }
              $("#choice_div3").html("<img src='"+ location.photo +"' class='img-circle' height='80px' width='80px'>" +
                  "<input type='hidden' name='lno3' value='"+ targetNo +"'>");
              $("#choice_name3").html("<span class='span_label'>"+ location.name +"</span>");
@@ -493,6 +535,13 @@ $.ajax({
            var ajaxResult = resultObj.ajaxResult;
            if (ajaxResult.status == "success") {
              var location = ajaxResult.data;
+             if(!location.photo.length) { // 0일때
+                 if (location.interestCode == "I-001") { location.photo = "icon/marker_food.png"; }
+                 else if (location.interestCode == "I-002") { location.photo = "icon/marker_ent.png"; }
+                 else if (location.interestCode == "I-003") { location.photo = "icon/marker_exp.png"; }
+                 else if (location.interestCode == "I-004") { location.photo = "icon/marker_exercise.png"; }
+                 else if (location.interestCode == "I-005") { location.photo = "icon/marker_show.png"; }
+             }
              $("#choice_div4").html("<img src='"+ location.photo +"' class='img-circle' height='80px' width='80px'>" +
                  "<input type='hidden' name='lno4' value='"+ targetNo +"'>");
              $("#choice_name4").html("<span class='span_label'>"+ location.name +"</span>");
@@ -566,36 +615,60 @@ $.ajax({
        oMap.addOverlay(locMarkers);
        oMap.setBound(searchLocations);
 
-       /* 여기다가 지도 마커들 포함되는 원을 그리고 
-                                   마커들 정리해서 표시되게 하기
-        */
-       var circle = new nhn.api.map.Circle({
-         strokeColor : "blue",
-         strokeOpacity : 0.5,
-         strokeWidth : 2,
-         fillColor : "blue",
-         fillOpacity : 0.1
-       });
+       /* 그렇게 지도에 띄우기 */
+       var mapLat = oMap.getCenter().getLat();
+       var mapLng = oMap.getCenter().getLng();
+       console.log("메뉴 이벤트 시작!");
+       if (!searchNo) {
+        searchNo = "I-006";
+       }
+       for(var c = 0; c < openMarkers.length; c++){
+         oMarkers[openMarkers[c]].setVisible(false);
+         /* oMap.removeOverlay(oMarkers[openMarkers[c]]); // 열려있는 마커를 닫는다. */
+       }
+       console.log(searchNo);
+       $.getJSON('ajax/location.do?intCode=' + searchNo + '&lat=' + mapLat +'&lng=' + mapLng, function(resultObj) {
+         var i = 0;
+         for(var location of resultObj.data) {
+           $("<li class='searchlists message' id='li"+location.lno+"'>")
+             .html("<span class='from' style='white-space:nowrap;'>"+ location.name +
+                 "</span><br><span style='font-size:11px;white-space:nowrap;'>"+ location.content +"</span></li>")
+                 .appendTo(searchList); //리스트 띄우는 것.
 
-       var radius = 1000; // - radius의 단위는 meter
+           oMarkers[location.lno].setVisible(true);
 
-       oMap.getCenter(); //TODO
-       circle.setRadius(radius); // - circle 의 반지름을 지정하며 단위는 meter이다.
-       circle.setCenterPoint(oMap.getCenter()); // - circle 의 중심점을 지정한다.
-       oMap.addOverlay(circle);
-       oMap.attach('mouseup',function(oCustomEvent) { //마우스 움직일때마다 이벤트 발생.
-    	   var mapLat = oMap.getCenter().getLat();
-    	   var mapLng = oMap.getCenter().getLng();
-    	   $.getJSON('ajax/location.do?intCode=' + searchNo + '&lat=' + mapLat +'&lng=' + mapLng, function(resultObj) {
-           for(var location of resultObj.data) {
-             if (oMap.getCenter().getDistanceFrom(oMarkers[location.lno].getPoint()) < 1000) {
-               oMarkers[location.lno].setVisible(true);
-             } else
-               oMarkers[location.lno].setVisible(false);
+           openMarkers[i] = location.lno;
+           i++; // 닫기 위해 기존 있던 마커넘버를 저장하는 것.
+         } // for문 끝 
+         console.log("메뉴 이벤트 반복문 끝!");
+         // 리스트를 위한 jQuery
+         $(".list_example + div > p > span:last-child").text(Math.ceil($(".list_example").children("li").size()/5));
+         $(".list_example > li").slice(0,5).addClass("on");
+         $(".list_example > li:nth-of-type(5n)").addClass("5n");
+         /* 리스트에 hover 일 때 해당하는 마커 딱 바뀌기 */
+         $("li.searchlists").hover(function() {
+           oMarkers[$(this).attr("id").substring(2)].setIcon(checkedIcon); 
+         }, function() {
+           oMarkers[$(this).attr("id").substring(2)].setIcon(oIcon); 
+         });
+         
+         $("li.searchlists").click(function() {
+           /* 정보창 띄우기 */
+           if (targetWindow == 0) {
+             mapInfoTestWindow[oMarkers[$(this).attr("id").substring(2)]._smallSrc].setVisible(true);
+             oMap.setCenter(oMarkers[$(this).attr("id").substring(2)].getPoint());
+             targetWindow = oMarkers[$(this).attr("id").substring(2)]._smallSrc;
+           } else if (targetWindow != 0) {
+             mapInfoTestWindow[targetWindow].setVisible(false);
+             mapInfoTestWindow[$(this).attr("id").substring(2)].setVisible(true);
+             oMap.setCenter(oMarkers[$(this).attr("id").substring(2)].getPoint());
+             targetWindow = oMarkers[$(this).attr("id").substring(2)]._smallSrc;
            }
-           circle.setCenterPoint(oMap.getCenter());
-         })
-       });
+         });
+
+       }); // AJAX 호출 끝
+       $(".searchlists").remove();
+       
      }  
    });
  });

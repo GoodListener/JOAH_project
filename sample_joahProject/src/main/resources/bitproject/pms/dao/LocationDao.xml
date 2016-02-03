@@ -13,6 +13,7 @@
   <select id="selectList" resultMap="locationMap" parameterType="map">
     select 
       lno,
+      int_code,
       name,
       content,
       cost,
@@ -32,6 +33,7 @@
   <select id="selectAll" resultMap="locationMap" parameterType="map">
     select 
       lno,
+      int_code,
       name,
       content,
       cost,
@@ -50,6 +52,7 @@
   <select id="allLocation" resultMap="locationMap">
     select 
       lno,
+      int_code,
       name,
       content,
       cost,
@@ -83,6 +86,7 @@
   <select id="selectOne" resultMap="locationMap" parameterType="int">
     select
       lno,
+      int_code,
       name,
       content,
       cost,
