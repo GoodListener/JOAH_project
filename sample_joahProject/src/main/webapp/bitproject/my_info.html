@@ -148,8 +148,8 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
   var ajaxResult = resultObj.ajaxResult;
   if (ajaxResult.status == "success") {
     var member = ajaxResult.data;
-    $("#member_photo").html("<img src='" + member.photo + "'width='100px' height='100px'><br><br>");
-    console.log(member.photo);
+    $("#member_photo").html("<img src='../profile_image/" + member.photo + "'width='140px' height='140px' style='margin-left:14px;'><br><br>");
+    console.log("member Photo  --> " + member.photo);
     $("#member_id").val(sessionStorage.getItem('loginSession'));
     $("#member_pwd").val(member.pwd);
     $("#member_name").val(member.name);
@@ -166,11 +166,6 @@ $.getJSON('ajax/interest.do?id=' + sessionStorage.getItem('loginSession'), funct
   var ajaxResult = resultObj.ajaxResult;
   if (ajaxResult.status == "success") {
     var interests = ajaxResult.data;
-    console.log(interests[0]);
-    console.log(interests[1]);
-    console.log(interests[2]);
-    console.log(interests[3]);
-    console.log(interests[4]);
     
        if (interests[0] == 'I-001') {
         $(".food").attr('checked', true);
