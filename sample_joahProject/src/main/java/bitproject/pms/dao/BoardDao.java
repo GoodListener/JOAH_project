@@ -13,7 +13,7 @@ public interface BoardDao {
   
   List<Board> selectMyList(Map<String,Object> paramMap);
   
-  List<Board> Adminlist(Map<String,Object> paramMap);
+  List<Board> selectAdminlist(Map<String,Object> paramMap);
   
   Board selectOne(int no);
   
@@ -22,6 +22,8 @@ public interface BoardDao {
   int firstUpdate(Board board);
   
   int selectCountAll();
+  
+  int selectAdminCountAll();
 
   int updateViews(int bno);
   

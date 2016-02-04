@@ -155,8 +155,7 @@ console.log("pageNo = ",pageNo);
 
 var photoLocation = "";
 
-//$.getJSON(contextRoot + '/board/ajax/list.do', function(resultObj) {
-$.getJSON('ajax/list.do?pageNo=' + pageNo, function(resultObj) {
+$.getJSON('ajax/Adminlist.do?pageNo=' + pageNo, function(resultObj) {
    var table = $("#boardList");
   for (var board of resultObj.data) {
 	  if (board.photo.length < 40) {
@@ -215,7 +214,7 @@ function clickDetailLnk(event) {
 
 var totalPage = 1;
 var pageSize = 6;
-$.getJSON('ajax/all.do', function(resultObj) {
+$.getJSON('ajax/adminAll.do', function(resultObj) {
 	  totalPage = Math.ceil(resultObj.ajaxResult.data / pageSize);
 	  var lp10 = Math.floor((totalPage - 1) / 10) * 10;
 	  var start = Math.floor((pageNo - 1) / 10) * 10 + 1;

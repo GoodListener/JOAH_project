@@ -23,14 +23,16 @@ public interface BoardService {
       int pageNo, int pageSize, 
       String keyword, String align, String id);
 
-  // Adnin 작성한 게시물
+  // Admin 작성한 게시물
   List<Board> getAdminBoardList(
       int pageNo, int pageSize, 
-      String keyword, String align, String id);
+      String keyword, String align);
   
   void register(Board board);
   
   int countAllBoard();
+  
+  int selectAdminCountAll();
   
   Board retieve(int no);
   

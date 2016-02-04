@@ -24,11 +24,10 @@
       b.id,
       b.cre_dt,
       group_concat(l.int_code) as int_code
-      
      from board b
      inner join cour_loc cl on b.bno = cl.bno
      inner join location l on cl.lno = l.lno
-     where b.bno = cl.bno and b.isboard=1
+     where (b.bno = cl.bno and b.isboard=1 and id!='admin')
      group by b.bno
      order by 
     <choose>
@@ -43,22 +42,25 @@
     limit #{startIndex}, #{length}
   </select>
   
-  
-	<select id="Adminlist" resultMap="boardMap" parameterType="map">
-    select 
-      t1.bno,
-      t1.photo,
-      t1.title,
-      t1.views,
-      t1.id,
-      t1.cre_dt 
-    from board t1
-	where t1.isboard=1 and t1.id=admin
-    order by 
+  <select id="recommendList" resultMap="boardMap" parameterType="map">
+      select
+      b.bno,
+      b.photo,
+      b.title,
+      b.views,
+      b.id, b.cre_dt,
+      group_concat(l.int_code) as int_code
+      from board b
+      inner join cour_loc cl on b.bno = cl.bno
+      inner join location l on cl.lno = l.lno
+      inner join mem_int m on m.int_code = l.int_code
+      where isboard=1 and m.id=#{id}
+      group by b.bno
+      order by 
     <choose>
-      <when test="keyword == 'title'">t1.title </when>
-      <when test="keyword == 'views'">t1.views </when>
-      <otherwise>t1.bno </otherwise>
+      <when test="keyword == 'title'">b.title </when>
+      <when test="keyword == 'views'">b.views </when>
+      <otherwise>b.bno </otherwise>
     </choose>
     <choose>
       <when test="align == 'asc'">asc</when>
@@ -66,7 +68,34 @@
     </choose>
     limit #{startIndex}, #{length}
   </select>
-
+  
+  <select id="selectAdminlist" resultMap="boardMap" parameterType="map">
+    select 
+      b.bno,
+      b.photo,
+      b.title,
+      b.views,
+      b.id,
+      b.cre_dt,
+      group_concat(l.int_code) as int_code
+     from board b
+     inner join cour_loc cl on b.bno = cl.bno
+     inner join location l on cl.lno = l.lno
+     where (b.bno = cl.bno and b.isboard=1 and id='admin')
+     group by b.bno
+     order by 
+    <choose>
+      <when test="keyword == 'title'">b.title </when>
+      <when test="keyword == 'views'">b.views </when>
+      <otherwise>b.bno </otherwise>
+    </choose>
+    <choose>
+      <when test="align == 'asc'">asc</when>
+      <otherwise>desc</otherwise>
+    </choose>
+    limit #{startIndex}, #{length}
+  </select>
+  
   <select id="selectIngList" resultMap="boardMap" parameterType="map">
     select 
       t1.bno,
@@ -174,7 +203,13 @@
     select count(*)
     from board
   	where isboard=1
-  </select>  
+  </select> 
+
+  <select id="selectAdminCountAll" resultType="int">
+    select count(*)
+    from board
+  	where (isboard=1 and id='admin')
+  </select> 
   
   <update id="pluslikes" parameterType="int">
     update board set 
