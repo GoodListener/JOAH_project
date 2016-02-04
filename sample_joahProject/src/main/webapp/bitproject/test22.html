@@ -1,0 +1,72 @@
+<link href="css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css"
+  href="../lib/mycss/style_detail.css" />
+<link rel="stylesheet" type="text/css"
+  href="../lib/mycss/style_header.css" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="../lib/myjs/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+<!-- Syntax Highlighter -->
+<link href="css/shCore.css" rel="stylesheet" type="text/css" />
+<link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+<!-- Demo CSS -->
+<link rel="stylesheet" href="flexslider.css" type="text/css"
+  media="screen" />
+
+
+
+<a id='uplikes'>
+<i class="fa fa-thumbs-o-up"></i>
+<span style="font: 10px" id="post-com-likes"></span>
+</a>
+
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+var no = location.href.split('?')[1].split('=')[1];
+
+$.getJSON('ajax/detail.do?no=' + no, function(resultObj) {
+    var ajaxResult = resultObj.ajaxResult;
+    if (ajaxResult.status == "success") {
+      var board = ajaxResult.data;
+      /* $("#testMap").html("<img src='images/portfolio/"+ board.photo +"'>") */
+      $("#photo_div").html("<img src='images/portfolio/"+ board.photo +"' class='img-responsive' alt=''>")
+      $("#photo_div2").html("<img src='images/portfolio/"+ board.photo +"' class='img-responsive' alt=''>")
+      $("#data_title").text(board.title);
+      $("#date").text(board.createdDate);
+      $("#data_title2").text(board.title);
+      $("#data_no").text(board.bno);
+      $("#id").text(board.id);
+      $("#content1").text(board.content);
+      $("#post-com-count").text(board.commentCount + " Comments");
+      likes = board.likes;
+      $("#post-com-likes").text(likes + " 좋아요");
+      $("#post-com-dislikes").text(board.dislikes + " 싫어요");
+    }
+    });
+    
+$('#uplikes').click(function(event) {
+	 $.getJSON('ajax/pluslikes.do?no=' + no, {
+	 }, function(resultObj) {
+		var ajaxResult = resultObj.ajaxResult;
+		if (ajaxResult.status == "success") {
+			location.href = "test22.html?no=                                                                                                                                                                                                   "+no;
+		} else {
+			alert("게시물 변경에 실패했습니다.");
+		}
+	 }, 'json');
+	});
+      
+</script>

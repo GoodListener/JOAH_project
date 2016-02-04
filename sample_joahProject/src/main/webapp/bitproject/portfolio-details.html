@@ -133,12 +133,10 @@ $("#h_title").load("header.html");
       <div style="float: right;">
               <div class="post-bottom overflow">
           <ul class="nav navbar-nav post-nav">
-          	<li><a><i class="fa fa-thumbs-o-up"></i><span id="post-com-likes"></span></a></li>
-          	<li><a><i class="fa fa-thumbs-o-down"></i><span id="post-com-dislikes"></span></a></li>
+          	<li><iframe width="82px" height="60px" src="test22.html?no=59" ></iframe></li>
+          	<li><a id='updislikes' href="#"><i class="fa fa-thumbs-o-down"></i><span id="post-com-dislikes"></span></a></li>
             <li><a><i class="fa fa-comments"></i><span id="post-com-count">댓글 수</span></a></li>
 			<li id='facebook'></li>
-<!--            <li><a name="fb_share" type="button_count" href="http://www.facebook.com/sharer.php">공유하기</a></li> -->
-<!--                <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> -->
           </ul>
         </div>
         <div class="blog-share">
@@ -413,7 +411,7 @@ $.ajax({
 <script type="text/javascript">
  try {document.execCommand('BackgroundImageCache', false, true);} catch(e) {}
 </script>
-  <script>
+<script>
  var no = location.href.split('?')[1].split('=')[1];
  
  $('#facebook').html("<div class='fb-share-button' data-href='http://192.168.0.66:8080/sample_joahProject/bitproject/portfolio-details.html?no=" + no +  "'data-layout='button_count'></div>");
@@ -429,6 +427,8 @@ $.ajax({
    });
  /*조회수 올리기*/
  $.getJSON('ajax/updateViews.do?no=' + no);
+
+ var likes; 
  
  $.getJSON('ajax/detail.do?no=' + no, function(resultObj) {
 	    var ajaxResult = resultObj.ajaxResult;
@@ -444,7 +444,8 @@ $.ajax({
 	      $("#id").text(board.id);
 	      $("#content1").text(board.content);
 	      $("#post-com-count").text(board.commentCount + " Comments");
-	      $("#post-com-likes").text(board.likes + " 좋아요");
+	      likes = board.likes;
+	      $("#post-com-likes").text(likes + " 좋아요");
 	      $("#post-com-dislikes").text(board.dislikes + " 싫어요");
 	      
 	      $.getJSON('ajax/detailmember.do?id=' + board.id, function(resultObj) {
@@ -571,6 +572,14 @@ $.ajax({
           }
     }); */
  });
+ $('#uplikes').click(function(event) {
+	 $.getJSON('ajax/pluslikes.do?no=' + no);
+	 likes = likes +1 ;
+	});
+ 
+ $('#updislikes').click(function(event) {
+	 $.getJSON('ajax/plusdislikes.do?no=' + no);
+	});
  
  /* 로그인 안한 사람 댓글 달 수 없어요.
     로그인 한 사람은 댓글에 아이디 뜨게 하기*/
@@ -581,10 +590,6 @@ $.ajax({
   } 
   </script>
 
-  <!-- jQuery -->
-  <script
-    src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
 
   <!-- FlexSlider -->
   <script defer src="jquery.flexslider.js"></script>
