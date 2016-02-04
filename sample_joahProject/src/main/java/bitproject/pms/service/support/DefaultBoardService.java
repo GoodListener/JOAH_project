@@ -89,6 +89,16 @@ public class DefaultBoardService implements BoardService {
     return boardDao.recommendList(paramMap);
   }
   
+  @Override
+  public int pluslikes(int bno) {
+    return boardDao.pluslikes(bno);
+  }
+  
+  @Override
+  public int plusdislikes(int bno) {
+    return boardDao.plusdislikes(bno);
+  }
+  
   /*
   public void remove(int no, String password) {
     HashMap<String,Object> paramMap = new HashMap<>();

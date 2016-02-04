@@ -166,6 +166,18 @@ public class BoardController {
     boardService.updateViews(no);
     return new AjaxResult("success", null);
   }
+  
+  @RequestMapping("pluslikes")
+  public AjaxResult pluslikes(int no) throws Exception {
+    boardService.pluslikes(no);
+    return new AjaxResult("success", null);
+  }
+  
+  @RequestMapping("plusdislikes")
+  public AjaxResult plusdislikes(int no) throws Exception {
+    boardService.plusdislikes(no);
+    return new AjaxResult("success", null);
+  }
 /*  
   @RequestMapping("delete.do")
   public AjaxResult delete(int no, String password) throws Exception {

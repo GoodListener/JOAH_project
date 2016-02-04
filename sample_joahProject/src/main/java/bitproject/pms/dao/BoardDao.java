@@ -22,6 +22,10 @@ public interface BoardDao {
   int selectCountAll();
 
   int updateViews(int bno);
+  
+  int pluslikes(int bno);
+  
+  int plusdislikes(int bno);
 
   int updatePhoto(Board board);
 

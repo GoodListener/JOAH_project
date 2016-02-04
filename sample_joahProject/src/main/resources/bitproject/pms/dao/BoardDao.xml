@@ -183,6 +183,18 @@
   	where isboard=1
   </select>  
   
+  <update id="pluslikes" parameterType="int">
+    update board set 
+      likes=likes+1
+      where bno=#{bno}
+  </update>
+  
+  <update id="plusdislikes" parameterType="int">
+    update board set 
+      dislikes=dislikes+1
+      where bno=#{bno}
+  </update>
+  
   
 </mapper>
 

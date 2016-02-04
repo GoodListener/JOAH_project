@@ -28,6 +28,11 @@ public interface BoardService {
   int firstUpdate(Board board);
 
   int updateViews(int bno);
+
+  int pluslikes(int bno);
+  
+  int plusdislikes(int bno);
+  
   
   int updatePhoto(Board board);
   /*
