@@ -333,6 +333,14 @@ legend { /*Search option 湲� �궎�슦湲�*/
 	width:48%;
 }
 
+.couple_ck {
+	border: 3px double indianred;
+    padding: 30px;
+    text-align: center;
+    margin-top: 43px;
+}
+
+
 li a .menubar_button {
 	border: none;
 	color: darkgray;
@@ -385,18 +393,3 @@ li a .menubar_button_c {
   box-shadow: none;
   opacity: .8;
 }
-
-
-
-/* .bt_confirm {
-    width: 74px;
-    height: 36px;
-    border: 1px solid red; 
-    background-color: pink;
-}
-.bt_cancel {
-    width: 74px;
-    height: 36px;
-    border: 1px solid darkgray; 
-    background-color: skyblue;
-} */

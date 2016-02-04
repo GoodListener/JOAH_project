@@ -11,7 +11,7 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
   var ajaxResult = resultObj.ajaxResult;
   if (ajaxResult.status == "success") {
     var member = ajaxResult.data;
-    /* $("#photo_div").html("<img src='images/portfolio/"+ member.photo +"' class='img-responsive' alt=''>") */
+    $("#member_photo").html("<img src='../profile_image/"+ member.photo +"' style='width: 150px;height: 150px;border: solid white 3px;margin: 30px 0;''>")
     $("#member_id").val(sessionStorage.getItem('loginSession'));
     $("#member_pwd").val(member.pwd);
     $("#member_name").val(member.name);
@@ -34,8 +34,8 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 		    	 
 		    	 $('#coupleCheck')
 		     	.html(
-		     	  "<div>" + request.request_id +"님 께 커플신청중...</div>"
-		     	+ "<button type='button' id='cancleCouple'>커플 신청 취소</button>").appendTo(soloHeaven);
+		     	  "<div class='couple_ck' style='margin-top: 75px;'>" + request.request_id +"님 께 커플신청중...</div>"
+		     	+ "<button type='button' class='btn btn-submit1' id='cancleCouple'>커플 신청 취소</button>").appendTo(soloHeaven);
 		    	 
 		    	 $('#cancleCouple').click(
 		 				function(event) {
@@ -62,9 +62,11 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 		    	 
 		    	 $('#coupleCheck')
 		     	.html(
-		         "<div>"+dd+"님 께서 커플신청을 하셨습니다...</div><br>"
-		         + "<button type='button' id='acceptBtn'>커플 수락</button>"
-		         + "<button type='button' id='rejectBtn'>커플 거절</button>"		
+		         "<div class='couple_ck'>"+dd+"님 께서 커플신청을 하셨습니다</div>"		
+		         + "<div style='float:right; margin-left:40%; margin-top: 30px;display: inline-flex;'>"
+		         + "<button type='button' class='btn btn-submit1' id='acceptBtn'>커플 수락</button>"
+		         + "<button type='button' class='btn btn-submit2' id='rejectBtn'>커플 거절</button>"		
+		         + "</div>"		
 		         ).appendTo(soloHeaven);
 		    	 console.log(dd);
 		    	  $('#acceptBtn').click(
@@ -175,19 +177,20 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
    			
    			$('#coupleCheck')
    			.html(
-   			   "<div class='profile text-center'>"
-   		     + "<img class='img_mypage'></div>" 
-   	         + "<div class='center_content'>"
-   	         + "<label style='margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;'>애인 정보</label>"
+   			    "<div class='center_content' style='margin-top: 60px;'>"
+   			    + "<label style='margin: 15px 0 15px 0px; font-size: 30px; padding-left:20px;'>애인 정보</label>"
+   			   +"<div class='profile text-center'>"
+   		     + "<img class='img_mypage' style='width: 150px;height: 150px;border: solid white 3px;margin: 30px 0;'></div>" 
    	         + "<div class='sidebar blog-sidebar'>"
    	         + "<div class='sidebar-item categories' style='position:'>"
-   	         + "<ul class='nav navbar-stacked' style='margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;'>"
+   	         + "<ul class='nav navbar-stacked' style='margin-top:-5px;padding-top:13px;'>"
    		     + "<li><a>ID<input id='couple_id' style='border-radius:13px;'type='text' readonly></a></li>"
    		     + "<li><a>Name<input id='couple_name' style='border-radius:13px;'type='text'readonly></a></li>"
    		     + "<li><a>E-Mail<input id='couple_email' style='border-radius:13px;'type='text' readonly></a></li>"
    		     + "<li><a>Gender<input id='couple_gender' style='border-radius:13px;'type='text' readonly></a></li>"
    		     + "<li><a>Age<input id='couple_age' style='border-radius:13px;'type='text' readonly></a></li><br>" 
-   	         + "</ul><div class='farewellBtn'><img src='images/mypage/farewellBtn.png' width='70px' height='50px'>" 
+   	         + "</ul><div class='farewellBtn'>"
+   	         +"<img src='images/mypage/farewellBtn.png' width='70px' height='50px'>" 
    	         + "<button type='button' id='farewellBtn'>커플끊기</button></div></div></div></div>"
    	         ).appendTo(coupleHell);
    			
@@ -198,7 +201,7 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
    			 $("#couple_email").val(couple.email);
    			 $("#couple_gender").val(couple.gender);
    			 $("#couple_age").val(couple.age);
-   			 $(".img_mypage").attr("src", "../profile_image/"+member.photo);
+   			 $(".img_mypage").attr("src", "../profile_image/"+couple.photo);
    			 
    			 $('#farewellBtn').click(function(event) {
    				$.post('ajax/farewellCid.do', {
@@ -239,13 +242,13 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 				.html('<div class="center_content" style="margin-top: 7px;">'
 				    + "<label style='margin: 35px 0 15px 0px; font-size: 30px; padding-left:20px;'>검색 정보</label><br>"	
 					+ "<div class='profile text-center'>"	
-					+ "<img src='../profile_image/" + member.photo +"' class='img_mypage' alt='' style='margin: 48px 0 -10px 0;'>"
+					+ "<img src='../profile_image/" + member.photo +"' class='img_mypage' alt='' style='margin: 48px 0 -10px 0;width: 150px;height: 150px;border: solid white 3px;margin: 30px 0;'>"
 					+ "<div class='sidebar blog-sidebar'>"	
 					+ "<div class='sidebar-item categories' style='position:'>"
-		            + "<ul class='nav navbar-stacked' style='padding-top:45px;'>"
-		            + "<li><a>ID (Name) <input value='     "  + member.id  + " ( " + member.name + " )   ' style='border-radius:13px;'type='text' readonly></a></li><br>"
-		            + "<li><a>Age<input value='           "  + member.age  
-		            + "' style='border-radius:13px;'type='text' readonly></a></li><br>"
+		            + "<ul class='nav navbar-stacked' style='padding-top:7px;'>"
+		            + "<li><a>ID<input value='"  + member.id  + "' style='border-radius:13px;'type='text' readonly></a></li><br>"
+		            + "<li><a>Name<input value='" + member.name + " ' style='border-radius:13px;'type='text' readonly></a></li><br>"
+		            + "<li><a>Age<input value='"  + member.age  + "' style='border-radius:13px;'type='text' readonly></a></li><br>"
 		            + "</div>"
 		            ).appendTo(search_Solo);
 			 }
