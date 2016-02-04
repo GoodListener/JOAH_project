@@ -90,7 +90,7 @@ $.getJSON('ajax/CR/alarm.do?id=' + sessionStorage.getItem('loginSession'), funct
 	if (ajaxResult.status == "success") {  
 	    var coupleRequest = ajaxResult.data;
 	    if(coupleRequest) {
-	      $("<a id='couple_alarm'>").html('<li class="alarm_li">'+ coupleRequest.my_id +'님께 커플신청이 왔습니다.</li>').appendTo($("#alarmlist"));
+	      $("<a id='couple_alarm' href='mypage.html'>").html('<li class="alarm_li">'+ coupleRequest.my_id +'님께 커플신청이 왔습니다.</li>').appendTo($("#alarmlist"));
 	      isAlarm = true;
 	      count_couple = 1;
 	    }

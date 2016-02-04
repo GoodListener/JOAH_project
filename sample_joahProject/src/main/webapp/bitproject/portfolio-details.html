@@ -280,7 +280,6 @@ $.ajax({
                                 '                <div class="ellipsis">'+ location.content + '</div>' +
                                 '                <div class="jibun ellipsis"></div>' +
                                 '                <div class="choice_1" id="choice_id'+location.lno+'" style="position:relative; top:25px; left:150px">' +
-                                '                <button type="button" class="btn btn-default btn-xs">선택</button></div>' + // 선택 분류할 때 div를 다르게 하기.
                                 '    </div>' +
                                 '</div>'
                               });
@@ -415,7 +414,7 @@ $.ajax({
  var no = location.href.split('?')[1].split('=')[1];
  
  $('#Likes').attr("src","test22.html?no="+no)
- $('#facebook').html("<div class='fb-share-button' data-href='http://192.168.0.66:8080/sample_joahProject/bitproject/portfolio-details.html?no=" + no +  "'data-layout='button_count'></div>");
+ $('#facebook').html("<div class='fb-share-button' data-href='http://192.168.0.32:8080/sample_joahProject/bitproject/portfolio-details.html?no=" + no +  "'data-layout='button_count'></div>");
  
  var cPhoto;
  $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), 
