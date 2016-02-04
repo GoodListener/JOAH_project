@@ -51,6 +51,40 @@ public class BoardController {
     return resultMap;
   }
   
+  @RequestMapping("adminlist")
+  public Object adminlist(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="6") int pageSize,
+      @RequestParam(defaultValue="no") String keyword,
+      @RequestParam(defaultValue="desc") String align) throws Exception {
+    
+    logger.debug("Board list() 호출됨.");
+    List<Board> boards = boardService.getBoardList(pageNo, pageSize, keyword, align);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", boards);
+    
+    return resultMap;
+  }
+  
+  @RequestMapping("recommendlist")
+  public Object recommendlist(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="6") int pageSize,
+      @RequestParam(defaultValue="no") String keyword,
+      @RequestParam(defaultValue="desc") String align) throws Exception {
+    
+    logger.debug("Board list() 호출됨.");
+    List<Board> boards = boardService.getRecommendList(pageNo, pageSize, keyword, align);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", boards);
+    
+    return resultMap;
+  }
+  
 //작성중인 게시물 isboard=0 이고 id=#{id}인 게시물
   @RequestMapping("inglist")
   public Object inglist(

@@ -43,6 +43,33 @@
     limit #{startIndex}, #{length}
   </select>
 
+	<select id="recommendList" resultMap="boardMap" parameterType="map">
+		select
+		b.bno,
+		b.photo,
+		b.title,
+		b.views,
+		b.id, b.cre_dt,
+		group_concat(l.int_code) as int_code
+		from board b
+		inner join cour_loc cl on b.bno = cl.bno
+		inner join location l on cl.lno = l.lno
+		inner join mem_int m on m.int_code = l.int_code
+		where isboard=1 and m.id='coca'
+		group by b.bno
+		order by 
+    <choose>
+      <when test="keyword == 'title'">b.title </when>
+      <when test="keyword == 'views'">b.views </when>
+      <otherwise>b.bno </otherwise>
+    </choose>
+    <choose>
+      <when test="align == 'asc'">asc</when>
+      <otherwise>desc</otherwise>
+    </choose>
+    limit #{startIndex}, #{length}
+  </select>
+
   <select id="selectIngList" resultMap="boardMap" parameterType="map">
     select 
       t1.bno,

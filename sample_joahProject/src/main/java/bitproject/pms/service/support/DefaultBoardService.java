@@ -75,6 +75,17 @@ public class DefaultBoardService implements BoardService {
   public int updatePhoto(Board board) {
     return boardDao.updatePhoto(board);
   }
+
+  @Override
+  public List<Board> getRecommendList(int pageNo, int pageSize, String keyword, String align) {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("startIndex", (pageNo - 1) * pageSize);
+    paramMap.put("length", pageSize);
+    paramMap.put("keyword", keyword);
+    paramMap.put("align", align);
+    
+    return boardDao.recommendList(paramMap);
+  }
   
   /*
   public void remove(int no, String password) {

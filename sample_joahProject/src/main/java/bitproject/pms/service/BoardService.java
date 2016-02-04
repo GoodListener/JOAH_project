@@ -34,6 +34,8 @@ public interface BoardService {
   void remove(int no, String password);
   void change(Board board);
   */
+
+  List<Board> getRecommendList(int pageNo, int pageSize, String keyword, String align);
 }
 
 

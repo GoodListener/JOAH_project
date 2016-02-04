@@ -1,5 +1,6 @@
 package bitproject.pms.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,8 @@ public interface BoardDao {
   int updateViews(int bno);
 
   int updatePhoto(Board board);
+
+  List<Board> recommendList(HashMap<String, Object> paramMap);
   
   /*
   int delete(Map<String,Object> paramMap);
