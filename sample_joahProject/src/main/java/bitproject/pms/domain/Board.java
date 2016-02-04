@@ -24,6 +24,8 @@ public class Board  implements Serializable {
   protected String  intCode;
   protected int     commentCount; // 댓글수
   
+  protected int     user;
+  
  
   
   @Override

@@ -122,5 +122,6 @@ values(3, 'default3.png');
 
 alter table board add column PHOTO varchar(100);
 
+alter table board add column user int(11) default 1;
 
 

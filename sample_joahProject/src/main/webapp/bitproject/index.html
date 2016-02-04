@@ -388,7 +388,7 @@ $.ajax({
 var photoLocation = "";
 
 
-$.getJSON('ajax/list.do?keyword=views', function(resultObj) { // 핫플레이스??
+$.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // 핫플레이스??
     var table = $("#hotPlace1");
     var count = 0;
    for (var board of resultObj.data) {

@@ -53,21 +53,7 @@
 					<!--/#portfolio-filter-->
 
 					<div class="portfolio-items" id="boardList"></div>
-					<div class="portfolio-pagination">
-						<ul class="pagination">
-							<li><a href="#">left</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">6</a></li>
-							<li><a href="#">7</a></li>
-							<li><a href="#">8</a></li>
-							<li><a href="#">9</a></li>
-							<li><a href="#">right</a></li>
-						</ul>						
-					</div>
+					<ul class="paging"></ul>
 				</div>
 			</div>
 
@@ -92,29 +78,56 @@ $.ajax({
     }
 });
 
+var pageNo = 1;
+if (location.href.indexOf('?') != -1) pageNo = location.href.split('?')[1].split('=')[1];
+console.log(location.href);
+console.log("pageNo = ",pageNo);
+
+var photoLocation = "";
+
 //$.getJSON(contextRoot + '/board/ajax/list.do', function(resultObj) {
-$.getJSON('ajax/list.do', function(resultObj) {
+$.getJSON('ajax/list.do?pageNo=' + pageNo, function(resultObj) {
    var table = $("#boardList");
   for (var board of resultObj.data) {
-    $("<div class='col-sm-6 portfolio-item branded mockup mobile isotope-item'" +
+	  if (board.photo.length < 40) {
+		  photoLocation = "../board_photo/";
+	  } else {
+		  photoLocation = "";
+	  }
+    $("<div id='b_list"+ board.bno +"' class='col-sm-6 portfolio-item isotope-item'" +
             "style='position: absolute; left: 15px; top: 0px; transform: translate3d(370px, 200px, 0px);'>")
         .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
       "<div class='portfolio-thumb'> " +
-          "<a href='#' class='detailLnk'><img id='hot' src='images/portfolio/" + board.photo + "' class='img-responsive' alt=''></a>" +
+          "<a href='#' class='detailLnk'><img id='hot' src='"+ photoLocation + board.photo + "' class='img-responsive' alt=''></a>" +
       "</div>" +
       "<div class='portfolio-view'>" +
           "<ul class='nav nav-pills'>" +
-              "<li><a href='portfolio-details.html?no=" + board.no + "'><i class='fa fa-link'></i></a></li>" +
-              "<li><a href='images/portfolio/" + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
+              "<li><a href='portfolio-details.html?no=" + board.bno + "'><i class='fa fa-circle-o-notch'></i></a></li>" +
+              "<li><a href='"+ photoLocation + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
           "</ul>" +
       "</div>" +
   "</div>" +
-  "<div class='portfolio-info'>" +
-  "<h2>" + "No." + board.no + "<br><br>" +"Title : "+board.title+"<br>" + "Date : "+ board.createdDate +"     Id : "+ board.id +"</h2>" +
+  "<div class='portfolio-info'>" + 
+  "<span class='pf-info-user'><i class='fa fa-user'></i> "+ board.id + "</span>" +
+  "<a class='pf-info-alink' href=portfolio-details.html?no=" + board.bno + 
+		  "><span class='pf-info-title'><i class='fa fa-flag'></i> "+board.title+"</span></a>" + 
+  "<span class='pf-info-date'><i class='fa fa-calendar'></i> "+ board.createdDate +"</span>" +
   "</div>" +
+  "<div class='portfolio-views'><span class='views-span'>조회수 " + board.views + "</span></div>" +
 "</div>" +
-"</div>")
-         .appendTo(table);
+"</div>").appendTo(table);
+	  
+    if(board.intCode.indexOf('I-001')+1) {
+    	$("#b_list"+ board.bno).addClass("food");
+    }  if (board.intCode.indexOf('I-002')+1) {
+    	$("#b_list"+ board.bno).addClass("ent");
+    }  if (board.intCode.indexOf('I-003')+1) {
+    	$("#b_list"+ board.bno).addClass("exp");
+    }  if (board.intCode.indexOf('I-004')+1) {
+    	$("#b_list"+ board.bno).addClass("exercise");
+    }  if (board.intCode.indexOf('I-005')+1) {
+    	$("#b_list"+ board.bno).addClass("show");
+    }
   }
   // 제목 링크에 클릭 이벤트 리스너를 등록한다.
   $("a.detailLnk").click(clickDetailLnk);
@@ -128,6 +141,88 @@ $('#newBtn').click(function(event){
 function clickDetailLnk(event) {
 	event.preventDefault(); 
 	location.href = "form.html?no=" + $(event.target).attr("boardNo");
+}
+
+var totalPage = 1;
+var pageSize = 6;
+$.getJSON('ajax/all.do', function(resultObj) {
+	  totalPage = Math.ceil(resultObj.ajaxResult.data / pageSize);
+	  var lp10 = Math.floor((totalPage - 1) / 10) * 10;
+	  var start = Math.floor((pageNo - 1) / 10) * 10 + 1;
+	  var end = start + 10;
+	  
+	  if (end > totalPage) end = totalPage + 1;
+	  
+	  var pagingDiv = $('.paging');
+	  /* <<, < 버튼 추가 */
+	  if (start < 11) {
+		  $("<span>").addClass('fir').appendTo(pagingDiv);
+     	  $("<span>").addClass('prev').appendTo(pagingDiv);
+	  }
+	  else {
+		$("<a>").addClass('fir').attr({href:'#'}).appendTo(pagingDiv);
+        $("<a>").addClass('prev').attr({href:'#',value:'>'}).appendTo(pagingDiv);
+		$('a.fir').click(clickFir);
+	    $('a.prev').click(clickPrev);
+	  }
+	  
+	  /* 숫자 */
+	  var pageDiv = $('<span>').addClass('page_num');
+	  pageDiv.appendTo(pagingDiv);
+	  for (var i = start ; i < end ; i++) {
+		  if(i == pageNo) {
+			  $("<span>").addClass('nowpage')
+			  .html("<b>"+ i + "</b>").appendTo(pageDiv); 
+		  } else {
+		    $("<a>")
+		    .addClass('a_pageNo')
+		    .attr({
+		    	href : '#',
+		    	pageno : i
+		    	})
+		    .html(i).appendTo(pageDiv);
+		  }
+	  };
+	  $(".a_pageNo").click(clickPageNo)
+	  
+	  /* >, >> 버튼 추가 */
+	  if (pageNo > lp10) {
+        $("<span>").addClass('next').appendTo(pagingDiv);
+	    $("<span>").addClass('end').appendTo(pagingDiv);
+	  }
+    else {
+      $("<a>").addClass('next').attr({href:'#'}).appendTo(pagingDiv);
+	  $("<a>").addClass('end').attr({href:'#'}).appendTo(pagingDiv);
+ 	  $('a.next').click(clickNext);
+  	  $('a.end').click(clickEnd);
+    }
+});
+
+function clickPageNo(event) {
+	event.preventDefault();
+  location.href = "admin_rec.html?pageNo=" + $(event.target).attr("pageno");
+}
+//<<버튼을 클릭했을 때 호출될 함수
+function clickFir() {
+  event.preventDefault();
+  location.href = "admin_rec.html";
+}
+//<버튼을 클릭했을 때 호출될 함수
+function clickPrev() {
+  event.preventDefault();
+  var no = Math.floor((pageNo - 11) / 10) * 10 + parseInt(1);
+  location.href = "admin_rec.html?pageNo=" + no;
+}
+//>버튼을 클릭했을 때 호출될 함수
+function clickNext() {
+	event.preventDefault();
+	var no = Math.floor((pageNo*1 + parseInt(9)) / 10) * 10 + parseInt(1);
+	location.href = "admin_rec.html?pageNo=" + no;
+}
+//>>버튼을 클릭했을 때 호출될 함수
+function clickEnd() {
+  event.preventDefault();
+  location.href = "admin_rec.html?pageNo=" + totalPage;
 }
 
 </script>

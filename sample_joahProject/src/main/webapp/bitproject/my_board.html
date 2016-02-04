@@ -116,7 +116,7 @@ $.ajax({
 		  <ul id="menubar">
 			<li><a><span>회원 정보</span></a>
 			  <ul>
-				<li><a href='mypage.html'><button class="menubar_button_c">커플 정보</button></a></li>
+				<li><a href='mypage.html'><button class="menubar_button">커플 정보</button></a></li>
 				<li><a href='my_filter.html'><button class="menubar_button">회원 정보 변경</button></a></li>
 				<li><a href='my_pwd.html'><button class="menubar_button">비밀번호 변경</button></a></li>
 				<li><a href='my_secession.html'><button class="menubar_button">회원 탈퇴</button></a></li>
@@ -126,7 +126,7 @@ $.ajax({
 			  <ul>
 				<li><a href='#'><button class="menubar_button">나의 찜목록</button></a></li>
 				<li><a href='my_ing.html'><button class="menubar_button">후기 미작성</button></a></li>
-				<li><a href='my_board.html'><button class="menubar_button">내가 작성한 게시물</button></a></li>
+				<li><a href='my_board.html'><button class="menubar_button_c">내가 작성한 게시물</button></a></li>
 			  </ul>
 			</li>
 			<li><a><span>문의</span></a>
@@ -179,17 +179,18 @@ console.log("pageNo = ",pageNo);
 $.getJSON('ajax/mylist.do?id=' + sessionStorage.getItem('loginSession') + '&pageNo=' + pageNo, function(resultObj) {
 //   var id = sessionStorage.getItem('loginSession');
    var table = $("#MyList");
+   var photoLocation = "";
   for (var board of resultObj.data) {
     $("<div class='col-xs-6 portfolio-item branded mockup mobile isotope-item'" +
             "style='height:50%; left: -370px; top:-200px; transform: translate3d(370px, 200px, 0px);'>")
         .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
-      "<div class='portfolio-thumb'> " +
-          "<a href='#' class='detailLnk'><img id='not' src='images/portfolio/" + board.photo + "' class='img-responsive' alt=''></a>" +
-      "</div>" +
+        "<div class='portfolio-thumb'> " +
+            "<a href='#' class='detailLnk'><img id='hot' src='"+ photoLocation + board.photo + "' class='img-responsive' alt=''></a>" +
+        "</div>" +
       "<div class='portfolio-view'>" +
           "<ul class='nav nav-pills'>" +
-              "<li><a href='writeform.html?no=" + board.bno + "'><i class='fa fa-link'></i></a></li>" +
-              "<li><a href='images/portfolio/" + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
+          "<li><a href='portfolio-details.html?no=" + board.bno + "'><i class='fa fa-circle-o-notch'></i></a></li>" +
+           "<li><a href='"+ photoLocation + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
           "</ul>" +
       "</div>" +
   "</div>" +

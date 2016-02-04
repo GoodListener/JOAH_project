@@ -18,6 +18,15 @@ public interface BoardService {
   List<Board> getBoardMyList(
       int pageNo, int pageSize, 
       String keyword, String align, String id);
+
+  List<Board> getRecommendList(
+      int pageNo, int pageSize, 
+      String keyword, String align, String id);
+
+  // Adnin 작성한 게시물
+  List<Board> getAdminBoardList(
+      int pageNo, int pageSize, 
+      String keyword, String align, String id);
   
   void register(Board board);
   
@@ -40,8 +49,8 @@ public interface BoardService {
   void change(Board board);
   */
 
-  List<Board> getRecommendList(
-      int pageNo, int pageSize, String keyword, String align, String id);
+
+
 }
 
 

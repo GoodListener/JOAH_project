@@ -48,6 +48,18 @@ public class DefaultBoardService implements BoardService {
     
     return boardDao.selectMyList(paramMap);
   }
+  
+  public List<Board> getAdminBoardList(int pageNo, int pageSize, 
+      String keyword, String align, String id) {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("startIndex", (pageNo - 1) * pageSize);
+    paramMap.put("length", pageSize);
+    paramMap.put("keyword", keyword);
+    paramMap.put("align", align);
+    paramMap.put("id", id);
+    
+    return boardDao.selectMyList(paramMap);
+  }
  
   public void register(Board board) {
     boardDao.insert(board);

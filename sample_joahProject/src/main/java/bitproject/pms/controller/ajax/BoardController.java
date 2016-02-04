@@ -51,7 +51,7 @@ public class BoardController {
     return resultMap;
   }
   
-  @RequestMapping("adminlist")
+/*  @RequestMapping("adminlist")
   public Object adminlist(
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="6") int pageSize,
@@ -66,7 +66,7 @@ public class BoardController {
     resultMap.put("data", boards);
     
     return resultMap;
-  }
+  }*/
   
   @RequestMapping("recommendlist")
   public Object recommendlist(
@@ -119,6 +119,26 @@ public class BoardController {
     logger.debug("Board mylist() 호출됨.");
     
     List<Board> boards = boardService.getBoardMyList(pageNo, pageSize, keyword, align, id);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    resultMap.put("data", boards);
+    
+    return resultMap;
+  }
+  
+  @RequestMapping("Adminlist")
+  public Object adminList(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="6") int pageSize,
+      @RequestParam(defaultValue="no") String keyword,
+      @RequestParam(defaultValue="desc") String align,
+      String id) throws Exception {
+    
+    
+    logger.debug("Board mylist() 호출됨.");
+    
+    List<Board> boards = boardService.getAdminBoardList(pageNo, pageSize, keyword, align, id);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
