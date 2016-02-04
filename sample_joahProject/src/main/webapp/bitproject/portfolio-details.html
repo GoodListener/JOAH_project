@@ -133,7 +133,7 @@ $("#h_title").load("header.html");
       <div style="float: right;">
               <div class="post-bottom overflow">
           <ul class="nav navbar-nav post-nav">
-          	<li><iframe width="82px" height="60px" src="test22.html?no=59" ></iframe></li>
+          	<li><iframe id="Likes" width="82px" height="60px"></iframe></li>
           	<li><a id='updislikes' href="#"><i class="fa fa-thumbs-o-down"></i><span id="post-com-dislikes"></span></a></li>
             <li><a><i class="fa fa-comments"></i><span id="post-com-count">댓글 수</span></a></li>
 			<li id='facebook'></li>
@@ -414,6 +414,7 @@ $.ajax({
 <script>
  var no = location.href.split('?')[1].split('=')[1];
  
+ $('#Likes').attr("src","test22.html?no="+no)
  $('#facebook').html("<div class='fb-share-button' data-href='http://192.168.0.66:8080/sample_joahProject/bitproject/portfolio-details.html?no=" + no +  "'data-layout='button_count'></div>");
  
  var cPhoto;
