@@ -73,10 +73,11 @@ public class BoardController {
       @RequestParam(defaultValue="1") int pageNo,
       @RequestParam(defaultValue="6") int pageSize,
       @RequestParam(defaultValue="no") String keyword,
-      @RequestParam(defaultValue="desc") String align) throws Exception {
+      @RequestParam(defaultValue="desc") String align,
+      @RequestParam(defaultValue="guest") String id) throws Exception {
     
     logger.debug("Board list() 호출됨.");
-    List<Board> boards = boardService.getRecommendList(pageNo, pageSize, keyword, align);
+    List<Board> boards = boardService.getRecommendList(pageNo, pageSize, keyword, align, id);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");

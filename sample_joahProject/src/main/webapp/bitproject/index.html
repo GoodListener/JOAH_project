@@ -212,7 +212,7 @@ $.ajax({
 							</div>
 						</div>
 					</section>
-					<section id="section-flip-2">
+					<section id="section-flip-2"  style="height:573px;">
 						<div class="container">
 							<div class="row" id="rec_row">
 								<div class="wow fadeIn" id="recommend2"></div>
@@ -388,7 +388,7 @@ $.ajax({
 var photoLocation = "";
 
 
-$.getJSON('ajax/list.do?keyword=views', function(resultObj) {
+$.getJSON('ajax/list.do?keyword=views', function(resultObj) { // 핫플레이스??
     var table = $("#hotPlace1");
     var count = 0;
    for (var board of resultObj.data) {
@@ -465,7 +465,7 @@ $.getJSON('ajax/list.do?keyword=views', function(resultObj) {
    }
   }); */
   
-  $.getJSON('ajax/list.do', function(resultObj) {
+  $.getJSON('ajax/list.do', function(resultObj) {  // 최신user게시판
     var table = $("#recommend1, #admin, #users");
     var count = 0;
    for (var board of resultObj.data) {
@@ -498,9 +498,14 @@ $.getJSON('ajax/list.do?keyword=views', function(resultObj) {
    }
   });
   
-  $.getJSON('ajax/recommendlist.do', function(resultObj) {
+  if (!sessionStorage.getItem('loginSession')) {
+      $('<p style="color: lightgray;font-size: 41px;text-align: center">')
+        .text('로그인을 해주세요').appendTo($("#section-flip-2"));
+    } else {
+  $.getJSON('ajax/recommendlist.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) { //회원 맞춤 정보
 	    var table = $("#recommend2, #admin, #users");
 	    var count = 0;
+	    
 	   for (var board of resultObj.data) {
 	     if (board.photo.length < 40) {
 	          photoLocation = "../board_photo/";
@@ -530,6 +535,7 @@ $.getJSON('ajax/list.do?keyword=views', function(resultObj) {
 	     count++;
 	   }
 	  });
+    }
   
   $.getJSON('ajax/adminlist.do', function(resultObj) {
 	    var table = $("#recommend3, #admin, #users");

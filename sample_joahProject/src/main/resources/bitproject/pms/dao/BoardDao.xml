@@ -55,7 +55,7 @@
 		inner join cour_loc cl on b.bno = cl.bno
 		inner join location l on cl.lno = l.lno
 		inner join mem_int m on m.int_code = l.int_code
-		where isboard=1 and m.id='coca'
+		where isboard=1 and m.id=#{id}
 		group by b.bno
 		order by 
     <choose>

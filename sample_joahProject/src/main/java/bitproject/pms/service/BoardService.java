@@ -35,7 +35,8 @@ public interface BoardService {
   void change(Board board);
   */
 
-  List<Board> getRecommendList(int pageNo, int pageSize, String keyword, String align);
+  List<Board> getRecommendList(
+      int pageNo, int pageSize, String keyword, String align, String id);
 }
 
 
