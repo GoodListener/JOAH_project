@@ -135,7 +135,8 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 		 + "</select>&nbsp;&nbsp;&nbsp;"
 		 + "<input type='text' class='search_text' style='padding-left: 15px;' name='word'id='search_couple'>"
 		 + "<input type='submit' class='search_but' value='회원검색'></nav>"
-		 + "</form></div><br><br><div id='searchSolo'></div>"
+		 + "</form></div><br><br>"
+		 + "<div id='searchSolo'></div>"
 		 + "<div class='center_content search_id'></div>"
 		 + "<div style='float:right; margin: 30px 0;display: inline-flex;'>"
          + "<button type='button' class='btn btn-submit1' id='requestCouple' style='float:left;letter-spacing: 0px;padding: 1px 20px;'>커플 신청</button>"
@@ -235,15 +236,17 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 			 for (var member of resultObj.data) {
 				 console.log(member);
 				$("#searchSolo")
-				.html("<label style='margin: 108px 0 15px 0px; font-size: 30px; padding-left:20px;'>검색 정보</label><br>"
+				.html('<div class="center_content" style="margin-top: 7px;">'
+				    + "<label style='margin: 35px 0 15px 0px; font-size: 30px; padding-left:20px;'>검색 정보</label><br>"	
 					+ "<div class='profile text-center'>"	
+					+ "<img src='../profile_image/" + member.photo +"' class='img_mypage' alt='' style='margin: 48px 0 -10px 0;'>"
+					+ "<div class='sidebar blog-sidebar'>"	
 					+ "<div class='sidebar-item categories' style='position:'>"
-		            + "<ul class='nav navbar-stacked' style='margin-top:-5px;padding-top:3px;border-top: 3px solid #80828c;'><br><br>"
-		            + "<br><br><img src='../profile_image/" + member.photo +"' class='img_mypage' alt='' style='margin: -17px 0 4px 0;'>"
-		            + "</div><div>아이디(이름) : "
-		            + "<input value='     "  + member.id  + "(" + member.name + ")' style='border-radius:13px;'type='text' readonly></div><br>"
-		            + "<div>나이 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<input value='           "  + member.age  
-		            + "' style='border-radius:13px;'type='text' readonly></div><br>"
+		            + "<ul class='nav navbar-stacked' style='padding-top:45px;'>"
+		            + "<li><a>ID (Name) <input value='     "  + member.id  + " ( " + member.name + " )   ' style='border-radius:13px;'type='text' readonly></a></li><br>"
+		            + "<li><a>Age<input value='           "  + member.age  
+		            + "' style='border-radius:13px;'type='text' readonly></a></li><br>"
+		            + "</div>"
 		            ).appendTo(search_Solo);
 			 }
 			 

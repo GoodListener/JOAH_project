@@ -83,7 +83,7 @@ $.ajax({
 						  </div>  
 		<div class="col-xs-12" style="margin-top: 20px;">				    
         <div class="col-xs-2" style="position: relative;">
-            <div class="profile text-center" id="member_photo"></div>
+            <div class="profile text-center" id="member_photo" style="border: none;"></div>
             <div class="Uploadbtn" style="width:100%;margin-left: 14px;">
              <input id="fileupload" class="input-upload" type="file" name="file" onchange="profile_show(this)">
              <input id='fphotofile' type='hidden'>  
@@ -139,9 +139,9 @@ $.ajax({
         </div>
 				     </div>
 				    </div>
-		   <div style="float:left; margin-left:40%; margin-top: 30px;">
-	         <button id="updateBtn" class="bt_confirm">변경</button>
-	         <button id="updateBtn2" class="bt_cancle">취소</button>
+		   <div style="float:right; margin-left:40%; margin-top: 30px;display: inline-flex;">
+	         <button id="updateBtn" class="btn btn-submit1">확인</button>
+	         <a id="cancelBtn" class="btn btn-submit2" href="mypage.html">취소</a>
 	       </div>	
 				</div>
 			</div>

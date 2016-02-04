@@ -19,6 +19,7 @@ text-decoration:underline;
    width:50%;
    height:100px;
    margin-bottom: 35px;
+   margin-top: 48px;
 }
 h1{font-size:50px;font-weight:bold;margin:0px;padding:0px 0 0px 10px;color:#343434;}
 h1_sear{font-size:50px;font-weight:bold;margin-left:-10px;padding:0px 0 0px 10px;color:#343434;}
@@ -191,8 +192,7 @@ legend { /*Search option 湲� �궎�슦湲�*/
  font-size:25px;font-weight:bold;margin:0px;padding:10px 20px 10px 20px;color:#343434;
 }
 .profile {
-/* 	padding-left: 50px; */
-/* 	margin-left: 10px; */
+	border-top: 3px solid #80828c;
 }
 
 .container1 {
