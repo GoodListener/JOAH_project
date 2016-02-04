@@ -505,7 +505,10 @@ $.getJSON('ajax/list.do?keyword=views', function(resultObj) { // 핫플레이스
   $.getJSON('ajax/recommendlist.do?id=' + sessionStorage.getItem('loginSession'), function(resultObj) { //회원 맞춤 정보
 	    var table = $("#recommend2, #admin, #users");
 	    var count = 0;
-	    
+	    if(!resultObj.data[0]) {
+	    	$('<p style="color: lightgray;font-size: 41px;text-align: center">')
+	        .text('관심사를 선택해주세요').appendTo($("#section-flip-2"));
+	    } else {
 	   for (var board of resultObj.data) {
 	     if (board.photo.length < 40) {
 	          photoLocation = "../board_photo/";
@@ -533,6 +536,7 @@ $.getJSON('ajax/list.do?keyword=views', function(resultObj) { // 핫플레이스
 	  '</div>').appendTo(table);
 	     } else break;
 	     count++;
+	   }
 	   }
 	  });
     }
