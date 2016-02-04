@@ -13,6 +13,8 @@ public interface BoardDao {
   
   List<Board> selectMyList(Map<String,Object> paramMap);
   
+  List<Board> Adminlist(Map<String,Object> paramMap);
+  
   Board selectOne(int no);
   
   int insert(Board board);

@@ -133,10 +133,10 @@ public class BoardController {
       @RequestParam(defaultValue="6") int pageSize,
       @RequestParam(defaultValue="no") String keyword,
       @RequestParam(defaultValue="desc") String align,
-      String id) throws Exception {
+      @RequestParam(defaultValue="admin")String id) throws Exception {
     
     
-    logger.debug("Board mylist() 호출됨.");
+    logger.debug("Board Adminlist() 호출됨.");
     
     List<Board> boards = boardService.getAdminBoardList(pageNo, pageSize, keyword, align, id);
     
