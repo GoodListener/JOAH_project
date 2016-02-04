@@ -105,7 +105,6 @@ input.form_mapSear{clear:both; height:24px; text-align:center; color:#fff; font-
 
 /*-----search button-----*/   
 .search_border {
-    margin: 18px 10px 0px 0px;
     float: right;
     display: inline-flex;
     zoom: 1;
