@@ -23,13 +23,12 @@
       b.views,
       b.id,
       b.cre_dt,
-      b.user,
       group_concat(l.int_code) as int_code
       
      from board b
      inner join cour_loc cl on b.bno = cl.bno
      inner join location l on cl.lno = l.lno
-     where b.bno = cl.bno and b.isboard=1 and b.user=1
+     where b.bno = cl.bno and b.isboard=1
      group by b.bno
      order by 
     <choose>
