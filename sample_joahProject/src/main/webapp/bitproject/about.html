@@ -310,7 +310,6 @@ $.ajax({
      openMarkers[i] = location.lno;
      i++; // 닫기 위해 기존 있던 마커넘버를 저장하는 것.
    } // for문 끝 
-   console.log("메뉴 이벤트 반복문 끝!");
    
    ////리스트를 위한 jQuery
    $(".list_example + div > p > span:last-child").text(Math.ceil($(".list_example").children("li").size()/5));
@@ -420,18 +419,99 @@ $.ajax({
 				 mapInfoTestWindow[oMarkers[$(this).attr("id").substring(2)]._smallSrc].setVisible(true);
 				 oMap.setCenter(oMarkers[$(this).attr("id").substring(2)].getPoint());
 				 targetWindow = oMarkers[$(this).attr("id").substring(2)]._smallSrc;
+				 targetNo = oMarkers[$(this).attr("id").substring(2)]._smallSrc; // 정보창의 넘버
     	 } else if (targetWindow != 0) {
  	       mapInfoTestWindow[targetWindow].setVisible(false);
  	       mapInfoTestWindow[$(this).attr("id").substring(2)].setVisible(true);
  	       oMap.setCenter(oMarkers[$(this).attr("id").substring(2)].getPoint());
  	       targetWindow = oMarkers[$(this).attr("id").substring(2)]._smallSrc;
+ 	       targetNo = oMarkers[$(this).attr("id").substring(2)]._smallSrc; // 정보창의 넘버
     	 }
+    	 
+    	 $("#choice_id"+ targetNo).click(function(event) {
+    	     if(targetNo != filterOne) {
+    	       event.preventDefault();
+    	       if ((c_count%4) == 1) {
+    	         /* $("#choice_div1").text(targetNo); */
+    	         $.getJSON('ajax/locationDetail.do?no=' + targetNo, function(resultObj) {
+    	           var ajaxResult = resultObj.ajaxResult;
+    	           if (ajaxResult.status == "success") {
+    	             var location = ajaxResult.data;
+    	             if(!location.photo.length) { // 0일때
+    	                 if (location.interestCode == "I-001") { location.photo = "icon/marker_food.png"; }
+    	                 else if (location.interestCode == "I-002") { location.photo = "icon/marker_ent.png"; }
+    	                 else if (location.interestCode == "I-003") { location.photo = "icon/marker_exp.png"; }
+    	                 else if (location.interestCode == "I-004") { location.photo = "icon/marker_exercise.png"; }
+    	                 else if (location.interestCode == "I-005") { location.photo = "icon/marker_show.png"; }
+    	             }
+    	             $("#choice_div1").html("<img src='"+ location.photo +"' id='img_icon' class='img-circle' height='80px' width='80px'>" +
+    	                 "<input type='hidden' name='lno1' value='"+ targetNo +"'>");
+    	             $("#choice_name1").html("<span class='span_label'>"+ location.name +"</span>");
+    	           }
+    	         });
+    	         c_count++;
+    	       } else if ((c_count%4) == 2) {
+    	         $.getJSON('ajax/locationDetail.do?no=' + targetNo, function(resultObj) {
+    	           var ajaxResult = resultObj.ajaxResult;
+    	           if (ajaxResult.status == "success") {
+    	             var location = ajaxResult.data;
+    	             if(!location.photo.length) { // 0일때
+    	                 if (location.interestCode == "I-001") { location.photo = "icon/marker_food.png"; }
+    	                 else if (location.interestCode == "I-002") { location.photo = "icon/marker_ent.png"; }
+    	                 else if (location.interestCode == "I-003") { location.photo = "icon/marker_exp.png"; }
+    	                 else if (location.interestCode == "I-004") { location.photo = "icon/marker_exercise.png"; }
+    	                 else if (location.interestCode == "I-005") { location.photo = "icon/marker_show.png"; }
+    	             }
+    	             $("#choice_div2").html("<img src='"+ location.photo +"' class='img-circle' height='80px' width='80px'>" +
+    	                 "<input type='hidden' name='lno2' value='"+ targetNo +"'>");
+    	             $("#choice_name2").html("<span class='span_label'>"+ location.name +"</span>");
+    	           }
+    	         });
+    	         c_count++;
+    	       } else if ((c_count%4) == 3) {
+    	         $.getJSON('ajax/locationDetail.do?no=' + targetNo, function(resultObj) {
+    	           var ajaxResult = resultObj.ajaxResult;
+    	           if (ajaxResult.status == "success") {
+    	             var location = ajaxResult.data;
+    	             if(!location.photo.length) { // 0일때
+    	                 if (location.interestCode == "I-001") { location.photo = "icon/marker_food.png"; }
+    	                 else if (location.interestCode == "I-002") { location.photo = "icon/marker_ent.png"; }
+    	                 else if (location.interestCode == "I-003") { location.photo = "icon/marker_exp.png"; }
+    	                 else if (location.interestCode == "I-004") { location.photo = "icon/marker_exercise.png"; }
+    	                 else if (location.interestCode == "I-005") { location.photo = "icon/marker_show.png"; }
+    	             }
+    	             $("#choice_div3").html("<img src='"+ location.photo +"' class='img-circle' height='80px' width='80px'>" +
+    	                 "<input type='hidden' name='lno3' value='"+ targetNo +"'>");
+    	             $("#choice_name3").html("<span class='span_label'>"+ location.name +"</span>");
+    	           }
+    	         });
+    	         c_count++;
+    	       } else if ((c_count%4) == 0) {
+    	         $.getJSON('ajax/locationDetail.do?no=' + targetNo, function(resultObj) {
+    	           var ajaxResult = resultObj.ajaxResult;
+    	           if (ajaxResult.status == "success") {
+    	             var location = ajaxResult.data;
+    	             if(!location.photo.length) { // 0일때
+    	                 if (location.interestCode == "I-001") { location.photo = "icon/marker_food.png"; }
+    	                 else if (location.interestCode == "I-002") { location.photo = "icon/marker_ent.png"; }
+    	                 else if (location.interestCode == "I-003") { location.photo = "icon/marker_exp.png"; }
+    	                 else if (location.interestCode == "I-004") { location.photo = "icon/marker_exercise.png"; }
+    	                 else if (location.interestCode == "I-005") { location.photo = "icon/marker_show.png"; }
+    	             }
+    	             $("#choice_div4").html("<img src='"+ location.photo +"' class='img-circle' height='80px' width='80px'>" +
+    	                 "<input type='hidden' name='lno4' value='"+ targetNo +"'>");
+    	             $("#choice_name4").html("<span class='span_label'>"+ location.name +"</span>");
+    	           }
+    	         });
+    	         c_count++;
+    	       }
+    	     }
+    	     filterOne = targetNo;
+    	   });
      });
-
    }); // AJAX 호출 끝
    $(".searchlists").remove();
  });
-
 
 
  /* 마커 클릭시 정보창 띄우는 것 */
@@ -446,8 +526,9 @@ $.ajax({
      if (oCustomEvent.clickCoveredMarker) {
        return; //중복마커일때 처리하는 부분
      }  
+     console.log("처리전 타겟넘버:" + targetNo);
      targetNo = oTarget._smallSrc;
-
+     console.log("처리후 타겟넘버:" + targetNo);
      if (targetWindow == 0) {
        mapInfoTestWindow[targetNo].setVisible(true);
        mapInfoTestWindow[targetNo].setPosition({right : 15, top : 30});
@@ -465,14 +546,12 @@ $.ajax({
    if (!(oTarget instanceof nhn.api.map.Marker)) {
      mapInfoTestWindow[targetWindow].setVisible(false);
    } // 마커가 아니면 클릭시 닫힌다. 
-   console.log(targetNo);
 
    // 각 해당하는 정보창의 버튼 눌렀을 때 선택되는 이벤트.
    $("#choice_id"+ targetNo).click(function(event) {
-     console.log("왜 targetNo : " + targetNo);
+	   console.log("클릭시 타겟넘버:" + targetNo);
      if(targetNo != filterOne) {
        event.preventDefault();
-       console.log("targetNo : " + targetNo);
        if ((c_count%4) == 1) {
          /* $("#choice_div1").text(targetNo); */
          $.getJSON('ajax/locationDetail.do?no=' + targetNo, function(resultObj) {
@@ -616,7 +695,6 @@ $.ajax({
        /* 그렇게 지도에 띄우기 */
        var mapLat = oMap.getCenter().getLat();
        var mapLng = oMap.getCenter().getLng();
-       console.log("메뉴 이벤트 시작!");
        if (!searchNo) {
         searchNo = "I-006";
        }
@@ -624,7 +702,6 @@ $.ajax({
          oMarkers[openMarkers[c]].setVisible(false);
          /* oMap.removeOverlay(oMarkers[openMarkers[c]]); // 열려있는 마커를 닫는다. */
        }
-       console.log(searchNo);
        $.getJSON('ajax/location.do?intCode=' + searchNo + '&lat=' + mapLat +'&lng=' + mapLng, function(resultObj) {
          var i = 0;
          for(var location of resultObj.data) {
@@ -656,11 +733,13 @@ $.ajax({
              mapInfoTestWindow[oMarkers[$(this).attr("id").substring(2)]._smallSrc].setVisible(true);
              oMap.setCenter(oMarkers[$(this).attr("id").substring(2)].getPoint());
              targetWindow = oMarkers[$(this).attr("id").substring(2)]._smallSrc;
+        	   targetNo = oMarkers[$(this).attr("id").substring(2)]._smallSrc; // 정보창의 넘버
            } else if (targetWindow != 0) {
              mapInfoTestWindow[targetWindow].setVisible(false);
              mapInfoTestWindow[$(this).attr("id").substring(2)].setVisible(true);
              oMap.setCenter(oMarkers[$(this).attr("id").substring(2)].getPoint());
              targetWindow = oMarkers[$(this).attr("id").substring(2)]._smallSrc;
+        	   targetNo = oMarkers[$(this).attr("id").substring(2)]._smallSrc; // 정보창의 넘버
            }
          });
 
@@ -741,6 +820,3 @@ $.ajax({
  
 </body>
 </html>
-
-
-
