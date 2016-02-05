@@ -875,7 +875,7 @@ ul.sub-menu {
 }
 .person-info .icon-numbers {
   position: absolute;
-  top: 200px;
+  top: 0;
   width: 35px;
 }
 
