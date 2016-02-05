@@ -33,7 +33,7 @@
     <choose>
       <when test="keyword == 'title'">b.title </when>
       <when test="keyword == 'views'">b.views </when>
-      <otherwise>b.bno </otherwise>
+      <otherwise>b.cre_dt </otherwise>
     </choose>
     <choose>
       <when test="align == 'asc'">asc</when>

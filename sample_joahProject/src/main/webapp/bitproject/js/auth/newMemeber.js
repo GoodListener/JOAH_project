@@ -41,6 +41,32 @@
   var isExistID = false;
   /* 아이디 중복 체크 */
   
+  $("#signup-userID").keypress(function(event) {
+	  isID = /^[a-zA-Z0-9]{2,20}$/;
+	    if( uID.val() == "" ){
+	      $("#span-id-error").attr("class","cd-error-message is-visible");
+	      $("#span-id-error").text("아이디를 입력해주세요.");
+	      $("#signup-userID").addClass("has-error");
+	      $("#id-confirm").addClass("notvisible");
+	    } else if (isExistID) {
+	      $("#span-id-error").attr("class","cd-error-message is-visible");
+	      $("#span-id-error").text("이미 존재하는 아이디 입니다.");
+	      $("#signup-userID").addClass("has-error");
+	      $("#id-confirm").addClass("notvisible");
+	      isExistID = false;
+	    } else if (!isID.test(uID.val())) {
+	      $("#span-id-error").attr("class","cd-error-message is-visible");
+	      $("#span-id-error").text("영문 혹은 숫자로 입력해주세요.(2~20글자)");
+	      $("#signup-userID").addClass("has-error");
+	      $("#id-confirm").addClass("notvisible");
+	    } else {
+	      $("#span-id-error").attr("class","cd-success-message");
+	      $("#span-id-error").addClass("is-visible");
+	      $("#signup-userID").addClass("has-success");
+	      $("#id-confirm").attr("class", "id-confirm visible");
+	      $("#id-confirm").text("좋은 아이디네요.");
+	    }
+  });
   
   $("#signup-userID").blur(function(event) {
     $.getJSON('ajax/idcheck.do', function(resultObj){
@@ -80,12 +106,25 @@
     });
   });
   
+  
   $("input[name='radios']").click(function(event) {
     uGender = $("input[name='radios']:checked");
     uGender.addClass("has-success");
   }); /* 성별을 체크했을 때에 uGender 값 바꾸기. */
   
-  var isPassword = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+  
+  var isPassword = /^[a-zA-Z0-9]{7,15}$/;
+  $("#signup-password").keypress(function(event) {
+	  console.log(event);
+      if (uPWD.val() != "" && isPassword.test(uPWD.val())) {
+    	  console.log("성공");
+         $("#span-pwd-error").attr("class","cd-success-message");
+         $("#span-pwd-error").addClass("is-visible");
+         $("#signup-password").addClass("has-success");
+        $("#span-pwd-error").text("");
+      }
+  });
+  
   $("#signup-password").blur(function(event) {
       if (uPWD.val() == "") {
         $("#span-pwd-error").attr("class","cd-error-message");
@@ -96,7 +135,7 @@
     	$("#span-pwd-error").attr("class","cd-error-message");
         $("#span-pwd-error").addClass("is-visible");
         $("#signup-password").addClass("has-error");
-        $("#span-pwd-error").text("비밀번호는 영문, 숫자, 특수문자 조합 8~15자로 입력해주세요.");
+        $("#span-pwd-error").text("비밀번호는 영문, 숫자 조합 7~15자로 입력해주세요.");
       } else {
          $("#span-pwd-error").attr("class","cd-success-message");
          $("#span-pwd-error").addClass("is-visible");
@@ -120,6 +159,15 @@
   });
   
   var isEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+  uEmail.keypress(function(event) {
+	     if(uEmail.val() != "" && isEmail.test(uEmail.val())) {
+	       $("#span-email-error").attr("class","cd-success-message");
+	       $("#span-email-error").addClass("is-visible");
+	       uEmail.addClass("has-success");
+	       $("#span-email-error").text("사용할 수 있는 이메일 입니다.");
+	     }
+	  });
+  
   uEmail.blur(function(event) {
      if(uEmail.val() == "") {
         $("#span-email-error").attr("class","cd-error-message");
@@ -140,6 +188,16 @@
   });
   
   var isName = /^[가-힣a-zA-Z]{2,10}$/; //영어도 되도록 하기.
+  uName.keypress(function(event) {
+	  console.log(event);
+	     if(uName.val() != "" && isName.test(uName.val())) {
+	      $("#span-username-error").attr("class","cd-success-message");
+	      $("#span-username-error").addClass("is-visible");
+	      uName.addClass("has-success");
+	      $("#span-username-error").text("잘했어요.");
+	    }
+	  });
+  
   uName.blur(function(event) {
      if(uName.val() == "") {
         $("#span-username-error").attr("class","cd-error-message");
