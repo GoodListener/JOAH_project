@@ -406,13 +406,12 @@ $.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // í•«í
        "</div>" +
        "<div class='social-profile'>" +
            "<ul class='nav nav-pills'>" +
-           "<li><a href='#'><i class='fa fa-facebook'></i></a></li>" +
-               "<li><a href='#'><i class='fa fa-twitter'></i></a></li>" +
-               "<li><a href='#'><i class='fa fa-google-plus'></i></a></li>" +
+           "<li><a href='portfolio-details.html?no=" + board.bno + "'><i class='fa fa-circle-o-notch'></i></a></li>" +
            "</ul>" +
        "</div>" +
    "</div>" +
    "<div class='person-info'>" +
+   "<img src='icon/numbers"+ (count+1) +".png' class='img-responsive icon-numbers' alt=''>" +
    "<h2 class='index-info-title'>" + board.title + "</h2>" +
    "<h3 class='index-info-id'>" + board.id + "</h3>" +
   "</div>").appendTo(table);
@@ -427,9 +426,7 @@ $.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // í•«í
               "</div>" +
               "<div class='social-profile'>" +
                   "<ul class='nav nav-pills'>" +
-                  "<li><a href='#'><i class='fa fa-facebook'></i></a></li>" +
-                      "<li><a href='#'><i class='fa fa-twitter'></i></a></li>" +
-                      "<li><a href='#'><i class='fa fa-google-plus'></i></a></li>" +
+                  "<li><a href='portfolio-details.html?no=" + board.bno + "'><i class='fa fa-circle-o-notch'></i></a></li>" +
                   "</ul>" +
               "</div>" +
           "</div>" +
@@ -483,8 +480,9 @@ $.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // í•«í
        '</div>' +
        '<div class="portfolio-view">' +
            "<ul class='nav nav-pills'>" +
-           '<li><a href="' + photoLocation + board.photo + '" data-lightbox="example-set">' + 
-             '<i class="fa fa-eye"></i></a></li>' +
+           /* '<li><a href="' + photoLocation + board.photo + '" data-lightbox="example-set">' + 
+             '<i class="fa fa-eye"></i></a></li>' */
+             "<li><a href='portfolio-details.html?no=" + board.bno + "'><i class='fa fa-circle-o-notch'></i></a></li>" +
            "</ul>" +
        "</div>" +
    "</div>" +

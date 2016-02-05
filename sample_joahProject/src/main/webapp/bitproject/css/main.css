@@ -873,6 +873,11 @@ ul.sub-menu {
   margin-bottom: 0;
   text-align: right;
 }
+.person-info .icon-numbers {
+  position: absolute;
+  top: 200px;
+  width: 35px;
+}
 
 .team-carousel-control {
   position: absolute;
