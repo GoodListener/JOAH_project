@@ -1,6 +1,7 @@
 package bitproject.pms.controller.ajax;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,8 @@ import bitproject.pms.domain.Board;
 import bitproject.pms.domain.Photo;
 import bitproject.pms.service.BoardService;
 import bitproject.pms.util.MultipartHelper;
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
 
 @Controller("ajax.PhotoUploadController")
 @RequestMapping("/bitproject/ajax/*")
@@ -48,6 +51,12 @@ public class PhotoUploadController {
         
         filenames.add(newFileName);
         
+        makeThumbnailImage(
+            servletContext.getRealPath(SAVED_DIR) + "/" + newFileName, 
+            servletContext.getRealPath(SAVED_DIR) + "/s-" + newFileName + ".png");
+        photoThumbnailImage(
+            servletContext.getRealPath(SAVED_DIR) + "/" + newFileName, 
+            servletContext.getRealPath(SAVED_DIR) + "/p-" + newFileName + ".png");
       }
     }
 
@@ -90,6 +99,25 @@ public class PhotoUploadController {
     }
     
     return new AjaxResult("success", photo);
+  }
+  
+  private void makeThumbnailImage(String originPath, String thumbPath) 
+      throws IOException {
+    Thumbnails.of(new File(originPath))
+    .crop(Positions.CENTER)
+    .size(245, 200)
+    .outputFormat("png")
+    .outputQuality(1.0)
+    .toFile(new File(thumbPath));
+  }
+  private void photoThumbnailImage(String originPath, String thumbPath) 
+      throws IOException {
+    Thumbnails.of(new File(originPath))
+    .crop(Positions.CENTER)
+    .size(542, 300)
+    .outputFormat("png")
+    .outputQuality(1.0)
+    .toFile(new File(thumbPath));
   }
   
 }

@@ -1,6 +1,7 @@
 package bitproject.pms.controller.ajax;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,12 +13,13 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import bitproject.pms.domain.FileItem;
 import bitproject.pms.util.MultipartHelper;
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Positions;
 
 @Controller("ajax.FileUploadController")
 @RequestMapping("/bitproject/ajax/*")
@@ -54,6 +56,13 @@ public class FileUploadController {
           .setSize(f.getSize())
           .setUrl(request.getContextPath()
               + "/files/" + filename));
+      
+      makeThumbnailImage(
+          servletContext.getRealPath(SAVED_DIR) + "/" + filename, 
+          servletContext.getRealPath(SAVED_DIR) + "/s-" + filename + ".png");
+      profileThumbnailImage(
+          servletContext.getRealPath(SAVED_DIR) + "/" + filename, 
+          servletContext.getRealPath(SAVED_DIR) + "/p-" + filename + ".png");
     }
     
     Map<String,Object> result = 
@@ -63,7 +72,7 @@ public class FileUploadController {
     
   }
   
-  @RequestMapping(value="upload3", method=RequestMethod.POST)
+  /*@RequestMapping(value="upload3", method=RequestMethod.POST)
   public Object upload(@RequestParam("file")MultipartFile file) throws Exception{
     
     logger.debug("upload() 호출됨.");
@@ -80,6 +89,12 @@ public class FileUploadController {
       resultMap.put("status", "success");
       resultMap.put("data", newFileName);
       
+      makeThumbnailImage(
+          servletContext.getRealPath(SAVED_DIR) + "/" + newFileName, 
+          servletContext.getRealPath(SAVED_DIR) + "/s-" + newFileName + ".png");
+      profileThumbnailImage(
+          servletContext.getRealPath(SAVED_DIR) + "/" + newFileName, 
+          servletContext.getRealPath(SAVED_DIR) + "/p-" + newFileName + ".png");
     }
     return resultMap;
     
@@ -122,5 +137,25 @@ public class FileUploadController {
       result.put("data1", data1);
       result.put("data2", data2);
       return result;
+  }*/
+  
+  private void makeThumbnailImage(String originPath, String thumbPath) 
+      throws IOException {
+    Thumbnails.of(new File(originPath))
+    .crop(Positions.CENTER)
+    .size(40, 40)
+    .outputFormat("png")
+    .outputQuality(1.0)
+    .toFile(new File(thumbPath));
+  }
+  
+  private void profileThumbnailImage(String originPath, String thumbPath) 
+      throws IOException {
+    Thumbnails.of(new File(originPath))
+    .crop(Positions.CENTER)
+    .size(150, 150)
+    .outputFormat("png")
+    .outputQuality(1.0)
+    .toFile(new File(thumbPath));
   }
 }
