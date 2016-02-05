@@ -388,7 +388,7 @@ $('#ffile').fileupload({
    $.post('ajax/realAddboard.do', {
    bno: boardNo,
    title: $('#input_title').val(),
-   content: $('#input_content').text(),
+   content: $('#input_content').val(),
    success: function(resultObj) {
    console.log("user_rec 등록성공!");
    }
@@ -459,26 +459,6 @@ $(function(){
         }
     });
  });
- 
-$.getJSON('ajax/detail.do?no=' + no, function(resultObj) {
-  var ajaxResult = resultObj.ajaxResult;
-  if (ajaxResult.status == "success") {
-    var board = ajaxResult.data;
-    $("#photo_div").html("<img src='images/portfolio/"+ board.photo +"' class='img-responsive' alt=''>")
-    $("#photo_div2").html("<img src='images/portfolio/"+ board.photo +"' class='img-responsive' alt=''>")
-    $("#data_title").text(board.title);
-    $("#date").text(board.createdDate);
-    $("#data_title2").text(board.title);
-    $("#data_no").text(board.bno);
-    $("#member_id").text(board.id);
-    $("#member_id2").text(board.id);
-    $("#member_id3").text(board.id);
-    console.log(board.id);
-    $("#content1").text(board.content);
-    $("#post-com-count").text(board.commentCount + " Comments");
-
-  }
-});
 </script>
      
 </body>
