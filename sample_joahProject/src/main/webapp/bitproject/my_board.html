@@ -175,31 +175,36 @@ var pageNo = 1;
 if (location.href.indexOf('?') != -1) pageNo = location.href.split('?')[1].split('=')[1];
 console.log(location.href);
 console.log("pageNo = ",pageNo);
-
+var photoLocation;
 $.getJSON('ajax/mylist.do?id=' + sessionStorage.getItem('loginSession') + '&pageNo=' + pageNo, function(resultObj) {
 //   var id = sessionStorage.getItem('loginSession');
    var table = $("#MyList");
-       var photoLocation = "../board_photo/";
   for (var board of resultObj.data) {
-    $("<div class='col-xs-6 portfolio-item branded mockup mobile isotope-item'" +
-            "style='height:50%; left: -370px; top:-200px; transform: translate3d(370px, 200px, 0px);'>")
-        .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
-        "<div class='portfolio-thumb'> " +
-            "<a href='#' class='detailLnk'><img id='hot' src='"+ photoLocation + board.photo + "' class='img-responsive' alt=''></a>" +
-        "</div>" +
-      "<div class='portfolio-view'>" +
-          "<ul class='nav nav-pills'>" +
-          "<li><a href='portfolio-details.html?no=" + board.bno + "'><i class='fa fa-circle-o-notch'></i></a></li>" +
-           "<li><a href='"+ photoLocation + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
-          "</ul>" +
-      "</div>" +
-  "</div>" +
-  "<div class='portfolio-info'>" +
-  "<h2>" + "No." + board.bno + "<br><br>" +"Title : "+board.title+"<br>" + "Date : "+ board.createdDate +"     Id : "+ board.id +"</h2>" +
-  "</div>" +
+	  if (board.photo.length < 40) {
+	       photoLocation = "../board_photo/";
+	     } else {
+	       photoLocation = "";
+	     }
+	  $("<div class='col-xs-6 portfolio-item branded mockup mobile isotope-item'" +
+      "style='height:50%; left: -370px; top:-200px; transform: translate3d(370px, 200px, 0px);'>")
+  .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
+"<div class='portfolio-thumb'> " +
+    "<a href='#' class='detailLnk'><img id='not' src='"+ photoLocation + board.photo + "' class='img-responsive' alt=''></a>" +
+"</div>" +
+"<div class='portfolio-view'>" +
+    "<ul class='nav nav-pills'>" +
+        "<li><a href='writeform.html?no=" + board.bno + "'><i class='fa fa-link'></i></a></li>" +
+        "<li><a href='"+ photoLocation + board.photo + "' data-lightbox='example-set'><i class='fa fa-eye'></i></a></li>" +
+    "</ul>" +
+"</div>" +
+"</div>" +
+"<div class='mying-portfolio-info'>" +
+"<span class='myboard-info-title'><i class='fa fa-flag'></i> "+board.title+"</span><br>" + 
+"<span class='myboard-info-date'><i class='fa fa-calendar'></i> "+ board.createdDate +"</span>" +
+"</div>" +
 "</div>" +
 "</div>")
-         .appendTo(table);
+   .appendTo(table);
   }
   // 제목 링크에 클릭 이벤트 리스너를 등록한다.
   $("a.detailLnk").click(clickDetailLnk);

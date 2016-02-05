@@ -771,7 +771,7 @@ $.ajax({
    
    var photoMarker = [];
    var markerUrl = "";
-   var fullUrl = 'http://openapi.naver.com/map/getStaticMap?version=1.0&crs=EPSG:4326&key=553205575474122b3423699dc799445d&uri=localhost:8080/sample_joahProject&w=520&h=350&maptype=default';
+   var fullUrl = 'http://openapi.naver.com/map/getStaticMap?version=1.0&crs=EPSG:4326&key=553205575474122b3423699dc799445d&uri=localhost:8080/sample_joahProject&w=390&h=250&maptype=default';
    var centerLoc = "";
    var photoLng;
    var photoLat;
@@ -795,8 +795,8 @@ $.ajax({
            
            $.post('ajax/addboard.do', {
                id : sessionStorage.getItem('loginSession'),
-               title : '아무거나',
-               content : '아무거나넣음',
+               title : '후기를 등록하지 않은 글',
+               content : '',
                likes : 0,
                dislikes : 0,
                heart : 'Y',

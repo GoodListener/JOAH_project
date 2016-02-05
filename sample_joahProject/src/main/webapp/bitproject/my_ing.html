@@ -192,8 +192,9 @@ $.getJSON('ajax/inglist.do?id=' + sessionStorage.getItem('loginSession') + '&pag
           "</ul>" +
       "</div>" +
   "</div>" +
-  "<div class='portfolio-info'>" +
-  "<h2>" + "No." + board.bno + "<br><br>" +"Title : "+board.title+"<br>" + "Date : "+ board.createdDate +"     Id : "+ board.id +"</h2>" +
+  "<div class='mying-portfolio-info'>" +
+      "<span class='mying-info-title'><i class='fa fa-flag'></i> "+board.title+"</span>" + 
+  "<span class='mying-info-date'><i class='fa fa-calendar'></i> "+ board.createdDate +"</span>" +
   "</div>" +
 "</div>" +
 "</div>")

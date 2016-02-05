@@ -212,7 +212,7 @@ $.ajax({
 							</div>
 						</div>
 					</section>
-					<section id="section-flip-2"  style="height:573px;">
+					<section id="section-flip-2"  style="height:547px;">
 						<div class="container">
 							<div class="row" id="rec_row">
 								<div class="wow fadeIn" id="recommend2"></div>
@@ -413,8 +413,8 @@ $.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // í•«í
        "</div>" +
    "</div>" +
    "<div class='person-info'>" +
-   "<h2>" + board.title + "</h2>" +
-   "<h3>" + board.id + "</h3>" +
+   "<h2 class='index-info-title'>" + board.title + "</h2>" +
+   "<h3 class='index-info-id'>" + board.id + "</h3>" +
   "</div>").appendTo(table);
      }
      else if (count > 3 && count <= 7) {
@@ -434,8 +434,8 @@ $.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // í•«í
               "</div>" +
           "</div>" +
           "<div class='person-info'>" +
-          "<h2>" + board.title + "</h2>" +
-          "<h3>" + board.id + "</h3>" +
+          "<h2 class='index-info-title'>" + board.title + "</h2>" +
+          "<h3 class='index-info-id'>" + board.id + "</h3>" +
          "</div>").appendTo(table);
      } else break;
      count++;
