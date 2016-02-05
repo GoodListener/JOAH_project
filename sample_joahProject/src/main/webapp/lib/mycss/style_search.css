@@ -157,7 +157,7 @@ input.form_mapSear:HOVER{
 #testMap{ margin:0px 0 10px 9px; weight:800px;}
 
 /*-----save 踰꾪듉 -----*/
-input.form_submit{float:right; clear:both; margin:40px 10px 0 0px; width:149px; height:34px; text-align:center; color:#fff; font-size:16px; background: #666666; border:none; font-weight:bold; padding:0 0 0 0px; cursor:pointer;}
+button.form_submit{float:right; clear:both; margin:40px 10px 0 0px; width:149px; height:34px; text-align:center; color:#fff; font-size:16px; background: #666666; border:none; font-weight:bold; padding:0 0 0 0px; cursor:pointer;}
 
 /*-------------------------------------*/
 /*     end right content 留뚮뱾湲�         */
@@ -234,6 +234,7 @@ div.select_div_span .span_label {
     padding-top: 3px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 3px;
+    margin-left: 14px;
 }
 .list_example > li.on:HOVER{
     background-color: pink;
@@ -278,3 +279,16 @@ color:#de462a;
 /*-----------------------*/
 /*     end footer        */
 /*-----------------------*/
+
+
+.loc_list1 {
+	margin: 17px 20px 0 -25px;
+	border: solid 1px mediumblue;
+    padding: 15px 10px;
+}
+
+.loc_list2 {
+	margin: 17px 20px 0 -25px;
+	border: solid 1px mediumblue;
+    padding: 15px 10px;
+}

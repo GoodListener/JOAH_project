@@ -4,13 +4,16 @@
 <meta charset='UTF-8'>
 <title>Free CSS Templates | by CssTemplatesMarket.com</title>
 <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
-<!-- <link rel="stylesheet" href="../css/common.css"> -->
 <link rel="stylesheet" type="text/css" href="../lib/mycss/style_search.css" />
 <link rel="stylesheet" type="text/css" href="../lib/mycss/style_header.css" />
 <script type="text/javascript" src="../lib/myjs/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../lib/myjs/jquery-1.3.2.min.js"></script>
 
 <script type="text/javascript" src="../lib/myjs/modernizr.js"></script>
+
+<script src="js/notifIt.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link href="css/notifIt.css" type="text/css" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="../lib/mycss/styles.css"></link>
 
@@ -85,13 +88,16 @@ $.ajax({
          <!--//////////////////////////////////////////////////////////////////////////////////// -->
       
        <div class="left_content">
-         <label for="st_loc"> 출발</label>
-         <input id="st_loc" type="text"> <button id="st_loc_btn" class="btn btn-xs" type="button"><i class="fa fa-map-marker" style="font-size:16px"></i></button> <br/>
-         <label for="ed_loc"> 도착</label>
-         <input id="ed_loc" type="text"> <button id="ed_loc_btn" class="btn btn-xs" type="button"><i class="fa fa-search"></i></button> <br/>
-         <label style="margin: 5px 0 5px -15px; font-size: 30px; ">List</label>
-        <div class="sidebar blog-sidebar">
-					<div class="sidebar-item categories">
+	       <div class="loc_list1">
+	         <label for="st_loc"> 출발</label>
+	         <input id="st_loc" type="text"> <button id="st_loc_btn" class="btn btn-xs" type="button"><i class="fa fa-map-marker" style="font-size:16px"></i></button> <br/>
+	         <label for="ed_loc"> 도착</label>
+	         <input id="ed_loc" type="text"> <button id="ed_loc_btn" class="btn btn-xs" type="button"><i class="fa fa-search"></i></button> <br/>
+           </div>
+           <div class="loc_list2">
+		         <label style="margin: 5px 0 5px 18px; font-size: 30px; ">List</label>
+		        <div class="sidebar blog-sidebar">
+					<div class="categories">
 						<ul class="list_example inbox" id="searchList">
 							<!-- 여기에 검색 리스트 띄움. ul li 로 ///////////////////////////////////////////////////// -->
 						</ul>
@@ -105,6 +111,7 @@ $.ajax({
 					</div>
 					<!-- <input type="button" class="form_search" value="Search" /> -->
 				</div>
+			</div>
       </div>
 
             <!--//////////////////////////////////////////////////////////////////////////////////// -->
@@ -128,7 +135,7 @@ $.ajax({
             </div>
             <div id="testMap" style="width: 800px; height: 400px; margin: 0;"></div>
             <div>
-              <input type="button" class="form_submit" id="save_Btn" value="save" />
+              <button class="form_submit" id="save_Btn" onclick="not2()">SAVE</button>
             </div>
          </div>
 
@@ -765,6 +772,7 @@ $.ajax({
    }); -->
    
   <!--   인풋값 저장해서 DB에 넣기 TODO -->
+  <script src="js/notifIt.js" type="text/javascript"></script>
    <script>
    var boardNo;
    var lnos = [];
@@ -782,7 +790,7 @@ $.ajax({
    lnos[2] = parseInt($("input[name='lno3']").val());
    lnos[3] = parseInt($("input[name='lno4']").val());
    if (!lnos[0]) {
-	   alert("1개이상의 장소를 선택해주세요.");
+     not2();
 	   return;
    }
      $.getJSON('ajax/locationDetail.do?no=' + lnos[0], function(resultObj) { // 포기 1개 좌표 가져와서
@@ -808,7 +816,7 @@ $.ajax({
                        bno : boardNo,
                        lnoArray: JSON.stringify(lnos)
                      }, function(resultObj) {
-                         console.log("보드-코스 저장에 성공");
+                         not1();
                          location.href="index.html";
                      }, 'json'); 
                }, 'json');
@@ -818,5 +826,71 @@ $.ajax({
    
    </script>
  
+ <script>
+
+ function not1(){
+     notif({
+	msg: "<b>성공!</b> 게시물이 등록되었습니다!",
+	type: "success",
+	position: "center"
+});
+ }
+ function not2(){
+     notif({
+	msg: "<b>잠깐 !</b> 1개 이상의 장소를 선택해주세요!",
+	type: "error",
+	position: "center"
+});
+ }
+ function not3(){
+     notif({
+	type: "warning",
+	msg: "<b>Warning:</b> Be patient my friend.",
+	position: "left"
+});
+ }
+ function not4(){
+     notif({
+	type: "info",
+	msg: "<b>Info: </b>Some info here.",
+	width: "all",
+	height: 100,
+	position: "center"
+});
+ }
+ function not5(){
+     notif({
+	type: "error",
+	msg: "<b>Error: </b>This error will stay here until you click it.",
+	position: "center",
+	width: 500,
+	height: 60,
+	autohide: false
+});
+ }
+function not6(){
+notif({
+	type: "warning",
+	msg: "Opacity is cool!",
+	position: "center",
+	opacity: 0.8
+});
+}
+
+    </script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </body>
 </html>
