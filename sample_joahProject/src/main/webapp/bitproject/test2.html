@@ -9,11 +9,16 @@
 </head>
 
 <body>
-<div id="slist">
+<div id="slist" style="margin:30px;">
 검색어 : <input type="text" id="locinput"><br>
 pageNo : <input type="number" id="pageNo"><br>
 흥미코드 : <input type="text" id="interestCode"><br>
-<button type="button" id="inlocbtn">쿼리에넣기</button><br>
+<button type="button" id="inlocbtn">검색</button>
+<button type="button" id="addlocbtn">쿼리에넣기</button><br>
+<input type="radio" name="img" value="only" id="orange">
+    <label for="orange">사진 있는것</label>
+<input type="radio" name="img" value="not" id="lemon">
+    <label for="lemon">사진 없는것</label><br>
 I-001 : 음식 <br>
 I-002 : 엔터테인<br>
 I-003 : 경험<br>
@@ -21,38 +26,57 @@ I-004 : 운동<br>
 I-005 : 쇼
 
 </div>
+<div >
+<ul id="searchlist">
+</ul>
+</div>
 
 <script type="text/javascript">
 var daumurl = 'https://apis.daum.net/local/v1/search/keyword.json?apikey=';
 var apikey = '714e1b1cd11e15c987d142a03e1b65db';
+var imgSelect = $("input:checked").val();
 	$("#inlocbtn").click(function(event) {
+			imgSelect = $("input:checked").val();
 		  var query = $("#locinput").val();
 		  var pageNo = $("#pageNo").val();
 		  var intCode = $("#interestCode").val();
-		  console.log(query);
+		  var list = $("#searchlist");
+		  $(".searchlists").remove();
 		  $.ajax({
-	        url: daumurl + apikey + "&query="+query +"&page="+pageNo,
-	        type: 'get',
-	        dataType: 'jsonp',
-	        success: function(data) {
-	        	console.log(data);
-	        	for (i = 0; i < 15; i++) {
-	          $.post('ajax/addlocation.do',{
-	            name : data.channel.item[i].title,
-	            content : data.channel.item[i].address,
-	            photo : data.channel.item[i].imageUrl,
-	            lng : data.channel.item[i].latitude,
-	            lat : data.channel.item[i].longitude, 
-	            interestCode : intCode
-	            }, function(resultObj) {
-	                console.log("보드-코스 저장에 성공");
-	            }, 'json');
-	        	}
-	        }
+	          url: daumurl + apikey + "&query="+query +"&page="+ pageNo + "&image=" + imgSelect,
+	          type: 'get',
+	          dataType: 'jsonp',
+	          success: function(data) {
+	        	  var i = 0;
+	            for (var item of data.channel.item) {
+	            	$("<li class='searchlists'>").html("<input type='checkbox' name='list' value='"+ i +"' id='list"+ i +"'><img src="+ item.imageUrl + " width=30 height=30>" +
+	            			"<span>" + item.title + "</span>" +
+	            			"<span>" + item.address + "</span>" +
+	            			"</li><hr style='border=1px solid black;'>").appendTo(list);
+	            	i++;
+	            }
+	            
+	            $("#addlocbtn").click(function(event) {
+	            	var items = $("input:checkbox");
+	            	console.log(items);
+	                      for (var i = 0; i < items.length; i++) {
+	                    	  if(!$("#list" + i).is("checked")){continue;}
+	                    	  console.log(items[i].value);
+	                      /* $.post('ajax/addlocation.do',{
+	                        name : item2.title,
+	                        content : item2.address,
+	                        photo : item2.imageUrl,
+	                        lng : item2.latitude,
+	                        lat : item2.longitude, 
+	                        interestCode : intCode
+	                        }, function(resultObj) {
+	                            console.log("보드-코스 저장에 성공");
+	                        }, 'json'); */
+	                      }
+	                    });
+	          }
 		  });
 	});
-		  
-    
 </script>
 </body>
 </html>
