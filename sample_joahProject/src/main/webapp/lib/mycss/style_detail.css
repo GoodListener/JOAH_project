@@ -353,3 +353,65 @@ color:#de462a;
 /*-----------------------*/
 /*     end footer        */
 /*-----------------------*/
+
+
+.buttonSquare {
+    width: 150px;
+    border-radius: 0px;
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    position: relative;
+    cursor: pointer;
+    margin: 0px 0 4px 0;
+    padding: 15px 0px 15px 0px;
+    border: none;
+    font: normal 18px "Roboto", Helvetica, sans-serif;
+    color: rgba(255,255,255,0.9);
+    text-transform: capitalize;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: #686d6e;
+    text-shadow: 0 0 0 rgba(239,245,247,1);
+    transition: all 0.2s;
+}
+.buttonSquare::before {
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 63px;
+    height: 100%;
+    position: absolute;
+    content: "";
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    border: none;
+    color: rgba(0,0,0,0.9);
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: rgba(0,0,0,0.3);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    -webkit-background-size: 48px auto;
+    background-size: 48px auto;
+    transition: all 0.2s;
+}
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.brown {
+    background: #9a6362;
+}
+
+.buttonSquare span, .buttonRounded span {
+    position: absolute;
+    left: 78px;
+    top: 20px;
+    font: normal 18px "Roboto", Helvetica, sans-serif;
+    text-transform: uppercase;
+}
