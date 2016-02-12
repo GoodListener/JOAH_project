@@ -57,12 +57,8 @@ var imgSelect = $("input:checked").val();
 	            }
 	            
 	            $("#addlocbtn").click(function(event) {
-	            	var items = $("input:checkbox");
-	            	console.log(items);
-	                      for (var i = 0; i < items.length; i++) {
-	                    	  if(!$("#list" + i).is("checked")){continue;}
-	                    	  console.log(items[i].value);
-	                      /* $.post('ajax/addlocation.do',{
+	            	for (var item2 of data.channel.item) {
+	                 $.post('ajax/addlocation.do',{
 	                        name : item2.title,
 	                        content : item2.address,
 	                        photo : item2.imageUrl,
@@ -71,9 +67,9 @@ var imgSelect = $("input:checked").val();
 	                        interestCode : intCode
 	                        }, function(resultObj) {
 	                            console.log("보드-코스 저장에 성공");
-	                        }, 'json'); */
+	                        }, 'json');
 	                      }
-	                    });
+	               });
 	          }
 		  });
 	});

@@ -283,12 +283,12 @@ color:#de462a;
 
 .loc_list1 {
 	margin: 17px 20px 0 -25px;
-	border: solid 1px mediumblue;
+	/* border: solid 1px mediumblue; */
     padding: 15px 10px;
 }
 
 .loc_list2 {
 	margin: 17px 20px 0 -25px;
-	border: solid 1px mediumblue;
+/* 	border: solid 1px mediumblue; */
     padding: 15px 10px;
 }
