@@ -401,7 +401,7 @@ $.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // í•«í
      .html("<div class='team-single-wrapper'>" +
            "<div class='team-single'>" + 
        "<div class='person-thumb'>" +
-           "<img src='" + photoLocation + board.photo + "' class='img-responsive' alt=''>" +
+           "<img src='" + photoLocation + 's-' + board.photo + ".png' class='img-responsive' alt=''>" +
        "</div>" +
        "<div class='social-profile'>" +
            "<ul class='nav nav-pills'>" +
@@ -475,7 +475,7 @@ $.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // í•«í
      .html('<div class="portfolio-wrapper">' +
          '<div class="portfolio-single">' +
        '<div class="portfolio-thumb">' +
-           '<img id="rec" src="' + photoLocation + board.photo + '" class="img-responsive" alt="">' +
+           '<img id="rec" src="' + photoLocation +'s-'+ board.photo + '.png" class="img-responsive" alt="">' +
        '</div>' +
        '<div class="portfolio-view">' +
            "<ul class='nav nav-pills'>" +
@@ -521,7 +521,7 @@ $.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // í•«í
           '</div>' +
           '<div class="portfolio-view">' +
               "<ul class='nav nav-pills'>" +
-              '<li><a href="' + photoLocation + board.photo + '" data-lightbox="example-set">' + 
+              '<li><a href="' + photoLocation + 's-' +board.photo + '.png" data-lightbox="example-set">' + 
                 '<i class="fa fa-eye"></i></a></li>' +
               "</ul>" +
           "</div>" +
@@ -552,7 +552,7 @@ $.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // í•«í
         .html('<div class="portfolio-wrapper">' +
             '<div class="portfolio-single">' +
           '<div class="portfolio-thumb">' +
-              '<img id="rec" src="' + photoLocation + board.photo + '" class="img-responsive" alt="">' +
+              '<img id="rec" src="' + photoLocation +'s-'+ board.photo + '.png" class="img-responsive" alt="">' +
           '</div>' +
           '<div class="portfolio-view">' +
               "<ul class='nav nav-pills'>" +

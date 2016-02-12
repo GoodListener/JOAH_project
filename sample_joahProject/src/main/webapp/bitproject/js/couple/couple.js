@@ -11,7 +11,7 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
   var ajaxResult = resultObj.ajaxResult;
   if (ajaxResult.status == "success") {
     var member = ajaxResult.data;
-    $("#member_photo").html("<img src='../profile_image/"+ member.photo +"' style='width: 150px;height: 150px;border: solid white 3px;margin: 30px 0;''>")
+    $("#member_photo").html("<img src='../profile_image/p-"+ member.photo +".png' style='width: 150px;height: 150px;border: solid white 3px;margin: 30px 0;''>")
     $("#member_id").val(sessionStorage.getItem('loginSession'));
     $("#member_pwd").val(member.pwd);
     $("#member_name").val(member.name);

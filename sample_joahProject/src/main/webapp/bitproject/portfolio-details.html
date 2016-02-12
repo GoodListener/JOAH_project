@@ -111,7 +111,7 @@ $("#h_title").load("header.html");
         </h3>
         
         <label style="margin-top:10px ;float: right;" id="date"></label>  <br><br>
-        <p id="content1" style="height:250px;"></p>
+        <pre id="content1" style="height:250px;"></pre>
         
         <h3 class="post-title bold" style="text-align : center;background-color: white; border:3px solid black;">
           <label style="margin: 5px 0 5px 0;">글쓴이 프로필</label>
@@ -486,8 +486,8 @@ $.ajax({
      var list1 = $("#slides1");
      var list2 = $("#slides2");
      for (var i=0 ; i<=photos.length ; i++){
-       $("<li><img id='list1' src='../board_photo/" + photos[i].photoName +"'/></li>").appendTo(list1);
-       $("<li><img id='list2' src='../board_photo/" + photos[i].photoName +"'/></li>").appendTo(list2);
+       $("<li><img id='list1' src='../board_photo/p-" + photos[i].photoName +".png'/></li>").appendTo(list1);
+       $("<li><img id='list2' src='../board_photo/s-" + photos[i].photoName +".png'/></li>").appendTo(list2);
 //        $("<li><img style='background:url('../board_photo/" + photos[i].photoName + "') no-repeat;background-size:100% auto;background-position:center center;background-color:black;'/></li>").appendTo(list);
        console.log(photos[i].photoName);
      }

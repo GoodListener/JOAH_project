@@ -81,7 +81,7 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 	var ajaxResult = resultObj.ajaxResult;
 	if (ajaxResult.status == "success") {
 		var member = ajaxResult.data;
-		$("#after_login5").html("<img src=../profile_image/"+ member.photo +" width=40px height=40px class='img-circle'>");
+		$("#after_login5").html("<img src='../profile_image/s-"+ member.photo +".png' width=40px height=40px class='img-circle'>");
 	}
 });
 }

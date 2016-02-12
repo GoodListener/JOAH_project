@@ -167,7 +167,7 @@ $.getJSON('ajax/Adminlist.do?pageNo=' + pageNo, function(resultObj) {
             "style='position: absolute; left: 15px; top: 0px; transform: translate3d(370px, 200px, 0px);'>")
         .html("<div class='portfolio-wrapper'> <div class='portfolio-single'>" + 
       "<div class='portfolio-thumb'> " +
-          "<a href='#' class='detailLnk'><img id='hot' src='"+ photoLocation + board.photo + "' class='img-responsive' alt=''></a>" +
+          "<a href='#' class='detailLnk'><img id='hot' src='"+ photoLocation +'p-'+ board.photo + ".png' class='img-responsive' alt=''></a>" +
       "</div>" +
       "<div class='portfolio-view'>" +
           "<ul class='nav nav-pills'>" +
