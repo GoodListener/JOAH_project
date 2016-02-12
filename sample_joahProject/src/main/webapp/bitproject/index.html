@@ -584,13 +584,13 @@ $.getJSON('ajax/list.do?keyword=views&pageSize=8', function(resultObj) { // í•«í
          $('<li id="vticker_li" style="padding: 0px; height: 85.0909px;">')         
          .html('<dl>' + 
                 '<dd class="col-xs-4">'+
-                  '<img style="height:65px;max-width:60px;" src="'+ photoLocation + comment.photo +'" alt="">' +
+                  '<img style="height:65px;max-width:60px;" src="'+ photoLocation +'s-'+ comment.photo +'.png" alt="">' +
                   '</p>'+
                 '</dd>'+
                  '<dd class="col-xs-8">'+ 
                    '<p>' +
                      '<span style="margin:10px 0 0 -10px;"><a style="margin: 0px 0 0 10px;white-space: nowrap; overflow: hidden; width:80px; text-overflow: ellipsis;" href="index.html" target="_blank"><b>' + comment.title + '</b></a></span><br>' +
-                     '<span class="txt"><p id="comment_content" readonly style="border-radius:5px; width:140px; background:url(../images/bg.gif) repeat top left #FFFFFF;">' + comment.content + '</p></span>' +
+                     '<span class="txt"><p id="comment_content" readonly style="border-radius:5px; width:140px; background:url(../images/bg.gif) repeat top left #FFFFFF;"><div style="line-height: 14px;width: 140px;height: 42px;">' + comment.content + '</div></p></span>' +
                    '</p>' +                                   
                    '<p class="byid"style="text-align: right;margin-right: 15px;">'+'by : '+comment.id+'</p>' +
                  '</dd>' + 

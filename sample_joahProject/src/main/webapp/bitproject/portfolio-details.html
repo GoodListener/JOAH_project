@@ -140,7 +140,7 @@ $("#h_title").load("header.html");
           <ul class="nav navbar-nav post-nav">
             <li><a><i class="fa fa-comments"></i><span id="post-com-count">댓글 수</span></a></li>
             <li><iframe id="Likes" width="82px" height="60px"></iframe></li>
-          	<li><a id='updislikes' href="#"><i class="fa fa-thumbs-o-down"></i><span id="post-com-dislikes"></span></a></li>
+          	<li><a id='updislikes'><i class="fa fa-thumbs-o-down"></i><span id="post-com-dislikes"></span></a></li>
           </ul>
         </div>
         <div class="col-xs-6">
@@ -430,7 +430,7 @@ $.ajax({
       var ajaxResult = resultObj.ajaxResult;
       if (ajaxResult.status == "success") {
         cPhoto = ajaxResult.data.photo;
-        $("#profile_image").attr("src", "../profile_image/"+cPhoto);
+        $("#profile_image").attr("src", "../profile_image/p-"+ cPhoto +".png");
       }
    });
  /*조회수 올리기*/
@@ -462,7 +462,7 @@ $.ajax({
 	          console.log(board.id);
 	          var member = ajaxResult.data;
 	          $("#member_photo").html('<img class="img-circle" width="110" height="110"' +
-	  	          'src="../profile_image/'+ member.photo +'" alt="">');	          
+	  	          'src="../profile_image/p-'+ member.photo +'.png" alt="">');	          
 	          $("#member_id").text(member.id);
 	          $("#member_id2").text(member.id);
 	          $("#member_id3").text(member.id);
@@ -511,7 +511,7 @@ $.ajax({
         $('<li id="comment_li'+comment.cno+'" class="media">')
         .html('<div class="post-comment wow fadeInDown" data-wow-duration="'+count+'ms" data-wow-delay="800ms">' +
         '<a class="pull-left"><img class="img-circle" width="70" height="70"' +
-        'src="../profile_image/'+ comment.photo +'" alt="">' +
+        'src="../profile_image/p-'+ comment.photo +'.png" alt="">' +
         '</a>' +
         '<div class="media-body">' +
         '<span><i class="fa fa-user"></i>Posted by <a>'+ comment.id +'</a></span><a style="position:relative; left:50px;"><i class="fa fa-clock-o"></i>'+ time +'</a>' +
@@ -547,7 +547,7 @@ $.ajax({
       }, function(resultObj) {
         var ajaxResult = resultObj.ajaxResult;
         if (ajaxResult.status == "success") {
-           location.reload(true);
+           location.href="javascript:;";
            /* console.log(ajaxResult.data);
            newListNo = ajaxResult.data;
            var com = $("#commentList");
