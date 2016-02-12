@@ -44,10 +44,10 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 		 						console.log("커플신청 취소함.");
 		 						var ajaxResult = resultObj.ajaxResult;
 		 						if (ajaxResult.status == "success") {
-		 							alert("커플 신청 취소 성공.");
+		 							not6();
 		 							location.href = "mypage.html";
 		 						} else {
-		 							alert("커플 신청 중이 아닙니다.");
+		 						 not3();
 		 						}
 		 					})
 		 				});
@@ -85,7 +85,6 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 			 								var ajaxResult = resultObj.ajaxResult;
 			 								if (ajaxResult.status == "success") {
 			 								} else {
-			 									alert("게시물 변경에 실패했습니다.");
 			 								}
 			 							}, 'json');
 			 							
@@ -96,13 +95,12 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 			 								var ajaxResult = resultObj.ajaxResult;
 			 								if (ajaxResult.status == "success") {
 			 								} else {
-			 									alert("게시물 변경에 실패했습니다.");
 			 								}
 			 							}, 'json');
-			 							alert("커플 신청 수락 성공.");
+			 							not00();
 			 							location.href = "mypage.html";
 			 						} else {
-			 							alert("오류!");
+			 						 not1();
 			 						}
 			 					})
 			 				}); 
@@ -114,10 +112,10 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 		 						console.log("커플신청 거절함.");
 		 						var ajaxResult = resultObj.ajaxResult;
 		 						if (ajaxResult.status == "success") {
-		 							alert("커플 신청 거절 성공.");
+		 						  not7();
 		 							location.href = "mypage.html";
 		 						} else {
-		 							alert("오류!");
+		 						  not1();
 		 						}
 		 					})
 		 				});
@@ -153,10 +151,10 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 						console.log("커플신청 취소함.");
 						var ajaxResult = resultObj.ajaxResult;
 						if (ajaxResult.status == "success") {
-							alert("커플 신청 취소 성공.");
+						  not6();
 							location.href = "mypage.html";
 						} else {
-							alert("커플 신청 중이 아닙니다.");
+						  not3();
 						}
 					})
 				});
@@ -203,15 +201,16 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
    			 $("#couple_age").val(couple.age);
    			 $(".img_mypage").attr("src", "../profile_image/"+couple.photo);
    			 
-   			 $('#farewellBtn').click(function(event) {
+   			 $('#farewellBtn').click(function(event) {    // 커플 끊기
    				$.post('ajax/farewellCid.do', {
 						id : sessionStorage.getItem('loginSession'),
 						cid : null
 					}, function(resultObj) {
 						var ajaxResult = resultObj.ajaxResult;
 						if (ajaxResult.status == "success") {
+						  not8();
 						} else {
-							alert("오류.");
+						  not1();
 						}
 					}, 'json');
    				
@@ -223,10 +222,10 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 					if (ajaxResult.status == "success") {
 						location.href = "mypage.html";
 					} else {
-						alert("오류..");
+					  not1();
 					}
 				}, 'json');
-   				alert("커플이 해제되었습니다.");
+   				not8();
    			 });
    		}	
    	});
@@ -264,7 +263,7 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 					
 					if (word == sessionStorage.getItem('loginSession') ) {
 						console.log("아무리 외로워도 본인과 커플 ㄴㄴ ");
-						alert('본인에게 커플 신청을 할 수 없습니다.');
+						not4();
 					} else {
 						
 						$.getJSON('ajax/couplecheck.do', function(resultObj){
@@ -291,21 +290,21 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 						    					    }, function(resultObj) {
 						    						var ajaxResult = resultObj.ajaxResult;
 						    						if (ajaxResult.status == "success") {
-						    							alert("커플 신청 성공.");
+						    						  not01();
 						    							location.href = "mypage.html";
 						    						} else {
-						    							alert("오류!!!!");
+						    						  not1();
 						    						}
 						    					}, 'json');  
 						    			    } else {
-						    			    	alert("커플 신청중 입니다. 커플 신청을 취소하고 다시 신청해주세요.");
+						    			      not5();
 						    			    }
 						    			})
 						    			
 						    		} else {
 						    			console.log("나는 커플이 있따!!!");
 						    			console.log(member);
-						    			alert("상대방은 이미 커플중입니다..");
+						    			not2();
 						    		}
 						    	} 
 						    }
@@ -315,3 +314,74 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 		});
 	}
 });
+
+function not00(){
+  notif({
+msg: "커플 신청 <b>수락 성공!</b>",
+type: "success",
+position: "center"
+});
+}
+function not01(){
+  notif({
+    msg: "커플 신청 <b>성공!</b>",
+    type: "success",
+    position: "center"
+  });
+}
+function not1(){
+  notif({
+    msg: "<b>앗! 실패!</b> 다시 시도해주세요!",
+    type: "error",
+    position: "center"
+  });
+}
+function not2(){
+  notif({
+msg: "<b>잠깐 !</b> 상대방은 이미 커플입니다!",
+type: "error",
+position: "center"
+});
+}
+function not3(){
+  notif({
+type: "warning",
+msg: "<b>잠깐!</b> 커플 신청 중이 아닙니다!",
+position: "center"
+});
+}
+function not4(){
+  notif({
+    type: "warning",
+    msg: "<b>이런..</b> 본인에게 커플 신청을 할 수 없습니다..",
+    position: "center"
+  });
+}
+function not5(){
+  notif({
+    type: "warning",
+    msg: "<b>커플 신청 중입니다.</b><br>커플 신청을 취소하고 다시 신청해주세요!",
+    position: "center"
+  });
+}
+function not6(){
+  notif({
+type: "info",
+msg: "커플 신청 <b>취소 성공!</b>",
+position: "center"
+});
+}
+function not7(){
+  notif({
+    type: "info",
+    msg: "커플 신청 <b>거절 성공!</b>",
+    position: "center"
+  });
+}
+function not8(){
+  notif({
+    type: "info",
+    msg: "<b>커플 해제 완료!</b><br>좋은 인연과 또 이용해 주세요!^^",
+    position: "center"
+  });
+}

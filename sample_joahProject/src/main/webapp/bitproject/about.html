@@ -135,7 +135,7 @@ $.ajax({
             </div>
             <div id="testMap" style="width: 800px; height: 400px; margin: 0;"></div>
             <div>
-              <button class="form_submit" id="save_Btn" onclick="not2()">SAVE</button>
+              <button class="form_submit" id="save_Btn" onclick="not1()">SAVE</button>
             </div>
          </div>
 
@@ -816,7 +816,7 @@ $.ajax({
                        bno : boardNo,
                        lnoArray: JSON.stringify(lnos)
                      }, function(resultObj) {
-                         not1();
+                       	 not1();
                          location.href="index.html";
                      }, 'json'); 
                }, 'json');
