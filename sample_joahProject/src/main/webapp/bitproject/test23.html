@@ -58,11 +58,11 @@ $.getJSON('ajax/detail.do?no=' + no, function(resultObj) {
     });
     
 $('#uplikes').click(function(event) {
-	 $.getJSON('ajax/pluslikes.do?no=' + no, {
+	 $.getJSON('ajax/minuslikes.do?no=' + no, {
 	 }, function(resultObj) {
 		var ajaxResult = resultObj.ajaxResult;
 		if (ajaxResult.status == "success") {
-			location.href = "test23.html?no=" + no  ;
+			location.href = "test22.html?no=" + no ;
 		} else {
 			alert("게시물 변경에 실패했습니다.");
 		}

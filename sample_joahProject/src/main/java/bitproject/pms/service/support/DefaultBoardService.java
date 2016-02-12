@@ -111,6 +111,11 @@ public class DefaultBoardService implements BoardService {
   }
   
   @Override
+  public int minuslikes(int bno) {
+    return boardDao.minuslikes(bno);
+  }
+  
+  @Override
   public int plusdislikes(int bno) {
     return boardDao.plusdislikes(bno);
   }

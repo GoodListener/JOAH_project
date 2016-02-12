@@ -180,6 +180,11 @@ public class BoardController {
     boardService.pluslikes(no);
     return new AjaxResult("success", null);
   }
+  @RequestMapping("minuslikes")
+  public AjaxResult minuslikes(int no) throws Exception {
+    boardService.minuslikes(no);
+    return new AjaxResult("success", null);
+  }
   
   @RequestMapping("plusdislikes")
   public AjaxResult plusdislikes(int no) throws Exception {

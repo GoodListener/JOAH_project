@@ -41,6 +41,8 @@ public interface BoardService {
   int updateViews(int bno);
 
   int pluslikes(int bno);
+
+  int minuslikes(int bno);
   
   int plusdislikes(int bno);
   
