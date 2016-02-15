@@ -19,6 +19,9 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script src="js/notifIt.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link href="css/notifIt.css" type="text/css" rel="stylesheet">
 </head>
 <!--/head-->
 
@@ -124,7 +127,7 @@ $.getJSON('ajax/detailmember.do?id=' + sessionStorage.getItem('loginSession'), f
 var isPassword = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 $("#updateBtn2").click(function(event) {
   if ($('#new_pwd').val() != $('#new_pwd_check').val()) {
-    alert("비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요~");
+    pwdwrong();
     return;
   } 
   $.post('ajax/updatepwd.do', {
@@ -134,23 +137,44 @@ $("#updateBtn2").click(function(event) {
   }, function(resultObj) {
     var ajaxResult = resultObj.ajaxResult;
     if (ajaxResult.status == "success") {
-      alert("비밀번호가 변경되었습니다. 다시 로그인 해주세용~");     
+      okok();    
        $.post('ajax/logout.do',
           function(resultObj) {
            var ajaxResult = resultObj.ajaxResult;
            if (ajaxResult.status == "success") {
              sessionStorage.removeItem('loginSession');
-             location.href = "index.html";
            }
          },'json'); 
           } else {
-          alert("게시물 변경에 실패했습니다.");
+        	  notin();
         } 
   }, 'json');
 });
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script>
+function pwdwrong(){
+    notif({
+  msg: "비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요~",
+  type: "warning",
+  position: "center"
+  });
+  }
+function notin(){
+    notif({
+  msg: "비밀번호를 다시 입력해주세요.",
+  type: "warning",
+  position: "center"
+  });
+  }
+function okok(){
+    notif({
+  msg: "비밀번호가 변경되었습니다. 다시 로그인 해주세요.",
+  type: "success",
+  position: "center",
+  href: "index.html"
+  });
+  }
  </script>
 
 

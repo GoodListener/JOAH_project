@@ -122,6 +122,11 @@ function notif(config){
     if(autohide == true)
         to = setTimeout(function(){notifit_dismiss();},5000);
     
+    if(config.href) {
+    	$("#ui_notifIt").click(function(){
+    		location.href = config.href;
+        });
+    }
 }
 
 function notifit_dismiss(){
