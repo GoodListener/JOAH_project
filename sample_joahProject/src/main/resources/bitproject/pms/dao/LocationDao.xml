@@ -25,9 +25,9 @@
       as distance
     from location
     where int_code=#{intCode}
-    having distance &lt; 1.5
+    having distance &lt; 1.0
     ORDER BY distance 
-    LIMIT 0,1000
+    LIMIT 0,100
   </select>
   
   <select id="selectAll" resultMap="locationMap" parameterType="map">
@@ -44,9 +44,9 @@
       -radians(#{lng}))+sin(radians(#{lat}))*sin(radians(lng))))
       as distance
     from location
-    having distance &lt; 1.5
+    having distance &lt; 1.0
     ORDER BY distance 
-    LIMIT 0,1000
+    LIMIT 0,100
   </select>
   
   <select id="allLocation" resultMap="locationMap">
